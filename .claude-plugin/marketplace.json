@@ -1,0 +1,16 @@
+{
+  "name": "criadores-do-futuro",
+  "owner": {
+    "name": "Criadores do Futuro"
+  },
+  "metadata": {
+    "description": "Plugins do curso Criador Estrategista."
+  },
+  "plugins": [
+    {
+      "name": "sofia-estrategista",
+      "source": "./plugin",
+      "description": "Estrategista de vídeo curto do curso Criador Estrategista, com o método do curso e o conector do planejamento do site."
+    }
+  ]
+}

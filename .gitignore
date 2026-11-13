@@ -1,0 +1,12 @@
+.DS_Store
+dist/
+node_modules/
+
+# Configuração de assistente da máquina de quem programa
+.claude/
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+.cursor*
+.aider*
+.gitnexus/
