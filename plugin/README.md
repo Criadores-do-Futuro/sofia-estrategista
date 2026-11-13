@@ -18,9 +18,9 @@ Com o conector ligado e com login (o e-mail de compra do curso), ela lê os núm
 ## Instalar
 
 - **Claude no navegador ou no app:** baixe o arquivo do plugin na página Kit do site do curso e envie em Personalizar › Plugins › Adicionar › Enviar plugin. Depois, na aba Conectores do plugin, clique em Conectar e entre com o e-mail do curso.
-- **Claude Code:** o plugin enviado no Claude aparece também no Claude Code da mesma conta. Para instalar direto do repositório, no terminal: `claude plugin install sofia-estrategista --marketplace bento-dev-ia/sofia-estrategista`. Dentro do Claude Code: `/plugin marketplace add bento-dev-ia/sofia-estrategista` e depois `/plugin install sofia-estrategista@criadores-do-futuro`. Depois, `/mcp` para entrar no conector.
+- **Claude Code:** para instalar direto do repositório, no terminal: `claude plugin install sofia-estrategista --marketplace bento-dev-ia/sofia-estrategista`. Dentro do Claude Code: `/plugin marketplace add bento-dev-ia/sofia-estrategista` e depois `/plugin install sofia-estrategista@criadores-do-futuro`. Depois, `/mcp` para entrar no conector.
 
-O passo a passo com imagens está em https://criador-estrategista.vercel.app/kit.
+O passo a passo está em https://criador-estrategista.vercel.app/kit, depois do login com o e-mail do curso.
 
 ## Privacidade
 
