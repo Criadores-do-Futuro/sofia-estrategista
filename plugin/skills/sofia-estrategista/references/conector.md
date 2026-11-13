@@ -114,7 +114,7 @@ O cérebro guarda, por perfil, o que a Sofia aprende. As camadas incluem: `como-
 | `cerebro_buscar` | Busca por `consulta`, nas `camadas` escolhidas, com `limite` | Ideias, pesquisa, antes de escrever |
 | `cerebro_ler` | Lê um item inteiro | Item achado na busca |
 | `cerebro_guardar` | Guarda algo que vale para os próximos vídeos | A pessoa conta algo duradouro e diz que pode guardar; avise em uma linha o que guardou |
-| `cerebro_preferencia` | Guarda em `como-trabalhar` o que a pessoa elogiou (faça) ou reclamou (evite), com a frase dela e a data | Depois do elogio ou da bronca, quando ela disser que pode guardar (ou já tiver combinado que pode guardar sem perguntar) |
+| `cerebro_preferencia` | Guarda em `como-trabalhar` o que a pessoa elogiou (faça) ou reclamou (evite), com a frase dela e a data | Depois do elogio ou da bronca, quando ela disser que pode guardar. O OK vale para aquela anotação |
 | `cerebro_esquecer` | Tira um item | Só a pedido |
 | `cerebro_desfazer` | Desfaz a última mudança | Só a pedido |
 
@@ -140,7 +140,7 @@ Para pegar números e comentários, use o caminho que funcionar, nesta ordem: o 
 |---|---|
 | `perfil_listar` | Os perfis da pessoa (o dela e os de clientes) |
 | `perfil_ver` | Números do perfil, o normal dele e os vídeos acima do normal |
-| `perfil_salvar_avaliacao` | Salva a avaliação de um perfil, que vira a galáxia no site |
+| `perfil_salvar_avaliacao` | Salva a avaliação de um perfil, que vira a galáxia no site. A resposta oferece guardar os vencedores no cérebro e na biblioteca do perfil: com o sim da pessoa, use `cerebro_guardar` e `referencia_salvar` |
 | `perfil_definir_alvo`, `perfil_desfazer_alvo` | Marca ou desmarca um perfil como alvo |
 
 Fale de resultado contra o normal do perfil: "2 vezes o normal do perfil", "perto do normal". Mande o link da página do site em vez de montar painel no chat, a não ser que a pessoa peça.
