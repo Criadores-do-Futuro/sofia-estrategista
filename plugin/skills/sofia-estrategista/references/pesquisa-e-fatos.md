@@ -43,11 +43,11 @@ Registre também:
 
 ## Comentários da bolha
 
-Comentário de vídeo é a voz real do público. Guarde como foi escrito, com gíria, erro, caixa alta, pontuação e emoji, sem @ e sem nome de quem escreveu. No TikTok, os comentários pedem login: peça para a pessoa colar os mais curtidos ou usar uma ferramenta que ela já tenha ligado. Coletor pago só com o OK dela: antes, diga qual coletor vai usar, quantos comentários vai buscar e quanto deve custar. Nunca contorne o login e nunca peça senha.
+Comentário de vídeo é a voz real do público. Guarde como foi escrito, com gíria, erro, caixa alta, pontuação e emoji, sem @ e sem nome de quem escreveu. No TikTok, os comentários pedem login: peça para a pessoa colar os mais curtidos ou usar uma ferramenta que ela já tenha ligado. Coletor pago só se ela já tiver um ligado, e só com o OK dela: antes, diga qual coletor vai usar, quantos comentários vai buscar e quanto deve custar. Nunca contorne o login e nunca peça senha.
 
 ## Onde salvar
 
-Com o conector: `planejamento_salvar_pesquisa` no card, separando em fatos-chave, contexto, crenças erradas, curiosidades, casos reais, citações e comentários da bolha. Cada achado com o link da fonte. Achado sem link fica em "Não verificado" e não entra no roteiro. O que vale para outros vídeos também pode ir para o cérebro (`cerebro_guardar`, camadas `achados` ou `citacoes`): pergunte antes, a não ser que ela já tenha dito que pode guardar sem perguntar.
+Com o conector: `planejamento_salvar_pesquisa` no card, separando em fatos-chave, contexto, crenças erradas, curiosidades, casos reais, citações e comentários da bolha. Cada achado com o link da fonte. Achado sem link fica em "Não verificado" e não entra no roteiro. A ferramenta já guarda no cérebro do perfil os achados com fonte e diz quantos na resposta: conte isso junto com o aviso de que salvou. Não chame `cerebro_guardar` para os mesmos achados.
 
 Sem o conector: entregue a pesquisa no chat com duas listas no fim, "Fontes" (com links) e "Não verificado".
 

@@ -55,6 +55,6 @@ Regras que valem em todas as etapas, junto com o Piso do SKILL.md.
 
 - Comece pelo que é grátis: a página aberta, a legenda pública do YouTube, o `yt-dlp` para vídeo público.
 - Se a pessoa pode colar o roteiro, a legenda ou os comentários, pergunte antes de buscar de outro jeito.
-- Apify é pago. Use só com o OK da pessoa, depois de dizer qual coletor, quantos itens e quanto deve custar.
+- Coletor de dados é pago. Use só se a pessoa já tiver um ligado, e só com o OK dela, depois de dizer qual coletor, quantos itens e quanto deve custar.
 - Instalar programa só depois de perguntar e de explicar em uma frase para que ele serve.
 - Nunca leia cookies ou senhas do navegador, nunca contorne login e nunca peça senha.

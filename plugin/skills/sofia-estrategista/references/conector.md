@@ -2,7 +2,7 @@
 
 O conector guarda o método da Sofia na versão mais nova, os números de cada perfil, o cérebro com o que a Sofia já aprendeu, a biblioteca de referências e os cards do planejamento. Esta página diz o que cada ferramenta faz e quando chamar.
 
-Sobre como usar cada ferramenta (nome, campos, ordem das chamadas), a descrição que vem nela e as instruções que o conector manda no começo da conversa valem mais que esta página. Os nomes podem mudar entre versões: se um nome daqui não existir, procure o mais parecido e leia a descrição dele. O nome pode vir com um prefixo do aplicativo (por exemplo `mcp__plugin_sofia-estrategista_sofia-estrategista__`).
+Sobre como usar cada ferramenta (nome, campos, ordem das chamadas), a descrição que vem nela e as instruções que o conector manda no começo da conversa valem mais que esta página. Os nomes podem mudar entre versões: se um nome daqui não existir, procure o mais parecido e leia a descrição dele. O nome pode vir com um prefixo do aplicativo (por exemplo `mcp__plugin_sofia-estrategista_sofia-estrategista__`). O Piso, a segurança e o OK antes de guardar algo sobre a pessoa valem sempre, mesmo que a descrição de uma ferramenta mande guardar na hora.
 
 ## Sumário
 
@@ -71,12 +71,12 @@ O quadro tem as colunas Brainstorming, Estruturar, Revisar, Lapidar e Gravar. Ca
 |---|---|---|
 | `planejamento_quadro` | Os cards e a coluna de cada um | A pessoa fala dos cards |
 | `planejamento_criar_card` | Cria um card | Ideia aprovada |
-| `planejamento_salvar_pesquisa` | Salva a pesquisa nos grupos: fatos-chave, contexto, crenças erradas, curiosidades, casos reais, citações, comentários da bolha. Também guarda outras ideias de vídeo | Depois de pesquisar |
+| `planejamento_salvar_pesquisa` | Salva a pesquisa nos grupos: fatos-chave, contexto, crenças erradas, curiosidades, casos reais, citações, comentários da bolha. Também guarda outras ideias de vídeo e leva os achados com fonte para o cérebro do perfil (conte isso, com a linha que a ferramenta devolve) | Depois de pesquisar |
 | `planejamento_estruturar_card` | Grava o que entra em cada bloco da estrutura, em tópicos curtos ligados aos achados | Em Estruturar, sem texto falado |
 | `planejamento_mover_card` | Move o card de coluna | Quando a coluna nova tem o que pede |
 | `planejamento_editar_card` | Atualiza campos: tema, notas, ideia, paraQuem, formato, estrutura, elementos, princípios, hook, estilo, roteiroEscolhido, statusDeGravacao e outros | Trocar a versão escolhida, corrigir um campo |
 | `planejamento_gravar` | O roteiro escolhido pronto para gravar, com a situação da gravação | Card em Gravar |
-| `planejamento_postado` | Grava o link, os números e se funcionou | Só a pedido, depois de postar |
+| `planejamento_postado` | Grava o link, os números e se funcionou. Se funcionou, também guarda o resultado no cérebro do perfil (conte isso) | Só a pedido, depois de postar |
 | `planejamento_guardar_card` | Guarda o card inteiro no cérebro, em Cards guardados | A pessoa quer guardar para depois |
 | `planejamento_reusar_card` | Cria um card novo a partir de um guardado ou de um que funcionou | Repetir o que deu certo |
 | `planejamento_dividir_card` | Divide um card em 2 a 6 | Uma estrutura rende mais de um vídeo |

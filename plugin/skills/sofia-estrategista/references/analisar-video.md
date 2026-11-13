@@ -2,7 +2,7 @@
 
 O Piso e a linguagem de 8 anos do SKILL.md valem aqui também, na análise e na conversa.
 
-**Com o conector ligado:** leia antes a peça `instrucoes/ler-videos` do `sofia_metodo`, que vale mais que esta página. Ao terminar, guarde o que serve: vídeo de outra pessoa vira referência (`referencia_salvar`, com até 20 comentários entre os mais curtidos, literais, sem @ e sem nome de quem escreveu), avaliação de perfil vai para `perfil_salvar_avaliacao`, e o que funcionou no perfil da pessoa vai para o cérebro (`cerebro_guardar`, camada `o-que-funcionou`). Fale de resultado contra o normal do perfil ("2 vezes o normal do perfil"). Vários vídeos no mesmo pedido viram uma análise só, comparando os vídeos.
+**Com o conector ligado:** leia antes a peça `instrucoes/ler-videos` do `sofia_metodo`, que vale mais que esta página. Ao terminar, guarde o que serve: vídeo de outra pessoa vira referência (`referencia_salvar`, com até 20 comentários entre os mais curtidos, literais, sem @ e sem nome de quem escreveu), avaliação de perfil vai para `perfil_salvar_avaliacao`, e o que funcionou no perfil da pessoa pode ir para o cérebro (`cerebro_guardar`, camada `o-que-funcionou`), com o OK dela. Avise em uma linha o que salvou e onde ela vê. Fale de resultado contra o normal do perfil ("2 vezes o normal do perfil"). Vários vídeos no mesmo pedido viram uma análise só, comparando os vídeos.
 
 ## O que você consegue fazer
 
@@ -16,14 +16,14 @@ Olhe o que a superfície onde você está consegue fazer. Não tente um caminho 
 
 | Caminho | Onde costuma valer | O que entrega |
 |---|---|---|
-| A: rodar comandos | Claude Code, Codex, Claude Desktop com acesso a arquivos | Quadros, fala e números. Análise completa |
-| B: receber arquivo | Claude ou ChatGPT no navegador ou no celular | Com o vídeo enviado e uma ferramenta de rodar código, análise completa. Só com imagens, a análise dos prints que a pessoa mandar |
+| A: rodar comandos | Claude Code, Claude Desktop com acesso a arquivos, outro terminal com acesso a arquivos | Quadros, fala e números. Análise completa |
+| B: receber arquivo | Chat no navegador ou no celular | Com o vídeo enviado e uma ferramenta de rodar código, análise completa. Só com imagens, a análise dos prints que a pessoa mandar |
 | C: abrir páginas | Superfícies com navegação na web | A capa, a legenda e o texto público da página |
 | D: só texto | Qualquer superfície | A legenda, a transcrição ou o que a pessoa colar. Sem análise de imagem |
 
-- **Claude Code e Codex:** caminho A.
-- **ChatGPT:** se a conversa aceita o arquivo de vídeo e roda código, use o caminho A com o arquivo enviado. Se não, peça prints do começo, do meio e do fim do vídeo e, no YouTube, a transcrição que aparece embaixo do vídeo.
+- **Claude Code ou outro terminal:** caminho A.
 - **Claude no navegador ou no celular:** peça o upload do vídeo. Sem o arquivo, siga para o caminho C ou D e diga o que ficou de fora.
+- **Outro chat:** se a conversa aceita o arquivo de vídeo e roda código, use o caminho A com o arquivo enviado. Se não, peça prints do começo, do meio e do fim do vídeo e, no YouTube, a transcrição que aparece embaixo do vídeo.
 
 Muitos quadros: se a superfície limita quantas imagens cabem numa mensagem, mande em lotes numerados, em ordem, e só conclua depois de ver todos. Folha de contato serve para varrer a linha do tempo. Abra o quadro sozinho quando precisar ler texto, gesto, objeto ou corte. Em vídeo longo, faça uma passada ampla e depois volte só nos trechos que importam. Varredura com intervalo grande nunca vira "vi o vídeo inteiro".
 
@@ -91,7 +91,7 @@ Guarde até 20 entre os mais curtidos: ordene pelas curtidas, porque a ordem da 
 
 ## Coletor pago, quando a pessoa deu o OK
 
-Se o coletor ligado for o Apify, estes já foram testados: `clockworks/tiktok-video-scraper` (vídeo, capa, números e transcrição) e `clockworks/tiktok-comments-scraper` (comentários). Para o Instagram, use um coletor de Instagram que a ferramenta dela já tenha.
+Para o TikTok, prefira um coletor que traga vídeo, capa, números e transcrição na mesma chamada, e um de comentários. Para o Instagram, use o coletor de Instagram que a ferramenta dela já tenha.
 
 - Chame uma vez por link, para cada resultado ficar ligado ao vídeo certo.
 - Prefira a legenda que o vídeo já tem. Transcrição feita pelo coletor custa mais.
@@ -190,7 +190,7 @@ Nunca invente um segundo que você não viu.
 
 - **Com o conector ligado:** salve a análise no conector (referência ou avaliação de perfil) e mande o link da página do site. Monte painel no chat só se a pessoa pedir.
 - Sem o conector, numa superfície que mostra páginas (Artifacts, Canvas), crie a página da análise na conversa.
-- Em Claude Code, Codex ou outra superfície sem isso, use `templates/dashboard.html` e salve em `Sofia/Analises/dashboard.html`, na pasta de trabalho. Se a pessoa pedir um arquivo separado, use `Sofia/Analises/{titulo-do-lote}/index.html`.
+- No Claude Code ou em outra superfície sem isso, use `templates/dashboard.html` e salve em `Sofia/Analises/dashboard.html`, na pasta de trabalho. Se a pessoa pedir um arquivo separado, use `Sofia/Analises/{titulo-do-lote}/index.html`.
 - Um pedido gera um painel. Com um vídeo, o painel tem um item. Com dois ou mais, tem todos.
 - No lote, ponha no topo: visão geral, tabela de números lado a lado, ranking das aberturas, o padrão em comum e a principal coisa que mudou. Depois, uma seção completa para cada vídeo.
 - Cada vídeo tem: título, link original, diagnóstico, nota e explicação da abertura, números, roteiro anotado, comentários (só o texto e as curtidas), aprendizados e limitações.

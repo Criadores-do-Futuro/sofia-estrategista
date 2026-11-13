@@ -4,14 +4,14 @@
 
 - Leia antes a peça `instrucoes/estilo` do `sofia_metodo`. Ela vale mais que esta página.
 - Veja se a voz já está salva: `sofia_meus_videos` diz, e `sofia_perfil` lê o resumo.
-- Depois de digerir os roteiros, salve com `sofia_perfil`. O conector guarda só o resumo da voz (tom, vocabulário, expressões, o que a pessoa evita). O texto dos roteiros que ela mandou fica de fora. Por isso, no conector, a seção "Frases de referência" do modelo abaixo não entra.
+- Depois de digerir os roteiros, mostre o resumo da voz e pergunte se pode salvar. Com o OK, salve com `sofia_perfil` e avise onde ela vê. O conector guarda só o resumo da voz (tom, vocabulário, expressões, o que a pessoa evita). O texto dos roteiros que ela mandou fica de fora. Por isso, no conector, a seção "Frases de referência" do modelo abaixo não entra.
 - Palavras e expressões que valem para os próximos vídeos também podem ir para o cérebro (`cerebro_guardar`, camada `vocabulario`), com o OK da pessoa.
 - Quem atende clientes tem um perfil por cliente no conector, cada um com a sua voz. Confirme o perfil antes de salvar.
 
 ## Sem o conector
 
-- **No Claude Code ou no Codex:** salve o arquivo de voz na pasta em que a pessoa está trabalhando, em `Sofia/estilos/<perfil>.md`. Use o nome do perfil ou do cliente, em letras minúsculas e sem espaço. Antes de criar a pasta, diga onde ela vai ficar. Não salve dentro da pasta da skill: ela é trocada quando a skill é atualizada.
-- **No app do Claude, no ChatGPT ou em outro chat:** não dá para salvar arquivo. Entregue o resumo da voz num bloco só e peça para a pessoa guardar. Na próxima conversa, ela cola o resumo e você usa.
+- **No Claude Code ou em outro terminal com acesso a arquivos:** salve o arquivo de voz na pasta em que a pessoa está trabalhando, em `Sofia/estilos/<perfil>.md`. Use o nome do perfil ou do cliente, em letras minúsculas e sem espaço. Antes de criar a pasta, diga onde ela vai ficar. Não salve dentro da pasta da skill: ela é trocada quando a skill é atualizada.
+- **No app do Claude ou em outro chat:** não dá para salvar arquivo. Entregue o resumo da voz num bloco só e peça para a pessoa guardar. Na próxima conversa, ela cola o resumo e você usa.
 
 ## Quando oferecer
 

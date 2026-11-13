@@ -6,8 +6,8 @@ Na primeira resposta, uma frase basta: "Dá para fazer sem o conector, mas aí e
 
 ## A voz da pessoa
 
-- No Claude Code ou no Codex, a voz salva fica em `Sofia/estilos/` na pasta em que a pessoa trabalha (veja [aprender-voz.md](aprender-voz.md)). Se houver um arquivo, use. Se houver vários, pergunte de qual perfil é o roteiro.
-- No app do Claude, no ChatGPT e em outros chats, peça para a pessoa colar o resumo da voz dela, se tiver, ou dois roteiros de que ela gostou.
+- No Claude Code ou em outro terminal com acesso a arquivos, a voz salva fica em `Sofia/estilos/` na pasta em que a pessoa trabalha (veja [aprender-voz.md](aprender-voz.md)). Se houver um arquivo, use. Se houver vários, pergunte de qual perfil é o roteiro.
+- No app do Claude e em outros chats, peça para a pessoa colar o resumo da voz dela, se tiver, ou dois roteiros de que ela gostou.
 - A voz da pessoa manda mais que as regras gerais de tom. Se ela fala com frases mais longas, respeite. O Piso do SKILL.md continua valendo por cima da voz.
 
 ## Escrever um roteiro, passo a passo
@@ -57,4 +57,4 @@ Só escreva com material real. Se faltar um caso, peça: "Para essa parte ficar 
 
 ## O que não muda sem o conector
 
-Nada inventado, comentário literal, o Piso, ajuste só no que foi pedido. Apify e qualquer ferramenta paga só com o OK dela e uma estimativa de custo. As regras do SKILL.md valem igual.
+Nada inventado, comentário literal, o Piso, ajuste só no que foi pedido. Coletor ou ferramenta paga só se ela já tiver um ligado, e só com o OK dela e uma estimativa de custo. As regras do SKILL.md valem igual.

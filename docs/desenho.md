@@ -55,12 +55,14 @@ Estão dentro do SKILL.md, no Passo 3 e na lista "Antes de entregar":
 
 - Uma skill principal com gatilho largo, para não competir com outra skill de roteiro. Os atalhos só apontam para ela.
 - Ajudantes só leem e devolvem. Quem grava no site é a skill, para nada ser gravado sem a pessoa ver.
-- O Kit do site entrega o plugin (`sofia-estrategista.zip`) para o Claude e a skill solta (`sofia-estrategista.skill`) para o ChatGPT. Os dois saem do mesmo `plugin/` pelo `scripts/empacotar.sh`.
+- O Kit do site entrega o plugin (`sofia-estrategista.plugin`, um .zip com outra extensão para o navegador não descompactar ao baixar) para o Claude e a skill solta (`sofia-estrategista.skill`) para o ChatGPT. Os dois saem do mesmo `plugin/` pelo `scripts/empacotar.sh`.
 - `scripts/conferir-ferramentas.mjs` compara os nomes citados com os registrados no servidor, para o plugin não ficar para trás quando o conector mudar.
 
 ## Para depois
 
 - Trocar o endereço do conector para o domínio definitivo antes de enviar ao diretório.
 - Páginas de termos e de suporte para o envio ao diretório.
+- O endereço de `homepage` no `plugin.json` e as páginas Kit e Conector abrem só depois do login. Para o envio, apontar a `homepage` para uma página aberta, ou abrir essas páginas sem login.
+- Uma conta de teste para quem revisa o envio, com um perfil e alguns cards de exemplo, para o conector ser testado sem dado de aluno.
 - Tornar o repositório público quando o envio for aprovado.
 - Pacote para o ChatGPT como plugin (texto base em inglês, sem hooks, atalhos e ajudantes viram skills).

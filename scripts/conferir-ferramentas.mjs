@@ -40,7 +40,22 @@ if (doServidor.size === 0) {
 
 // Famílias de nome que o conector usa. Um nome citado nessas famílias tem de existir no servidor.
 const familia = /^(sofia|planejamento|cerebro|referencia|perfil)_[a-z0-9_]+$/;
-const avulsas = new Set([...doServidor].filter((n) => !familia.test(n)));
+// As ferramentas de nome avulso que o plugin pode citar. A lista é fixa, e não tirada do servidor, para
+// que um nome avulso citado no plugin e sumido do servidor acuse em vez de passar despercebido.
+const avulsas = new Set([
+  "buscar_no_curso",
+  "destravar",
+  "escrever_abordagem",
+  "glossario",
+  "kit",
+  "marcar_etapa",
+  "onde_estou",
+  "preco_e_contrato",
+  "preparar_reuniao",
+  "ver_etapa",
+  "ver_situacao",
+]);
+const avulsasNovas = [...doServidor].filter((n) => !familia.test(n) && !avulsas.has(n)).sort();
 
 const citadas = new Map();
 for (const arquivo of arquivos(plugin, [".md"])) {
@@ -58,6 +73,8 @@ const naoCitadas = [...doServidor].filter((n) => !citadas.has(n)).sort();
 
 console.log(`Servidor: ${doServidor.size} ferramentas. Plugin cita: ${citadas.size}.`);
 if (naoCitadas.length) console.log(`Aviso, o plugin não cita: ${naoCitadas.join(", ")}`);
+if (avulsasNovas.length)
+  console.log(`Aviso, ferramentas avulsas novas no servidor (inclua na lista de avulsas deste script): ${avulsasNovas.join(", ")}`);
 if (faltando.length) {
   console.error("O plugin cita ferramentas que o servidor não tem:");
   for (const n of faltando) console.error(`  ${n}  (em ${[...citadas.get(n)].join(", ")})`);
