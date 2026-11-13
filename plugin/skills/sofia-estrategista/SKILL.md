@@ -153,7 +153,7 @@ Comece por `sofia_metodo` com `instrucoes/ler-videos` e siga o caminho de [refer
 1. Separe o que ficou acima do normal do perfil: assunto, formato, tipo de vídeo, estilo.
 2. De cada vencedor, tire o hook literal, o estilo (gravação e edição) e o roteiro em blocos, com o que muda virado em `{variável}`.
 3. Leia os comentários. O que o público pede, reclama ou pergunta vira a melhoria da próxima versão.
-4. Salve a avaliação em `perfil_salvar_avaliacao`. Depois, ofereça guardar os vencedores, como a resposta da ferramenta sugere. Com o sim da pessoa, salve cada um em `referencia_salvar` (com números, hook, molde com variáveis, estilo, pedidos dos comentários e ideias de próxima versão) e o que funcionou no cérebro (`cerebro_guardar`). Diga em uma linha o que guardou.
+4. Salve a avaliação em `perfil_salvar_avaliacao`. Depois, ofereça guardar os vencedores, como a resposta da ferramenta sugere. Com o sim da pessoa, salve cada um em `referencia_salvar` (com números, hook, molde com variáveis, estilo, pedidos dos comentários e ideias de próxima versão) e, se o perfil for o dela, o que funcionou no cérebro (`cerebro_guardar`). Diga em uma linha o que guardou.
 5. As ideias novas partem desse material: a próxima versão do que já funcionou, e não um assunto do zero.
 6. Hook de referência em outra língua vira português do Brasil fiel ao original. Troque o que não existe aqui, troque número sem fonte por número verificado e marque o que muda com `{variáveis}`.
 
