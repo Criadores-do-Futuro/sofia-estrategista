@@ -142,6 +142,10 @@ Para pegar números e comentários, use o caminho que funcionar, nesta ordem: o 
 | `perfil_ver` | Números do perfil, o normal dele e os vídeos acima do normal |
 | `perfil_salvar_avaliacao` | Salva a avaliação de um perfil, que vira a galáxia no site. A resposta oferece guardar os vencedores no cérebro e na biblioteca do perfil: com o sim da pessoa, use `cerebro_guardar` e `referencia_salvar` |
 | `perfil_definir_alvo`, `perfil_desfazer_alvo` | Marca ou desmarca um perfil como alvo |
+| `perfil_salvar_leitura` | Guarda a leitura de hoje de um perfil avaliado: seguidores e os vídeos recentes, com os números do dia. Uma por dia; ler de novo no mesmo dia substitui. Vai com `agendada: true` quando vem da tarefa agendada da pessoa |
+| `perfil_evolucao` | A evolução semana a semana: vídeos por semana (a constância), seguidores, o normal do perfil, os vídeos acima do normal e o engajamento. Só leitura |
+
+A leitura semanal automática é uma tarefa agendada que a própria pessoa pede (veja "Evolução do perfil" na skill). Sem ela, a leitura acontece quando a pessoa pedir.
 
 Fale de resultado contra o normal do perfil: "2 vezes o normal do perfil", "perto do normal". Mande o link da página do site em vez de montar painel no chat, a não ser que a pessoa peça.
 

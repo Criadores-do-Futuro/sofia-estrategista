@@ -13,7 +13,7 @@ A estrategista de vídeo curto do curso Criador Estrategista, dos Criadores do F
 
 Sem o conector, a Sofia trabalha com o método que vem no plugin e entrega tudo no chat.
 
-Com o conector ligado e com login (o e-mail de compra do curso), ela lê os números do perfil, o cérebro e os cards, e salva ideias, pesquisas, roteiros e grifos no site. Toda gravação é contada no chat. Preferências da pessoa só são guardadas com o OK dela, e aparecem na página Cérebro do perfil, onde podem ser apagadas.
+Com o conector ligado e com login (o e-mail de compra do curso), ela lê os números do perfil, o cérebro e os cards, e salva ideias, pesquisas, roteiros e grifos no site. Também guarda a leitura dos números do perfil, quando a pessoa pede ou numa tarefa agendada que ela cria para toda segunda, e o site mostra a evolução semana a semana. Toda gravação é contada no chat. Preferências da pessoa só são guardadas com o OK dela, e aparecem na página Cérebro do perfil, onde podem ser apagadas.
 
 ## Instalar
 

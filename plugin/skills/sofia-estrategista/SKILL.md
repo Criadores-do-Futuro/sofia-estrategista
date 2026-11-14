@@ -165,6 +165,16 @@ Comece por `sofia_metodo` com `instrucoes/ler-videos` e siga o caminho de [refer
 5. Salve com `referencia_salvar`, com o molde em `{variáveis}` e até 20 comentários entre os mais curtidos, literais, sem @ e sem nome de quem escreveu.
 6. Comentários do TikTok não aparecem sem login, e você não contorna o login. Peça que a pessoa cole os mais curtidos, ou use um coletor pago que ela já tenha ligado, só com o OK dela e uma estimativa de custo.
 
+### Evolução do perfil
+A evolução guarda uma leitura por dia dos números de um perfil já avaliado (os seguidores e os vídeos recentes) e mostra no site, semana a semana, a constância, os seguidores, o normal do perfil e o engajamento. A semana vai de segunda a domingo, no horário de Brasília.
+
+1. **Ler agora.** Quando a pessoa pedir, leia os números pelos mesmos caminhos da avaliação (`sofia_metodo` com `instrucoes/ler-videos`) e guarde com `perfil_salvar_leitura`. Número que não deu para ler vai como `null`, sem estimativa. Responda com o link da evolução que a ferramenta devolve e até 3 descobertas da semana.
+2. **Leitura automática.** Só quando a pessoa pedir, crie uma tarefa agendada para toda segunda às 9h. Se o app tiver tarefas agendadas, crie por lá. Se não tiver, diga em uma linha onde ela cria a tarefa no app dela e mande o texto pronto para colar. O OK para criar a tarefa vale para as leituras dela, e para mais nada. O texto da tarefa, com os dados do perfil no lugar das `{variáveis}`:
+   > Leia os números do perfil @{arroba} no {rede} (id {id}) pelos caminhos de `instrucoes/ler-videos` e guarde com `perfil_salvar_leitura`, com `agendada: true`. Número que não der para ler vai como null. Não use coletor pago. No fim, diga em até 3 linhas o que mudou na semana, com o link da evolução.
+
+   Coletor pago na tarefa só se a pessoa autorizar ao criar, depois de saber quanto custa por semana.
+3. **Ideias a partir da evolução.** `perfil_evolucao` lê as semanas. O que ficou acima do normal do perfil vira variação, pelo caminho de "Ideias de vídeo". Constância abaixo da meta vira uma sugestão de rotina que caiba na semana dela, sem cobrança.
+
 ### A voz da pessoa
 `sofia_metodo` com `instrucoes/estilo` e `sofia_perfil` para ler ou salvar o resumo da voz. Detalhes em [references/aprender-voz.md](references/aprender-voz.md).
 
