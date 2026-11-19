@@ -47,7 +47,11 @@ Comentário de vídeo é a voz real do público. Guarde como foi escrito, com g�
 
 ## Onde salvar
 
-Com o conector: `planejamento_salvar_pesquisa` no card, separando em fatos-chave, contexto, crenças erradas, curiosidades, casos reais, citações e comentários da bolha. Cada achado com o link da fonte. Achado sem link fica em "Não verificado" e não entra no roteiro. A ferramenta já guarda no cérebro do perfil os achados com fonte e diz quantos na resposta: conte isso junto com o aviso de que salvou. Não chame `cerebro_guardar` para os mesmos achados.
+Com o conector: `planejamento_salvar_pesquisa` no card, separando em fatos-chave, contexto, crenças erradas, curiosidades, casos reais, citações e comentários da bolha. Cada achado com o link da fonte. Achado sem link fica em "Não verificado" e não entra no roteiro. Mande também o `assunto` amplo do card, em poucas palavras ("GTA 6", "golpe do Pix").
+
+- **A base do assunto.** No card de um perfil, a ferramenta leva o achado com fonte conferida e o comentário da bolha para a peça de conhecimento do assunto (camada `conhecimento` do cérebro) e diz o que entrou na resposta: conte isso junto com o aviso de que salvou. Não chame `cerebro_guardar` para os mesmos achados.
+- **Antes de pesquisar de novo,** veja se a base já tem o fato: a peça vem no pacote da escrita (`## Base de conhecimento`, com o id `kb-…` de cada item) ou em `cerebro_buscar` na camada `conhecimento`, com `cerebro_ler` da peça para ver os ids. O item que serve vai para o card pelo id, com `daBase`, sem redigitar. Fato que pode ter mudado desde a data do item é conferido de novo.
+- **O card é a memória curta.** A pesquisa não vira nota "Sobre o perfil" sozinha. O que o card ensinou só sobe para o cérebro pelo `planejamento_consolidar_card`, com o OK da pessoa.
 
 Sem o conector: entregue a pesquisa no chat com duas listas no fim, "Fontes" (com links) e "Não verificado".
 
