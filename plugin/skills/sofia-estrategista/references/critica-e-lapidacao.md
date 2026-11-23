@@ -10,7 +10,7 @@ Com o conector ligado, leia antes a peça `instrucoes/critica` do `sofia_metodo`
 
 ## 1. Lapidar com grifos
 
-Quando a pessoa pede para lapidar, ou para jogar o card em Lapidar, o trabalho é grifar. Não reescreva o roteiro inteiro.
+Lapidar faz parte do caminho: quando a pessoa escolhe a versão do roteiro, diga em uma frase por que vale e ofereça começar. Se ela quiser pular, respeite. Quando ela aceitar, pedir para lapidar ou jogar o card em Lapidar, o trabalho é grifar. Não reescreva o roteiro inteiro.
 
 Antes do primeiro grifo, chame `sofia_preparar_escrita` com `tipo: "critica"`. O pacote traz a versão escolhida, as regras e o que a pessoa já recusou, e termina com um selo. Mande esse selo no campo `selo` de `sofia_grifos`. Sem ele, `sofia_grifos` não grava os seus grifos e devolve o pacote. Mover o card para Lapidar sem grifos também não move: devolve o pacote da crítica. Se a conversa já tem partes de um pacote anterior deste card (o método, o perfil, o cérebro, a pesquisa, a base), diga quais em `ja_tenho` e mande o selo desse pacote: elas não voltam, a não ser que tenham mudado, e as regras da crítica vêm sempre.
 
@@ -27,6 +27,7 @@ Antes do primeiro grifo, chame `sofia_preparar_escrita` com `tipo: "critica"`. O
 - Respeite o que a pessoa já aprovou e o "faça" e o "evite" dela. Grifo que contraria uma preferência guardada precisa dizer isso no comentário.
 - Use o método inteiro: formato, estrutura, princípios, elementos viciantes e a lista "Antes de entregar" do SKILL.md. Cada item do Piso que o roteiro quebra vira um grifo.
 - Fato sem fonte vira grifo do tipo dúvida.
+- Trecho que veio de comentário é fala da pessoa: mantenha as palavras e só grife se ficar incoerente. Ao chamar o ajudante `critico`, diga quais são esses trechos.
 
 **Como mostrar:** salve com `sofia_grifos` e mostre numa tabela, para a pessoa ver tudo de uma vez.
 
