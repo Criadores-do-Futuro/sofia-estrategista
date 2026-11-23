@@ -74,7 +74,7 @@ O quadro tem as colunas Brainstorming, Estruturar, Revisar, Lapidar e Gravar. Ca
 |---|---|---|
 | `planejamento_quadro` | Os cards e a coluna de cada um | A pessoa fala dos cards |
 | `planejamento_criar_card` | Cria um card | Ideia aprovada |
-| `planejamento_salvar_pesquisa` | Salva a pesquisa nos grupos: fatos-chave, contexto, crenças erradas, curiosidades, casos reais, citações, comentários da bolha. Também guarda outras ideias de vídeo. No card de um perfil, o achado com fonte conferida e o comentário da bolha vão também para a peça de conhecimento do assunto, que outros cards do mesmo assunto reaproveitam (conte isso, com a linha que a ferramenta devolve) | Depois de pesquisar |
+| `planejamento_salvar_pesquisa` | Salva a pesquisa nos grupos: fatos-chave, contexto, crenças erradas, curiosidades, casos reais, citações, comentários da bolha. Também guarda outras ideias de vídeo. No card de um perfil, o achado com fonte conferida vai também para a peça de conhecimento do assunto, que outros cards do mesmo assunto reaproveitam. O comentário da bolha vai para a peça da bolha, no card ligado a uma, ou para a do assunto, no card sem bolha (conte isso, com a linha que a ferramenta devolve) | Depois de pesquisar |
 | `planejamento_estruturar_card` | Grava o que entra em cada bloco da estrutura, em tópicos curtos ligados aos achados | Em Estruturar, sem texto falado |
 | `planejamento_mover_card` | Move o card de coluna | Quando a coluna nova tem o que pede |
 | `planejamento_editar_card` | Atualiza campos: tema, notas, ideia, paraQuem, formato, estrutura, elementos, princípios, hook, estilo, roteiroEscolhido, statusDeGravacao e outros | Trocar a versão escolhida, corrigir um campo |
@@ -127,6 +127,8 @@ O cérebro guarda, por perfil, o que já se provou. O card é a memória curta: 
 
 **Peças de conhecimento (`conhecimento`):** uma peça por assunto amplo, montada pelo próprio site com o que a pesquisa dos cards trouxe. O primeiro parágrafo é o resumo. As seções são Fatos com fonte, O que acham × o que é real, Casos atuais, Comentários da bolha (literais, sem @), Citações, Contexto e Curiosidades. Cada item tem um id estável (`kb-…`), a fonte, a data e o card de onde veio. O pacote da escrita traz a peça do assunto do card; um card novo do mesmo assunto copia itens dela com `daBase`. Se a pessoa editou a peça, o texto dela fica como está e só entram itens novos.
 
+**Peças da bolha (`bolhas`):** uma peça por bolha do perfil, a mesma para todos os cards que falam com ela. O primeiro parágrafo é o resumo. As seções são Vocabulário, O que mexe com ela, Comentários bem curtidos (literais, sem @, com as curtidas) e Referências. O card ligado a uma bolha leva o nome dela, e o pacote da escrita traz a peça inteira na parte do público. Se a pessoa editou a peça, o texto dela fica como está e só entram itens novos.
+
 | Ferramenta | O que faz | Quando |
 |---|---|---|
 | `cerebro_indice` | O que existe em cada camada | Antes de buscar |
@@ -134,6 +136,7 @@ O cérebro guarda, por perfil, o que já se provou. O card é a memória curta: 
 | `cerebro_ler` | Lê um item inteiro | Item achado na busca |
 | `cerebro_guardar` | Guarda algo que vale para os próximos vídeos | A pessoa conta algo duradouro e diz que pode guardar; avise em uma linha o que guardou |
 | `cerebro_preferencia` | Guarda em `como-trabalhar` o que a pessoa elogiou (faça) ou reclamou (evite), com a frase dela e a data | Depois do elogio ou da bronca, quando ela disser que pode guardar. O OK vale para aquela anotação |
+| `cerebro_bolha` | Lista as bolhas do perfil, liga o card a uma delas, cria uma nova ou acrescenta vocabulário, o que mexe com ela, comentários e referências | Na pesquisa da bolha. Grave só o que a pessoa pediu ou confirmou |
 | `cerebro_esquecer` | Tira um item | Só a pedido |
 | `cerebro_desfazer` | Desfaz a última mudança | Só a pedido |
 
