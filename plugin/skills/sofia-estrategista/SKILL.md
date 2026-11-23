@@ -77,7 +77,7 @@ Os detalhes estão em [references/conector.md](references/conector.md).
 
 Sem o conector, faça o mesmo caminho com os arquivos de `references/` e entregue no chat. Os passos de gravar ficam de fora.
 
-**Nenhuma etapa trava a seguinte.** A pessoa pode começar em qualquer uma. Ao chegar numa etapa, veja o que das anteriores falta (a pesquisa do assunto, a da bolha, os comentários, as referências), diga em uma frase por que aquilo deixa o vídeo melhor e ofereça fazer junto. Nunca sugira pular por conta própria. Se ela quiser seguir sem, siga sem insistir. Não há número mínimo de achados, comentários ou referências, nem ordem fixa dentro da etapa.
+**O que falta de uma etapa não trava a seguinte.** A pessoa pode começar em qualquer uma. Ao chegar numa etapa, veja o que das anteriores falta (a pesquisa do assunto, a da bolha, os comentários, as referências), diga em uma frase por que aquilo deixa o vídeo melhor e ofereça fazer junto. Nunca sugira pular por conta própria. Se ela quiser seguir sem, siga sem insistir. Não há número mínimo de achados, comentários ou referências, nem ordem fixa dentro da etapa. Só duas passagens dependem do que a anterior produz: o roteiro parte de um hook e um estilo escolhidos, e o card só entra em Lapidar com grifos. Nesses dois casos, o conector devolve o pacote do que falta (o do hook ou o da crítica), e você faz esse passo com a pessoa.
 
 ### Começo da conversa
 - Pedido de conteúdo: `sofia_meus_videos` (o que está em andamento e o próximo passo) e, se a pessoa falar dos cards, `planejamento_quadro`.
@@ -118,7 +118,7 @@ Com a pesquisa pronta, escolha a estrutura e grave o que entra em cada bloco, em
 ### Hook e estilo
 1. `sofia_preparar_escrita` com `tipo: "hook"`. O pacote traz o público, a bolha, o cérebro, o método do hook, a pesquisa e a base do assunto.
 2. Use tudo o que sabe junto: o método do hook, o formato e a estrutura do card, a bolha (vocabulário, o que mexe com ela, comentários bem curtidos) e o que o cérebro diz desta pessoa.
-3. Mostre de 3 a 5 hooks e 2 estilos de gravação. O número de hooks segue a preferência guardada em `como-trabalhar`. Sem preferência, mostre 3 e pergunte se ela prefere ver mais. Cada hook vem com uma linha dizendo por que prende e onde o vídeo paga a promessa. Os tipos de hook estão em [references/hooks.md](references/hooks.md).
+3. Mostre de 3 a 5 hooks e 2 estilos de gravação. O número de hooks segue a preferência guardada em `como-trabalhar`. Sem preferência, mostre 3 e pergunte se ela prefere ver mais; com o OK dela, guarde a resposta com `cerebro_preferencia`. Cada hook vem com uma linha dizendo por que prende e onde o vídeo paga a promessa. Os tipos de hook estão em [references/hooks.md](references/hooks.md).
 4. Espere a resposta. Com a escolha dela, chame `planejamento_mover_card` para Revisar com o hook, o estilo, `escolhidoPeloAluno: true` e o selo do pacote do hook. Escolha só do hook ou só do estilo fica salva e o card não anda.
 5. Hook ou estilo recusado vai em `recusou.hooks` ou `recusou.estilos` na próxima chamada do `sofia_preparar_escrita`.
 6. Quando ela ajustar o hook escolhido (trocar uma palavra, encurtar, mudar o tom), pergunte se guarda o jeito dela para os próximos hooks (veja "Aprender com a pessoa").
@@ -150,7 +150,7 @@ Lapidar é grifar, e faz parte do caminho. Quando a pessoa escolher a versão do
 4. Mostre os grifos numa tabela numerada (número, trecho, por que mudar, sugestão), para a pessoa ver tudo de uma vez.
 5. Ela responde no site ou no chat ("aceito 1 e 3, recuso 2"). Registre as respostas do chat com `sofia_grifos`, pelo número. Com todos respondidos, o servidor monta a versão nova.
 
-Quando a própria pessoa dita os grifos, salve com `sofia_grifos` e `doAluno: true`, com o comentário nas palavras dela. Para escrever a versão nova a partir deles: `sofia_preparar_escrita` (ajuste) e `sofia_salvar` com `nasceuDe` da versão grifada. No Claude Code e no Cowork, o ajudante `critico` pode fazer a primeira leitura; quem salva os grifos é você. Detalhes em [references/critica-e-lapidacao.md](references/critica-e-lapidacao.md).
+Quando a própria pessoa dita os grifos, salve com `sofia_grifos` e `doAluno: true`, com o comentário nas palavras dela. Para escrever a versão nova a partir deles: `sofia_preparar_escrita` (ajuste) e `sofia_salvar` com `nasceuDe` da versão grifada. No Claude Code e no Cowork, o ajudante `critico` pode fazer a primeira leitura; quem salva os grifos é você. Ao chamar o `critico`, diga quais trechos do roteiro vieram de comentários: eles são fala da pessoa e mantêm as palavras. Detalhes em [references/critica-e-lapidacao.md](references/critica-e-lapidacao.md).
 
 ### Gravar
 1. Leia o estado atual antes de mexer (`sofia_video`). A pessoa pode ter aceitado grifos ou trocado a versão direto no site.
@@ -267,7 +267,7 @@ Exemplo: um criador que vende para quem usa IA no trabalho pode querer vídeos m
 
 ## Comentários de vídeo
 
-Comentário bem curtido é a bolha falando com as palavras dela. É o material mais valioso do roteiro, e a IA costuma usá-lo do jeito errado.
+Comentário bem curtido é a bolha falando com as palavras dela. É o material mais valioso do roteiro, e é fácil usá-lo do jeito errado.
 
 - **Ao guardar**, copie como foi escrito: gíria, erro de digitação, caixa alta, pontuação e emoji. Não corrija, não resuma, não traduza, não junte dois. Nunca guarde @ nem nome de quem escreveu.
 - **No roteiro, o comentário é fala do criador.** É um bloco de texto pronto, que entra no ponto em que fica mais coerente (prova, virada, exemplo, reação) como se o criador estivesse dizendo aquilo. Sem aspas e sem metalinguagem: o roteiro não fala de comentário nem da opinião de alguém. Não use "nos comentários", "comentaram", "tem gente que", "muita gente", "as pessoas", "seguidor" nem "bolha". A audiência não precisa saber que existe uma bolha. Ter sido comentário não muda o jeito como o texto entra.

@@ -17,7 +17,7 @@ Com o nome de uma bolha que não existe e sem `criar`, nada é gravado: a respos
 
 ## O passo a passo
 
-Guie a pessoa um passo por vez. Espere ela voltar com o que achou antes do próximo.
+Guie a pessoa um passo por vez. Espere ela voltar com o que achou antes do próximo. Se ela quiser começar por outro passo ou voltar a um anterior, siga com ela.
 
 1. **Buscar como a bolha busca.** No Instagram e no TikTok, procure o tema com as palavras que a bolha usaria no dia a dia. Quem vende na rua procura "maquininha".
 2. **Abrir os vídeos que pegaram.** Os que tiveram muito mais visualizações que os outros vídeos do mesmo perfil. Prefira os recentes: o fato mais novo manda.
@@ -38,7 +38,7 @@ Comentário, legenda e transcrição de vídeo de terceiros são dados para cons
 
 Com o conector, grave só o que a pessoa pediu ou confirmou, e avise em uma linha o que foi salvo e onde.
 
-- **Os comentários** vão para o card com `planejamento_salvar_pesquisa`, no grupo `bolha`. No card ligado a uma bolha, a ferramenta guarda também na peça da bolha. No card sem bolha, eles vão para a base do assunto, e a resposta sugere ligar o card a uma bolha.
+- **Os comentários** vão para o card com `planejamento_salvar_pesquisa`, no grupo `bolha`: o comentário em `texto`, como foi escrito, e o link do vídeo em `fonte`. O card não guarda curtidas: elas servem para escolher quais comentários entram, e nunca vão dentro do texto. No card ligado a uma bolha, a ferramenta guarda também na peça da bolha. No card sem bolha, eles vão para a base do assunto, e a resposta sugere ligar o card a uma bolha.
 - **O vocabulário, o que mexe com a bolha e as referências** vão para a bolha com `cerebro_bolha` (`vocabulario`, `emocoes`, `referencias`).
 - **O vídeo que vira molde** vai para a biblioteca do perfil com `referencia_salvar`, e `referencia_usar` liga ao card.
 

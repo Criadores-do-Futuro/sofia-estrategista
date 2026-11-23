@@ -43,7 +43,7 @@ Registre também:
 
 ## Comentários da bolha
 
-Comentário de vídeo é a voz real do público. Guarde como foi escrito, com gíria, erro, caixa alta, pontuação e emoji, sem @ e sem nome de quem escreveu, e com o número de curtidas, quando aparecer. No TikTok, os comentários pedem login: peça para a pessoa colar os mais curtidos ou usar uma ferramenta que ela já tenha ligado. Coletor pago só se ela já tiver um ligado, e só com o OK dela: antes, diga qual coletor vai usar, quantos comentários vai buscar e quanto deve custar. Nunca contorne o login e nunca peça senha.
+Comentário de vídeo é a voz real do público. Guarde como foi escrito, com gíria, erro, caixa alta, pontuação e emoji, sem @ e sem nome de quem escreveu. O número de curtidas, quando aparecer, nunca entra no texto do comentário: na referência e na bolha, ele vai no campo `curtidas` de cada comentário; no card, ele serve para escolher quais comentários guardar. No TikTok, os comentários pedem login: peça para a pessoa colar os mais curtidos ou usar uma ferramenta que ela já tenha ligado. Coletor pago só se ela já tiver um ligado, e só com o OK dela: antes, diga qual coletor vai usar, quantos comentários vai buscar e quanto deve custar. Nunca contorne o login e nunca peça senha.
 
 O passo a passo da pesquisa no Instagram e no TikTok, com o vocabulário, o que mexe com a bolha e as referências, está em [pesquisa-de-bolha.md](pesquisa-de-bolha.md). No roteiro, o comentário vira fala do próprio criador, sem aspas e sem metalinguagem (veja "Comentários de vídeo" no SKILL.md).
 

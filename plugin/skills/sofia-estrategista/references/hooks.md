@@ -40,7 +40,7 @@ Se o conector disser que a opção 1 é sempre um choque de crença, siga. Se o 
 
 Antes de escrever, junte tudo o que você sabe: o método do hook, o formato e a estrutura do card, a bolha (o vocabulário, o que mexe com ela, os comentários bem curtidos) e o que o cérebro diz desta pessoa (os hooks que funcionaram e os ajustes que ela já fez em hooks seus).
 
-Mostre de 3 a 5 hooks de tipos diferentes. O número segue a preferência da pessoa guardada em `como-trabalhar` ou o que o pacote do conector pedir. Sem preferência guardada, mostre 3 e pergunte se ela prefere ver mais (até 5); com o OK dela, guarde a resposta. Cada hook vem assim:
+Mostre de 3 a 5 hooks de tipos diferentes. O número segue a preferência da pessoa guardada em `como-trabalhar` ou o que o pacote do conector pedir. Sem preferência guardada, mostre 3 e pergunte se ela prefere ver mais (até 5); com o OK dela, guarde a resposta com `cerebro_preferencia`. Cada hook vem assim:
 
 ```
 1. "{o hook}"

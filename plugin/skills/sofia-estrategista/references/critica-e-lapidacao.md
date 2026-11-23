@@ -27,6 +27,7 @@ Antes do primeiro grifo, chame `sofia_preparar_escrita` com `tipo: "critica"`. O
 - Respeite o que a pessoa já aprovou e o "faça" e o "evite" dela. Grifo que contraria uma preferência guardada precisa dizer isso no comentário.
 - Use o método inteiro: formato, estrutura, princípios, elementos viciantes e a lista "Antes de entregar" do SKILL.md. Cada item do Piso que o roteiro quebra vira um grifo.
 - Fato sem fonte vira grifo do tipo dúvida.
+- Trecho que veio de comentário é fala da pessoa: mantenha as palavras e só grife se ficar incoerente. Ao chamar o ajudante `critico`, diga quais são esses trechos.
 
 **Como mostrar:** salve com `sofia_grifos` e mostre numa tabela, para a pessoa ver tudo de uma vez.
 
