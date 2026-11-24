@@ -36,7 +36,7 @@ O plano de cada etapa vem do conector, na seção "Passos e equipe desta etapa" 
 
 1. `sofia_preparar_escrita` com `tipo: "ideia"` e `entrega: "orquestrar"`.
 2. `sofia_briefing` com `papel: "estrategista-de-ideias"` e `etapa: "ideia"`, todas as partes. Monte, sem mostrar, de 3 a 5 direções no modelo de ideia e até 5 perguntas, da que mais muda a direção para a que menos muda.
-3. `sofia_briefing` com `papel: "especialista-em-bolha"` e `etapa: "ideia"`. Monte 2 ou 3 bolhas candidatas com o plano de pesquisa de cada uma.
+3. `sofia_briefing` com `papel: "especialista-em-bolha"` e `etapa: "ideia"`. Monte 2 ou 3 bolhas candidatas com o plano de pesquisa de cada uma. Se já há tema, faça junto a primeira pesquisa, pela parte 3, com `sofia_briefing` do `pesquisador` na `etapa: "ideia"`.
 4. Os dois briefings entram uma vez por conversa. Se a resposta da pessoa mudar a direção, releia só as cartas do papel (`modo: "cartas"`).
 5. Converse: uma pergunta por vez, a mais valiosa primeiro. Grave cada decisão na hora: a bolha com `cerebro_bolha`, os achados com `planejamento_salvar_pesquisa`, a ideia e o formato com `planejamento_editar_card`, os blocos com `planejamento_estruturar_card` e, com o OK da pessoa, a preferência com `cerebro_preferencia`.
 6. Fechar a ideia: `sofia_briefing` com `papel: ["revisor-de-estrutura", "especialista-em-bolha"]`, `etapa: "ideia"` e `modo: "cartas"`. Veredito por carta, correção, e `sofia_conferir` com `etapa: "ideia"`, as ideias em `opcoes` (campo `texto`) e os vereditos.
