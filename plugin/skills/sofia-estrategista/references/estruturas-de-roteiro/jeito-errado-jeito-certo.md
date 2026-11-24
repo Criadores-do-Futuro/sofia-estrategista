@@ -1,12 +1,12 @@
 # Estrutura Jeito Errado x Jeito Certo
 
-> Cópia da peça `estruturas-de-roteiro/jeito-errado-jeito-certo` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `estruturas-de-roteiro/jeito-errado-jeito-certo`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `estruturas-de-roteiro/jeito-errado-jeito-certo` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `estruturas-de-roteiro/jeito-errado-jeito-certo`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
-**Conflito > Jeito Errado > Processo de Virada > Jeito Certo > Mudança**
+**Conflito → Jeito errado → Virada → Jeito certo → Mudança.**
 
 ## Visão Geral
 
-Você mostra o erro, explica por que é furada, e apresenta a solução. É como dizer: "Você faz assim, né? Só que desse jeito não dá certo. Olha como dá pra fazer melhor."
+Você mostra o erro, explica por que é furada, e apresenta a solução: "Muita gente faz assim. Desse jeito não dá certo. Faça deste outro jeito."
 
 Gera identificação, entrega valor e posiciona autoridade, tudo no mesmo vídeo.
 
@@ -14,47 +14,43 @@ Gera identificação, entrega valor e posiciona autoridade, tudo no mesmo vídeo
 
 ### 1. Conflito
 
-Um problema inicial que desequilibra a vida do personagem (ou do público).
+O problema que desequilibra a vida de alguém (ou do público).
 
 **Exemplo:** Não gostar do que vê no espelho.
 
-### 2. Jeito Errado
+### 2. Jeito errado
 
-A tentativa falha de resolver o problema. É o que a maioria das pessoas faz e não funciona.
+A tentativa que a maioria faz e não funciona. O público precisa se reconhecer nela.
 
 **Exemplo:** Fazer jejum intermitente sem orientação.
 
-### 3. Processo de Virada
+### 3. Processo de virada
 
-O momento de descoberta ou virada de chave. O que fez a pessoa mudar de abordagem.
+O momento da descoberta ou da virada de chave, o que fez mudar de caminho. Crível e específico.
 
 **Exemplo:** Descobrir uma dieta que funciona pra você.
 
-### 4. Jeito Certo
+### 4. Jeito certo
 
-A nova abordagem, prática ou mentalidade que realmente funciona.
+A prática ou o jeito de pensar que funciona, claro e aplicável.
 
 **Exemplo:** Dieta ajustada à sua realidade, mais saudável.
 
 ### 5. Mudança
 
-Os resultados visíveis. A transformação concreta.
+O resultado concreto, emocional ou prático.
 
 **Exemplo:** Sentir orgulho do reflexo no espelho.
 
 ## Resumo em 1 linha
 
-Ao invés de [erro comum], faça [caminho inteligente].
+"No lugar de {erro comum}, faça {caminho melhor}."
 
-**Exemplo:** "Não escreva seu roteiro como se fosse um desabafo confuso. Escreva como quem sabe exatamente onde quer chegar."
+**Exemplo:** "Escreva o roteiro como quem sabe onde quer chegar, e não como um desabafo confuso."
 
 ## Por que funciona
 
-- Gera **clareza cognitiva** (o cérebro AMA contraste)
-- Constrói **autoridade sem arrogância**
-- Ajuda o público a se enxergar e querer mudar
-- Funciona em Reels, carrossel, post, vídeo tutorial, narração, tudo
-- É **repetível**: vira base para um formato criativo seu
+Na observação do método: o erro e o acerto lado a lado deixam a diferença fácil de ver, o criador ganha autoridade sem arrogância e o público se vê no erro e quer mudar. É fácil de repetir e vira um formato fixo do perfil. Funciona em Reels, carrossel, post, vídeo tutorial e narração.
 
 ## Como aplicar no seu roteiro
 

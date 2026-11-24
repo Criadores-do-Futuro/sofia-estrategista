@@ -1,6 +1,6 @@
 # Formato: Caixinha Polêmica
 
-> Cópia da peça `formatos/caixinha-de-perguntas` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/caixinha-de-perguntas`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `formatos/caixinha-de-perguntas` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/caixinha-de-perguntas`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 **ID oficial:** `caixinha-de-perguntas`
 

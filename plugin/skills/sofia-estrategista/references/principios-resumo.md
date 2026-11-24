@@ -1,6 +1,6 @@
 # Princípios da viralização (resumo)
 
-> Cópia da peça `principios-resumo` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `principios-resumo`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `principios-resumo` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `principios-resumo`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 1. Todo vídeo vende uma ideia: a crença que o público sai acreditando. Sem ela clara antes de escrever, o vídeo fica sem centro.
 2. O tema define o teto. Tema universal (dinheiro, relacionamento, medo de fracasso, vergonha, injustiça, pertencimento) já chega com emoção; técnica perfeita com tema pequeno perde.
 3. Familiaridade baixa o custo de entrar. O público precisa reconhecer a situação ou a crença, e achar algo novo o bastante para continuar.

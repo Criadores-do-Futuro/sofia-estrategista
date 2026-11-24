@@ -1,61 +1,37 @@
 # Estrutura IHC
 
-> Cópia da peça `estruturas-de-roteiro/ihc` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `estruturas-de-roteiro/ihc`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `estruturas-de-roteiro/ihc` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `estruturas-de-roteiro/ihc`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
-**Identificação > História > Conteúdo**
+**Identificação → História → Conteúdo.**
 
 ## Visão Geral
 
-Conduz o cérebro da audiência em três etapas: primeiro chama atenção (Identificação), depois cria conexão (História), por fim planta uma ideia (Conteúdo). É como contar uma história onde a pessoa se vê, se emociona e sai com uma ideia na cabeça.
+Conduz o cérebro da audiência em três etapas: primeiro chama a atenção (Identificação), depois cria conexão (História), por fim planta a ideia (Conteúdo). É como contar uma história onde a pessoa se vê, se emociona e sai com uma ideia na cabeça.
 
 ## Etapas
 
 ### 1. Identificação
 
-Você entra na mente da pessoa. O objetivo é fazer ela pensar:
-
-- "Eu já me senti assim"
-- "Parece que ela ta lendo minha mente..."
-
-Para isso, você precisa conhecer bem o seu público. Pode falar de:
-
-- Cultura pop
-- Rotina
-- Inseguranças
-- Vontades
-- Sentimentos universais
-
-**Dicas práticas:**
-- Use palavras que o seu público usaria
-- Escreva como se estivesse contando pra uma amiga no WhatsApp
+Entre na cabeça da pessoa até ela pensar "parece que está lendo a minha mente" ou "eu já me senti assim". Fale de rotina, inseguranças, vontades, cultura pop, sentimentos que todo mundo tem, com as palavras do público, como numa conversa de WhatsApp com uma amiga. Para isso, você precisa conhecer bem o seu público.
 
 ### 2. História
 
-Aqui é onde você faz a mágica acontecer. Compartilhe um momento seu (ou de alguém), com começo, meio e fim. Não é só o que aconteceu: é como aquilo te atravessou.
-
-A história precisa ter:
-
-- **Conflito:** algo deu errado
-- **Virada:** o que mudou?
-- **Consequência:** o que isso ensinou?
+Um momento seu ou de alguém, com começo, meio e fim, e como aquilo te atravessou. Precisa de conflito (algo deu errado), virada (o que mudou) e consequência (o que ensinou).
 
 **Exemplo:**
 "Eu já postei mais de 100 vídeos e nenhum engajava. Até que um dia eu percebi que estava tentando parecer alguém que eu não era. Quando comecei a escrever com o coração, meu conteúdo explodiu."
 
 ### 3. Conteúdo
 
-Agora que você capturou atenção e gerou emoção, é hora de plantar a semente. Você pode:
+A semente. Um insight ("o problema nunca foi você, foi a forma que te ensinaram"), uma dica prática, uma provocação ou um convite escondido para o que você vende ("E é por isso que eu ensino estrutura de roteiro com tanta paixão dentro da minha comunidade.").
 
-- Dar um insight ("o problema nunca foi você, foi a forma que te ensinaram")
-- Dar uma dica prática
-- Fazer uma provocação
-- Fazer um CTA escondido ("E é por isso que eu ensino estrutura de roteiro com tanta paixão dentro da minha comunidade.")
+O conteúdo não precisa ser técnico: precisa importar para a bolha que você está tentando furar. A moral da história é a semente que você quer plantar na cabeça de quem assistiu.
 
-**Importante:** O conteúdo não precisa ser técnico. Precisa ser emocionalmente relevante para a bolha que você está tentando furar. A moral da história é a semente que você quer plantar na cabeça de quem assistiu.
+O que o IHC pede: o público pensa "sou eu", a história tem conflito, virada e consequência, a semente fica clara e o tom é de conversa.
 
 ## Resumo
 
-- **I (Identificação):** "Você também já passou por isso, né?"
+- **I (Identificação):** "Você também já passou por isso."
 - **H (História):** "Eu vivi isso aqui... ou Fulano já viveu isso aqui..."
 - **C (Conteúdo):** "E o que aprendi com isso foi..."
 
@@ -64,11 +40,11 @@ Agora que você capturou atenção e gerou emoção, é hora de plantar a sement
 - Criar conexão sem parecer que está "vendendo" algo
 - Posicionar sua história como parte de uma mensagem maior
 - Ensinar sem parecer didático demais
-- Plantar ideias e valores de forma emocional
+- Plantar ideias e valores pela emoção
 
 ## Checklist rápido
 
 - **ES.ihc.1.** A identificação faz o público pensar "sou eu"?
 - **ES.ihc.2.** A história tem conflito, virada e consequência?
 - **ES.ihc.3.** O conteúdo planta uma semente clara na cabeça do público?
-- **ES.ihc.4.** O tom é conversacional (não parece aula)?
+- **ES.ihc.4.** O tom é de conversa (sem cara de aula)?

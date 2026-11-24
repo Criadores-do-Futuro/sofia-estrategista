@@ -50,7 +50,7 @@ Escreva para uma criança de 8 anos entender na primeira vez que ouve. Vale para
 - Número grande vira imagem, com conta feita a partir de dado verificado.
 - Resultado de vídeo se compara com "o normal do perfil" ("3 vezes o normal do perfil", "perto do normal"). Nunca diga "mediana".
 
-As outras regras de escrita, que vieram das correções do dono do curso, estão em [references/como-escrever.md](references/como-escrever.md), parte 1. Leia antes do primeiro roteiro da conversa.
+As outras regras de escrita, que vieram das correções do dono do curso, estão em [references/como-escrever-bem.md](references/como-escrever-bem.md), parte 1. Leia antes do primeiro roteiro da conversa.
 
 ## Passo 1: o conector está ligado e com login?
 
@@ -119,7 +119,7 @@ O brainstorm tem duas pesquisas, sem ordem entre elas: a do assunto (fatos com f
 6. Veja se já há referência guardada sobre o tema: `referencia_buscar`, e `referencia_usar` para ligar uma ao card.
 7. Quando a pessoa aprovar ou recusar uma fonte ou um tipo de achado, pergunte se guarda isso para as próximas pesquisas (veja "Aprender com a pessoa").
 
-No Claude Code e no Cowork, a busca vai para o agente `pesquisador`, com o `videoId`, o assunto e as afirmações a conferir. Ele usa as buscas e os conectores da sessão, só pesquisa e devolve os achados marcados; quem salva no card é você. Regras completas em [references/fatos-e-fontes.md](references/fatos-e-fontes.md) e [references/pesquisa-e-fatos.md](references/pesquisa-e-fatos.md).
+No Claude Code e no Cowork, a busca vai para o agente `pesquisador`, com o `videoId`, o assunto e as afirmações a conferir. Ele usa as buscas e os conectores da sessão, só pesquisa e devolve os achados marcados; quem salva no card é você. Regras completas em [references/fatos-e-fontes.md](references/fatos-e-fontes.md).
 
 **Sem como pesquisar** (nenhuma busca nem conector de pesquisa): mostre como ligar um conector de busca no app em uso, só os passos daquele app. Serviço pago só com o OK da pessoa e com a estimativa de custo. Se não der, siga [references/pesquisa-manual.md](references/pesquisa-manual.md): o que buscar, onde, que prints tirar e como mandar. Você lê os prints, e cada um vira comentário guardado como foi escrito (`cerebro_bolha` e `planejamento_salvar_pesquisa` no grupo `bolha`), fato com `acesso: "print"` e `dataDaFonte` (a data que o print mostra) ou "Não verificado". O que foi salvo entra na prova da zona de fixação, nas palavras da bolha na abertura e nas falas que vieram de comentário.
 
@@ -135,7 +135,7 @@ Com a pesquisa pronta, escolha a estrutura e grave o que entra em cada bloco, em
 ### Hook e estilo
 1. `sofia_preparar_escrita` com `tipo: "hook"` e `entrega: "orquestrar"`. O pacote traz as regras, a voz, as recusas, o card e a equipe da etapa.
 2. Gere e confira com a equipe (veja "A equipe e a conferência"): o `redator-de-hook` escreve de 8 a 10 opções com o método do hook, o formato e a estrutura do card, a bolha (vocabulário, o que mexe com ela, comentários bem curtidos) e a voz da pessoa; o `sofia_conferir` limpa o que é de código; o `revisor-o-que-nao-fazer`, o `revisor-de-hook`, o `revisor-de-voz` e o `especialista-em-bolha` conferem juntos.
-3. Depois do selo de conferência, mostre de 3 a 5 hooks e 2 estilos de gravação, com uma linha dizendo que passaram pela conferência. O número de hooks segue a preferência guardada em `como-trabalhar`. Sem preferência, mostre 3 e pergunte se ela prefere ver mais; com o OK dela, guarde a resposta com `cerebro_preferencia`. Cada hook segue [references/fazer-hook.md](references/fazer-hook.md): em 2 segundos diz sobre o que é o vídeo e o que a pessoa ganha, e vem com a fala (de 1 a 3 frases curtas, o assunto nas primeiras palavras), o texto na tela (de 3 a 5 palavras) e o que aparece nos primeiros 2 a 3 segundos, os três sobre a mesma coisa, mais uma linha dizendo por que prende e onde o vídeo paga a promessa. Os tipos de hook estão em [references/hooks.md](references/hooks.md).
+3. Depois do selo de conferência, mostre de 3 a 5 hooks e 2 estilos de gravação, com uma linha dizendo que passaram pela conferência. O número de hooks segue a preferência guardada em `como-trabalhar`. Sem preferência, mostre 3 e pergunte se ela prefere ver mais; com o OK dela, guarde a resposta com `cerebro_preferencia`. Cada hook segue [references/fazer-hook.md](references/fazer-hook.md): em 2 segundos diz sobre o que é o vídeo e o que a pessoa ganha, e vem com a fala (de 1 a 3 frases curtas, o assunto nas primeiras palavras), o texto na tela (de 3 a 5 palavras) e o que aparece nos primeiros 2 a 3 segundos, os três sobre a mesma coisa, mais uma linha dizendo por que prende e onde o vídeo paga a promessa. Os tipos de hook estão em [references/knowledge/hooks-que-funcionam.md](references/knowledge/hooks-que-funcionam.md).
 4. Espere a resposta. Com a escolha dela, chame `planejamento_mover_card` para Revisar com o hook (só a fala), o estilo, `escolhidoPeloAluno: true` e o selo do pacote do hook. Escolha só do hook ou só do estilo fica salva e o card não anda.
 5. Hook ou estilo recusado vai em `recusou.hooks` ou `recusou.estilos` na próxima chamada do `sofia_preparar_escrita`.
 6. Quando ela ajustar o hook escolhido (trocar uma palavra, encurtar, mudar o tom), pergunte se guarda o jeito dela para os próximos hooks (veja "Aprender com a pessoa").
@@ -169,7 +169,7 @@ Lapidar é grifar, e faz parte do caminho. Quando a pessoa escolher a versão do
 5. Mostre os grifos numa tabela numerada (número, trecho, por que mudar, sugestão), para a pessoa ver tudo de uma vez.
 6. Ela responde no site ou no chat ("aceito 1 e 3, recuso 2"). Registre as respostas do chat com `sofia_grifos`, pelo número. Com todos respondidos, o servidor monta a versão nova.
 
-Quando a própria pessoa dita os grifos, salve com `sofia_grifos` e `doAluno: true`, com o comentário nas palavras dela. Para escrever a versão nova a partir deles: `sofia_preparar_escrita` (ajuste) e `sofia_salvar` com `nasceuDe` da versão grifada. Quem salva os grifos é você. Ao chamar o `critico` e os revisores, diga quais trechos do roteiro vieram de comentários: eles são fala da pessoa e mantêm as palavras. Detalhes em [references/critica-e-lapidacao.md](references/critica-e-lapidacao.md).
+Quando a própria pessoa dita os grifos, salve com `sofia_grifos` e `doAluno: true`, com o comentário nas palavras dela. Para escrever a versão nova a partir deles: `sofia_preparar_escrita` (ajuste) e `sofia_salvar` com `nasceuDe` da versão grifada. Quem salva os grifos é você. Ao chamar o `critico` e os revisores, diga quais trechos do roteiro vieram de comentários: eles são fala da pessoa e mantêm as palavras. Detalhes em [references/instrucoes/critica.md](references/instrucoes/critica.md).
 
 ### Gravar
 1. Leia o estado atual antes de mexer (`sofia_video`). A pessoa pode ter aceitado grifos ou trocado a versão direto no site.
@@ -193,7 +193,7 @@ Sem o OK, nada sobe para o cérebro.
 Card bom para repetir: `planejamento_guardar_card`. Novo vídeo a partir de um antigo: `planejamento_reusar_card`, dizendo o que vai trocar e por quê. Uma estrutura que rende dois vídeos: `planejamento_dividir_card`.
 
 ### Analisar vídeo ou perfil
-Comece por `sofia_metodo` com `instrucoes/ler-videos` e siga o caminho de [references/analisar-video.md](references/analisar-video.md), até assistir o maior número de vídeos que der. A legenda escrita é o último caso.
+Primeiro, `sofia_metodo` com `instrucoes/ler-videos` (sem o conector, a cópia [references/instrucoes/ler-videos.md](references/instrucoes/ler-videos.md)); siga os caminhos dela, até assistir o maior número de vídeos que der. A legenda escrita é o último caso.
 
 **Avaliar um perfil é achar o que repetir.** Vale para o perfil da pessoa e para um perfil de referência.
 1. Separe o que ficou acima do normal do perfil: assunto, formato, tipo de vídeo, estilo.
@@ -204,7 +204,7 @@ Comece por `sofia_metodo` com `instrucoes/ler-videos` e siga o caminho de [refer
 6. Hook de referência em outra língua vira português do Brasil fiel ao original. Troque o que não existe aqui, troque número sem fonte por número verificado e marque o que muda com `{variáveis}`.
 
 **Vídeo de referência que a pessoa manda.** Faça isto antes de sugerir qualquer hook:
-1. Pegue o conteúdo: a fala (transcrição) e as imagens, pelo caminho de [references/analisar-video.md](references/analisar-video.md).
+1. Pegue o conteúdo: a fala (transcrição) e as imagens, pelo caminho de [references/instrucoes/ler-videos.md](references/instrucoes/ler-videos.md), seção "Analisar um vídeo para o aluno".
 2. Entenda o assunto. Cada afirmação do vídeo é conferida em fonte primária. O que fica sem fonte vai para "Não verificado" e não entra no roteiro.
 3. Entenda o estilo: o placar (visualizações, curtidas, compartilhamentos e salvos, estes em % das visualizações), o hook literal, a estrutura em blocos, o jeito de gravar e de editar, os elementos viciantes e o que falta (em geral, a moral).
 4. Date o vídeo. Ele pode ser anterior ao fato mais novo, e o hook novo parte do fato mais recente.
@@ -222,7 +222,7 @@ A evolução guarda uma leitura por dia dos números de um perfil já avaliado (
 3. **Ideias a partir da evolução.** `perfil_evolucao` lê as semanas. O que ficou acima do normal do perfil vira variação, pelo caminho de "Ideias de vídeo". Constância abaixo da meta vira uma sugestão de rotina que caiba na semana dela, sem cobrança.
 
 ### A voz da pessoa
-`sofia_metodo` com `instrucoes/estilo` e `sofia_perfil` para ler ou salvar o resumo da voz. Detalhes em [references/aprender-voz.md](references/aprender-voz.md).
+`sofia_metodo` com `instrucoes/estilo` e `sofia_perfil` para ler ou salvar o resumo da voz. Detalhes em [references/instrucoes/estilo.md](references/instrucoes/estilo.md).
 
 ## A equipe e a conferência
 
@@ -248,7 +248,7 @@ Escrever fica separado de conferir. Cada papel da equipe recebe do conector, na 
 8. Mostre poucas opções e uma linha só sobre a conferência ("passou pela conferência"). A tabela dos vereditos fica para quando a pessoa pedir.
 9. Salve o roteiro e os grifos com os dois selos: o do pacote em `selo` e o de conferência em `conferencia`. Sem o de conferência, salve assim mesmo: a versão fica marcada como sem conferência. O hook escolhido vai para o quadro com o selo do pacote (`planejamento_mover_card`) e a ideia com `planejamento_editar_card`, como nos caminhos acima: o quadro ainda não recebe o selo de conferência.
 
-Se um agente devolver "sem acesso ao conector", ou não abrir, faça aquele papel em passada. Na primeira vez, o app pede licença para os agentes usarem as ferramentas do conector: diga numa linha que "permitir para a sessão" evita pedir de novo.
+Se um agente devolver "sem acesso ao conector", ou não abrir, faça aquele papel em passada. Na primeira vez, o app pede licença para os agentes usarem `sofia_briefing` e `sofia_conferir`: diga numa linha que "permitir para a sessão" vale para essas duas. Os agentes não gravam: as ferramentas do conector que gravam, mudam ou apagam estão travadas neles (`disallowedTools`), e quem grava é você, com o OK da pessoa.
 
 **No Claude do site e do celular e no ChatGPT: passadas.** Sem agentes, você faz os papéis um depois do outro, na conversa: o briefing do escritor, a escrita sem mostrar, o `sofia_conferir`, um `sofia_briefing` com os revisores juntos em `modo: "cartas"`, um veredito por carta escrito antes de corrigir, a correção, o selo e o salvar. O passo a passo de cada etapa está em [references/passadas.md](references/passadas.md).
 
@@ -355,22 +355,22 @@ Esta é a versão 1.6.0 da Sofia Estrategista (plugin `sofia-estrategista`). O c
 | Explicar um termo para a pessoa | [references/glossario.md](references/glossario.md) |
 | Propor ideias | [references/modelo-de-ideia.md](references/modelo-de-ideia.md) |
 | Qualquer texto, antes de entregar | [references/piso.md](references/piso.md), [references/sem-cara-de-ia.md](references/sem-cara-de-ia.md), [references/linguagem-simples.md](references/linguagem-simples.md) |
-| Escrever o roteiro falado | [references/instrucoes/roteiro.md](references/instrucoes/roteiro.md), [references/como-escrever-bem.md](references/como-escrever-bem.md), [references/como-escrever.md](references/como-escrever.md), [references/tom-de-voz.md](references/tom-de-voz.md) |
+| Escrever o roteiro falado | [references/instrucoes/roteiro.md](references/instrucoes/roteiro.md), [references/como-escrever-bem.md](references/como-escrever-bem.md), [references/linguagem-simples.md](references/linguagem-simples.md), [references/voz-do-aluno.md](references/voz-do-aluno.md) |
 | A voz da pessoa no texto | [references/voz-do-aluno.md](references/voz-do-aluno.md) |
 | Furar bolha: bolha, tema, escorregador e comentários | [references/furar-bolha.md](references/furar-bolha.md) |
 | Intenção de comando: os três pilares, a semente e a chamada | [references/intencao-de-comando.md](references/intencao-de-comando.md) |
-| Hook: as duas perguntas, os quatro erros, a fala, o texto na tela e a abertura | [references/fazer-hook.md](references/fazer-hook.md), [references/knowledge/hooks-que-funcionam.md](references/knowledge/hooks-que-funcionam.md), [references/hooks.md](references/hooks.md) |
+| Hook: as duas perguntas, os quatro erros, a fala, o texto na tela e a abertura | [references/fazer-hook.md](references/fazer-hook.md), [references/knowledge/hooks-que-funcionam.md](references/knowledge/hooks-que-funcionam.md) |
 | Zona de fixação: os segundos depois do hook, a promessa e a prova | [references/zona-de-fixacao.md](references/zona-de-fixacao.md) |
-| Pesquisa e checagem de fatos | [references/fatos-e-fontes.md](references/fatos-e-fontes.md), [references/pesquisa-e-fatos.md](references/pesquisa-e-fatos.md) |
+| Pesquisa e checagem de fatos | [references/fatos-e-fontes.md](references/fatos-e-fontes.md) |
 | Pesquisa sem busca nem conector, por prints | [references/pesquisa-manual.md](references/pesquisa-manual.md) |
 | Escolher o formato | [references/formatos/README.md](references/formatos/README.md) e o arquivo do formato |
-| Escolher a estrutura | [references/estruturas-de-roteiro/README.md](references/estruturas-de-roteiro/README.md) e o arquivo da estrutura, [references/estruturas.md](references/estruturas.md) |
-| Elementos viciantes | [references/elementos-viciantes/README.md](references/elementos-viciantes/README.md) e o arquivo de cada elemento, [references/elementos-viciantes.md](references/elementos-viciantes.md) |
+| Escolher a estrutura | [references/estruturas-de-roteiro/README.md](references/estruturas-de-roteiro/README.md) e o arquivo da estrutura |
+| Elementos viciantes | [references/elementos-viciantes/README.md](references/elementos-viciantes/README.md) e o arquivo de cada elemento |
 | Exemplos de roteiro anotados, por formato | `references/exemplos-analisados/` |
 | Princípios do método | [references/principios.md](references/principios.md), [references/knowledge/principios-exemplos.md](references/knowledge/principios-exemplos.md), [references/regras-universais.md](references/regras-universais.md) |
-| Crítica, grifos e ajustes | [references/instrucoes/critica.md](references/instrucoes/critica.md), [references/critica-e-lapidacao.md](references/critica-e-lapidacao.md), [references/diagnostico.md](references/diagnostico.md) |
-| Analisar vídeo ou perfil | [references/analisar-video.md](references/analisar-video.md) |
-| Aprender a voz da pessoa | [references/aprender-voz.md](references/aprender-voz.md) |
+| Crítica, grifos e ajustes | [references/instrucoes/critica.md](references/instrucoes/critica.md), [references/diagnostico.md](references/diagnostico.md) |
+| Analisar vídeo ou perfil | [references/instrucoes/ler-videos.md](references/instrucoes/ler-videos.md) |
+| Aprender a voz da pessoa | [references/instrucoes/estilo.md](references/instrucoes/estilo.md) |
 | Sem o conector | [references/sem-conector.md](references/sem-conector.md) |
 
 Com o conector ligado, o método que vale é o que `sofia_metodo` e `sofia_briefing` devolvem, porque é a versão mais nova. As peças desta pasta marcadas como "Cópia da peça" são geradas do conector e não se editam à mão. Os arquivos acima servem quando o conector está desligado ou fora do ar. O Piso desta página vale nos dois casos.

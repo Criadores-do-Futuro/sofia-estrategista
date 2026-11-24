@@ -8,7 +8,7 @@ uso: "Biblioteca de exemplos por princípio. O roteirista e o analista consultam
 
 # Princípios da Viralização: Exemplos Reais Aplicados
 
-> Cópia da peça `knowledge/principios-exemplos` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `knowledge/principios-exemplos`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `knowledge/principios-exemplos` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `knowledge/principios-exemplos`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 Cada princípio de `principios` com o **melhor exemplo real** encontrado no corpus: o verbatim, **por que** é aquele princípio, a fonte (com métrica) e o **link** da fonte. Exemplos são para estudar a mecânica: **nunca copiar o texto**.
 

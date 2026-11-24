@@ -1,31 +1,24 @@
 # Estrutura Ele, Eu, Você, Futuro
 
-> Cópia da peça `estruturas-de-roteiro/ele-eu-voce-futuro` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `estruturas-de-roteiro/ele-eu-voce-futuro`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `estruturas-de-roteiro/ele-eu-voce-futuro` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `estruturas-de-roteiro/ele-eu-voce-futuro`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
-**Ele > Eu > Você > Futuro**
+**Ele → Eu → Você → Futuro**
 
 ## Visão Geral
 
-Transforma uma vivência pessoal ou uma observação em uma narrativa compartilhada. Começa "do lado de fora" e termina "dentro de quem assiste". São quatro viradas simples, mas poderosas.
+Transforma uma vivência pessoal ou uma observação em uma narrativa compartilhada. Começa fora de quem fala e termina dentro de quem assiste. São quatro viradas simples, e fortes.
 
 ## Etapas
 
 ### 1. Ele
 
-Abra com a história de outra pessoa. Pode ser:
-
-- Um amigo
-- Uma criadora que você admira
-- Um personagem famoso
-- Um caso que viralizou
-
-Isso gera curiosidade imediata e mostra que a ideia não é apenas sobre você.
+A história de outra pessoa: um amigo, uma criadora que você admira, um personagem famoso, um caso que viralizou. Gera curiosidade e mostra que a ideia é maior que você.
 
 **Exemplo:** "Conheci um criador que cresceu 200 mil seguidores em 3 meses. Mas não foi só pelo algoritmo..."
 
 ### 2. Eu
 
-Agora você entra na história. Mostra como aquilo te atravessou, te ensinou, te provocou. É o momento de vulnerabilidade ou posicionamento:
+Como aquilo te atravessou, te ensinou ou te provocou. É o momento de vulnerabilidade ou de posição:
 
 - "Quando eu vi isso, pensei na minha trajetória."
 - "Isso me lembrou de uma coisa que eu vivi."
@@ -35,16 +28,13 @@ Agora você entra na história. Mostra como aquilo te atravessou, te ensinou, te
 
 ### 3. Você
 
-Traga o público pra dentro da narrativa. Transforme a reflexão em convite.
-
-- "Talvez você também esteja sentindo que tá dando murro em ponta de faca."
-- Ou uma pergunta provocadora: "E se o que tá te travando não for a falta de talento, mas a forma que você tá contando sua história?"
+Traga o público para dentro. A reflexão vira convite ("talvez você também esteja sentindo que tá dando murro em ponta de faca"). Uma provocação em forma de afirmação também serve: "Talvez o que te trava seja a forma como você conta a sua história, e não a falta de talento."
 
 É nesse ponto que a audiência se identifica ou se move.
 
 ### 4. Futuro
 
-Projete o que pode acontecer se a pessoa aplicar (ou não aplicar) o que você ensinou. É onde mora o movimento. Você planta uma ideia de futuro possível e coloca quem assiste como protagonista.
+O que pode acontecer se a pessoa aplicar, ou não aplicar, o que você contou. Ela vira protagonista: você planta uma ideia de futuro possível.
 
 **Exemplo:** "Se você parar de criar pra agradar o algoritmo e começar a criar com estrutura, talvez seus 200 mil seguidores também estejam a três meses de distância."
 
@@ -57,12 +47,7 @@ Projete o que pode acontecer se a pessoa aplicar (ou não aplicar) o que você e
 
 ## Dica de ouro
 
-Antes de escrever, pergunte:
-
-1. Qual mensagem principal eu quero deixar?
-2. Qual ação ou reflexão eu quero provocar?
-
-Essa estrutura só funciona de verdade se você souber o que está plantando no final.
+Antes de escrever, responda: qual mensagem eu quero deixar, e qual ação ou reflexão eu quero provocar? Sem isso, a estrutura não fecha: ela só funciona de verdade se você souber o que está plantando no final.
 
 ## Checklist rápido
 

@@ -1,6 +1,6 @@
 # Modelo de ideia
 
-> Cópia da peça `modelo-de-ideia` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `modelo-de-ideia`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `modelo-de-ideia` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `modelo-de-ideia`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 Toda ideia de vídeo que a Sofia propõe sai neste modelo. Ele obriga a pensar o vídeo inteiro antes de escrever: o jeito de gravar, a ordem da história e o que prende a pessoa em cada parte.
 

@@ -1,8 +1,8 @@
 # Estrutura AIDA
 
-> Cópia da peça `estruturas-de-roteiro/aida` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `estruturas-de-roteiro/aida`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `estruturas-de-roteiro/aida` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `estruturas-de-roteiro/aida`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
-**Atenção > Interesse > Desejo > Ação**
+**Atenção → Interesse → Desejo → Ação.**
 
 ## Visão Geral
 
@@ -12,39 +12,21 @@ Seu vídeo precisa chamar Atenção, gerar Interesse, gerar Desejo pela ideia qu
 
 ### 1. Atenção
 
-Defina um Tema Interessante. Para chamar atenção no início, una o tema com uma **CURIOSIDADE** do tema ou um **CONFLITO** do tema.
-
-- O tema define o teto de alcance
-- A curiosidade ou conflito funcionam como hook
+Um tema interessante, unido a uma curiosidade ou a um conflito do tema. O tema define até onde o vídeo pode chegar; a curiosidade ou o conflito viram o hook.
 
 ### 2. Interesse
 
-Prepare o terreno para provar o seu ponto:
-
-- Conte uma história
-- Traga argumentos lógicos
-- Cite estudos científicos
-- Ensine alguma coisa
-
-O objetivo é fazer a pessoa querer continuar assistindo porque está aprendendo ou se envolvendo.
+Prepare o terreno para provar o ponto. Conte uma história, traga um argumento, cite um estudo, ensine algo. A pessoa fica porque está aprendendo ou se envolvendo.
 
 ### 3. Desejo
 
-É a Moral da História. Aqui você pode:
-
-- Fazer a pessoa acreditar na sua ideia
-- Fazer ela sentir que precisa do seu produto
-- Gerar esperança
-- Instalar uma nova crença
-
-O desejo é o momento emocional: a pessoa precisa SENTIR algo.
+A moral da história. A pessoa acredita na ideia, sente que precisa do produto, ganha esperança ou troca uma crença. É o momento de sentir.
 
 ### 4. Ação
 
-É o seu CTA (Call to Action). Duas formas:
+O pedido do fim, o CTA. Direto (seguir, comentar, tocar no link) ou indireto (fica subentendido, e soa mais elegante).
 
-- **CTA direto:** Pede explicitamente para seguir, comentar, curtir
-- **CTA indireto:** Não fala diretamente, mas fica subentendido (mais elegante)
+O que a AIDA pede: um tema que interessa à bolha, uma abertura com curiosidade ou conflito, um meio que prova o ponto, uma moral que gera desejo e o pedido no fim.
 
 ## Quando usar
 

@@ -1,6 +1,6 @@
 # Exemplos Analisados: Análise
 
-> Cópia da peça `exemplos-analisados/analise` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `exemplos-analisados/analise`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `exemplos-analisados/analise` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `exemplos-analisados/analise`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 Dois roteiros reais de @hanahfranklin, os mais curtidos de 13 vídeos do formato. Transcrição literal (erros de fala corrigidos entre colchetes). Entre `\[ \]`, a função da frase e por que funciona.
 

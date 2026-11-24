@@ -1,6 +1,6 @@
 # Regras universais
 
-> Cópia da peça `regras-universais` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `regras-universais`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `regras-universais` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `regras-universais`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 Regras que valem em todas as etapas, junto com o Piso (peça `piso`). Cada regra com código é uma carta: a pergunta de conferência é a própria linha.
 

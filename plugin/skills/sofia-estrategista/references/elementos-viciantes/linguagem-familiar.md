@@ -1,6 +1,6 @@
 # Linguagem Familiar e Imagem Mental
 
-> Cópia da peça `elementos-viciantes/linguagem-familiar` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `elementos-viciantes/linguagem-familiar`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `elementos-viciantes/linguagem-familiar` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `elementos-viciantes/linguagem-familiar`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 **A mente é preguiçosa: não gosta de gastar energia. Fale do jeito que seu público fala.**
 

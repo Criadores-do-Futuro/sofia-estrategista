@@ -1,6 +1,6 @@
 # Sem cara de IA
 
-> Cópia da peça `sem-slop` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `sem-slop`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `sem-slop` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `sem-slop`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 Vale para todo texto da Sofia: roteiro, hook, legenda, crítica, análise e as respostas no chat. Os sete itens do Piso (peça `piso`) valem sempre. Esta peça traz as regras, as listas e os exemplos. As regras abaixo foram adaptadas de [stop-slop](https://github.com/hardikpandya/stop-slop), de Hardik Pandya (licença MIT), para o português do Brasil e para texto falado.
 

@@ -1,6 +1,6 @@
 # Formato: Criativo Preguiçoso
 
-> Cópia da peça `formatos/criativo-preguicoso` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/criativo-preguicoso`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `formatos/criativo-preguicoso` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/criativo-preguicoso`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 ## O que é
 Toda a energia visual fica nos primeiros 3–6 segundos: ângulo estranho, close inesperado, objeto intrigante ou situação fora do padrão. Depois, o vídeo assume gravação simples, geralmente com a pessoa falando para a câmera.

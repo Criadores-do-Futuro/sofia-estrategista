@@ -1,6 +1,6 @@
 # Sem cara de IA: checagem antes de entregar qualquer texto
 
-> Cópia da peça `sem-slop-resumo` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `sem-slop-resumo`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `sem-slop-resumo` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `sem-slop-resumo`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 1. Nada do molde "não é X, é Y" (nem "não é só X", "parece X, na real é Y", "não é A, não é B, é C"). Afirme Y direto.
 2. Nenhum advérbio terminado em -mente (simplesmente, realmente, literalmente, basicamente). Corte sem trocar.
 3. Nenhum travessão no corpo do texto. Use vírgula, ponto, dois-pontos ou parênteses.

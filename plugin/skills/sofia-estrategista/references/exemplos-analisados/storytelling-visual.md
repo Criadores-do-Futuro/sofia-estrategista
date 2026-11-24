@@ -1,6 +1,6 @@
 # Exemplos Analisados: Storytelling Visual
 
-> Cópia da peça `exemplos-analisados/storytelling-visual` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `exemplos-analisados/storytelling-visual`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `exemplos-analisados/storytelling-visual` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `exemplos-analisados/storytelling-visual`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 ## Exemplo 1: Acidente (Gato Preto e Bia Miranda)
 

@@ -1,6 +1,6 @@
 # Intenção de comando (resumo)
 
-> Cópia da peça `intencao-de-comando-resumo` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `intencao-de-comando-resumo`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `intencao-de-comando-resumo` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `intencao-de-comando-resumo`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 A intenção de comando é a ideia que o aluno quer plantar na mente do público em cada vídeo, o fio entre
 o posicionamento e a oferta. É o segundo círculo da peça `furar-bolha` e a moral da peça

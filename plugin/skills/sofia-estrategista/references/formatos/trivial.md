@@ -1,6 +1,6 @@
 # Formato: Trivial
 
-> Cópia da peça `formatos/trivial` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/trivial`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `formatos/trivial` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/trivial`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 ## O que é
 A pessoa conversa em um contexto cotidiano e íntimo, cercada por elementos reconhecíveis do dia a dia: café, comida, maquiagem, louça, roupa ou utensílios. A ação ajuda, mas não é obrigatória; o ambiente e os objetos já criam a sensação de chamada de vídeo com um amigo.

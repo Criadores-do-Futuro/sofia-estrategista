@@ -1,6 +1,6 @@
 # Pesquisa da bolha
 
-> Cópia da peça `pesquisa-de-bolha` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `pesquisa-de-bolha`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `pesquisa-de-bolha` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `pesquisa-de-bolha`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 A bolha é um grupo de pessoas super interessadas num assunto: café especial, iPhone, quem joga online, os fãs de um criador. É para ela que o algoritmo entrega o vídeo quando acha quem assiste por mais tempo. O público-alvo, quem a pessoa quer como cliente, é outra coisa e fica no "Para quem" do card. Todo roteiro tenta furar uma bolha, e o método inteiro está na peça `furar-bolha`.
 

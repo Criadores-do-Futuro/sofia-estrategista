@@ -1,6 +1,6 @@
 # Contraste
 
-> Cópia da peça `elementos-viciantes/contraste` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `elementos-viciantes/contraste`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `elementos-viciantes/contraste` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `elementos-viciantes/contraste`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 **Você só percebe o quente porque existe o frio. O contraste faz o sentimento ficar muito mais intenso.**
 

@@ -8,7 +8,7 @@ uso: "Consultar ANTES de roteirizar, para escolher o ÂNGULO (arquétipo). Cada 
 
 # Arquétipos de Conteúdo, Nichos e Bolhas
 
-> Cópia da peça `knowledge/arquetipos-nichos-bolhas` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `knowledge/arquetipos-nichos-bolhas`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `knowledge/arquetipos-nichos-bolhas` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `knowledge/arquetipos-nichos-bolhas`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 Padrões extraídos de vídeos reais com +100k views. Servem para a Sofia **escolher o ângulo** e já entrar sabendo qual estrutura e quais princípios aquele ângulo costuma acionar.
 

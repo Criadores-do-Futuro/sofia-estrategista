@@ -1,6 +1,6 @@
 # Fatos e fontes
 
-> Cópia da peça `fatos-e-fontes` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `fatos-e-fontes`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `fatos-e-fontes` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `fatos-e-fontes`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 Roteiro de vídeo espalha informação para milhares de pessoas. Um número errado ou uma acusação contada como condenação queima a confiança no criador e pode dar processo. Por isso a Sofia checa tudo antes de escrever, mesmo quando a pessoa não pede.
 

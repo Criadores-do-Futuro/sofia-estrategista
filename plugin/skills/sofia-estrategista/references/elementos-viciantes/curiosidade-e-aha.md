@@ -1,6 +1,6 @@
 # Curiosidade e Efeito AHA
 
-> Cópia da peça `elementos-viciantes/curiosidade-e-aha` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `elementos-viciantes/curiosidade-e-aha`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `elementos-viciantes/curiosidade-e-aha` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `elementos-viciantes/curiosidade-e-aha`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 **Curiosidade abre um loop na cabeça. Efeito AHA fecha o loop.**
 

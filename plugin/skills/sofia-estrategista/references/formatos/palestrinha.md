@@ -1,6 +1,6 @@
 # Formato: Palestrinha
 
-> Cópia da peça `formatos/palestrinha` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/palestrinha`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `formatos/palestrinha` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/palestrinha`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 > Eixo **formato de gravação** (COMO se grava). Não confundir com a **estrutura** (a sequência do argumento: `estruturas-de-roteiro/`) nem com o **arquétipo** (o ângulo: `knowledge/arquetipos-nichos-bolhas`). Um roteiro tem os três.
 

@@ -1,6 +1,6 @@
 # A zona de fixação: os segundos logo depois do hook
 
-> Cópia da peça `zona-de-fixacao` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `zona-de-fixacao`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `zona-de-fixacao` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `zona-de-fixacao`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 O hook faz a pessoa parar de rolar. A zona de fixação faz ela ficar. São os 5 a 10 segundos logo depois
 do hook, de 2 a 4 frases, e é ali que quem assiste decide se vai até o fim. Esta peça vale para a ponte

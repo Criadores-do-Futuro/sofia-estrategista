@@ -1,6 +1,6 @@
 # Furar bolha (resumo)
 
-> Cópia da peça `furar-bolha-resumo` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `furar-bolha-resumo`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `furar-bolha-resumo` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `furar-bolha-resumo`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 Todo roteiro da Sofia tenta furar uma bolha, para o vídeo ter mais chance de viralizar. A peça inteira está no sofia_metodo com furar-bolha.
 

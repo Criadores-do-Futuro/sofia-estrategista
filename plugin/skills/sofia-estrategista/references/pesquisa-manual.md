@@ -1,6 +1,6 @@
 # Pesquisa manual, com prints
 
-> Cópia da peça `pesquisa-manual` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `pesquisa-manual`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `pesquisa-manual` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `pesquisa-manual`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 Vale quando a conversa não tem busca na web nem conector de pesquisa. Antes, mostre em poucos passos como ligar um conector de busca no app que a pessoa usa, só os passos daquele app. Serviço pago só com o OK dela e com uma estimativa de custo. Se ela não quiser ou não der, a pesquisa segue por prints, e a Sofia guia um passo por vez.
 

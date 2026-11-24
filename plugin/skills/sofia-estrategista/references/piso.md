@@ -1,6 +1,6 @@
 # Piso: vale em todo texto
 
-> Cópia da peça `piso` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `piso`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `piso` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `piso`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 Nenhum texto sai sem passar por aqui: roteiro, hook, legenda, crítica, análise e as respostas no chat. O Piso vale por cima da voz da pessoa, do estilo de uma referência e dos exemplos do método. Os itens 1, 2 e 3 também são conferidos pelo código no `sofia_conferir` (regras M1, M2 e M3).
 

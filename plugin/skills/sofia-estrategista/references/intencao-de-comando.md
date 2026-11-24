@@ -1,6 +1,6 @@
 # Intenção de comando
 
-> Cópia da peça `intencao-de-comando` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `intencao-de-comando`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `intencao-de-comando` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `intencao-de-comando`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 A intenção de comando é o objetivo central e a mensagem principal de cada conteúdo: a ideia que o aluno
 quer plantar na mente do público. Ela é o fio que liga o posicionamento dele à oferta. Na peça

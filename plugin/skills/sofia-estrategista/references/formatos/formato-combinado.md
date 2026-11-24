@@ -1,6 +1,6 @@
 # Formato: Formato Combinado
 
-> Cópia da peça `formatos/formato-combinado` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/formato-combinado`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `formatos/formato-combinado` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/formato-combinado`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 ## O que é
 Dois formatos reconhecíveis são fundidos deliberadamente e geram uma linguagem coerente com personalidade própria. Não basta acrescentar um efeito pontual: cada formato precisa contribuir estruturalmente.

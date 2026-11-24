@@ -1,6 +1,6 @@
 # Como fazer o hook
 
-> Cópia da peça `fazer-hook` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `fazer-hook`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `fazer-hook` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `fazer-hook`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 O hook é o primeiro segundo do vídeo: a fala, o texto na tela e o que aparece. Esta peça é a base de
 todo hook. As outras peças de hook (`hooks-que-funcionam`, `furar-bolha` e o formato do card) dizem que

@@ -1,6 +1,6 @@
 # Escrever um roteiro com o conector
 
-> Cópia da peça `instrucoes/roteiro` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `instrucoes/roteiro`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `instrucoes/roteiro` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `instrucoes/roteiro`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 Este guia descreve o caminho de escrita de um roteiro de vídeo curto no Criador Estrategista. O conector
 guarda o método, os dados do aluno e o que a conversa produz. O caminho funciona em português do Brasil,

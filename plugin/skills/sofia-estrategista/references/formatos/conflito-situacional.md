@@ -1,6 +1,6 @@
 # Formato: Conflito Situacional
 
-> Cópia da peça `formatos/conflito-situacional` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/conflito-situacional`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `formatos/conflito-situacional` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/conflito-situacional`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 ## O que é
 O vídeo abre com uma situação de conflito forte que parece real: discussão, ameaça, acidente, roubo, confronto ou urgência. O conflito funciona como porta de entrada; depois, o vídeo pode revelar a encenação e migrar para explicação, analogia ou conversa.

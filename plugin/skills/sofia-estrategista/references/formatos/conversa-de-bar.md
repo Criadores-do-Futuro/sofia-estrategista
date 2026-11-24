@@ -1,6 +1,6 @@
 # Formato: Conversa de Bar
 
-> Cópia da peça `formatos/conversa-de-bar` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/conversa-de-bar`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `formatos/conversa-de-bar` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/conversa-de-bar`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 ## O que é
 A pessoa fala predominantemente sem olhar para a lente, como se conversasse com alguém ao lado. O olhar desviado, a postura relaxada e a edição simples retiram o “modo apresentador” e criam intimidade espontânea.

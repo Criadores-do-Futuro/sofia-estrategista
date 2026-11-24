@@ -1,6 +1,6 @@
 # Formato: Lo-Fi
 
-> Cópia da peça `formatos/lo-fi` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/lo-fi`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `formatos/lo-fi` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/lo-fi`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 ## O que é
 Vídeo deliberadamente simples, cru e pouco polido. A sensação de espontaneidade vem de câmera de celular, luz disponível, poucos cortes e imperfeições mantidas. Lo-Fi não significa descuido: a baixa produção é uma escolha para aumentar proximidade e credibilidade.

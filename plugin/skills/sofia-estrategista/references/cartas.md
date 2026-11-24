@@ -1,6 +1,6 @@
 # Cartas do método da Sofia
 
-> Gerado do webapp (cartas aab392a91c6a). Com o conector ligado, vale o sofia_briefing de cada papel. Não edite à mão.
+> Gerado do webapp (cartas 2c7bdbf7d20c). Com o conector ligado, vale o sofia_briefing de cada papel. Não edite à mão.
 
 Cada carta é uma regra com código. O texto da carta é a pergunta de conferência: passa, falha ou não se aplica.
 Nos seletores, FM quer dizer as regras de escrita do formato do card (FM.<formato>.<n>) e FM.H o tipo de hook dele; ES, o checklist da estrutura do card (ES.<estrutura>.<n>). @formato, @estrutura, @exemplo e @dominantes são as peças do formato, da estrutura, do exemplo analisado e dos elementos dominantes do card; @hook-do-formato é a seção "Tipo de hook" da peça do formato.
@@ -27,7 +27,7 @@ Nos seletores, FM quer dizer as regras de escrita do formato do card (FM.<format
 ## Por papel
 
 ### Estrategista de ideias (estrategista-de-ideias)
-- ideia (produz): cartas MI, PV, RU; peças modelo-de-ideia, principios, regras-universais, formatos/README, estruturas-de-roteiro/README, elementos-viciantes/README, intencao-de-comando-resumo, furar-bolha-resumo, knowledge/principios-exemplos.
+- ideia (produz): cartas MI, PV, RU; peças modelo-de-ideia, principios, regras-universais, formatos/README, estruturas-de-roteiro/README, elementos-viciantes/README, intencao-de-comando-resumo, furar-bolha-resumo, knowledge/principios-exemplos, glossario.
 
 ### Especialista em bolha (especialista-em-bolha)
 - ideia (produz): cartas FB, IC, PB; peças furar-bolha, intencao-de-comando, pesquisa-de-bolha, knowledge/arquetipos-nichos-bolhas.
@@ -40,17 +40,17 @@ Nos seletores, FM quer dizer as regras de escrita do formato do card (FM.<format
 - pesquisa (produz): cartas FT, PB, PM; peças fatos-e-fontes, pesquisa-de-bolha, pesquisa-manual, regras-universais.
 
 ### Redator de hook (redator-de-hook)
-- hook (produz): cartas P, FH, ZF, HQ, VZ, SS, LS, FM.H; peças piso, fazer-hook, zona-de-fixacao, knowledge/hooks-que-funcionam, knowledge/arquetipos-nichos-bolhas, instrucoes/roteiro, @formato, @exemplo, @dominantes, voz-do-aluno, linguagem-simples, sem-slop-resumo, principios-resumo, furar-bolha-resumo.
+- hook (produz): cartas P, FH, ZF, HQ, VZ, SS, LS, GL, FM.H; peças piso, fazer-hook, zona-de-fixacao, knowledge/hooks-que-funcionam, knowledge/arquetipos-nichos-bolhas, instrucoes/roteiro, @formato, @exemplo, @dominantes, voz-do-aluno, linguagem-simples, sem-slop-resumo, principios-resumo, furar-bolha-resumo.
 
 ### Roteirista (roteirista)
-- roteiro (produz): cartas P, ES, FM, EV, ZF, IC, FB, FT, VZ, LS, CE, RU; peças piso, instrucoes/roteiro, @estrutura, @formato, zona-de-fixacao, @dominantes, @exemplo, voz-do-aluno, como-escrever-bem, fatos-e-fontes, intencao-de-comando-resumo, furar-bolha-resumo, regras-universais, linguagem-simples, sem-slop-resumo.
-- ajuste (produz): cartas P, SS, LS, VZ, CE; peças piso, voz-do-aluno, como-escrever-bem, linguagem-simples, sem-slop-resumo.
+- roteiro (produz): cartas P, ES, FM, EV, ZF, IC, FB, FT, VZ, LS, GL, CE, RU; peças piso, instrucoes/roteiro, @estrutura, @formato, zona-de-fixacao, @dominantes, @exemplo, voz-do-aluno, como-escrever-bem, fatos-e-fontes, intencao-de-comando-resumo, furar-bolha-resumo, regras-universais, linguagem-simples, sem-slop-resumo.
+- ajuste (produz): cartas P, SS, LS, GL, VZ, CE; peças piso, voz-do-aluno, como-escrever-bem, linguagem-simples, sem-slop-resumo.
 
 ### Revisor do que não fazer (revisor-o-que-nao-fazer)
-- hook (confere): cartas P, SS, FH9-FH12, LS; peças piso, sem-slop, fazer-hook, linguagem-simples.
-- roteiro (confere): cartas P, SS, FH9-FH12, LS; peças piso, sem-slop, fazer-hook, linguagem-simples.
-- ajuste (confere): cartas P, SS, LS; peças piso, sem-slop, linguagem-simples.
-- critica (confere): cartas P, SS, FH9-FH12, LS; peças piso, sem-slop, fazer-hook, linguagem-simples.
+- hook (confere): cartas P, SS, FH9-FH12, LS, GL; peças piso, sem-slop, fazer-hook, linguagem-simples, glossario.
+- roteiro (confere): cartas P, SS, FH9-FH12, LS, GL; peças piso, sem-slop, fazer-hook, linguagem-simples, glossario.
+- ajuste (confere): cartas P, SS, LS, GL; peças piso, sem-slop, linguagem-simples, glossario.
+- critica (confere): cartas P, SS, FH9-FH12, LS, GL; peças piso, sem-slop, fazer-hook, linguagem-simples, glossario.
 
 ### Revisor de hook (revisor-de-hook)
 - hook (confere): cartas FH, ZF, HQ, FM.H; peças fazer-hook, zona-de-fixacao, knowledge/hooks-que-funcionam, @hook-do-formato.
@@ -89,6 +89,18 @@ Nos seletores, FM quer dizer as regras de escrita do formato do card (FM.<format
 - **CE8.** A emoção sobe degrau por degrau, sem descer (seção 8).
 - **CE9.** O último terço sai do personagem e chega na vida de quem assiste (seção 9).
 - **CE10.** As palavras criam imagem: verbo de ação e detalhe concreto (seção 10).
+- **CE11.** Depois de 2 ou 3 frases de contexto, o impacto vem numa frase curta (seção 11).
+- **CE12.** Pessoa e situação aparecem pelo comportamento, e a pessoa vê a cena (seção 12).
+- **CE13.** Depois de uma história pesada, o fechamento é simples e leve (seção 13).
+- **CE14.** Contradição, quando usada, tem as duas partes curtas e coladas (seção 14).
+- **CE15.** O CTA continua o assunto do vídeo, ou não há CTA (seção 15).
+- **CE16.** Cada fato diz quem fez o quê, quanto, para quê e quando, se a fonte disser (parte 1).
+- **CE17.** A troca de bloco parte de um pedaço concreto do bloco anterior, sem frase de transição anunciada (parte 1).
+- **CE18.** A ressalva entra dentro da história, na voz de quem fala, sem aviso colado no meio (parte 1).
+- **CE19.** Palavra de dúvida ("parece que", o advérbio de "suposto") só onde a dúvida é real, uma vez, dizendo quem afirma (parte 1).
+- **CE20.** Cada bloco tem uma emoção definida para quem assiste (parte 1).
+- **CE21.** Os elementos viciantes estão no texto, sentidos por quem assiste, e nenhum aparece pelo nome no roteiro (parte 1).
+- **CE22.** Cada bloco tem cena, detalhe e virada: o roteiro não virou lista de tópicos (parte 1).
 
 ### elementos-viciantes/README (elementos-viciantes/README.md)
 
@@ -135,7 +147,7 @@ Nos seletores, FM quer dizer as regras de escrita do formato do card (FM.<format
 - **ES.ihc.1.** A identificação faz o público pensar "sou eu"?
 - **ES.ihc.2.** A história tem conflito, virada e consequência?
 - **ES.ihc.3.** O conteúdo planta uma semente clara na cabeça do público?
-- **ES.ihc.4.** O tom é conversacional (não parece aula)?
+- **ES.ihc.4.** O tom é de conversa (sem cara de aula)?
 
 ### estruturas-de-roteiro/jeito-errado-jeito-certo (estruturas-de-roteiro/jeito-errado-jeito-certo.md)
 
@@ -442,6 +454,10 @@ Nos seletores, FM quer dizer as regras de escrita do formato do card (FM.<format
 - **FB7.** Nome de pessoa real só aparece com fato que tem fonte.
 - **FB8.** O formato criativo segue o que já funciona (90/10).
 
+### glossario (glossario.md)
+
+- **GL1.** Termo do método (hook, CTA, bolha, retenção, B-roll e os outros desta peça) aparece para a pessoa do jeito da coluna "Como explicar", ou com essa explicação na mesma frase.
+
 ### instrucoes/critica (instrucoes/critica.md)
 
 - **CR1.** O tema faz parar e a moral cabe em uma frase.
@@ -465,9 +481,11 @@ Nos seletores, FM quer dizer as regras de escrita do formato do card (FM.<format
 - **HQ1.** A opção 1 é um choque de crença: a crença do público virada do avesso, dita como ordem, confissão ou consequência absurda.
 - **HQ2.** O choque é verdade, ou opinião sincera do criador provada no vídeo, e o texto aponta onde o vídeo paga o choque.
 - **HQ3.** Nenhuma opção promete resultado ("vai crescer", "vai faturar").
-- **HQ4.** Cada opção declara um dos cinco tipos de hook, e o tipo combina com o formato do card.
+- **HQ4.** Cada opção declara um dos tipos de hook desta peça, e o tipo combina com o formato do card.
 - **HQ5.** As opções têm tipos diferentes entre si.
 - **HQ6.** Cada opção traz um dado concreto (nome, número, fato) ou uma pessoa ou marca que o público conhece, quando a pesquisa tem.
+- **HQ7.** Cada opção diz em que bloco do roteiro o vídeo paga a dúvida do hook.
+- **HQ8.** Nenhuma opção abre com saudação, anúncio ("neste vídeo você vai ver", "você sabia que", "fica até o final"), pergunta retórica ou comentário de vídeo sem o assunto na mesma frase ou na seguinte.
 
 ### linguagem-simples (linguagem-simples.md)
 

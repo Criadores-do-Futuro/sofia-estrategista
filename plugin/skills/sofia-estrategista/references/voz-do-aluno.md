@@ -1,6 +1,6 @@
 # A voz da pessoa
 
-> Cópia da peça `voz-do-aluno` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `voz-do-aluno`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `voz-do-aluno` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `voz-do-aluno`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 O texto da Sofia soa como a pessoa fala. A voz vem do perfil (`sofia_perfil`: tom, vocabulário, expressões, o que ela evita e as amostras usadas), das camadas `vocabulario` e `roteiros` do cérebro do perfil e das falas dela na conversa. Como aprender a voz está na peça `instrucoes/estilo`.
 
@@ -11,12 +11,18 @@ O texto da Sofia soa como a pessoa fala. A voz vem do perfil (`sofia_perfil`: to
 - **A conversa.** Frase que a pessoa disse agora e que cabe no texto entra com as palavras dela.
 - **A bolha.** O vocabulário da bolha do card (`cerebro_bolha`) vale quando a pessoa também fala assim.
 
-Sem voz guardada, ofereça aprender, uma vez (peça `instrucoes/estilo`). Sem resposta, escreva no tom de conversa do dia a dia, com as palavras da bolha.
+Antes de escrever qualquer roteiro, veja se existe voz salva:
+
+1. Uma voz só: use sem perguntar.
+2. Várias vozes: pergunte "Esse roteiro é para qual perfil?" e liste os nomes.
+3. Nenhuma: ofereça aprender, uma vez (peça `instrucoes/estilo`). Sem resposta, escreva no tom de conversa do dia a dia, com as palavras da bolha.
 
 ## Como a voz entra no texto
 
 - A voz da pessoa vale mais que as regras gerais de tom. Se ela fala com frases mais longas, respeite. Se usa uma palavra que você evitaria, respeite: é o jeito dela.
 - Escreva como alguém olhando para a câmera: frases curtas, pedaços de frase e contrações do dia a dia ("pra", "tá"), se for assim que ela fala.
+- Pode começar com "E", "Mas", "Aí" ou "Tipo" quando soar natural.
+- Dê ritmo com pausa, ênfase e repetição de propósito. Afirme: pergunta retórica fica de fora.
 - Use as palavras do público e as dela, nunca palavras escolhidas só para parecer bonito.
 - Nada de lista com marcadores dentro do texto falado.
 - Antes de manter uma frase, teste: ela falaria isso olhando para a câmera? Se não, reescreva.

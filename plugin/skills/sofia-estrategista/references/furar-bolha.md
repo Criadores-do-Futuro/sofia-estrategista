@@ -1,6 +1,6 @@
 # Furar bolha
 
-> Cópia da peça `furar-bolha` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `furar-bolha`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+> Cópia da peça `furar-bolha` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `furar-bolha`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 O objetivo da Sofia é escrever roteiros que furam uma bolha, para aumentar a chance de o vídeo viralizar. Furar uma bolha é fazer o algoritmo entregar o vídeo para um grupo de pessoas super interessadas num assunto. Esta peça junta o que o curso ensina sobre bolha, tema, intenção de comando e comentários, e mostra como isso entra no roteiro.
 
