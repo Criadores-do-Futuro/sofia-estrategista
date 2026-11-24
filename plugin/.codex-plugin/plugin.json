@@ -11,16 +11,15 @@
   "keywords": ["roteiro", "video curto", "reels", "tiktok", "conteudo", "criador estrategista"],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
-  "requires_local_executor": true,
   "interface": {
     "displayName": "Sofia Estrategista",
     "shortDescription": "Roteiro de vídeo curto",
-    "longDescription": "A Sofia Estrategista do curso Criador Estrategista. Ela ajuda com ideia, pesquisa com fonte, formato, estrutura, hook, roteiro e grifos pelo método do curso, analisa vídeos e perfis e, com o conector, lê e salva no planejamento do aluno. Hook, roteiro e crítica passam por uma equipe de revisores com o método do curso antes de chegar à pessoa. Para ver os quadros de um vídeo, a análise roda programas no computador da pessoa (FFmpeg e yt-dlp), sempre com o OK dela. Nada é gravado no site sem o OK do aluno.",
+    "longDescription": "A Sofia Estrategista do curso Criador Estrategista. Ela ajuda com ideia, pesquisa com fonte, formato, estrutura, hook, roteiro e grifos pelo método do curso, analisa vídeos e perfis e, com o conector, lê e salva no planejamento do aluno. Hook, roteiro e crítica passam por uma equipe de revisores com o método do curso antes de chegar à pessoa. No app de computador, para ver os quadros de um vídeo, a análise pode rodar programas na máquina da pessoa (FFmpeg e yt-dlp), sempre com o OK dela; sem eles, a análise segue pela legenda, pela transcrição e pelos prints. Nada é gravado no site sem o OK do aluno.",
     "developerName": "Criadores do Futuro",
     "category": "Productivity",
     "capabilities": ["Ler e salvar o planejamento", "Escrever roteiro pelo método", "Conferir o texto com a equipe do método", "Analisar vídeo e perfil"],
     "websiteURL": "https://criador-estrategista.vercel.app/kit",
-    "supportURL": "https://criador-estrategista.vercel.app/conector",
+    "supportURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/support",
     "privacyPolicyURL": "https://criador-estrategista.vercel.app/privacidade",
     "termsOfServiceURL": "https://criador-estrategista.vercel.app/termos",
     "defaultPrompt": [
