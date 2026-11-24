@@ -10,7 +10,7 @@ dependencies:
       value: "sofia-estrategista"
       description: "Conector Sofia Estrategista: planejamento, cérebro do perfil, método, briefing de cada papel da equipe e conferência"
       transport: "streamable_http"
-      url: "https://criador-estrategista.vercel.app/api/mcp"
+      url: "https://plataforma.criadorestrategista.com.br/api/mcp"
 
 policy:
   allow_implicit_invocation: true

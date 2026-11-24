@@ -1,0 +1,88 @@
+{
+  "versao": 1,
+  "take": {
+    "arquivo": "take.mp4",
+    "fps": 30,
+    "duracaoMs": 10000
+  },
+  "arco": "Promete uma coisa. Entrega no meio. Fica a pergunta.",
+  "estrutura": [
+    {
+      "nome": "unica",
+      "deMs": 0,
+      "ateMs": 10000,
+      "anunciadaEmMs": 0
+    }
+  ],
+  "densidade": {
+    "alvoPct": [
+      40,
+      60
+    ],
+    "previstoPct": 45,
+    "justificativa": ""
+  },
+  "correcoes": [],
+  "branding": "preset:noturno",
+  "momentos": [
+    {
+      "id": "M01",
+      "deMs": 0,
+      "ateMs": 5500,
+      "fala": "primeira frase aqui.",
+      "roteiro": null,
+      "entrega": "olha para a camera; ritmo 0.9, voz 140%, imagem 20%",
+      "decisao": "aroll",
+      "musica": {
+        "clima": "abertura",
+        "cama": "sobe"
+      },
+      "porque": "o rosto segura a abertura"
+    },
+    {
+      "id": "M02",
+      "deMs": 5500,
+      "ateMs": 10000,
+      "fala": "segunda frase longa",
+      "roteiro": null,
+      "entrega": "olha para baixo; ritmo 0.7, voz 60%, imagem 180%",
+      "decisao": "motion",
+      "motion": {
+        "tipo": "palavras",
+        "ideia": "as duas palavras da frase empilham",
+        "movimento": "'segunda' sobe por baixo; 'longa' entra escalando e empurra a primeira; varre para fora no corte",
+        "entrada": "subir",
+        "saida": "varrer",
+        "entraAntesMs": 700,
+        "dados": {
+          "palavras": [
+            "segunda",
+            "longa"
+          ]
+        },
+        "cena": {
+          "naTela": "'segunda' sobe por baixo e 'longa' entra escalando, empurrando a primeira",
+          "texto": "segunda longa",
+          "visual": "fundo #160B10, palavras creme, 'longa' em âmbar, Fraunces display",
+          "cameraTransicao": "parada; varre para fora na horizontal no fim",
+          "som": "whoosh na entrada de 'longa', cama tensa mantida"
+        }
+      },
+      "musica": {
+        "clima": "tensao",
+        "cama": "mantem"
+      },
+      "porque": "a entrega cai e a frase enumera"
+    }
+  ],
+  "direcaoMotion": {
+    "estiloAnimacao": "2D, tipografia cinética sobre fundo escuro",
+    "movimento": "seco: entradas de 0,5 s em power4.out, sem bounce",
+    "transicoes": "corte seco; varrida horizontal quando a lista se esvazia",
+    "paleta": "fundo #160B10, texto creme #FFF6E7, destaque âmbar #F3B35C",
+    "tipografia": "Fraunces display no terço de cima, nunca sobre o rosto",
+    "camera": "parada; push-in de 4% só na palavra que acende",
+    "climaRitmo": "tenso e contido, um acento por cena",
+    "som": "whoosh curto na entrada, grave seco na virada, cama eletrônica baixa"
+  }
+}
