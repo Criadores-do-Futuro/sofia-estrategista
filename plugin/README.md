@@ -6,7 +6,7 @@ A estrategista de vídeo curto do curso Criador Estrategista, dos Criadores do F
 
 - **Skill `sofia-estrategista`:** o método inteiro (princípios da viralização, elementos viciantes, formatos, estruturas, hooks, pesquisa e checagem de fatos) e o caminho de cada tarefa.
 - **Atalhos:** `roteiro`, `ideias`, `pesquisa`, `analisar`, `critica`, `conectar` e `atualizar`. O `/atualizar` mostra o caminho de atualizar a Sofia em cada app e, no Claude Code, só roda os comandos depois do OK da pessoa.
-- **Equipe da Sofia** (agentes no Claude Code e no Cowork): quem escreve são `estrategista-de-ideias`, `especialista-em-bolha`, `pesquisador`, `redator-de-hook` e `roteirista`; quem confere são `revisor-o-que-nao-fazer`, `revisor-de-hook`, `revisor-de-voz`, `revisor-de-estrutura`, `revisor-de-fatos`, `especialista-em-bolha` e `critico`. Cada um busca no conector o briefing do seu papel, e todos só leem e devolvem o resultado.
+- **Equipe da Sofia** (agentes no Claude Code e no Cowork): quem escreve são `estrategista-de-ideias`, `especialista-em-bolha`, `pesquisador`, `redator-de-hook` e `roteirista`; quem confere são `revisor-o-que-nao-fazer`, `revisor-de-hook`, `revisor-de-voz`, `revisor-de-estrutura`, `revisor-de-fatos`, `especialista-em-bolha` e `critico`. Cada um busca no conector o briefing do seu papel, e todos só leem e devolvem o resultado: as ferramentas do conector que gravam, mudam ou apagam ficam travadas neles, e só a conversa grava, com o OK do aluno.
 - **Conector Sofia Estrategista:** liga o Claude ao planejamento do aluno no site do curso.
 
 ## Versão 1.6.0: a equipe da Sofia
@@ -17,7 +17,7 @@ Ideia, hook, roteiro, ajuste e crítica deixam de ser escritos e conferidos numa
 - **Os revisores** conferem juntos, cada um com uma fatia do método e as regras com código dela (as cartas): o que não fazer, o hook, a voz, a estrutura, os fatos e a bolha. Até 2 rodadas de correção.
 - **O conector** manda o plano de cada etapa, o briefing de cada papel e confere por código o que é mecânico. Quando tudo passa, devolve o selo de conferência, que vai junto ao salvar. Texto salvo sem o selo fica marcado como sem conferência.
 - **Em cada app:** no Claude Code e no Cowork, os papéis são agentes do plugin; no Codex, subagentes do próprio Codex; no Claude do site e do celular e no ChatGPT, passadas na conversa (`skills/sofia-estrategista/references/passadas.md`).
-- **As referências do método** são cópia gerada do conector, com as cartas de cada papel em `cartas.md`, para quando o conector está desligado.
+- **As referências do método** são cópia gerada do conector, com as cartas de cada papel em `cartas.md`, para quando o conector está desligado. O que antes só existia no plugin (os tipos de hook, as estruturas, a crítica, a voz, a análise de vídeo e o glossário) passou para o conector e chega aos agentes pelo briefing.
 
 ## Como funciona com e sem o conector
 
@@ -29,6 +29,7 @@ Com o conector ligado e com login (o e-mail de compra do curso), ela lê os núm
 
 - **Claude no navegador ou no app:** baixe o arquivo do plugin na página Kit do site do curso e envie em Personalizar › Plugins › Adicionar › Enviar plugin. Depois, na aba Conectores do plugin, clique em Conectar e entre com o e-mail do curso.
 - **Claude Code:** para instalar direto do repositório, no terminal: `claude plugin install sofia-estrategista --marketplace bento-dev-ia/sofia-estrategista`. Dentro do Claude Code: `/plugin marketplace add bento-dev-ia/sofia-estrategista` e depois `/plugin install sofia-estrategista@criadores-do-futuro`. Depois, `/mcp` para entrar no conector.
+- **Codex:** o plugin traz o manifesto do Codex (`.codex-plugin/plugin.json`). A análise de vídeo roda programas no computador (FFmpeg e yt-dlp), então o plugin pede o app de desktop.
 
 O passo a passo está em https://criador-estrategista.vercel.app/kit, depois do login com o e-mail do curso.
 
