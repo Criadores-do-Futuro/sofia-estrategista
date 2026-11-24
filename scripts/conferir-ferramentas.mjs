@@ -17,11 +17,13 @@ if (!webapp) {
 }
 
 const raiz = join(fileURLToPath(new URL(".", import.meta.url)), "..");
+// O plugin é a pasta plugin/ do repositório.
 const plugin = join(raiz, "plugin");
+const fora = new Set(["node_modules", "tests", "dist", "__pycache__"]);
 
 function arquivos(pasta, fim) {
   return readdirSync(pasta).flatMap((nome) => {
-    if (nome === "node_modules" || nome.startsWith(".git")) return [];
+    if (fora.has(nome) || nome.startsWith(".git")) return [];
     const caminho = join(pasta, nome);
     if (statSync(caminho).isDirectory()) return arquivos(caminho, fim);
     return fim.some((f) => nome.endsWith(f)) ? [caminho] : [];
