@@ -30,7 +30,7 @@ O plano de cada etapa vem do conector, na seção "Passos e equipe desta etapa" 
 - **No máximo 2 rodadas.** Na segunda, confira só os códigos que falharam. O que ainda falhar vai para a pessoa como observação curta.
 - **Gerar muitos, mostrar poucos.** Hook: de 8 a 10 escritos, de 3 a 5 mostrados, com tipos diferentes e menos falhas.
 - **Uma linha para a pessoa.** Depois do selo de conferência, diga só que o texto passou pela conferência. A tabela dos vereditos fica para quando ela pedir.
-- **Muitas chamadas numa resposta.** Se o app cortar a resposta no meio das chamadas, junte passos: um só `sofia_briefing` com vários papéis em `modo: "cartas"` serve a todos os revisores da etapa.
+- **Muitas chamadas numa resposta.** Se o app cortar a resposta no meio das chamadas, junte passos: um só `sofia_briefing` com vários papéis em `modo: "cartas"` serve a todos os revisores da etapa. Quando as cartas não cabem numa resposta, o modo cartas também vem em partes (o título diz quantas): leia todas antes do veredito.
 
 ## 2. Brainstorm (ideia, bolha e pesquisa)
 

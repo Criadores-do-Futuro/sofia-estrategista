@@ -65,6 +65,20 @@ NAO_SAO_ADVERBIO = {'mente', 'semente', 'sementes', 'comente', 'aumente', 'lamen
 MOLDE = re.compile(r'\bnão é [^.,;:]{1,40}, é\b', re.I)
 
 
+def sem_trava(texto):
+    """O texto sem a linha disallowedTools do frontmatter: ela é gerada e traz o nome interno das ferramentas."""
+    return re.sub(r'^disallowedTools:.*$', '', texto, flags=re.M)
+
+
+def trava_esperada():
+    """A trava gerada pelo webapp: as do terminal e, com os dois prefixos, as ferramentas que gravam."""
+    espelho = json.loads((REFERENCIAS / '.espelho.json').read_text(encoding='utf-8'))
+    nome = json.loads((ROOT / '.claude-plugin/plugin.json').read_text(encoding='utf-8'))['name']
+    prefixos = [f'mcp__plugin_{nome}_sofia-estrategista__', 'mcp__claude_ai_Sofia_Estrategista__']
+    return espelho['ferramentasQueGravam'], ['Write', 'Edit', 'NotebookEdit', 'Bash', 'PowerShell', 'Agent'] + [
+        p + f for p in prefixos for f in espelho['ferramentasQueGravam']]
+
+
 def corpo_e_cabecalho(arquivo):
     texto = arquivo.read_text(encoding='utf-8')
     fim = texto.find('\n---', 4)
@@ -176,10 +190,48 @@ class FerramentasTest(unittest.TestCase):
         self.assertEqual(FERRAMENTAS_DO_CONECTOR, registradas)
 
 
+class TravaTest(unittest.TestCase):
+    """Nenhum agente da equipe grava no site: só a conversa principal, com o OK do aluno (achado 9, 24/11)."""
+
+    def test_lista_das_que_gravam_e_do_conector(self):
+        gravam, _ = trava_esperada()
+        self.assertTrue(gravam)
+        self.assertEqual(set(gravam) - FERRAMENTAS_DO_CONECTOR, set())
+        for nome in ('sofia_salvar', 'sofia_grifos', 'sofia_apagar', 'cerebro_guardar', 'cerebro_esquecer',
+                     'planejamento_mover_card', 'planejamento_editar_card', 'planejamento_salvar_pesquisa',
+                     'referencia_apagar', 'perfil_ler_da_rede'):
+            with self.subTest(ferramenta=nome):
+                self.assertIn(nome, gravam)
+        for nome in ('sofia_briefing', 'sofia_conferir', 'sofia_metodo', 'sofia_video'):
+            with self.subTest(ferramenta=nome):
+                self.assertNotIn(nome, gravam)
+
+    @unittest.skipIf(yaml is None, 'PyYAML não instalado')
+    def test_todo_agente_tem_a_trava_completa(self):
+        _, esperada = trava_esperada()
+        for nome in sorted(AGENTES_DA_SOFIA):
+            with self.subTest(agente=nome):
+                dados, _ = corpo_e_cabecalho(ROOT / 'agents' / f'{nome}.md')
+                self.assertNotIn('tools', dados)
+                self.assertEqual([t.strip() for t in dados['disallowedTools'].split(',')], esperada)
+
+    @unittest.skipUnless(os.environ.get('SOFIA_WEBAPP'), 'sem SOFIA_WEBAPP')
+    def test_lista_bate_com_as_anotacoes_do_servidor(self):
+        import subprocess
+        codigo = ("import('./src/lib/mcp/gravacao.ts').then((m) => "
+                  "console.log('GRAVAM=' + JSON.stringify(m.ferramentasQueGravam())))")
+        saida = subprocess.run(['npx', 'tsx', '--eval', codigo], cwd=os.environ['SOFIA_WEBAPP'], capture_output=True,
+                               text=True, env={**os.environ, 'CONVERSAS_SEGREDO': 'so-para-listar-as-ferramentas-0000000000'},
+                               timeout=300)
+        linha = next(l for l in saida.stdout.splitlines() if l.startswith('GRAVAM='))
+        gravam, _ = trava_esperada()
+        self.assertEqual(json.loads(linha[len('GRAVAM='):]), gravam, 'rode exportar-referencias.mts no webapp')
+
+
 class TextoNovoTest(unittest.TestCase):
     def test_regras_de_texto_e_teste_da_loja(self):
         for arquivo in TEXTOS_NOVOS:
-            texto = arquivo.read_text(encoding='utf-8')
+            texto = sem_trava(arquivo.read_text(encoding='utf-8'))
             # A regra citada entre aspas ("não é X, é Y") é o nome da regra, e não um uso dela.
             sem_citacao = re.sub(r'"[^"\n]*"', '', texto)
             nome = arquivo.relative_to(ROOT).as_posix()
