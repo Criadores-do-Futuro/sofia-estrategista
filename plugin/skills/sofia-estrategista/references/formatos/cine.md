@@ -1,34 +1,41 @@
 # Formato: Cine
 
+> Cópia da peça `formatos/cine` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/cine`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
+> Eixo **formato de gravação** (COMO se grava). Não confundir com a **estrutura** (a sequência do argumento: `estruturas-de-roteiro/`) nem com o **arquétipo** (o ângulo: `knowledge/arquetipos-nichos-bolhas`). Um roteiro tem os três.
+
 ## O que é
-Vídeo com cara de filme: planos bem montados, trilha sonora, narração ou diálogo escrito antes e cortes precisos. Parece um filme curto.
+Vídeo com estética cinematográfica: planos bem compostos, trilha sonora, narração ou diálogo roteirizado, cortes precisos. O conteúdo parece um mini-filme.
 
 ## Assinatura visual
-- Planos variados e bem montados (aberto, detalhe, o outro lado da cena), às vezes com as faixas pretas de cinema.
-- A trilha sonora conduz a emoção. Pouca ou nenhuma fala direta para a câmera.
-- O corte segue o ritmo da trilha ou da ação.
-- Cor tratada, luz pensada, câmera parada ou em movimento controlado.
-
-## Não confundir com
-- **Storytelling Visual:** conta a história com textos e gráficos na tela. Cine conta com planos e atuação.
-- **Dinamismo:** também corta muito, para dar energia. Cine corta para construir cena e emoção.
-- **Vlog bem filmado:** registra o que aconteceu. Cine encena um momento escrito antes.
-
-## Regras de escrita
-1. Abra dentro da cena, sem preparação.
-2. Cada linha do roteiro corresponde a uma cena ou a um plano.
-3. Mostre o conflito na cena. A explicação fica de fora.
-4. Use diálogo ou pensamento em voz off para mostrar o que o personagem sente.
-5. A virada é um momento que se vê, com mais que uma frase.
-6. A moral nunca é dita em voz alta. Ela aparece na última cena.
-7. O ritmo do texto acompanha o ritmo do corte: frase curta pede corte rápido.
-8. O CTA, se houver, entra no fim da cena, sem forçar.
-
-## Tipo de hook que este formato pede
-Cena imersiva: põe quem assiste dentro de um momento antes de qualquer explicação.
-
-## Elementos viciantes dominantes
-Relevância emocional, conflito e mudança, tema e moral. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+- Planos compostos e variados (geral, detalhe, contraplano), às vezes em proporção de cinema
+- Trilha sonora conduzindo a emoção; pouca ou nenhuma fala direta para a câmera
+- Cortes marcados pelo ritmo da trilha ou da ação, não por frase dita
+- Cor tratada, luz pensada, câmera estável ou em movimento controlado
 
 ## Estrutura que combina melhor
-[IHC](../estruturas.md), abrindo em cena imersiva.
+IHC com abertura de cena imersiva
+
+## Tipo de hook que este formato pede
+Cena imersiva que coloca o espectador dentro de um momento específico antes de qualquer contexto.
+
+## Elementos viciantes dominantes
+Relevância Emocional, Conflito e Mudança, Tema e Moral
+
+## Regras de escrita
+1. Abra in media res: dentro da cena, não antes dela
+2. Cada linha do roteiro deve corresponder a uma cena ou plano específico
+3. O conflito deve ser mostrado, não explicado
+4. Use diálogo ou narração interna para revelar o estado emocional do personagem
+5. A virada deve ser um momento visual claro, não só uma frase
+6. A moral nunca é dita explicitamente: emerge da última cena
+7. O ritmo do texto deve refletir o ritmo do corte (frases curtas = cortes rápidos)
+8. O CTA, se houver, deve ser integrado naturalmente ao final da cena
+
+## Não confundir
+- Storytelling Visual: conta a história com textos e gráficos na tela; Cine conta com planos e atuação.
+- Dinamismo: também corta muito, mas por energia; Cine corta para construir cena e emoção.
+- Vlog bem filmado: registra o que aconteceu; Cine encena um momento roteirizado.
+
+## Exemplo analisado
+Ainda não há roteiro deste formato anotado em `exemplos-analisados/`.

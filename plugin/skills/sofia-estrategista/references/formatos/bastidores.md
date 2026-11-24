@@ -1,34 +1,41 @@
 # Formato: Bastidores
 
+> Cópia da peça `formatos/bastidores` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/bastidores`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
+> Eixo **formato de gravação** (COMO se grava). Não confundir com a **estrutura** (a sequência do argumento: `estruturas-de-roteiro/`) nem com o **arquétipo** (o ângulo: `knowledge/arquetipos-nichos-bolhas`). Um roteiro tem os três.
+
 ## O que é
-Vídeo que mostra o processo real por trás de um resultado, uma criação ou uma rotina. Dá a sensação de ver algo que pouca gente vê.
+Vídeo que mostra o processo real por trás de um resultado, criação ou rotina. Cria senso de acesso exclusivo e autenticidade.
 
 ## Assinatura visual
-- O trabalho acontecendo: mãos, ferramentas, tela, bancada ou set em uso.
-- O resultado final aparece no começo ou no fim. O meio é o processo.
-- Ambiente real de trabalho, com bagunça e ferramentas à vista.
-- Fala direta ou narração explicando o que está sendo feito enquanto é feito.
-
-## Não confundir com
-- **Vlog:** registra um dia ou uma experiência. Bastidores registra o processo de um resultado.
-- **Lo-Fi:** fala da produção crua. Bastidores pode ser bem produzido. O que define é mostrar o processo.
-- **Tela Verde:** se o processo aparece só como print atrás do criador, o formato é Tela Verde.
-
-## Regras de escrita
-1. Abra com o resultado. O processo vem depois.
-2. Conte o processo como uma sequência de descobertas.
-3. Mostre os erros e os obstáculos reais. Bastidor sem atrito parece encenado.
-4. Fale como quem mostra o trabalho para um amigo.
-5. A virada é o momento em que algo deu errado (ou certo demais) sem ninguém esperar.
-6. O aha é a revelação do que importou de verdade no processo.
-7. A moral é uma lição que saiu do processo, com o momento em que ela apareceu.
-8. O CTA convida a tentar o mesmo processo ou a seguir para ver mais bastidores.
-
-## Tipo de hook que este formato pede
-Declaração de consequência: o resultado surpreendente dito antes do processo ("Fiz {resultado} em {tempo}. Agora vou mostrar a parte que ninguém mostra.").
-
-## Elementos viciantes dominantes
-Curiosidade e aha, relevância emocional, conflito e mudança. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+- Mostra o trabalho acontecendo: mãos, ferramentas, tela, bancada ou set em uso
+- O resultado final aparece no começo ou no fim, e o meio é o processo
+- Ambiente real de trabalho, com bagunça e ferramentas à vista
+- Fala direta ou narração explicando o que está sendo feito enquanto é feito
 
 ## Estrutura que combina melhor
-[IHC](../estruturas.md), abrindo pelo resultado antes do processo.
+IHC com abertura de resultado antes do processo
+
+## Tipo de hook que este formato pede
+Declaração do resultado surpreendente antes de revelar o processo ("fiz X em Y tempo: aqui está o que ninguém mostra").
+
+## Elementos viciantes dominantes
+Curiosidade e Efeito AHA, Relevância Emocional, Conflito e Mudança
+
+## Regras de escrita
+1. Abra com o resultado, nunca com o processo
+2. Use o roteiro para construir a narrativa do processo como uma sequência de descobertas
+3. Inclua os erros e obstáculos reais: bastidores sem fricção não são autênticos
+4. Use linguagem coloquial e íntima, como se estivesse mostrando para um amigo
+5. A virada narrativa é o momento em que algo deu errado (ou muito certo) inesperadamente
+6. O Efeito Ahá é a revelação do que realmente importou no processo
+7. A moral deve ser uma lição aprendida no processo, não uma teoria prévia
+8. O CTA deve convidar o espectador a tentar o mesmo processo ou a seguir para ver mais bastidores
+
+## Não confundir
+- Vlog: registra um dia ou uma experiência; Bastidores registra o processo de UM resultado específico.
+- Lo-Fi: é sobre a produção crua; Bastidores pode ser bem produzido, o que define é mostrar o processo.
+- Tela Verde: se o processo aparece só como print atrás do criador, é Tela Verde, não Bastidores.
+
+## Exemplo analisado
+Ainda não há roteiro deste formato anotado em `exemplos-analisados/`.

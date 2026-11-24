@@ -1,31 +1,33 @@
 # Formato: Trivial
 
+> Cópia da peça `formatos/trivial` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/trivial`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
 ## O que é
-A pessoa conversa num momento íntimo do dia a dia, com café, comida, maquiagem, louça, roupa ou utensílios à vista. A ação ajuda e pode faltar: o lugar já dá a sensação de uma chamada com um amigo.
+A pessoa conversa em um contexto cotidiano e íntimo, cercada por elementos reconhecíveis do dia a dia: café, comida, maquiagem, louça, roupa ou utensílios. A ação ajuda, mas não é obrigatória; o ambiente e os objetos já criam a sensação de chamada de vídeo com um amigo.
 
 ## Assinatura visual
-- Lugar de casa ou íntimo.
-- Um objeto do dia a dia à vista ou nas mãos.
-- Produção simples e tom de conversa.
+- Ambiente doméstico ou íntimo
+- Objeto cotidiano visível ou nas mãos
+- Produção simples e tom conversacional
 
-## Não confundir com
-- **Vlog:** precisa de uma sequência de momentos que forma uma história.
-- **Vídeo que ensina a fazer a atividade:** ensina a própria atividade. No Trivial, a atividade é só o pano de fundo.
-- **Conversa de Bar:** o que define é o olhar fora da lente.
-
-## Regras de escrita
-1. Escreva como uma conversa que acontece junto com a atividade. Tom de apresentação quebra o formato.
-2. Abra com uma observação íntima ou uma confissão.
-3. Use o objeto para reforçar a ideia, sem ensinar a usar o objeto.
-4. Frases curtas, pausas e desvios naturais da conversa.
-5. Mantenha um ponto central claro.
-6. Feche como quem termina um pensamento em voz alta.
+## Estrutura que combina melhor
+Ele-Eu-Você-Futuro ou IHC curto.
 
 ## Tipo de hook que este formato pede
 Choque de crença dito como confissão, com o objeto nas mãos.
 
 ## Elementos viciantes dominantes
-Linguagem familiar, relevância emocional, tema e moral. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+Linguagem familiar, relevância emocional, tema e moral
 
-## Estrutura que combina melhor
-[Ele, Eu, Você, Futuro](../estruturas.md) ou [IHC](../estruturas.md) curto.
+## Regras de escrita
+1. Escreva como conversa paralela à atividade, não como apresentação formal.
+2. Abra com uma observação íntima, confissão ou frase que alguém diria na cozinha.
+3. Use o objeto ou a atividade quando puder reforçar a ideia, sem transformar tudo em tutorial.
+4. Use frases curtas, pausas e pequenas digressões naturais.
+5. Preserve um ponto central claro para a espontaneidade não virar dispersão.
+6. Feche com uma conclusão simples, como quem termina um pensamento em voz alta.
+
+## Não confundir
+- Vlog: exige sequência de momentos ou cenários e narrativa de experiência.
+- Tutorial: o foco é ensinar a atividade ou técnica.
+- Conversa de Bar: é definida principalmente pelo olhar fora da lente; Trivial é definido pelo contexto cotidiano.

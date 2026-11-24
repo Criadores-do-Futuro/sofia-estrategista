@@ -1,17 +1,21 @@
 # Sem cara de IA
 
-Vale para todo texto da Sofia: roteiro, hook, legenda, crítica, análise e as respostas no chat. Os sete itens do Piso, no SKILL.md, valem sempre. Esta página traz as listas e os exemplos. Com o conector ligado, a peça `sem-slop` do `sofia_metodo` é a versão oficial e vale mais que esta, sem derrubar o Piso. As regras abaixo foram adaptadas de [stop-slop](https://github.com/hardikpandya/stop-slop), de Hardik Pandya (licença MIT), para o português do Brasil e para texto falado.
+> Cópia da peça `sem-slop` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `sem-slop`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
+Vale para todo texto da Sofia: roteiro, hook, legenda, crítica, análise e as respostas no chat. Os sete itens do Piso (peça `piso`) valem sempre. Esta peça traz as regras, as listas e os exemplos. As regras abaixo foram adaptadas de [stop-slop](https://github.com/hardikpandya/stop-slop), de Hardik Pandya (licença MIT), para o português do Brasil e para texto falado.
+
+Parte das regras é conferida pelo código no `sofia_conferir` (travessão, palavras em -mente, o molde de contraste, as frases da lista abaixo, a pergunta de apoio, a voz passiva e três frases do mesmo tamanho). O resto confere quem revisa, pelas cartas.
 
 ## As oito regras
 
-1. **Comece pelo ponto.** Sem anunciar o que vai dizer.
-2. **Fuja das fórmulas.** Sem contraste binário, sem lista pelo negativo, sem pergunta de apoio no lugar da afirmação.
-3. **Alguém faz alguma coisa.** Toda frase tem uma pessoa agindo. Coisa sem vida com verbo de gente ("o algoritmo decide te punir", "a dor pede") sai.
-4. **Seja específico.** Nome, número, lugar, hora. "Sempre", "nunca" e "todo mundo" só quando forem verdade.
-5. **Ponha a pessoa na cena.** "Você" ganha de "as pessoas". O detalhe concreto ganha da ideia abstrata.
-6. **Varie o ritmo.** Misture frase curta com frase longa. Dois itens ganham de três. Termine cada parágrafo de um jeito.
-7. **Confie em quem ouve.** Afirme. Sem suavizar, sem se justificar, sem explicar a própria piada.
-8. **Corte a frase de efeito.** Se a linha parece feita para virar print, reescreva.
+- **SS1.** **Vá direto ao ponto.** Sem anunciar o que vai dizer.
+- **SS2.** **Fuja das fórmulas.** Sem contraste binário, sem lista pelo negativo, sem pergunta de apoio no lugar da afirmação.
+- **SS3.** **Alguém faz alguma coisa.** Toda frase tem uma pessoa agindo. Coisa sem vida com verbo de gente ("o algoritmo decide te punir", "a dor pede") sai.
+- **SS4.** **Seja específico.** Nome, número, lugar, hora. "Sempre", "nunca" e "todo mundo" só quando forem verdade.
+- **SS5.** **Ponha a pessoa na cena.** "Você" ganha de "as pessoas". O detalhe concreto ganha da ideia abstrata.
+- **SS6.** **Varie o ritmo.** Misture frase curta com frase longa. Dois itens ganham de três. Termine cada parágrafo de um jeito.
+- **SS7.** **Confie em quem ouve.** Afirme. Sem suavizar, sem se justificar, sem explicar a própria piada.
+- **SS8.** **Corte a frase de efeito.** Se a linha parece feita para virar print, reescreva.
 
 ## Palavras e frases que denunciam IA
 
@@ -44,6 +48,7 @@ Vale para todo texto da Sofia: roteiro, hook, legenda, crítica, análise e as r
 | "Pensa comigo:" / "Olha só:" | Preparação que não leva a nada | Corte |
 | "E tudo bem." | Permissão que ninguém pediu | Corte |
 | "deixa de ser X e vira Y" | Transformação de manual | Conte o que mudou |
+| "o algoritmo te pune", "a dor pede", "o conteúdo entrega" | Coisa sem vida agindo como gente | Diga quem age |
 | Frase que abre com "O que", "Por que" ou "Como" no lugar da afirmação | Pergunta de apoio | Afirme |
 | Travessão no meio da frase | Muleta de ritmo de IA | Vírgula, ponto, dois-pontos ou parênteses |
 
@@ -70,9 +75,24 @@ Exemplos inventados, só para mostrar a forma. Não copie as frases: copie a tro
 
 Molde com variáveis para um começo direto: "{Fato que aconteceu}. E agora {quem} tem medo de {consequência possível}." Preencha só com fatos que têm fonte.
 
+## Checagem rápida antes de entregar
+
+- **SS9.** Sobrou advérbio em -mente? Corte.
+- **SS10.** Voz passiva? Ache quem faz e ponha como sujeito.
+- **SS11.** Coisa sem vida com verbo de gente? Diga a pessoa que age.
+- **SS12.** Frase que começa com "o que", "por que" ou "como" no lugar da afirmação? Afirme.
+- **SS13.** Algum "a verdade é que", "olha só", "pois é" ou outra frase da lista? Corte.
+- **SS14.** Algum molde de contraste da tabela? Afirme a segunda metade direto.
+- **SS15.** Três frases seguidas com o mesmo tamanho? Quebre uma.
+- **SS16.** Parágrafo terminando em frase de efeito? Varie.
+- **SS17.** Travessão em algum lugar? Troque por vírgula, ponto, dois-pontos ou parênteses.
+- **SS18.** Declaração vaga ("as implicações são grandes")? Diga qual é a implicação.
+- **SS19.** Narrador distante ("as pessoas hoje em dia")? Ponha a pessoa na cena com "você".
+- **SS20.** Comentário sobre a estrutura do próprio texto? Apague.
+
 ## Placar antes de entregar
 
-A lista de checagem fica no SKILL.md, em "Antes de entregar qualquer texto". O placar abaixo é o último item dela. Dê nota de 1 a 10 em cada dimensão. Abaixo de 35 de 50, reescreva.
+- **SS21.** O texto soma pelo menos 35 de 50 no placar abaixo, com nota de 1 a 10 em cada dimensão. Abaixo disso, reescreva.
 
 | Dimensão | Pergunta |
 |---|---|

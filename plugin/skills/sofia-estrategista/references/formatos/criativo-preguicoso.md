@@ -1,31 +1,33 @@
 # Formato: Criativo Preguiçoso
 
+> Cópia da peça `formatos/criativo-preguicoso` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/criativo-preguicoso`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
 ## O que é
-Toda a energia visual fica nos primeiros 3 a 6 segundos: um ângulo estranho, um close, um objeto curioso ou uma situação fora do comum. Depois, o vídeo vira uma gravação simples da pessoa falando.
+Toda a energia visual fica nos primeiros 3–6 segundos: ângulo estranho, close inesperado, objeto intrigante ou situação fora do padrão. Depois, o vídeo assume gravação simples, geralmente com a pessoa falando para a câmera.
 
 ## Assinatura visual
-- Uma quebra visual logo no começo.
-- Contraste entre a abertura caprichada e o resto simples.
-- O que prende é o enquadramento, a ação ou o objeto, junto com a frase.
+- Quebra de padrão visual imediata
+- Contraste claro entre abertura elaborada e restante simples
+- Gancho sustentado por enquadramento, ação ou objeto, não só pela frase
 
-## Não confundir com
-- **Dinamismo:** mantém a energia até o fim.
-- **Lo-Fi:** é simples do começo ao fim.
-- **Texto chamativo na tela** sem diferença na imagem não basta.
-
-## Regras de escrita
-1. A primeira frase depende da imagem.
-2. A imagem deixa uma dúvida que a fala promete resolver.
-3. Passe rápido para o enquadramento simples.
-4. Use o resto do vídeo para pagar a curiosidade.
-5. O estímulo da abertura fica só na abertura.
-6. Quando ajudar, volte ao elemento do começo na hora de pagar a curiosidade.
+## Estrutura que combina melhor
+AIDA ou IHC curto.
 
 ## Tipo de hook que este formato pede
 Contraste inesperado visual nos primeiros 3 a 6 segundos, com uma frase que só faz sentido junto da imagem.
 
 ## Elementos viciantes dominantes
-Curiosidade e aha, contraste. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+Curiosidade e aha, contraste
 
-## Estrutura que combina melhor
-[AIDA](../estruturas.md) ou [IHC](../estruturas.md) curto.
+## Regras de escrita
+1. Faça a primeira frase depender do que aparece na abertura.
+2. Crie uma pergunta visual que a fala prometa resolver.
+3. Transicione rapidamente para o enquadramento simples sem parecer outro vídeo.
+4. Use o restante para pagar a curiosidade criada pelo hook.
+5. Não mantenha o mesmo nível de estímulo o vídeo inteiro; o contraste define o formato.
+6. Retome o elemento inicial no payoff quando isso fortalecer a unidade.
+
+## Não confundir
+- Dinamismo: mantém mudanças de posição e estímulo ao longo de todo o vídeo.
+- Lo-Fi: é simples de forma consistente, sem abertura visual excepcional obrigatória.
+- Texto chamativo sobre imagem comum: o hook precisa ser visual, não apenas tipográfico ou verbal.

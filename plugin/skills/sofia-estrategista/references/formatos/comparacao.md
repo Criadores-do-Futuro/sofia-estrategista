@@ -1,34 +1,41 @@
 # Formato: Comparação
 
+> Cópia da peça `formatos/comparacao` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/comparacao`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
+> Eixo **formato de gravação** (COMO se grava). Não confundir com a **estrutura** (a sequência do argumento: `estruturas-de-roteiro/`) nem com o **arquétipo** (o ângulo: `knowledge/arquetipos-nichos-bolhas`). Um roteiro tem os três.
+
 ## O que é
-O criador compara duas opções, dois jeitos, duas pessoas ou duas situações, com critério, e mostra qual ganha e por quê, com prova.
+Criador compara duas opções, abordagens, pessoas ou situações de forma estruturada, revelando qual é melhor (e por quê) com base em evidências.
 
 ## Assinatura visual
-- Duas opções lado a lado ou uma depois da outra: dois produtos, dois jeitos, antes e depois.
-- Marcas de oposição: tela partida, ✗ e ✓, uma cor para cada lado.
-- Os critérios aparecem um por um, escritos na tela ou falados.
-- Um veredito claro no fim, dito ou mostrado.
-
-## Não confundir com
-- **Tela Dividida:** a tela partida mostra um conteúdo de fora sendo comentado. Na Comparação, os dois lados são as opções comparadas.
-- **Análise:** explica uma pessoa ou marca. A Comparação precisa de dois lados com critério.
-- **Jeito errado e jeito certo:** é uma estrutura. Dá para gravar em Palestrinha sem virar Comparação.
-
-## Regras de escrita
-1. Apresente os dois lados com o mesmo cuidado antes de dar o veredito.
-2. Use critérios claros, que dá para conferir.
-3. Cada critério aumenta o contraste: do mais raso ao mais fundo.
-4. Só diga qual ganha depois de mostrar a comparação inteira.
-5. Dê um exemplo real para cada lado.
-6. A virada é o critério que decide tudo.
-7. A moral é a lição que sai da comparação. A preferência do criador fica em segundo plano.
-8. O CTA convida a pessoa a usar o critério decisivo na vida dela.
-
-## Tipo de hook que este formato pede
-Contraste inesperado: os dois lados opostos já na primeira frase, de um jeito que surpreende.
-
-## Elementos viciantes dominantes
-Contraste, curiosidade e aha, tema e moral. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+- Duas opções lado a lado ou em sequência: dois produtos, dois jeitos, antes e depois
+- Marcas visuais de oposição: tela partida, ✗ e ✓, cores diferentes para cada lado
+- Critérios aparecem um por um, como texto na tela ou falados
+- Um veredito claro no fim, dito ou mostrado
 
 ## Estrutura que combina melhor
-[Análise](../estruturas.md), com o contraste como elemento principal: cada motivo vira um critério, com os dois lados.
+Análise + Contraste
+
+## Tipo de hook que este formato pede
+Contraste inesperado que opõe os dois elementos na primeira frase de forma que surpreende.
+
+## Elementos viciantes dominantes
+Contraste, Curiosidade e Efeito AHA, Tema e Moral
+
+## Regras de escrita
+1. Apresente os dois lados com equidade antes de revelar a conclusão
+2. Use critérios claros e verificáveis para a comparação
+3. Cada critério comparado deve escalar o contraste, do mais superficial ao mais profundo
+4. Nunca revele qual é "o melhor" antes de construir a comparação completa
+5. Use exemplos reais para cada lado: não compare no abstrato
+6. A virada narrativa é o critério decisivo que muda tudo
+7. A moral deve ser a lição que emerge da comparação, não a preferência pessoal do criador
+8. O CTA deve convidar o espectador a aplicar o critério decisivo na própria vida
+
+## Não confundir
+- Tela Dividida: a tela partida mostra conteúdo externo sendo comentado; na Comparação os dois lados são as opções comparadas.
+- Análise: interpreta um sujeito só; Comparação precisa de dois lados com critério.
+- Jeito Errado × Jeito Certo é estrutura de roteiro, não formato: pode ser gravado em Palestrinha e não virar Comparação.
+
+## Exemplo analisado
+Ainda não há roteiro deste formato anotado em `exemplos-analisados/`.

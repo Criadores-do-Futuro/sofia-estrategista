@@ -1,34 +1,41 @@
 # Formato: Palestrinha
 
+> Cópia da peça `formatos/palestrinha` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/palestrinha`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
+> Eixo **formato de gravação** (COMO se grava). Não confundir com a **estrutura** (a sequência do argumento: `estruturas-de-roteiro/`) nem com o **arquétipo** (o ângulo: `knowledge/arquetipos-nichos-bolhas`). Um roteiro tem os três.
+
 ## O que é
-O criador fala direto para a câmera, como numa palestra de bolso. Sem apoio visual: só o criador, a voz e o argumento.
+Criador fala direto para a câmera, como em uma palestra de bolso. Sem elementos visuais externos: apenas o criador, a voz e o argumento.
 
 ## Assinatura visual
-- O criador olha para a lente, em plano parado ou quase parado.
-- Nenhum apoio visual carrega o conteúdo: sem print, sem gráfico, sem imagem de apoio que importe.
-- Cortes só para tirar pausas (corte seco), com o mesmo enquadramento.
-- Legenda na tela pode, desde que só repita a fala.
-
-## Não confundir com
-- **Conversa de Bar:** o olhar vai para fora da lente, como se falasse com alguém ao lado. Na Palestrinha, o olhar vai para a lente.
-- **Tela Verde:** se há print ou gráfico atrás do criador carregando o argumento, o formato é Tela Verde.
-- **Lo-Fi:** fala da produção crua de propósito. Uma Palestrinha pode ser crua ou muito produzida.
-
-## Regras de escrita
-1. O hook desafia uma crença ou um costume de quem assiste.
-2. No máximo 3 argumentos por vídeo. Escolha os mais fortes.
-3. Cada argumento é curto, direto e dá para conferir.
-4. Use exemplo concreto em cada argumento.
-5. Fale como quem conversa com um amigo. Tom de apresentação para plateia afasta.
-6. Leve até a moral como quem descobre junto com a pessoa. Sermão afasta.
-7. O aha é a frase mais forte do vídeo. Guarde para o fim.
-8. O CTA é uma pergunta de verdade para os comentários ou um convite a fazer algo hoje.
-
-## Tipo de hook que este formato pede
-Choque de crença ou provocação direta: uma frase que desafia o que a pessoa acredita.
-
-## Elementos viciantes dominantes
-Relevância emocional, linguagem familiar, tema e moral. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+- Criador falando direto para a câmera, olhando para a lente, em plano fixo ou quase fixo
+- Nenhum apoio visual que carregue o conteúdo: sem print, sem gráfico, sem B-roll relevante
+- Cortes só para tirar pausas (jump cuts), mantendo o mesmo enquadramento
+- Legenda na tela é permitida: ela repete a fala, não acrescenta conteúdo
 
 ## Estrutura que combina melhor
-[IHC](../estruturas.md) ou [Jeito errado e jeito certo](../estruturas.md).
+IHC ou Jeito Errado × Jeito Certo
+
+## Tipo de hook que este formato pede
+Provocação direta ou declaração de consequência que desafia uma crença do espectador.
+
+## Elementos viciantes dominantes
+Relevância Emocional, Linguagem Familiar, Tema e Moral
+
+## Regras de escrita
+1. O hook deve desafiar uma crença ou comportamento que o espectador tem
+2. Não use mais de 3 argumentos por vídeo: escolha os mais fortes
+3. Cada argumento deve ser curto, direto e verificável
+4. Use exemplos concretos: nunca argumente no abstrato
+5. A linguagem deve soar como o criador falando para um amigo, não apresentando para uma plateia
+6. Construa até a moral como se fosse uma descoberta, não uma conclusão pregada
+7. O Efeito Ahá deve ser a frase mais poderosa do vídeo: guarde para o fim
+8. O CTA deve ser uma pergunta reflexiva ou um convite à ação imediata
+
+## Não confundir
+- Conversa de Bar: o olhar vai para fora da lente, como se falasse com alguém ao lado; Palestrinha olha para a lente.
+- Tela Verde: se há print ou gráfico atrás do criador carregando o argumento, é Tela Verde.
+- Lo-Fi: é sobre a produção crua de propósito; uma Palestrinha pode ser crua ou muito produzida.
+
+## Exemplo analisado
+Ainda não há roteiro deste formato anotado em `exemplos-analisados/`.

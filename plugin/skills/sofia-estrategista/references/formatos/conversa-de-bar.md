@@ -1,32 +1,34 @@
 # Formato: Conversa de Bar
 
+> Cópia da peça `formatos/conversa-de-bar` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/conversa-de-bar`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
 ## O que é
-A pessoa fala a maior parte do tempo sem olhar para a lente, como se conversasse com alguém ao lado. O olhar desviado, o corpo solto e a edição simples tiram o tom de apresentador.
+A pessoa fala predominantemente sem olhar para a lente, como se conversasse com alguém ao lado. O olhar desviado, a postura relaxada e a edição simples retiram o “modo apresentador” e criam intimidade espontânea.
 
 ## Assinatura visual
-- Olhar fora da lente na maior parte do vídeo.
-- Corpo e gestos soltos.
-- Poucos cortes de posição ou de lugar.
-- Tom informal, sem leitura de teleprompter.
+- Olhar fora da lente na maior parte do vídeo
+- Postura e gestos relaxados
+- Poucos cortes de posição ou cenário
+- Tom informal, sem performance de teleprompter
 
-## Não confundir com
-- **Teleprompter de lado:** ler de lado não deixa a fala espontânea.
-- **Trivial:** o que define é o lugar do dia a dia.
-- **Dinamismo:** quebra a conversa com muitos cortes.
-
-## Regras de escrita
-1. Escreva para uma pessoa. Tom de plateia quebra o formato.
-2. Abra no meio de um pensamento ou de uma confissão.
-3. Use exemplos da sua vida e confissões. Afirme, como numa conversa.
-4. Fuja de lista numerada e de tom de aula.
-5. Por baixo do jeito solto, mantenha uma linha de raciocínio.
-6. Feche como quem termina uma conversa.
+## Estrutura que combina melhor
+Ele-Eu-Você-Futuro ou IHC confessional.
 
 ## Tipo de hook que este formato pede
 Choque de crença dito como confissão ("Demorei dez anos para admitir que {crença} estava errada.").
 
 ## Elementos viciantes dominantes
-Linguagem familiar, relevância emocional, tema e moral. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+Linguagem familiar, relevância emocional, tema e moral
 
-## Estrutura que combina melhor
-[Ele, Eu, Você, Futuro](../estruturas.md), ou [IHC](../estruturas.md) em tom de confissão.
+## Regras de escrita
+1. Escreva como fala dirigida a uma pessoa específica, não a uma plateia.
+2. Abra no meio de um pensamento, pergunta ou confissão.
+3. Use exemplos pessoais, interrupções e perguntas retóricas com moderação.
+4. Evite enumerações rígidas, títulos falados e tom de aula.
+5. Preserve uma linha de raciocínio clara por baixo da naturalidade.
+6. Feche como conclusão de conversa, não como slogan publicitário.
+
+## Não confundir
+- Teleprompter lateral: olhar desviado mecânico, sem espontaneidade.
+- Trivial: é definido pelo contexto cotidiano, não pela direção do olhar.
+- Dinamismo: cortes e posições frequentes quebram a sensação de conversa contínua.

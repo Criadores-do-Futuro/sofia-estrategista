@@ -1,32 +1,34 @@
 # Formato: Lo-Fi
 
+> Cópia da peça `formatos/lo-fi` do método (gerada do webapp, método 9cfc1c460c97). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/lo-fi`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
 ## O que é
-Vídeo simples de propósito, cru e pouco polido. Câmera de celular, a luz que tiver, poucos cortes e as imperfeições mantidas criam proximidade. A ideia continua clara e com intenção.
+Vídeo deliberadamente simples, cru e pouco polido. A sensação de espontaneidade vem de câmera de celular, luz disponível, poucos cortes e imperfeições mantidas. Lo-Fi não significa descuido: a baixa produção é uma escolha para aumentar proximidade e credibilidade.
 
 ## Assinatura visual
-- Luz e lugar do jeito que estão.
-- Enquadramento simples ou câmera na mão.
-- Poucos cortes e quase nenhum elemento gráfico.
-- Pequenas hesitações da fala ficam no vídeo.
+- Luz e ambiente naturais, sem aparência de set
+- Enquadramento simples, câmera na mão ou apoio improvisado
+- Poucos cortes, correções e elementos gráficos
+- Hesitações ou ruídos leves preservados sem impedir compreensão
 
-## Não confundir com
-- **Trivial:** precisa de um lugar do dia a dia.
-- **Criativo Preguiçoso:** concentra a força num hook visual.
-- **Vídeo mal feito:** simplicidade sem intenção não é Lo-Fi.
-
-## Regras de escrita
-1. Comece como se a ideia tivesse acabado de aparecer.
-2. Use uma opinião forte, que segura o vídeo mesmo com pouca produção.
-3. Escreva para a fala natural, com frases curtas.
-4. Sem introdução formal e sem texto de teleprompter.
-5. Mantenha o jeito humano e corte a repetição vazia.
-6. Não tente compensar a simplicidade com efeitos.
+## Estrutura que combina melhor
+IHC direto, hot-take ou relato curto.
 
 ## Tipo de hook que este formato pede
 Choque de crença ou provocação direta: a opinião forte dita na primeira frase, sem preparação.
 
 ## Elementos viciantes dominantes
-Linguagem familiar, relevância emocional, conflito e mudança. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+Linguagem familiar, relevância emocional, conflito e mudança
 
-## Estrutura que combina melhor
-[IHC](../estruturas.md) curto, com a opinião dita de cara, ou um relato curto contado em ordem.
+## Regras de escrita
+1. Comece rápido, como se a ideia tivesse acabado de surgir.
+2. Use uma tese forte o bastante para sustentar a ausência de produção elaborada.
+3. Escreva para fala natural: frases curtas, contrações e pausas.
+4. Evite introduções formais, listas excessivas e texto com cara de teleprompter.
+5. Mantenha imperfeições que geram humanidade, mas corte repetições que não acrescentam.
+6. Não tente compensar a simplicidade com excesso de efeitos na edição.
+
+## Não confundir
+- Trivial: precisa de contexto/objeto cotidiano reconhecível; Lo-Fi pode ocorrer em qualquer lugar.
+- Criativo Preguiçoso: concentra um hook visual elaborado no começo; Lo-Fi mantém simplicidade coerente.
+- Vídeo mal executado: Lo-Fi preserva clareza de áudio, intenção e ponto de vista.
