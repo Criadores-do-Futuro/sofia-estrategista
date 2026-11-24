@@ -1,6 +1,6 @@
 # Hook
 
-O hook é a primeira frase do vídeo, a que faz a pessoa parar de rolar. Com o conector ligado, o método do hook vem no pacote do `sofia_preparar_escrita` com `tipo: "hook"`, ou em `sofia_metodo` com `hook/<formato>` quando ainda não há card. Siga a ordem e os tipos que o conector mandar: esta página é o apoio para quando ele não está ligado e o porquê das regras.
+O hook é o primeiro segundo do vídeo: a fala, o texto na tela e o que aparece, para a pessoa parar de rolar. A base de todo hook está em [fazer-hook.md](fazer-hook.md): em 2 segundos, quem assiste sabe sobre o que é o vídeo e o que ganha se continuar, com imagem, texto e fala contando a mesma coisa. Esta página traz os tipos de hook. Com o conector ligado, o método do hook vem no pacote do `sofia_preparar_escrita` com `tipo: "hook"`, ou em `sofia_metodo` com `hook/<formato>` quando ainda não há card. Siga a ordem e os tipos que o conector mandar: esta página é o apoio para quando ele não está ligado e o porquê das regras.
 
 ## O que um hook bom tem
 
@@ -40,18 +40,24 @@ Se o conector disser que a opção 1 é sempre um choque de crença, siga. Se o 
 
 Antes de escrever, junte tudo o que você sabe: o método do hook, o formato e a estrutura do card, a bolha (o vocabulário, o que mexe com ela, os comentários bem curtidos) e o que o cérebro diz desta pessoa (os hooks que funcionaram e os ajustes que ela já fez em hooks seus).
 
-Mostre de 3 a 5 hooks de tipos diferentes. O número segue a preferência da pessoa guardada em `como-trabalhar` ou o que o pacote do conector pedir. Sem preferência guardada, mostre 3 e pergunte se ela prefere ver mais (até 5); com o OK dela, guarde a resposta com `cerebro_preferencia`. Cada hook vem assim:
+Mostre de 3 a 5 hooks de tipos diferentes. O número segue a preferência da pessoa guardada em `como-trabalhar` ou o que o pacote do conector pedir. Sem preferência guardada, mostre 3 e pergunte se ela prefere ver mais (até 5); com o OK dela, guarde a resposta com `cerebro_preferencia`. Cada hook segue [fazer-hook.md](fazer-hook.md) e vem assim:
 
 ```
-1. "{o hook}"
-   Tipo: {tipo}. Prende porque {uma linha}. O vídeo paga em {bloco}.
+Hook 1: {a fala, de 1 a 3 frases curtas}
+Texto na tela: {de 3 a 5 palavras, até 2 linhas}
+Abertura: {o que aparece nos primeiros 2 a 3 segundos e o movimento}
+Assunto e ganho: {sobre o que é} / {o que a pessoa ganha}
+Usa: {princípios e elementos viciantes}
+Por que funciona: {tipo}, {uma linha}. O vídeo paga em {bloco}.
 ```
+
+Cada opção passa pelo teste de alinhamento antes de aparecer: sem som, dá para entender o assunto pela imagem e pelo texto; só ouvindo, a fala combina com o que se vê. Na versão do roteiro, o campo `hook` leva só a fala (é o que vai para o teleprompter), e o `comoAbre` leva a abertura e o texto na tela do hook escolhido.
 
 Junto, mostre 2 estilos de gravação que combinam com o formato, cada um em uma linha: o enquadramento, o corte e o texto na tela. Depois pergunte qual hook e qual estilo a pessoa prefere, e diga que dá para misturar dois hooks.
 
 ## A ponte
 
-A ponte é a frase logo depois do hook, que liga a abertura ao resto. Ela é curta: uma frase, no máximo duas. Ponte longa gasta os segundos em que a pessoa decide se fica.
+A ponte é a frase logo depois do hook, que liga a abertura ao resto. Ela é curta: uma frase, no máximo duas. Ponte longa gasta os segundos em que a pessoa decide se fica. O segundo seguinte já entrega valor: a dica, a resposta ou, quando a estrutura guarda a resposta para o fim, um pedaço concreto dela. Ele abre a zona de fixação, os 5 a 10 segundos em que a pessoa confere se a promessa vale e se dá para confiar ([zona-de-fixacao.md](zona-de-fixacao.md)).
 
 ## Quando a pessoa quer conversar sobre o hook
 
@@ -72,7 +78,11 @@ Na observação do método, hook com dado concreto (número, nome, fato) segura 
 
 ## O que não é hook
 
-- Comentário de vídeo nunca vira hook automático. Ele entra no meio, como fala do próprio criador (prova, virada, exemplo, reação). Só abre o vídeo se a pessoa escolher.
+- Comentário de vídeo não vira hook sozinho. Um de conflito ou de provocação, com muitas curtidas, pode ser uma das opções de abertura, com o trecho que pega igual e o assunto na mesma frase ou na seguinte (veja [furar-bolha.md](furar-bolha.md), item 9). A pessoa escolhe. Fora da abertura, ele entra no meio, como fala do próprio criador (prova, virada, exemplo, reação).
+- Saudação, introdução ou frase vazia antes do assunto ("oi, gente", "olha o que aconteceu comigo").
+- Frase longa, na voz passiva ou com palavra difícil.
+- "Eu tenho esse problema" quando o assunto é um problema. Fale com quem assiste: "se você passa por isso".
+- Hook claro e para a pessoa, mas sem curiosidade nenhuma. Ponha ao lado o que a maioria faz e o jeito mais rápido ou inesperado que funciona (os quatro erros estão em [fazer-hook.md](fazer-hook.md), item 4).
 - Pergunta retórica no lugar da afirmação.
 - "Neste vídeo você vai ver", "Você sabia que", "Fica até o final": anunciam em vez de mostrar.
 - Notícia inventada ou exagerada sem fonte.

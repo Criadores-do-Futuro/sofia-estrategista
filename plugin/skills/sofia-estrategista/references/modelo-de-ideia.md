@@ -8,6 +8,7 @@ Toda ideia de vídeo que a Sofia propõe sai neste modelo. Ele obriga a pensar o
 2. Leia a estrutura que o formato indica em [estruturas.md](estruturas.md).
 3. Leia a hierarquia dos elementos em [elementos-viciantes.md](elementos-viciantes.md) e os elementos dominantes do formato.
 4. Olhe o que foi acima do normal do perfil. A ideia que parte de um vencedor é a próxima versão dele: o mesmo mecanismo, com outro assunto.
+5. Leia [furar-bolha.md](furar-bolha.md) e [intencao-de-comando.md](intencao-de-comando.md). Toda ideia tenta furar uma bolha (o tema, primeiro círculo) e planta uma semente da intenção de comando da pessoa (segundo círculo), ligados por um ponto em comum.
 
 ## O modelo
 
@@ -15,8 +16,11 @@ Toda ideia de vídeo que a Sofia propõe sai neste modelo. Ele obriga a pensar o
 ### Ideia {número}: {título curto, do jeito que a pessoa falaria}
 
 Tema: {o assunto que faz parar}
-Moral: {a ideia que fica, em uma frase}
-Para quem: {a bolha e o que ela já sabe}
+Bolha: {o grupo super interessado no tema} ({tipo de bolha})
+Semente ({pilar}): {a ideia que fica, em uma frase; é a moral do vídeo}
+Ponto em comum: {o que liga o tema à semente, sem junção forçada}
+Chamada: {escondida, dentro da história de ..., ou direta}
+Para quem: {quem a pessoa quer como cliente}
 De onde veio: {o vídeo acima do normal que inspira, ou "assunto novo"}
 
 Formato: {nome do formato}, porque {motivo em uma frase}
@@ -31,12 +35,13 @@ Elementos viciantes:
 - {elemento}: aparece em {bloco ou segundo}, quando {o que acontece ali}
 - {elemento}: aparece em {bloco ou segundo}, quando {o que acontece ali}
 
-Hook possível: {uma frase, do tipo que o formato pede}
+Hook possível: {a fala, do tipo que o formato pede} / Texto na tela: {de 3 a 5 palavras}
 Precisa ser real: {o caso, o número ou a fonte que a pessoa precisa ter}
 ```
 
 ## Regras
 
+- **Bolha e semente sempre.** A bolha tem nome de assunto ou de comunidade; nome de estado ou de dificuldade vai no "Para quem". A semente é uma só, de um pilar (Autenticidade, Movimento ou Produto), e sai das notas da pessoa ou do que ela contou. Sem nota nem conversa sobre isso, pergunte antes de inventar. Com o card, a linha "Semente ({pilar}): {a frase}" vai na Ideia do card.
 - **Os três eixos sempre.** Formato, estrutura e elementos viciantes, com o lugar onde cada elemento aparece. Nome de elemento sem lugar não conta.
 - **Formato e estrutura são coisas diferentes.** O formato diz como gravar. A estrutura diz a ordem da história. Um formato pode usar mais de uma estrutura.
 - **Os elementos seguem a hierarquia.** Tema e moral primeiro. Uma ideia sem tema forte não se salva com contraste.
@@ -53,7 +58,10 @@ Exemplo inventado, só para mostrar a forma.
 ### Ideia 1: A padaria que dobrou o preço do pão e encheu
 
 Tema: preço que sobe e cliente que fica
-Moral: quem vende barato demais trabalha de graça
+Bolha: donos de padaria e confeitaria (de nicho e profissão)
+Semente (Movimento): quem vende barato demais trabalha de graça
+Ponto em comum: o preço do pão, que todo dono de padaria já teve medo de subir
+Chamada: escondida, no bloco 2, na história de quando o criador cobrava pouco
 Para quem: dono de pequeno negócio que tem medo de subir preço
 De onde veio: o vídeo sobre o salão que cobrava pouco foi 3 vezes o normal do perfil
 
@@ -72,6 +80,6 @@ Elementos viciantes:
 - Curiosidade e aha: abre no hook e paga no fim do bloco 1, com o motivo da fila
 - Linguagem familiar: no bloco 3, com a conta do pão e do café
 
-Hook possível: "O dono dessa padaria dobrou o preço do pão e a fila aumentou."
+Hook possível: "O dono dessa padaria dobrou o preço do pão e a fila aumentou." / Texto na tela: "Dobrou o preço, encheu"
 Precisa ser real: o caso da padaria, com nome, cidade e o preço de antes e de depois
 ```

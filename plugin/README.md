@@ -5,7 +5,7 @@ A estrategista de vídeo curto do curso Criador Estrategista, dos Criadores do F
 ## O que vem no plugin
 
 - **Skill `sofia-estrategista`:** o método inteiro (princípios da viralização, elementos viciantes, formatos, estruturas, hooks, pesquisa e checagem de fatos) e o caminho de cada tarefa.
-- **Atalhos:** `roteiro`, `ideias`, `pesquisa`, `analisar`, `critica` e `conectar`.
+- **Atalhos:** `roteiro`, `ideias`, `pesquisa`, `analisar`, `critica`, `conectar` e `atualizar`. O `/atualizar` mostra o caminho de atualizar a Sofia em cada app e, no Claude Code, só roda os comandos depois do OK da pessoa.
 - **Ajudantes** (no Claude Code e no Cowork): `pesquisador`, que pesquisa em fonte primária, e `critico`, que faz a primeira leitura crítica de um roteiro. Os dois só leem e devolvem o resultado.
 - **Conector Sofia Estrategista:** liga o Claude ao planejamento do aluno no site do curso.
 

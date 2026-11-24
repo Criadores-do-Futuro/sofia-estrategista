@@ -26,7 +26,20 @@ Um grifo por problema. Não grife o mesmo trecho duas vezes. Grifo que contraria
 4. Pergunta retórica (fica a pergunta do CTA e a que veio de um comentário do público).
 5. Clichê e frase com cara de IA: limpeza de garganta, voz passiva, coisa sem vida com verbo de gente, frase vaga, narrador distante, comentário sobre o próprio texto.
 6. Dado sem fonte.
-7. Comentário do público usado do jeito errado: com metalinguagem ("tem gente que", "muita gente", "as pessoas", "nos comentários", "comentaram", "seguidor", "bolha"), entre aspas como citação, com as palavras trocadas sem motivo ou como hook automático. A sugestão é a fala direta do criador. Exemplo: "tem gente que já reportou por menos" vira "Já reportei por menos."
+7. Comentário do público usado do jeito errado: com metalinguagem ("tem gente que", "muita gente", "as pessoas", "nos comentários", "comentaram", "seguidor", "bolha"), entre aspas como citação, com as palavras trocadas sem motivo ou na abertura sem a pessoa ter escolhido. A sugestão é a fala direta do criador. Exemplo: "tem gente que já reportou por menos" vira "Já reportei por menos."
+
+## O hook e a zona de fixação
+
+- Em 2 segundos dá para saber sobre o que é o vídeo e o que a pessoa ganha se continuar.
+- Os quatro erros do hook: demorar a dizer o assunto (saudação, introdução, rodeio), confundir (frase longa, voz passiva, dois sentidos), parecer que não é para quem assiste ("eu tenho esse problema" no lugar de "se você passa por isso") e não dar vontade de saber mais (sem contraste nem curiosidade).
+- A imagem dos primeiros 2 a 3 segundos, o texto na tela e a fala tratam da mesma coisa.
+- As 2 a 4 frases depois do hook (a zona de fixação) ficam no assunto prometido, entregam um pedaço dele e mostram uma prova real, com fonte, ou um exemplo concreto que a pessoa viveu. Prova sem fonte vira grifo do tipo dúvida.
+
+## O escorregador e a semente
+
+- A abertura chama a bolha, nas palavras dela, com identificação ou conflito.
+- A transição chega ao ponto em comum sem que quem assiste perceba o corte de tema.
+- O fechamento planta uma ideia só, a da intenção de comando do card, dentro da história, sem pausa para propaganda, com a chamada do tipo combinado (escondida numa história real ou direta).
 
 ## Também confira
 
