@@ -1,6 +1,7 @@
 .DS_Store
 dist/
 node_modules/
+__pycache__/
 
 # Configuração de assistente da máquina de quem programa
 .claude/
