@@ -6,6 +6,8 @@ grava e MESCLA num config apontado por `BEDITOR_CONFIG` (rodar de novo com uma
 pasta só não apaga as outras); `--manual` troca o marcador pelo JSON e o marcador
 não sobra; e o template, com `{}` no lugar do JSON, ainda é um HTML íntegro.
 """
+import contextlib
+import io
 import json
 import os
 import re
@@ -119,32 +121,54 @@ class TestVerificar(_Ambiente):
         self.assertTrue(any("pull --ff-only" in c for c in cmds))
         self.assertTrue(any("plugin update context-mode" in c for c in cmds))
 
+    def test_clone_do_repositorio_com_o_plugin_em_subpasta_atualiza_pelo_git(self):
+        # No repositório da Sofia o plugin mora em plugin/; o .git fica na pasta de cima.
+        (self.raiz / ".git").mkdir()
+        (self.raiz / "plugin").mkdir()
+        cmds = setup.atualizar(executar=False, raiz=self.raiz / "plugin", home=self.raiz)
+        self.assertEqual(cmds[0], f"git -C '{self.raiz}' pull --ff-only")
+
     def test_instalado_pelo_marketplace_atualiza_pelo_claude_e_nao_pelo_git(self):
         cmds = setup.atualizar(executar=False, raiz=self.raiz, home=self.raiz)   # sem .git
         # O catálogo antes do plugin: sem ele, o update não vê a versão nova.
-        self.assertEqual(cmds[:2], ["claude plugin marketplace update sofia-plugins",
-                                    "claude plugin update sofia-estrategista-editora@sofia-plugins"])
+        self.assertEqual(cmds[:2], ["claude plugin marketplace update criadores-do-futuro",
+                                    "claude plugin update sofia-estrategista@criadores-do-futuro"])
         self.assertFalse(any("git" in c for c in cmds))
 
-    def _instalado_por(self, marketplace):
+    def _instalado_por(self, marketplace, nome="sofia-estrategista"):
         p = self.raiz / ".claude" / "plugins"
         p.mkdir(parents=True)
         (p / "installed_plugins.json").write_text(json.dumps(
-            {"plugins": {f"sofia-estrategista-editora@{marketplace}": [{"version": "0.3.0"}]}}))
+            {"plugins": {f"{nome}@{marketplace}": [{"version": "0.3.0"}]}}))
 
-    def test_marketplace_sofia_editora_atualiza_por_ele_mesmo(self):
-        # O repositório da Editora ainda publica o `sofia-editora`: reinstalar seria à toa.
-        self._instalado_por("sofia-editora")
-        cmds = setup.atualizar(executar=False, raiz=self.raiz, home=self.raiz)
-        self.assertEqual(cmds[:2], ["claude plugin marketplace update sofia-editora",
-                                    "claude plugin update sofia-estrategista-editora@sofia-editora"])
+    def _atualizar_e_ler_o_aviso(self):
+        saida = io.StringIO()
+        with contextlib.redirect_stdout(saida):
+            cmds = setup.atualizar(executar=False, raiz=self.raiz, home=self.raiz)
+        return cmds, saida.getvalue()
 
-    def test_marketplace_desconhecido_avisa_e_nao_tenta_atualizar_a_sofia(self):
-        self._instalado_por("sofia-antiga")
-        cmds = setup.atualizar(executar=False, raiz=self.raiz, home=self.raiz)
+    def test_marketplace_criadores_do_futuro_atualiza_por_ele_mesmo(self):
+        self._instalado_por("criadores-do-futuro")
+        cmds, aviso = self._atualizar_e_ler_o_aviso()
+        self.assertEqual(cmds[:2], ["claude plugin marketplace update criadores-do-futuro",
+                                    "claude plugin update sofia-estrategista@criadores-do-futuro"])
+        self.assertNotIn("aviso:", aviso)
+
+    def test_outro_marketplace_avisa_com_o_prompt_de_migracao_e_nao_tenta_atualizar_a_sofia(self):
+        self._instalado_por("sofia-plugins")
+        cmds, aviso = self._atualizar_e_ler_o_aviso()
+        self.assertFalse(any("sofia-estrategista" in c for c in cmds))
+        self.assertIn("plugin update context-mode", cmds[-1])
+        self.assertIn("prompt de migração", aviso)
+        self.assertEqual(setup._plugin_claude("sofia-estrategista", self.raiz), "0.3.0")
+
+    def test_sofia_de_nome_antigo_avisa_com_o_prompt_de_migracao(self):
+        self._instalado_por("sofia-editora", nome="sofia-estrategista-editora")
+        cmds, aviso = self._atualizar_e_ler_o_aviso()
+        self.assertIn("sofia-estrategista-editora", aviso)
+        self.assertIn("prompt de migração", aviso)
         self.assertFalse(any("sofia-estrategista-editora" in c for c in cmds))
         self.assertIn("plugin update context-mode", cmds[-1])
-        self.assertEqual(setup._plugin_claude("sofia-estrategista-editora", self.raiz), "0.3.0")
 
     def test_chave_vazia_ou_placeholder_conta_como_ausente(self):
         env = self.raiz / "env"

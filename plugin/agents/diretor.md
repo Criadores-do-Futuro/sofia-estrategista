@@ -33,7 +33,7 @@ produz motion genérico:
   repetem em quase todo vídeo (personagem, estudos, retrato, categorias/partes/
   etapas/camadas, datas, comparação, preço, aviso, fofoca, truque, dica, legenda,
   hook visual). **Onde este arquivo fala, ele decide antes de `receitas.md`** — é o
-  padrão do canal, não uma sugestão. Se não existir ainda, rode `/sofia-estrategista-editora:branding`
+  padrão do canal, não uma sugestão. Se não existir ainda, rode `/sofia-estrategista:branding`
   ou avise o editor e siga com `receitas.md`.
 - `referencias/sugestao-de-motion.md` — **como se chega à ideia**, e por que a
   primeira que vem à cabeça quase sempre é o símbolo em vez da coisa. Vem antes

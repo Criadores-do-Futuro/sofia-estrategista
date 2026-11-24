@@ -3,7 +3,7 @@ description: Aprende um estilo novo de motion graphics a partir de uma pasta de 
 allowed-tools: Read, Write, Edit, Bash, Glob, Agent
 ---
 
-Uso: `/sofia-estrategista-editora:aprender-motion <pasta> <nome-do-estilo>`.
+Uso: `/sofia-estrategista:aprender-motion <pasta> <nome-do-estilo>`.
 
 Aprenda o estilo visual de `$1` e registre-o como `$2`.
 

@@ -17,7 +17,7 @@ ou `~/.beditor/marcas` se não houver. Uma subpasta por marca:
     <marcas>/<nome>/
       marca.json   nome, arroba, site, cores, fontes, estilos padrão (hook, legenda, motion…)
       manual.md    a identidade verbal e visual, para gente e para o diretor lerem
-      motion.md    as escolhas de motion do canal (o que `/sofia-estrategista-editora:branding` escreve)
+      motion.md    as escolhas de motion do canal (o que `/sofia-estrategista:branding` escreve)
       logos/  fontes/
 
 Qual marca vale, nesta ordem: `BEDITOR_MARCA`; a `marca` do projeto

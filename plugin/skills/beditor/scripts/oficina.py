@@ -76,7 +76,7 @@ def pasta(nome, obrigatoria=True, cfg=None):
     if not bruto:
         if not obrigatoria:
             return None
-        raise SystemExit(f"!! pasta «{nome}» não configurada. Rode `/sofia-estrategista-editora:setup` "
+        raise SystemExit(f"!! pasta «{nome}» não configurada. Rode `/sofia-estrategista:setup` "
                          f"(ou `python3 setup.py --pastas {nome}=/caminho`); arquivo: {cfg['_arquivo']}")
     p = Path(os.path.expanduser(bruto))
     if not p.exists():

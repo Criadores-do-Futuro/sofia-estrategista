@@ -15,7 +15,7 @@ misturadas na mesma pasta `edicao/`.
         master/                        qualidade maxima, ainda nao aprovado
 
 A raiz sai da pasta `entregas` do config da maquina
-(`~/.config/beditor/config.json`, escrito por `/sofia-estrategista-editora:setup`) ou da variavel
+(`~/.config/beditor/config.json`, escrito por `/sofia-estrategista:setup`) ou da variavel
 `BEDITOR_ENTREGAS`. Nao ha caminho padrao: sem uma das duas, o script para e
 manda configurar. **Se o volume nao estiver montado, este script para e diz.**
 Escrever num caminho de volume ausente cria uma pasta no disco interno com cara
@@ -35,7 +35,7 @@ import oficina  # noqa: E402
 # NÃO existe padrão: o disco de quem escreveu o script não é o disco de quem
 # instalou, e apontar para um caminho de outra máquina só produz erro confuso
 # (ou, pior, uma pasta nova com cara de SSD). Sem `entregas` no config e sem
-# BEDITOR_ENTREGAS, o script manda rodar `/sofia-estrategista-editora:setup` e para.
+# BEDITOR_ENTREGAS, o script manda rodar `/sofia-estrategista:setup` e para.
 ETAPAS = ("corte", "motion", "preview", "master")
 
 
@@ -56,7 +56,7 @@ def raiz():
     configurada = cfg["pastas"].get("entregas") or os.environ.get("BEDITOR_ENTREGAS")
     if not configurada:
         sys.exit("a pasta `entregas` não está configurada — nada foi copiado.\n"
-                 f"Rode `/sofia-estrategista-editora:setup`, ou grave direto:\n"
+                 f"Rode `/sofia-estrategista:setup`, ou grave direto:\n"
                  f"  python3 {Path(__file__).with_name('setup.py')} --pastas entregas=<caminho> --criar\n"
                  "(ou aponte BEDITOR_ENTREGAS para a pasta desta máquina)")
     r = Path(os.path.expanduser(configurada))
@@ -65,7 +65,7 @@ def raiz():
     if volume is not None and not volume.is_dir():
         sys.exit(f"o volume `{volume}` nao esta montado — nada foi copiado.\n"
                  f"Conecte o disco, ou ajuste a pasta `entregas` em {cfg['_arquivo']} "
-                 f"(`/sofia-estrategista-editora:setup`), ou aponte BEDITOR_ENTREGAS para outro lugar.")
+                 f"(`/sofia-estrategista:setup`), ou aponte BEDITOR_ENTREGAS para outro lugar.")
     return r
 
 

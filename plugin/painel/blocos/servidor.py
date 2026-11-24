@@ -133,7 +133,7 @@ def grafo():
         campos, corpo, inicio = frontmatter(texto) if p.suffix == ".md" else ({}, texto, 0)
         nome = campos.get("name") or (p.parent.name if p.name == "SKILL.md" else p.stem)
         if tipo == "comando":
-            nome = "/sofia-estrategista-editora:" + p.stem
+            nome = "/sofia-estrategista:" + p.stem
         if p.suffix == ".md":
             titulo = re.search(r"^#\s+(.+)$", corpo, re.M)
             desc = campos.get("description") or (titulo.group(1) if titulo else corpo.strip().split("\n")[0])
@@ -192,7 +192,7 @@ def grafo():
             if re.search(rf"(?:agente\s+`?|`){re.escape(nome)}`", texto):
                 liga(alvo, "despacha")
         for nome, alvo in comandos.items():
-            if f"/sofia-estrategista-editora:{nome}" in texto:
+            if f"/sofia-estrategista:{nome}" in texto:
                 liga(alvo, "chama")
         for nome, alvo in skills.items():
             if nome != Path(c).parent.name and re.search(rf"\b{re.escape(nome)}\b", texto) and no["tipo"] in ("comando", "agente", "skill"):

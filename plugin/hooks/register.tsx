@@ -10,14 +10,14 @@ import type { Etapa, Janela, Quadro } from '../types'
 const PAINEL = 'sofia-painel'
 const TITULO = 'Sofia Estrategista'
 // Troque a marca quando o formato guardado mudar: um reload mantém o que a versão anterior guardou.
-const quadro = atom({ plugin: 'sofia-estrategista-editora', key: 'quadro' } as const, null, { shape: 'quadro-1' })
-const janelas = atom({ plugin: 'sofia-estrategista-editora', key: 'janelas' } as const, [], { shape: 'janelas-1' })
+const quadro = atom({ plugin: 'sofia-estrategista', key: 'quadro' } as const, null, { shape: 'quadro-1' })
+const janelas = atom({ plugin: 'sofia-estrategista', key: 'janelas' } as const, [], { shape: 'janelas-1' })
 
 // O conector: a chave dele no .mcp.json deste plugin (a primeira), e os nomes com que o /mcp lista o
 // mesmo conector quando a pessoa o ligou pelo site do Claude em vez do plugin.
 const CONECTORES = ['sofia-estrategista', 'claude.ai Sofia Estrategista', 'Sofia Estrategista']
 // O nome com que o /mcp lista o conector deste plugin: é o que a pessoa procura na lista para entrar.
-const NOME_NO_MCP = 'plugin:sofia-estrategista-editora:sofia-estrategista'
+const NOME_NO_MCP = 'plugin:sofia-estrategista:sofia-estrategista'
 const ETAPAS = ['Brainstorming', 'Estruturar', 'Revisar', 'Lapidar', 'Gravar']
 const CORES_DAS_ETAPAS = ['magenta', 'blue', 'cyan', 'yellow', 'green']
 const NOME_DA_JANELA: Record<string, string> = { five_hour: 'Sessão de 5 horas', seven_day: 'Semana (7 dias)' }

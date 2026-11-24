@@ -383,7 +383,7 @@ def main():
         cor.gravar_preferencia(pendente["cor"], nota="fechada na mesa de decupagem")
     for m in mudou:
         print(" ", m)
-    print(f"{len(mudou)} mudanca(s) aplicada(s) · rode /sofia-estrategista-editora:cortar de novo")
+    print(f"{len(mudou)} mudanca(s) aplicada(s) · rode /sofia-estrategista:cortar de novo")
 
 
 if __name__ == "__main__":

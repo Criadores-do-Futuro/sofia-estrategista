@@ -8,7 +8,7 @@ qual demora mais, com o motivo de cada uma.
 Nada disso e estimado: os transcripts do Claude Code (`~/.claude/projects/**.jsonl`)
 guardam, por mensagem, o `usage` do modelo e o timestamp. Este script varre os
 transcripts que mencionam a skill, atribui cada mensagem a uma etapa (a ultima
-marca vista: um comando `/sofia-estrategista-editora:*`, um script da skill, um agente) e soma:
+marca vista: um comando `/sofia-estrategista:*` (ou o nome antigo, `/sofia-estrategista-editora:*`), um script da skill, um agente) e soma:
 
 - tokens de entrada, de cache criado, de cache lido e de saida;
 - tempo de parede (soma dos intervalos entre mensagens, ignorando os maiores que
@@ -41,15 +41,15 @@ PESOS = {"entrada": 1.0, "cacheCriado": 1.25, "cacheLido": 0.1, "saida": 5.0}
 
 # a marca que abre cada etapa, na ordem de prioridade, e o nome que sai no painel
 ETAPAS = [
-    ("aprender",  "Aprender estilo",     r"(?:beditor|sofia-estrategista-editora):aprender|scripts/aprender\.py"),
-    ("branding",  "Branding",            r"(?:beditor|sofia-estrategista-editora):branding"),
-    ("dirigir",   "Dirigir (guia)",      r"(?:beditor|sofia-estrategista-editora):dirigir|scripts/contato\.py|subagent_type.{0,20}diretor|'diretor'"),
+    ("aprender",  "Aprender estilo",     r"(?:beditor|sofia-estrategista(?:-editora)?):aprender|scripts/aprender\.py"),
+    ("branding",  "Branding",            r"(?:beditor|sofia-estrategista(?:-editora)?):branding"),
+    ("dirigir",   "Dirigir (guia)",      r"(?:beditor|sofia-estrategista(?:-editora)?):dirigir|scripts/contato\.py|subagent_type.{0,20}diretor|'diretor'"),
     ("enriquecer", "Enriquecer fatos",   r"enriquecedor"),
-    ("cortar",    "Cortar",              r"(?:beditor|sofia-estrategista-editora):cortar|--etapa corte|aplicar_decisoes\.py"),
-    ("motion",    "Motion graphics",     r"(?:beditor|sofia-estrategista-editora):motion|--etapa motion|scripts/assets\.py|scripts/hf\.py"),
-    ("finalizar", "Finalizar",           r"(?:beditor|sofia-estrategista-editora):finalizar|--etapa final|scripts/entregar\.py|acabamento\.py"),
-    ("publicar",  "Publicar",            r"(?:beditor|sofia-estrategista-editora):publicar|scripts/publicacao\.py"),
-    ("qa",        "QA",                  r"(?:beditor|sofia-estrategista-editora):qa|scripts/travas\.py"),
+    ("cortar",    "Cortar",              r"(?:beditor|sofia-estrategista(?:-editora)?):cortar|--etapa corte|aplicar_decisoes\.py"),
+    ("motion",    "Motion graphics",     r"(?:beditor|sofia-estrategista(?:-editora)?):motion|--etapa motion|scripts/assets\.py|scripts/hf\.py"),
+    ("finalizar", "Finalizar",           r"(?:beditor|sofia-estrategista(?:-editora)?):finalizar|--etapa final|scripts/entregar\.py|acabamento\.py"),
+    ("publicar",  "Publicar",            r"(?:beditor|sofia-estrategista(?:-editora)?):publicar|scripts/publicacao\.py"),
+    ("qa",        "QA",                  r"(?:beditor|sofia-estrategista(?:-editora)?):qa|scripts/travas\.py"),
     ("skill",     "Mexer na própria skill",
      r"skills/beditor/(scripts|referencias|tests)|painel/(gerar|criterios|telemetria)"),
 ]

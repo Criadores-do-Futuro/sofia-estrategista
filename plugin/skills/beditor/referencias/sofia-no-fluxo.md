@@ -95,8 +95,8 @@ ilustração redundante.
 
 | etapa | quando | o que ela lê |
 | --- | --- | --- |
-| `/sofia-estrategista-editora:dirigir` | passo 4b, depois do `GUIA.md`, antes de mostrar ao editor | arco, estrutura, o que fica e o que sai, a ideia de motion de cada momento |
-| `/sofia-estrategista-editora:motion-graficos` | passo 1b, **antes de gastar geração e render** | a fala e a `motion.ideia` de cada plano, lado a lado |
+| `/sofia-estrategista:dirigir` | passo 4b, depois do `GUIA.md`, antes de mostrar ao editor | arco, estrutura, o que fica e o que sai, a ideia de motion de cada momento |
+| `/sofia-estrategista:motion-graficos` | passo 1b, **antes de gastar geração e render** | a fala e a `motion.ideia` de cada plano, lado a lado |
 
 Antes do render, sempre. Depois do render a crítica custa uma rodada inteira de
 geração de imagem e oito clips de navegador; antes, custa uma edição de JSON.

@@ -31,7 +31,7 @@ de cada item que falta.
 
 Instale o plugin Sofia Estrategista como diz o [README](../README.md).
 
-Depois, no Claude Code: **`/sofia-estrategista-editora:setup`**. Ele confere as dependências (e diz o
+Depois, no Claude Code: **`/sofia-estrategista:setup`**. Ele confere as dependências (e diz o
 comando de cada uma que falta), pergunta onde ficam as suas pastas — projetos,
 entregas, músicas, SFX, overlays, logos, render, treinamento —, grava a configuração
 e gera o manual em `~/.beditor/manual.html`.
@@ -81,7 +81,7 @@ O plugin traz o que foi aprendido nos estilos da casa — números medidos e a l
 de cada um em `treinamento/<estilo>/` —, nunca o material de estudo: nenhum vídeo,
 frame, folha de contato, nome de perfil ou link de post.
 
-Para treinar o seu: `/sofia-estrategista-editora:aprender-motion <pasta de frames ou vídeos> <nome>`. O
+Para treinar o seu: `/sofia-estrategista:aprender-motion <pasta de frames ou vídeos> <nome>`. O
 material de referência e a procedência (de quem é, de onde veio) ficam na sua pasta
 `treinamento`; o estilo vira opção da galeria.
 
@@ -89,9 +89,9 @@ material de referência e a procedência (de quem é, de onde veio) ficam na sua
 
 | Você tem | Comando |
 | --- | --- |
-| um take de câmera falando | `/sofia-estrategista-editora:cortar take.mov` — e depois `/sofia-estrategista-editora:motion-graficos`, `/sofia-estrategista-editora:finalizar` |
-| um comentário sobre o vídeo de outra pessoa | `/sofia-estrategista-editora:editar-analise "Projetos/01 - Nome/"` |
-| o master pronto e quer publicar | `/sofia-estrategista-editora:publicar entrega/master.mp4` |
+| um take de câmera falando | `/sofia-estrategista:cortar take.mov` — e depois `/sofia-estrategista:motion-graficos`, `/sofia-estrategista:finalizar` |
+| um comentário sobre o vídeo de outra pessoa | `/sofia-estrategista:editar-analise "Projetos/01 - Nome/"` |
+| o master pronto e quer publicar | `/sofia-estrategista:publicar entrega/master.mp4` |
 | dúvida sobre o que existe | `~/.beditor/manual.html` — aba Fluxos, cada passo com o comando que roda |
 
 Cada etapa entrega um arquivo em disco e para para você aprovar. Nada é publicado
@@ -106,7 +106,7 @@ python3 skills/beditor/scripts/setup.py --atualizar --sim
 ```
 
 Quem instalou pelo marketplace atualiza pelo próprio marketplace
-(`claude plugin update sofia-estrategista-editora@sofia-editora`); o `--atualizar`
+(`claude plugin update sofia-estrategista@criadores-do-futuro`); o `--atualizar`
 serve para quem trabalha num clone.
 
 Sem `--sim` ele só mostra o que faria. O `git pull` é `--ff-only`: havendo
@@ -137,18 +137,18 @@ skills/beditor/scripts/      setup.py, transcrever.py, silencio.py, render_anali
                              montar.py, compor.py, plano.py, assets.py, entregar.py, oficina.py ...
 skills/beditor/template/     projeto Remotion completo (grade, legenda, movimento, tipos de plano)
 agents/                      diretor, enriquecedor, analista-de-estilo
-commands/                    /sofia-estrategista-editora:setup, analise, dirigir, cortar, motion-graficos, finalizar,
+commands/                    /sofia-estrategista:setup, analise, dirigir, cortar, motion-graficos, finalizar,
                              publicar, motion, plano, aprender, qa, branding, painel, montar
 docs/manual.html             o template do manual interativo que o setup preenche
 ```
 
 ## Fluxos
 
-**Take de câmera, em etapas aprovadas uma a uma:** `/sofia-estrategista-editora:dirigir take.mov` (guia) →
-`/sofia-estrategista-editora:cortar` (decupagem) → `/sofia-estrategista-editora:motion-graficos` → `/sofia-estrategista-editora:finalizar` →
-`/sofia-estrategista-editora:publicar`. Cada etapa entrega algo para você ver antes da seguinte.
+**Take de câmera, em etapas aprovadas uma a uma:** `/sofia-estrategista:dirigir take.mov` (guia) →
+`/sofia-estrategista:cortar` (decupagem) → `/sofia-estrategista:motion-graficos` → `/sofia-estrategista:finalizar` →
+`/sofia-estrategista:publicar`. Cada etapa entrega algo para você ver antes da seguinte.
 
-**Formato `analise`** (comentário sobre a peça de outra pessoa): `/sofia-estrategista-editora:editar-analise
+**Formato `analise`** (comentário sobre a peça de outra pessoa): `/sofia-estrategista:editar-analise
 <projeto>` roda transcrever → cortar (`dados.json`, `silencio.py`) → renderizar
 (`plano.json`, `render_analise.py`) → medir (`qa_analise.py`) → entrega, e um ajuste
 refaz só o que tocou.
@@ -170,9 +170,9 @@ python3 $BED/scripts/aprender.py --frames referencias/ --nome meu-estilo --out e
 python3 $BED/scripts/plano.py --falas falas.srt --out motion/ --estilo estilos/meu-estilo/medicoes.json
 ```
 
-Dentro do Claude Code: `/sofia-estrategista-editora:motion falas.srt`, `/sofia-estrategista-editora:plano falas.srt`,
-`/sofia-estrategista-editora:aprender-motion referencias/ meu-estilo`, `/sofia-estrategista-editora:qa out/master.mp4`,
-`/sofia-estrategista-editora:branding` (define o padrão visual do canal para as situações que se repetem).
+Dentro do Claude Code: `/sofia-estrategista:motion falas.srt`, `/sofia-estrategista:plano falas.srt`,
+`/sofia-estrategista:aprender-motion referencias/ meu-estilo`, `/sofia-estrategista:qa out/master.mp4`,
+`/sofia-estrategista:branding` (define o padrão visual do canal para as situações que se repetem).
 
 ## De onde vieram os números
 

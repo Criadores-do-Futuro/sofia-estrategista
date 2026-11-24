@@ -19,7 +19,7 @@ edição completa, planejar visuais ou avaliar narrativa. As ideias do Herk refi
 a execução editorial; não substituem Sofia, os formatos ou o treinamento do dono.
 
 Esta entrada substitui o pipeline local anterior. HyperFrames, Remotion, Gemini,
-comandos `/sofia-estrategista-editora:*`, agentes do Claude e a antiga mesa de decupagem não são
+comandos `/sofia-estrategista:*`, agentes do Claude e a antiga mesa de decupagem não são
 pré-requisitos nem rotas automáticas. Os scripts e documentos antigos foram
 preservados para consulta e trabalhos que o usuário pedir explicitamente.
 

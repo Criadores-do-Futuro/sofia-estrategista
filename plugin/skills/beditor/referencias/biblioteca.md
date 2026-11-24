@@ -1,7 +1,7 @@
 # A biblioteca de mídia — o que há, como se mede, como se escolhe
 
 A biblioteca é da MÁQUINA, não do projeto: quatro pastas apontadas em
-`~/.config/beditor/config.json` (`/sofia-estrategista-editora:setup` escreve; `oficina.pasta("musicas")`
+`~/.config/beditor/config.json` (`/sofia-estrategista:setup` escreve; `oficina.pasta("musicas")`
 lê). Nesta máquina ela mora em `bEditor/Biblioteca/` no SSD. Cada pasta carrega o
 próprio `catalogo.json`, escrito por `scripts/biblioteca.py catalogar`.
 

@@ -4,7 +4,7 @@ allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 
 Argumentos: `$ARGUMENTS` = caminho do take bruto. Pré-requisito: `guia/guia.json` validado
-(vem de `/sofia-estrategista-editora:dirigir`).
+(vem de `/sofia-estrategista:dirigir`).
 
 Esta etapa entrega **só o corte**: sem motion, sem música, sem legenda. O editor julga
 uma coisa de cada vez.
@@ -131,6 +131,6 @@ uma coisa de cada vez.
      frase (o `validar.py` reprova se passar).
    Depois de cada ajuste: `validar.py` até zero erros e rode a etapa de novo.
 5. Quando o editor aprovar, registre: `mkdir -p edicao/aprovado && touch edicao/aprovado/corte`.
-   Só então siga para `/sofia-estrategista-editora:motion-graficos`.
+   Só então siga para `/sofia-estrategista:motion-graficos`.
 
 Sempre com vigia: processo sem progresso por 4 min é morto e investigado, nunca esperado.

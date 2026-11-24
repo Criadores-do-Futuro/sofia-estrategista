@@ -23,7 +23,7 @@ Argumentos: `$ARGUMENTS` = nada (pega tudo que está aberto) ou o nome de um ví
      momento no `guia/guia.json` (ou no `publicacao.json`) e regere **só aquele pedaço**:
      `assets.py --so M12`, `montar.py --etapa <etapa>` no projeto, `publicacao.py --capa`.
      Refazer o vídeo inteiro por causa de um momento é desperdício e o painel mede isso.
-   - `acao: "rodar"` → rode a etapa pelo comando dela (`/sofia-estrategista-editora:cortar`, `motion-graficos`,
+   - `acao: "rodar"` → rode a etapa pelo comando dela (`/sofia-estrategista:cortar`, `motion-graficos`,
      `finalizar`, `publicar`), respeitando os portões: etapa só roda com a anterior aprovada.
    - `acao: "aprovar"` → `touch edicao/aprovado/<corte|motion|final>` naquele projeto.
    - Agendar ou publicar **nunca** sai de um pedido do painel sozinho: leve a proposta ao

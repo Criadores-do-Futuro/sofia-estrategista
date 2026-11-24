@@ -1,6 +1,10 @@
 # De onde veio cada parte
 
-Este repositório junta três projetos. Os três continuam existindo e podem receber melhorias; este arquivo diz de onde cada arquivo veio e o que mudou aqui, para trazer as próximas versões sem perder nada.
+## Versão 2.0.0: a Sofia única
+
+Desde a 2.0.0 existe uma Sofia só, o plugin `sofia-estrategista`, na pasta `plugin/` do repositório `Criadores-do-Futuro/sofia-estrategista` (marketplace `criadores-do-futuro`). O conteúdo de `plugin/` veio inteiro da Sofia com edição (`bento-dev-ia/sofia-estrategista-editora`, branch `sofia-equipe`, commit `5500307`, versão 0.6.0), e o nome antigo `sofia-estrategista-editora` virou `sofia-estrategista` nos manifestos, nos atalhos (`/sofia-estrategista:...`), nos agentes (`sofia-estrategista:<papel>`), na trava dos agentes, no painel, no `setup.py` e no `/atualizar`. Os testes, o `empacotar.sh`, o `conferir-ferramentas.mjs`, o `docs/diretorios.md` e o catálogo do Codex foram para a raiz do repositório, fora do plugin. O repositório da Editora fica como histórico.
+
+O resto deste arquivo conta a junção anterior, que criou a Sofia com edição a partir de três projetos, com os nomes daquela época.
 
 ## Fontes
 
@@ -83,5 +87,5 @@ Quatro testes da origem já falhavam antes da junção e continuam falhando: `te
 1. Veja o que mudou na fonte desde o commit acima: `git -C FONTE diff --stat COMMIT_DE_ORIGEM..NOVO_COMMIT`.
 2. Arquivo idêntico aqui: copie a versão nova no lugar novo (a Sofia sai de `plugin/` para a raiz; a skill do bEditor vai para `skills/sofia-editora/`).
 3. Arquivo da lista "O que mudou aqui": junte à mão, mantendo a mudança local.
-4. Rode os testes, `claude plugin validate .` e `node scripts/conferir-ferramentas.mjs CAMINHO_DO_WEBAPP`.
+4. Na raiz do repositório, rode os testes, `claude plugin validate plugin`, `claude plugin validate .` e `node scripts/conferir-ferramentas.mjs CAMINHO_DO_WEBAPP`.
 5. Atualize a tabela de fontes com o commit novo.

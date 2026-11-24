@@ -3,7 +3,7 @@ description: Só o plano de ritmo — transcript vira plano.json revisado, sem r
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 
-Uso: `/sofia-estrategista-editora:plano <arquivo .srt/.json> [pasta-do-projeto]`.
+Uso: `/sofia-estrategista:plano <arquivo .srt/.json> [pasta-do-projeto]`.
 
 Gere e **revise** o plano de motion de `$1` em `$2` (padrão: `./motion`).
 

@@ -162,7 +162,7 @@ Três pontos que **não** estavam resolvidos, e o que se fez:
 1. **Ninguém avisava quando terminava.** Um render de 8 min terminava no
    silêncio; ou o dono vigiava o terminal, ou descobria meia hora depois.
    Agora `avisar.py` notifica a máquina no fim do render, e a sessão empurra
-   para o celular (regra em `/sofia-estrategista-editora:editar-analise` e `/sofia-estrategista-editora:painel`).
+   para o celular (regra em `/sofia-estrategista:editar-analise` e `/sofia-estrategista:painel`).
 2. **A cache não prestava contas.** Ela funcionava, mas a prova era o relógio.
    Agora cada rodada imprime qual função de desenho mudou e quantos trechos
    isso custou, e grava em `oficina/assinaturas.json`.

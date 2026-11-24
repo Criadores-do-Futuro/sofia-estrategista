@@ -52,13 +52,13 @@ recompressão, confere o relógio, e o `montar.py` recusa take HDR:
 
 ```bash
 python3 ${CLAUDE_PLUGIN_ROOT}/skills/beditor/scripts/sdr.py brutos/take.mov   # → brutos/take.sdr.mov
-/sofia-estrategista-editora:dirigir         brutos/take.sdr.mov   # folhas de contato → agente diretor → guia validado → GUIA.md
-/sofia-estrategista-editora:cortar          brutos/take.sdr.mov   # etapa 1: decupagem + J-cut, para o editor revisar
-/sofia-estrategista-editora:motion-graficos brutos/take.sdr.mov   # etapa 2: motion sobre o corte aprovado
-/sofia-estrategista-editora:finalizar       brutos/take.sdr.mov   # etapa 3: cama, legenda, grade, master
-/sofia-estrategista-editora:montar          brutos/take.sdr.mov   # tudo de uma vez (quando o editor não quer revisar por etapa)
-/sofia-estrategista-editora:publicar        entrega/master.mp4    # etapa 4: título, descrição e capa para busca e clique; um agendamento para todas as redes
-/sofia-estrategista-editora:painel                                # lê a fila do painel (pedidos, conversa, fontes de B-roll) e refaz só o pedaço pedido
+/sofia-estrategista:dirigir         brutos/take.sdr.mov   # folhas de contato → agente diretor → guia validado → GUIA.md
+/sofia-estrategista:cortar          brutos/take.sdr.mov   # etapa 1: decupagem + J-cut, para o editor revisar
+/sofia-estrategista:motion-graficos brutos/take.sdr.mov   # etapa 2: motion sobre o corte aprovado
+/sofia-estrategista:finalizar       brutos/take.sdr.mov   # etapa 3: cama, legenda, grade, master
+/sofia-estrategista:montar          brutos/take.sdr.mov   # tudo de uma vez (quando o editor não quer revisar por etapa)
+/sofia-estrategista:publicar        entrega/master.mp4    # etapa 4: título, descrição e capa para busca e clique; um agendamento para todas as redes
+/sofia-estrategista:painel                                # lê a fila do painel (pedidos, conversa, fontes de B-roll) e refaz só o pedaço pedido
 ```
 
 **Investigar é com o context-mode, sempre que der.** Editar um vídeo é ler
@@ -378,7 +378,7 @@ Não entregue sem passar por isto:
 ## Onde ficam as coisas
 
 Nenhum caminho sai do código: as pastas vêm de `~/.config/beditor/config.json`,
-escrito por `/sofia-estrategista-editora:setup` (`scripts/setup.py --pastas nome=caminho`) e lido por
+escrito por `/sofia-estrategista:setup` (`scripts/setup.py --pastas nome=caminho`) e lido por
 `oficina.config()` / `oficina.pasta(nome)`. Pasta não configurada para e pede o
 setup, nunca inventa um caminho no disco interno. O manual gerado
 (`setup.py --manual`) mostra o que está configurado e o que falta na máquina.
@@ -503,7 +503,7 @@ Estrategista, que o Claude e o Codex carregam (no Codex, com
 `agents/openai.yaml`). A linha antiga do Codex,
 `beditor-motion-noir`, foi fundida aqui em 2026-09-11 e não se edita mais:
 aprendizado novo entra neste repositório. No Codex, o que depende do Claude
-(comandos `/sofia-estrategista-editora:*`, os agentes `diretor` e `enriquecedor`, a mesa como
+(comandos `/sofia-estrategista:*`, os agentes `diretor` e `enriquecedor`, a mesa como
 Artifact) não existe; os scripts de `scripts/` e as referências valem igual.
 
 Skills vizinhas: **corte-viral** entrega o vertical limpo que entra aqui;

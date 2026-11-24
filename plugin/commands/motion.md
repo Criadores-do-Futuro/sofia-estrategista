@@ -3,7 +3,7 @@ description: Do transcript ao MP4 — roda o fluxo completo do bEditor
 allowed-tools: Read, Write, Edit, Bash, Glob
 ---
 
-Uso: `/sofia-estrategista-editora:motion <arquivo .srt/.json> [pasta-do-projeto]`.
+Uso: `/sofia-estrategista:motion <arquivo .srt/.json> [pasta-do-projeto]`.
 
 Rode o fluxo completo do bEditor sobre `$1`, entregando na pasta `$2` (padrão: `./motion`).
 

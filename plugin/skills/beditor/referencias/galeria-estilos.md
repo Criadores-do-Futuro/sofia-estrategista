@@ -42,7 +42,7 @@ Elegante aqui é sinônimo de legível; um estilo que exige esforço pra ler nã
 entra na galeria, por mais bonito que seja parado.
 
 **Quando a marca já fixou algo:** o `motion.md` da marca do projeto (gerado
-por `/sofia-estrategista-editora:branding`, fora do plugin) e os `estilos` do `marca.json` podem já
+por `/sofia-estrategista:branding`, fora do plugin) e os `estilos` do `marca.json` podem já
 ter decidido a tipografia do hook para aquele canal ou cliente. Onde ele fala, ele decide antes desta galeria: o diretor escreve a
 decisão da marca direto em `guia.estilos`, e o padrão `vox`
 daqui só vale pros canais e formatos que ainda não fixaram nada.

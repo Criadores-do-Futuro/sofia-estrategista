@@ -1,8 +1,8 @@
 {
-  "name": "sofia-estrategista-editora",
+  "name": "sofia-estrategista",
   "displayName": "Sofia Estrategista",
-  "version": "0.6.0",
-  "description": "A Sofia Estrategista que também edita: ideia, pesquisa com fonte, formato, estrutura, hook, roteiro, grifos e análise pelo método do curso, mais edição de vídeo direto na timeline do CapCut ou do DaVinci Resolve, aprendizado de estilo a partir de um vídeo já editado, decupagem, motion graphics, finalização e preparo da publicação. Com o conector ligado, lê e salva no planejamento do aluno no site.",
+  "version": "2.0.0",
+  "description": "Estrategista e editora de vídeo curto do curso Criador Estrategista, numa Sofia só: ideia, pesquisa com fonte, formato, estrutura, hook, roteiro, grifos e análise de vídeo ou de perfil pelo método do curso, com uma equipe de revisores que confere cada texto; com o conector ligado, lê e salva no planejamento do aluno no site; e edição do vídeo gravado na timeline do CapCut ou do DaVinci Resolve, com aprendizado de estilo a partir de um vídeo editado, decupagem, motion graphics, finalização e preparo da publicação.",
   "author": {
     "name": "Criadores do Futuro",
     "email": "co.criadoresdofuturo@gmail.com",
@@ -13,18 +13,18 @@
   "supportUrl": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/suporte",
   "privacyPolicyUrl": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/privacidade",
   "termsOfServiceUrl": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/termos",
-  "repository": "https://github.com/bento-dev-ia/sofia-estrategista-editora",
+  "repository": "https://github.com/Criadores-do-Futuro/sofia-estrategista",
   "license": "LicenseRef-Proprietary",
   "types": "./types/index.d.ts",
   "keywords": [
     "roteiro",
+    "video curto",
+    "reels",
+    "tiktok",
     "edicao de video",
     "capcut",
     "davinci resolve",
     "motion graphics",
-    "video curto",
-    "reels",
-    "tiktok",
     "criador estrategista"
   ]
 }

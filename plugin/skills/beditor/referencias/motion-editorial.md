@@ -11,7 +11,7 @@ fixa a própria linguagem e não a perde no meio.
 
 ## Duas regras que valem antes de tudo
 
-**Modo rápido não é atalho de qualidade.** `/sofia-estrategista-editora:montar`, tudo de uma vez,
+**Modo rápido não é atalho de qualidade.** `/sofia-estrategista:montar`, tudo de uma vez,
 esconde as aprovações intermediárias, mas não pula nenhuma etapa: decupagem,
 fatos, linguagem, beats, montagem e QC acontecem igual, só que sem parar para
 perguntar.

@@ -3,7 +3,7 @@ description: Roda os seis testes de validação sobre um MP4 do bEditor
 allowed-tools: Read, Bash, Glob
 ---
 
-Uso: `/sofia-estrategista-editora:qa <arquivo.mp4>`.
+Uso: `/sofia-estrategista:qa <arquivo.mp4>`.
 
 Valide `$1` contra a lista da skill bEditor.
 

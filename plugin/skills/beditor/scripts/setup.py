@@ -63,7 +63,7 @@ PASTAS_OPCIONAIS = ("marcas",)
 FONTES_LOCAIS = ("ArchivoBlack-Regular.ttf", "Inter.ttf", "IBMPlexMono-Medium.ttf", "Fraunces.ttf")
 PASTA_FONTES = RAIZ_PLUGIN / "skills" / "beditor" / "public" / "fontes"
 
-# O que cada pasta guarda — uma linha, a mesma que o `/sofia-estrategista-editora:setup` mostra ao
+# O que cada pasta guarda — uma linha, a mesma que o `/sofia-estrategista:setup` mostra ao
 # perguntar, e a que o manual repete.
 DESCRICAO_PASTAS = {
     "projetos": "uma pasta por vídeo: takes brutos, edicao/, oficina/ (cache). Dezenas de GB; fora do iCloud",
@@ -96,13 +96,17 @@ BIN = f"zsh '{RAIZ_PLUGIN}/skills/beditor/scripts/instalar_bin.sh'"
 CTX = ("claude plugin marketplace add mksglu/context-mode && "
        "claude plugin install context-mode@context-mode")
 CTX_ATUALIZAR = "claude plugin update context-mode@context-mode"
-# De onde a Sofia vem no Claude Code: o marketplace dos Criadores do Futuro. O
-# catálogo é atualizado antes do plugin; sem isso, o update não vê a versão nova.
-MARKETPLACE_DA_SOFIA = "sofia-plugins"
-# O próprio repositório da Editora ainda publica o marketplace `sofia-editora`,
-# então quem instalou por ele recebe a versão nova por ele mesmo, sem reinstalar.
-MARKETPLACES_QUE_RECEBEM = (MARKETPLACE_DA_SOFIA, "sofia-editora")
-PLUGIN_DA_SOFIA = "sofia-estrategista-editora"
+# De onde a Sofia vem no Claude Code: o marketplace `criadores-do-futuro`, do
+# repositório Criadores-do-Futuro/sofia-estrategista. O catálogo é atualizado
+# antes do plugin; sem isso, o update não vê a versão nova.
+MARKETPLACE_DA_SOFIA = "criadores-do-futuro"
+PLUGIN_DA_SOFIA = "sofia-estrategista"
+# Desde a 2.0.0 existe uma Sofia só. Estes nomes são das Sofias de antes; quem
+# ainda tem uma delas troca pelo prompt de migração, que desinstala a antiga e
+# instala a `sofia-estrategista@criadores-do-futuro`.
+NOMES_ANTIGOS_DA_SOFIA = ("sofia-estrategista-editora",)
+ONDE_ESTA_O_PROMPT = ("o prompt de migração do README do repositório Criadores-do-Futuro/sofia-estrategista "
+                      "ou da página Conector do site do curso")
 if plataforma.sistema() == "windows":
     # sem `ln -s` (pede administrador no Windows): a pasta configurada já basta
     RENDER = r"py setup.py --pastas render=C:\beditor\render --criar   # caminho curto, sem espaço nem acento"
@@ -404,32 +408,39 @@ def atualizar(executar=False, raiz=RAIZ_PLUGIN, home=None):
     """Põe a Sofia (com o bEditor) e o context-mode na versão de hoje, em um comando.
 
     Duas instalações, dois jeitos de atualizar, e o script escolhe sozinho: quem
-    clonou o repositório atualiza pelo git; quem instalou pelo marketplace do
-    Claude Code atualiza o catálogo `sofia-plugins` e depois o plugin (a cópia
-    em `plugins/cache` não é um clone, e um `git pull` ali só erraria).
+    clonou o repositório atualiza pelo git (o plugin mora em `plugin/`, então o
+    clone pode estar na pasta de cima); quem instalou pelo marketplace do
+    Claude Code atualiza o catálogo `criadores-do-futuro` e depois o plugin (a
+    cópia em `plugins/cache` não é um clone, e um `git pull` ali só erraria).
 
-    Quem instalou pelo `sofia-editora` atualiza por ele mesmo, porque o
-    repositório da Editora ainda o publica. Por um marketplace desconhecido a
-    versão nova não chega: o script avisa e não tenta, porque trocar de
-    marketplace pede remover o plugin, e remover é decisão da pessoa.
+    Por outro marketplace, ou com uma Sofia de nome antigo instalada, a versão
+    nova não chega por update: o script avisa e manda usar o prompt de
+    migração, sem tentar, porque trocar de marketplace pede remover o plugin, e
+    remover é decisão da pessoa.
 
     `--ff-only` de propósito: se houver trabalho local não commitado ou um
     histórico divergente, o pull falha em vez de embaralhar o repositório de
     quem está no meio de uma edição. A mensagem do git já diz o que fazer.
     """
-    if (Path(raiz) / ".git").exists():
-        proprios = [f"git -C '{raiz}' pull --ff-only"]
+    clone = next((p for p in (Path(raiz), Path(raiz).parent) if (p / ".git").exists()), None)
+    if clone:
+        proprios = [f"git -C '{clone}' pull --ff-only"]
     else:
-        antigo = _marketplace_claude(PLUGIN_DA_SOFIA, Path(home) if home else Path.home())
-        if antigo and antigo not in MARKETPLACES_QUE_RECEBEM:
-            print(f"aviso: a Sofia foi instalada pelo marketplace «{antigo}», que não recebe a versão nova. "
-                  f"Ela vem do «{MARKETPLACE_DA_SOFIA}»: remova a Sofia antiga e instale de novo pelo "
-                  "passo a passo da página Conector do site do curso. O conector da conta continua.\n")
+        casa = Path(home) if home else Path.home()
+        for nome in NOMES_ANTIGOS_DA_SOFIA:
+            if _registro_claude(nome, casa):
+                print(f"aviso: a Sofia antiga «{nome}» continua instalada. Desde a 2.0.0 existe uma Sofia só, "
+                      f"a «{PLUGIN_DA_SOFIA}@{MARKETPLACE_DA_SOFIA}». Para trocar, use {ONDE_ESTA_O_PROMPT}. "
+                      "O conector da conta continua, com tudo o que está salvo.\n")
+        origem = _marketplace_claude(PLUGIN_DA_SOFIA, casa)
+        if origem and origem != MARKETPLACE_DA_SOFIA:
+            print(f"aviso: a Sofia foi instalada pelo marketplace «{origem}», que não recebe a versão nova. "
+                  f"Ela vem do «{MARKETPLACE_DA_SOFIA}»: use {ONDE_ESTA_O_PROMPT}. "
+                  "O conector da conta continua, com tudo o que está salvo.\n")
             proprios = []
         else:
-            origem = antigo or MARKETPLACE_DA_SOFIA
-            proprios = [f"claude plugin marketplace update {origem}",
-                        f"claude plugin update {PLUGIN_DA_SOFIA}@{origem}"]
+            proprios = [f"claude plugin marketplace update {MARKETPLACE_DA_SOFIA}",
+                        f"claude plugin update {PLUGIN_DA_SOFIA}@{MARKETPLACE_DA_SOFIA}"]
     cmds = [*proprios, CTX_ATUALIZAR]
     print("atualizando:\n")
     for c in cmds:

@@ -238,7 +238,7 @@ Escrever fica separado de conferir. Cada papel da equipe recebe do conector, na 
 | Ajuste | você, ou o `roteirista` se muda um bloco inteiro | `revisor-o-que-nao-fazer` e `revisor-de-voz` |
 | Crítica | os revisores do roteiro e o `critico`, em grifos | `sofia_conferir` |
 
-**No Claude Code e no Cowork: agentes.** Cada papel é um agente deste plugin, chamado pelo nome `sofia-estrategista-editora:<papel>`.
+**No Claude Code e no Cowork: agentes.** Cada papel é um agente deste plugin, chamado pelo nome `sofia-estrategista:<papel>`.
 1. Peça o pacote com `entrega: "orquestrar"`.
 2. Chame o escritor com o `videoId`, a etapa e as notas da conversa: as falas da pessoa nesta conversa, como ela disse, e os gostos que ela contou e ainda não foram salvos. Diga à pessoa, numa linha, que a equipe está escrevendo e conferindo.
 3. Chame os revisores todos de uma vez, em paralelo, cada um com a etapa, o `videoId`, as opções numeradas e quais trechos vieram de comentários.
@@ -344,7 +344,7 @@ Comentário bem curtido é a bolha falando com as palavras dela. É o material m
 
 ## Versão e atualização
 
-Esta é a versão 0.6.0 da Sofia Estrategista com edição (plugin `sofia-estrategista-editora`). O conector diz, no começo das instruções e no `onde_estou`, qual é a versão mais nova. Se a desta skill for mais velha, avise a pessoa uma vez por conversa, em uma frase, e ofereça atualizar com `/atualizar`. O comando mostra o caminho de cada app e, no Claude Code, roda os comandos depois do OK dela.
+Esta é a versão 2.0.0 da Sofia Estrategista (plugin `sofia-estrategista`, do marketplace `criadores-do-futuro`), a Sofia única: o método, o conector e a edição de vídeo num plugin só. O conector diz, no começo das instruções e no `onde_estou`, qual é a versão mais nova. Se a desta skill for mais velha, avise a pessoa uma vez por conversa, em uma frase, e ofereça atualizar com `/atualizar`. O comando mostra o caminho de cada app e, no Claude Code, roda os comandos depois do OK dela. Se a pessoa ainda tiver uma Sofia de antes (a `sofia-estrategista-editora`, ou a `sofia-estrategista` de outro marketplace), o `/atualizar` explica a troca pelo prompt de migração.
 
 ## Onde está o resto
 

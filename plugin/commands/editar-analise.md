@@ -42,7 +42,7 @@ plugin em uma chamada.** Nada de pipeline na pasta de rascunho.
    antes de procurar fora, e `midiateca.py baixar <url> --projeto <projeto>` quando
    não houver. No `plano.json` a fonte fica como `"arq": "midia:videos/…"`.
    Terminado o render, o vídeo vai para o painel (`painel/revisao.py`), não para um
-   aviso de pasta — ver `/sofia-estrategista-editora:painel`.
+   aviso de pasta — ver `/sofia-estrategista:painel`.
    **E o dono é avisado.** O script já notifica a máquina (`avisar.py`, disparado no
    fim do render); a sessão manda o push para o celular com a ferramenta de
    notificação do harness, uma linha, dizendo o que ficou pronto e onde ver:

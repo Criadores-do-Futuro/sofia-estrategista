@@ -2,7 +2,7 @@
 description: Etapa 4 — título, descrição e capa otimizados para busca e clique, e um agendamento só para todas as redes (Zernio ou Metricool). Nada é publicado sem o sim do editor.
 ---
 
-Argumentos: `$ARGUMENTS` = o master aprovado (`entrega/…mp4`). Pré-requisito: `/sofia-estrategista-editora:finalizar` concluído e aprovado. Leia `${CLAUDE_PLUGIN_ROOT}/skills/beditor/referencias/publicacao.md` antes de escrever qualquer texto.
+Argumentos: `$ARGUMENTS` = o master aprovado (`entrega/…mp4`). Pré-requisito: `/sofia-estrategista:finalizar` concluído e aprovado. Leia `${CLAUDE_PLUGIN_ROOT}/skills/beditor/referencias/publicacao.md` antes de escrever qualquer texto.
 
 1. Escreva `entrega/publicacao.json` a partir de `guia/GUIA.md`, do transcript e de `guia/fatos.json`: `video` (o master), `fonteCapa` (o A-roll sem legenda, `edicao/aroll.mp4`), `palavraChave`, `capa` (`t`, `linhas`, `destaque`), `redes` (uma entrada por rede que o editor usa, com `titulo`/`descricao`/`tags` no YouTube e `legenda` nas outras) e `agendamento` (`quando`, `fuso`, `contas`). Se não souber quais redes e contas, pergunte uma vez.
 2. `python3 ${CLAUDE_PLUGIN_ROOT}/skills/beditor/scripts/publicacao.py entrega/publicacao.json --capa` — erro para e se corrige no json; aviso vai para o editor junto com a proposta.

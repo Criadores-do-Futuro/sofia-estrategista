@@ -6,7 +6,7 @@ metades: o que se pede **antes** de gravar e o que o bEditor faz **depois**.
 
 ## Antes de gravar — o que dizer a quem vai falar
 
-Diga isto no fim do passo 5 do `/sofia-estrategista-editora:dirigir` quando o diretor apontar
+Diga isto no fim do passo 5 do `/sofia-estrategista:dirigir` quando o diretor apontar
 energia baixa, fim de frase engolido ou voz variando de volume. Vale para o
 **próximo** take: o atual já está gravado.
 

@@ -52,6 +52,6 @@ existe (etapa 1 aprovada). Se não existir, avise e pergunte antes de gastar ger
      da `motion.cena` do M12 (`texto`, `som`, `cameraTransicao`); o prompt é remontado.
    - "o vídeo inteiro está lento demais" → `direcaoMotion.movimento` ou `climaRitmo`.
    Depois: `validar.py` até zero erros e rode a etapa de novo.
-5. Aprovado: `touch edicao/aprovado/motion`. Só então `/sofia-estrategista-editora:finalizar`.
+5. Aprovado: `touch edicao/aprovado/motion`. Só então `/sofia-estrategista:finalizar`.
 
 Sempre com vigia: processo sem progresso por 4 min é morto e investigado, nunca esperado.

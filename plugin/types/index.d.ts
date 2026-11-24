@@ -11,7 +11,7 @@ export type Janela = { tipo: string; usado: number; zeraEm?: number }
 
 declare module 'claude-code' {
   interface PluginState {
-    'sofia-estrategista-editora': {
+    'sofia-estrategista': {
       quadro: Shaped<Quadro | null>
       janelas: Shaped<Janela[]>
     }

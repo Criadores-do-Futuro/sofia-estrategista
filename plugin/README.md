@@ -1,8 +1,8 @@
 # Sofia Estrategista
 
-A Sofia Estrategista do curso Criador Estrategista, dos Criadores do Futuro, agora também editora de vídeo. Um plugin só, para o Claude e para o Codex, que junta:
+A Sofia Estrategista do curso Criador Estrategista, dos Criadores do Futuro, numa Sofia só: o método, o conector e a edição de vídeo. Um plugin só, para o Claude e para o Codex, que junta:
 
-- **a Sofia Estrategista:** o método do curso inteiro (princípios da viralização, elementos viciantes, formatos, estruturas, hooks, pesquisa com fonte, roteiro, grifos, análise de vídeo e de perfil) e o conector que lê e salva no planejamento da pessoa no site;
+- **a Sofia Estrategista:** o método do curso inteiro (princípios da viralização, elementos viciantes, formatos, estruturas, hooks, pesquisa com fonte, roteiro, grifos, análise de vídeo e de perfil), a equipe de revisores que confere cada texto e o conector que lê e salva no planejamento da pessoa no site;
 - **o bEditor Estrategista:** edição na timeline do CapCut ou do DaVinci Resolve, aprendizado de estilo a partir de um vídeo já editado, biblioteca de estilos, plano editorial validado e motion;
 - **o bEditor original:** guia de edição do diretor, decupagem com revisão, corte de silêncio e de erro, motion graphics em Remotion e no estilo editorial `motion-vox`, cama musical, legenda, master, QA medido, branding do canal, painel de revisão e preparo da publicação.
 
@@ -16,7 +16,7 @@ O mesmo método que escolhe o formato, a estrutura e o hook decide o corte, a im
 | Skill `sofia-editora` | Edição na timeline, aprendizado de estilo, biblioteca de estilos e motion |
 | Skill `beditor` | Decupagem, guia de edição, montagem, motion graphics em Remotion, finalização, QA e publicação (o bEditor original) |
 | Skill `motion-vox` | Motion graphics no estilo editorial de papel e legenda queimada sobre um clipe vertical já cortado |
-| Atalhos da Sofia | `roteiro`, `ideias`, `pesquisa`, `analisar`, `critica`, `conectar`, `editar`, `aprender-edicao` e `estilos` |
+| Atalhos da Sofia | `roteiro`, `ideias`, `pesquisa`, `analisar`, `critica`, `conectar`, `atualizar`, `editar`, `aprender-edicao` e `estilos` |
 | Atalhos do bEditor | `setup`, `dirigir`, `cortar`, `motion-graficos`, `finalizar`, `publicar`, `montar`, `plano`, `motion`, `aprender-motion`, `editar-analise`, `qa`, `branding` e `painel` |
 | Equipe da Sofia (agentes no Claude Code e no Cowork) | quem escreve: `estrategista-de-ideias`, `especialista-em-bolha`, `pesquisador`, `redator-de-hook` e `roteirista`; quem confere: `revisor-o-que-nao-fazer`, `revisor-de-hook`, `revisor-de-voz`, `revisor-de-estrutura`, `revisor-de-fatos`, `especialista-em-bolha` e `critico`. Cada um busca no conector o briefing do seu papel |
 | Ajudantes da edição (Claude Code e Cowork) | `analista-de-edicao` (lê as pranchas de quadros de uma referência), `diretor` (guia de edição de um take), `enriquecedor` (confere os fatos marcados no guia) e `analista-de-estilo` (lê as folhas de contato de um estilo de motion) |
@@ -24,9 +24,16 @@ O mesmo método que escolhe o formato, a estrutura e o hook decide o corte, a im
 | Painel (só no Claude Code) | `hooks/register.tsx`: um painel ao lado da conversa com os cards de cada etapa do planejamento, o @ do perfil e o uso das janelas de 5 horas e de 7 dias do Claude, com quanto falta para zerar. Abre sozinho no início da sessão e pelo comando `/sofia-painel`. No site, no app de conversa e no Codex, fica parado |
 | Ferramentas | `scripts/` e o pacote Python `beditor/` (medição, pranchas, transcrição, biblioteca, plano editorial, pontes do CapCut e do DaVinci), `schemas/`, `motion/`, os scripts das skills `beditor` e `motion-vox`, o `painel/` de revisão e as fontes livres (OFL) do motion |
 
-## Versão 0.6.0: a equipe da Sofia
+## Versão 2.0.0: uma Sofia só
 
-Ideia, hook, roteiro, ajuste e crítica deixam de ser escritos e conferidos numa passada só:
+- **Um nome, um marketplace.** A Sofia Estrategista (`sofia-estrategista` 1.6.0) e a Sofia Estrategista com edição (`sofia-estrategista-editora` 0.6.0) viraram um plugin só, o `sofia-estrategista`, instalado pelo marketplace `criadores-do-futuro`. Nada das duas ficou de fora: o método, a equipe, a conferência, a trava de gravação dos agentes, o espelho do método, a análise de vídeo e de perfil e toda a edição de vídeo.
+- **Os nomes mudaram junto.** Os atalhos são `/sofia-estrategista:<atalho>` e os agentes, `sofia-estrategista:<papel>`. O conector da conta não muda: o que está salvo no site continua lá.
+- **Quem tem uma Sofia de antes** troca uma vez, pelo prompt de migração do [README do repositório](https://github.com/Criadores-do-Futuro/sofia-estrategista#já-tem-uma-sofia-instalada), que também está na página Conector do site do curso. Depois disso, as versões novas chegam por atualização.
+- **A chave de volta:** se o conector desligar a equipe, o pacote de cada etapa chega sem a seção "Passos e equipe desta etapa", e a Sofia segue o pacote inteiro na conversa, como antes da equipe.
+
+## A equipe da Sofia
+
+Ideia, hook, roteiro, ajuste e crítica não são escritos e conferidos numa passada só:
 
 - **Quem escreve** gera mais opções do que mostra, com o método inteiro da etapa e a voz da pessoa.
 - **Os revisores** conferem juntos, cada um com uma fatia do método e as regras com código dela (as cartas): o que não fazer, o hook, a voz, a estrutura, os fatos e a bolha. Até 2 rodadas de correção.
@@ -53,37 +60,37 @@ Ideia, hook, roteiro, ajuste e crítica deixam de ser escritos e conferidos numa
 
 ## Instalar
 
-O repositório é privado: quem instala precisa de acesso ao GitHub.
-
 **Claude Code**
 
 ```sh
-claude plugin marketplace add bento-dev-ia/sofia-estrategista-editora
-claude plugin install sofia-estrategista-editora@sofia-editora
+claude plugin marketplace add Criadores-do-Futuro/sofia-estrategista
+claude plugin install sofia-estrategista@criadores-do-futuro
 ```
 
-Depois, `/mcp` para entrar no conector Sofia Estrategista com o e-mail do curso. Para testar um checkout: `claude --plugin-dir "CAMINHO_DO_REPOSITORIO"`.
+Depois, `/reload-plugins` (ou uma sessão nova) e `/mcp` para entrar no conector Sofia Estrategista com o e-mail do curso. Para as versões novas chegarem sozinhas, ligue a atualização automática do marketplace `criadores-do-futuro` em `/plugin`, na aba dos marketplaces. Para testar um checkout: `claude --plugin-dir "CAMINHO_DO_REPOSITORIO/plugin"`.
+
+**Já tem uma Sofia instalada?** Se for a `sofia-estrategista-editora`, ou a `sofia-estrategista` de outro marketplace (como o `sofia-plugins`), use o prompt de migração do [README do repositório](https://github.com/Criadores-do-Futuro/sofia-estrategista#já-tem-uma-sofia-instalada): ele desinstala a antiga e instala esta, com o seu OK.
 
 **Claude no navegador ou no app**
 
-`scripts/empacotar.sh` gera `dist/sofia-estrategista-editora.zip`, com o plugin dentro da pasta `sofia-estrategista-editora/`. Envie o `.zip` em Personalizar › Plugins › Adicionar › Enviar plugin e conecte o conector na aba Conectores do plugin. O método e o conector funcionam ali. A edição precisa de um computador com Python, FFmpeg e o editor aberto, então depende do que o host oferece.
+O `.zip` da página Kit do site traz o plugin dentro da pasta `sofia-estrategista/` (o `scripts/empacotar.sh` do repositório gera esse arquivo). Envie o `.zip` em Personalizar › Plugins › Adicionar › Enviar plugin e conecte o conector na aba Conectores do plugin. O método e o conector funcionam ali. A edição precisa de um computador com Python, FFmpeg e o editor aberto, então depende do que o host oferece.
 
 **Codex**
 
 ```sh
-codex plugin marketplace add bento-dev-ia/sofia-estrategista-editora
-codex plugin add sofia-estrategista-editora@sofia-editora-local
+codex plugin marketplace add Criadores-do-Futuro/sofia-estrategista
+codex plugin add sofia-estrategista@criadores-do-futuro
 ```
 
-O catálogo é `.agents/plugins/marketplace.json`. Com o `.zip` do kit, descompacte e aponte para a pasta:
+O catálogo do Codex é o `.agents/plugins/marketplace.json` da raiz do repositório. Com o `.zip` do kit, descompacte e aponte para a pasta:
 
 ```sh
-unzip sofia-estrategista-editora.zip
-codex plugin marketplace add ./sofia-estrategista-editora
-codex plugin add sofia-estrategista-editora@sofia-editora-local
+unzip sofia-estrategista.zip
+codex plugin marketplace add ./sofia-estrategista
+codex plugin add sofia-estrategista@sofia-estrategista-local
 ```
 
-O caminho pelo `.zip` foi testado num perfil limpo do Codex CLI 0.160.0; o caminho pelo GitHub depende de acesso ao repositório privado.
+No Codex, a Sofia aparece como "só no computador" (`requires_local_executor`): a edição e a leitura dos quadros de um vídeo rodam programas na máquina da pessoa.
 
 Os detalhes por ferramenta estão em [docs/instalacao-e-compatibilidade.md](docs/instalacao-e-compatibilidade.md).
 
@@ -93,23 +100,10 @@ Os detalhes por ferramenta estão em [docs/instalacao-e-compatibilidade.md](docs
 - `yt-dlp` para baixar referência por link; Whisper com um modelo `.pt` já baixado para transcrição local.
 - `pip install -r requirements-editorial.txt` para validar o plano editorial; `requirements-capcut-desktop.txt` para a ponte do CapCut Desktop.
 - Node, Chrome e `npm ci --prefix motion` para motion.
-- Para as skills `beditor` e `motion-vox`: `pip install -r requirements-motion.txt`, e o `/sofia-estrategista-editora:setup` confere o resto e diz o comando de cada item que falta.
+- Para as skills `beditor` e `motion-vox`: `pip install -r requirements-motion.txt`, e o `/sofia-estrategista:setup` confere o resto e diz o comando de cada item que falta.
 - O editor: o plugin oficial do CapCut no host (CapCut Web), a ponte local (CapCut Desktop) ou o MCP do DaVinci Resolve com o Resolve aberto.
 
 A biblioteca de estilos fica na pasta de `BIBLIOTECA_ESTILOS_RAIZ`. Aponte para um disco com espaço: pranchas e análises de vídeo longo crescem rápido.
-
-## Conferir antes de publicar uma versão
-
-```sh
-python3 -m unittest discover -s tests -v
-claude plugin validate .
-node scripts/conferir-ferramentas.mjs CAMINHO_DO_WEBAPP  # checkout na branch que vai para produção
-scripts/empacotar.sh
-```
-
-`conferir-ferramentas.mjs` acusa quando o plugin cita uma ferramenta do conector que o servidor não tem.
-
-As referências marcadas como "Cópia da peça" e o `cartas.md` não se editam aqui: mude a peça no webapp e rode, nele, `npx tsx scripts/exportar-referencias.mts CAMINHO_DESTE_PLUGIN`. O mesmo comando reescreve a linha `disallowedTools` de cada agente da equipe com as ferramentas do conector que gravam (a trava). O `tests/test_equipe.py` acusa arquivo do espelho mudado à mão e agente sem a trava completa.
 
 ## Documentação
 
@@ -122,13 +116,14 @@ As referências marcadas como "Cópia da peça" e o `cartas.md` não se editam a
 - [Arquitetura](docs/arquitetura.md), [plano e critérios](docs/plano.md), [referências técnicas](docs/referencias-tecnicas.md)
 - [Proteção de arquivos e distribuição](docs/seguranca-distribuicao.md)
 - [bEditor: motion, decupagem, finalização e publicação](docs/beditor-motion.md) e o [manual interativo](docs/manual.html) que o setup preenche
-- [Enviar aos diretórios da Anthropic e da OpenAI](docs/diretorios.md)
+
+Os testes, o empacotamento e o envio aos diretórios ficam na raiz do repositório, fora do plugin.
 
 ## O que o plugin roda, envia e baixa
 
 **Roda no computador**, só quando a pessoa pede a etapa: Python 3, FFmpeg e ffprobe, Whisper local (mlx-whisper ou faster-whisper), OpenCV, Node com Remotion e Chrome para o render de motion, `xcrun swiftc` no macOS para compilar o recorte de pessoa (Vision), e um servidor de prévia só em `127.0.0.1`.
 
-**Instala só com o sim da pessoa:** `setup.py --instalar` e `--atualizar` mostram os comandos (`brew`, `pip`, `git pull --ff-only` num clone, `claude plugin install`, `claude plugin marketplace update sofia-plugins` e `claude plugin update`) e só executam com `--sim`. O comando `/atualizar` mostra o caminho de atualizar em cada app e, no Claude Code, só roda os comandos depois do OK da pessoa.
+**Instala só com o sim da pessoa:** `setup.py --instalar` e `--atualizar` mostram os comandos (`brew`, `pip`, `git pull --ff-only` num clone, `claude plugin install`, `claude plugin marketplace update criadores-do-futuro` e `claude plugin update`) e só executam com `--sim`. O comando `/atualizar` mostra o caminho de atualizar em cada app e, no Claude Code, só roda os comandos depois do OK da pessoa.
 
 **Envia**, sempre com a conta e a escolha da pessoa:
 
