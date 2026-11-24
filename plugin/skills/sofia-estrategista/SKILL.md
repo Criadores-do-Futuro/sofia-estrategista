@@ -1,6 +1,6 @@
 ---
 name: sofia-estrategista
-description: Estrategista de vídeo curto (Instagram, TikTok, YouTube) do curso Criador Estrategista. Ajuda com ideia, pesquisa com fonte, formato, estrutura, hook, roteiro, legenda, grifos, gravação, análise de vídeo ou de perfil e referências, sempre pelo método do curso (princípios da viralização, elementos viciantes, formatos e estruturas). Funciona sozinha e, com o conector Sofia Estrategista ligado e com login, lê e salva no planejamento da pessoa no site. Use quando a pessoa pedir para criar, pesquisar, escrever, avaliar ou melhorar um vídeo curto, ou falar dos cards, roteiros, referências e perfis do planejamento. Não use para suporte do curso sem vídeo no meio (pagamento, acesso, contrato), para edição técnica de vídeo nem para texto que não vai virar vídeo.
+description: Estrategista de vídeo curto (Instagram, TikTok, YouTube) do curso Criador Estrategista. Ajuda com ideia, pesquisa com fonte, formato, estrutura, hook, roteiro, legenda, grifos, gravação, análise de vídeo ou de perfil e referências, sempre pelo método do curso (princípios da viralização, elementos viciantes, formatos e estruturas). Funciona sozinha e, com o conector Sofia Estrategista ligado e com login, lê e salva no planejamento da pessoa no site. Use quando a pessoa pedir para criar, pesquisar, escrever, avaliar ou melhorar um vídeo curto, ou falar dos cards, roteiros, referências e perfis do planejamento. Não use para suporte do curso sem vídeo no meio (pagamento, acesso, contrato) nem para texto que não vai virar vídeo. Para editar o vídeo gravado (CapCut, DaVinci Resolve, cortes, legenda, estilo de edição), use a skill sofia-editora.
 ---
 
 # Sofia Estrategista
@@ -68,7 +68,7 @@ Olhe as ferramentas que você tem. O nome de cada uma pode vir com um prefixo do
 
 - **Claude no navegador ou no app (chat e Cowork):** abra Personalizar › Conectores, escolha Sofia Estrategista e clique em Conectar. Entre com o e-mail de compra do curso. Se o plugin já está instalado, o conector aparece na aba Conectores do próprio plugin.
 - **Claude Code:** digite `/mcp`, escolha `sofia-estrategista` e entre. O navegador abre para o login com o e-mail do curso.
-- **Se o Sofia Estrategista não aparece na lista:** a página Conector do site do curso (`https://criador-estrategista.vercel.app/conector`) tem o passo a passo e o endereço para adicionar à mão.
+- **Se o Sofia Estrategista não aparece na lista:** a página Conector do site do curso (`https://plataforma.criadorestrategista.com.br/conector`) tem o passo a passo e o endereço para adicionar à mão.
 
 ## Passo 2: ler o que vale para esta pessoa
 
@@ -177,6 +177,7 @@ Quando a própria pessoa dita os grifos, salve com `sofia_grifos` e `doAluno: tr
 3. Se precisar, marque a versão certa: `planejamento_editar_card` com `roteiroEscolhido`.
 4. Mova para Gravar (`planejamento_mover_card`). Os grifos precisam estar todos respondidos. Mostre o roteiro pronto para gravar (`planejamento_gravar`).
 5. Nunca marque como gravado nem como postado sem a pessoa pedir.
+6. Quando a pessoa mandar a gravação para editar, siga a skill `sofia-editora`. O card, o formato, a estrutura e o roteiro escolhido viram o mapa da edição.
 
 ### Depois de postar
 Só quando a pessoa pedir: `planejamento_postado` com o link e os números. Os números vêm de uma ferramenta de métricas que ela mesma ligou ou do que ela mandar. Coletor pago só se ela já tiver um ligado, e só com o OK dela, depois de dizer quantos itens vai buscar e quanto custa. Quando o vídeo funcionou, a ferramenta também guarda o resultado no cérebro do perfil: diga isso ao contar que salvou. Fale do resultado contra o normal do perfil ("2 vezes o normal do perfil", "perto do normal").
@@ -227,6 +228,8 @@ A evolução guarda uma leitura por dia dos números de um perfil já avaliado (
 ## A equipe e a conferência
 
 Escrever fica separado de conferir. Cada papel da equipe recebe do conector, na hora, só a fatia do método que usa (o briefing), e o código confere o que é mecânico. O plano de cada etapa vem do pacote, na seção "Passos e equipe desta etapa": os passos em ordem, quem faz cada um, o que roda junto e quantas rodadas. Se o plano do pacote disser outra coisa que esta seção, vale o pacote.
+
+Se o pacote não trouxer a seção "Passos e equipe desta etapa", ou disser que a equipe está desligada, siga o pacote inteiro na conversa principal, sem agentes e sem passadas.
 
 | Etapa | Escreve | Confere |
 |---|---|---|
@@ -343,7 +346,7 @@ Comentário bem curtido é a bolha falando com as palavras dela. É o material m
 
 ## Versão e atualização
 
-Esta é a versão 1.6.0 da Sofia Estrategista (plugin `sofia-estrategista`). O conector diz, no começo das instruções e no `onde_estou`, qual é a versão mais nova. Se a desta skill for mais velha, avise a pessoa uma vez por conversa, em uma frase, e ofereça atualizar com `/atualizar`. O comando mostra o caminho de cada app e, no Claude Code, roda os comandos depois do OK dela.
+Esta é a versão 2.0.0 da Sofia Estrategista (plugin `sofia-estrategista`, do marketplace `criadores-do-futuro`), a Sofia única: o método, o conector e a edição de vídeo num plugin só. O conector diz, no começo das instruções e no `onde_estou`, qual é a versão mais nova. Se a desta skill for mais velha, avise a pessoa uma vez por conversa, em uma frase, e ofereça atualizar com `/atualizar`. O comando mostra o caminho de cada app e, no Claude Code, roda os comandos depois do OK dela. Se a pessoa ainda tiver uma Sofia de antes (a `sofia-estrategista-editora`, ou a `sofia-estrategista` de outro marketplace), o `/atualizar` explica a troca pelo prompt de migração.
 
 ## Onde está o resto
 
@@ -372,5 +375,6 @@ Esta é a versão 1.6.0 da Sofia Estrategista (plugin `sofia-estrategista`). O c
 | Analisar vídeo ou perfil | [references/instrucoes/ler-videos.md](references/instrucoes/ler-videos.md) |
 | Aprender a voz da pessoa | [references/instrucoes/estilo.md](references/instrucoes/estilo.md) |
 | Sem o conector | [references/sem-conector.md](references/sem-conector.md) |
+| Editar o vídeo gravado ou aprender um estilo de edição | A skill `sofia-editora` |
 
 Com o conector ligado, o método que vale é o que `sofia_metodo` e `sofia_briefing` devolvem, porque é a versão mais nova. As peças desta pasta marcadas como "Cópia da peça" são geradas do conector e não se editam à mão. Os arquivos acima servem quando o conector está desligado ou fora do ar. O Piso desta página vale nos dois casos.

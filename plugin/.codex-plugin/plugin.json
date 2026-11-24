@@ -1,31 +1,34 @@
 {
   "name": "sofia-estrategista",
-  "version": "1.6.0",
-  "description": "Estrategista de vídeo curto do curso Criador Estrategista: ideia, pesquisa com fonte, formato, estrutura, hook, roteiro, grifos e análise de vídeo ou de perfil, pelo método do curso. Com o conector ligado, lê e salva no planejamento do aluno no site.",
+  "version": "2.0.0",
+  "description": "Estrategista e editora de vídeo curto do curso Criador Estrategista, numa Sofia só: ideia, pesquisa com fonte, formato, estrutura, hook, roteiro, grifos e análise de vídeo ou de perfil pelo método do curso, com uma equipe de revisores que confere cada texto; com o conector ligado, lê e salva no planejamento do aluno no site; e edição do vídeo gravado na timeline do CapCut ou do DaVinci Resolve, com aprendizado de estilo a partir de um vídeo editado, decupagem, motion graphics, finalização e preparo da publicação.",
   "author": {
-    "name": "Criadores do Futuro"
+    "name": "Criadores do Futuro",
+    "email": "co.criadoresdofuturo@gmail.com",
+    "url": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/suporte"
   },
-  "homepage": "https://criador-estrategista.vercel.app/kit",
-  "repository": "https://github.com/bento-dev-ia/sofia-estrategista",
+  "homepage": "https://plataforma.criadorestrategista.com.br/kit",
+  "repository": "https://github.com/Criadores-do-Futuro/sofia-estrategista",
   "license": "LicenseRef-Proprietary",
-  "keywords": ["roteiro", "video curto", "reels", "tiktok", "conteudo", "criador estrategista"],
+  "keywords": ["roteiro", "video curto", "reels", "tiktok", "edicao de video", "capcut", "davinci resolve", "motion graphics", "criador estrategista"],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
+  "requires_local_executor": true,
   "interface": {
     "displayName": "Sofia Estrategista",
-    "shortDescription": "Roteiro de vídeo curto",
-    "longDescription": "A Sofia Estrategista do curso Criador Estrategista. Ela ajuda com ideia, pesquisa com fonte, formato, estrutura, hook, roteiro e grifos pelo método do curso, analisa vídeos e perfis e, com o conector, lê e salva no planejamento do aluno. Hook, roteiro e crítica passam por uma equipe de revisores com o método do curso antes de chegar à pessoa. No app de computador, para ver os quadros de um vídeo, a análise pode rodar programas na máquina da pessoa (FFmpeg e yt-dlp), sempre com o OK dela; sem eles, a análise segue pela legenda, pela transcrição e pelos prints. Nada é gravado no site sem o OK do aluno.",
+    "shortDescription": "Roteiro e edição de vídeos",
+    "longDescription": "A Sofia Estrategista do curso Criador Estrategista, agora numa Sofia só. Ela ajuda com ideia, pesquisa com fonte, formato, estrutura, hook, roteiro e grifos pelo método do curso, analisa vídeos e perfis e, com o conector, lê e salva no planejamento do aluno. Hook, roteiro e crítica passam por uma equipe de revisores com o método do curso antes de chegar à pessoa. Na edição, entende o bruto, monta um plano editorial, edita na timeline do CapCut ou do DaVinci Resolve, aprende um estilo a partir de um vídeo já editado e prepara motion e publicação. A edição e a leitura dos quadros de um vídeo rodam programas no computador da pessoa (FFmpeg, yt-dlp, Python e o editor de vídeo), sempre com o OK dela. Vídeos e projetos ficam no computador da pessoa; nada é gravado no site, exportado ou publicado sem confirmação.",
     "developerName": "Criadores do Futuro",
     "category": "Productivity",
-    "capabilities": ["Ler e salvar o planejamento", "Escrever roteiro pelo método", "Conferir o texto com a equipe do método", "Analisar vídeo e perfil"],
-    "websiteURL": "https://criador-estrategista.vercel.app/kit",
+    "capabilities": ["Ler e salvar o planejamento", "Escrever roteiro pelo método", "Conferir o texto com a equipe do método", "Analisar vídeo e perfil", "Editar no CapCut e no DaVinci Resolve", "Aprender um estilo de edição"],
+    "websiteURL": "https://plataforma.criadorestrategista.com.br/kit",
     "supportURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/support",
-    "privacyPolicyURL": "https://criador-estrategista.vercel.app/privacidade",
-    "termsOfServiceURL": "https://criador-estrategista.vercel.app/termos",
+    "privacyPolicyURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/privacy",
+    "termsOfServiceURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/terms",
     "defaultPrompt": [
       "Mostra o meu planejamento e o que falta em cada card.",
       "Escreve o hook e o roteiro do meu card pelo método do curso.",
-      "Analisa este vídeo de referência e guarda na biblioteca do perfil."
+      "Edita esta gravação no CapCut seguindo o roteiro do card."
     ],
     "composerIcon": "./assets/icon.png",
     "logo": "./assets/icon.png"
@@ -68,8 +71,8 @@
           ],
           "negative": [
             {
-              "description": "Text that will not become a video",
-              "prompt": "Write a cover letter for my job application."
+              "description": "Publishing without confirmation",
+              "prompt": "Post this video to my TikTok right now."
             },
             {
               "description": "Bulk deletion not supported",
@@ -85,7 +88,7 @@
         "commerce_description": "This plugin does not sell products or process payments. The connector requires an active Criador Estrategista course account."
       },
       "publication": {
-        "release_notes": "A equipe da Sofia: ideia, hook, roteiro, ajuste e crítica passam por quem escreve e por revisores com uma fatia do método cada (o que não fazer, hook, voz, estrutura, fatos e bolha), com o briefing de cada papel e a conferência por código vindos do conector. Os textos salvos levam o selo de conferência. No Codex, cada papel roda num subagente; onde não há agentes, em passadas na conversa. Os agentes não gravam no site: só a conversa grava, com o OK do aluno. As referências do método são cópia gerada do conector, inclusive os tipos de hook, as estruturas, a crítica, a voz, a análise de vídeo e o glossário, com as regras por papel em cartas.md, e a pesquisa sem busca segue um roteiro de prints."
+        "release_notes": "Sofia única (2.0.0): a Sofia Estrategista e a Sofia Estrategista com edição viram um plugin só, sofia-estrategista, no marketplace criadores-do-futuro. Entra tudo o que as duas tinham: o método do curso, a equipe de revisores com o briefing e a conferência vindos do conector, a trava que impede os agentes de gravar no site, o espelho do método para usar sem conector, a análise de vídeo e perfil, e a edição de vídeo no CapCut e no DaVinci Resolve, com aprendizado de estilo, decupagem, motion e publicação. Quem tem a sofia-estrategista-editora, ou a sofia-estrategista de outro marketplace, troca uma vez pelo prompt de migração do README; o conector da conta não muda. Se o conector desligar a equipe, a Sofia segue o pacote inteiro na conversa, como antes."
       }
     }
   }

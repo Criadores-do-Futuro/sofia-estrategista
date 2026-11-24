@@ -3,14 +3,16 @@
   "owner": {
     "name": "Criadores do Futuro"
   },
+  "description": "Plugins do curso Criador Estrategista, dos Criadores do Futuro: a Sofia Estrategista, com o método, o conector e a edição de vídeo.",
   "metadata": {
-    "description": "Plugins do curso Criador Estrategista."
+    "description": "Plugins do curso Criador Estrategista, dos Criadores do Futuro: a Sofia Estrategista, com o método, o conector e a edição de vídeo."
   },
   "plugins": [
     {
       "name": "sofia-estrategista",
       "source": "./plugin",
-      "description": "Estrategista de vídeo curto do curso Criador Estrategista, com o método do curso e o conector do planejamento do site."
+      "version": "2.0.0",
+      "description": "Estrategista e editora de vídeo curto do curso Criador Estrategista, numa Sofia só: o método do curso com a equipe de revisores, o conector do planejamento do site e a edição na timeline do CapCut ou do DaVinci Resolve."
     }
   ]
 }
