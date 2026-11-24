@@ -24,7 +24,7 @@ Com o nome de uma bolha que não existe e sem `criar`, nada é gravado: a respos
 Guie a pessoa um passo por vez. Espere ela voltar com o que achou antes do próximo. Se ela quiser começar por outro passo ou voltar a um anterior, siga com ela.
 
 1. **Buscar como a bolha busca.** No Instagram e no TikTok, procure o tema com as palavras que a bolha usaria no dia a dia. Quem vende na rua procura "maquininha".
-2. **Abrir os vídeos que pegaram.** Os que tiveram muito mais visualizações que os outros vídeos do mesmo perfil. Prefira os recentes: o fato mais novo manda.
+2. **Abrir os vídeos que pegaram.** Os que tiveram muito mais visualizações que os outros vídeos do mesmo perfil. Os recentes valem mais: o fato mais novo manda.
 3. **Ler os comentários mais curtidos.** O método sugere de 10 a 15 vídeos que viralizaram e os comentários com mais curtidas de cada um. É um guia, sem mínimo: bolha pequena ou nova tem menos. Traga os que mostram como a bolha fala e o que ela sente: a piada interna, a reclamação, a pergunta que se repete, a briga. Cada um com o número de curtidas, como aparece no vídeo, e separado em identificação ("isso é sobre mim") ou conflito (desejo contra realidade, expectativa quebrada).
 4. **Anotar o vocabulário e o que mexe com a bolha.** As palavras e expressões que se repetem (o vocabulário). O que faz a bolha rir, brigar, concordar ou marcar alguém (o que mexe com ela).
 5. **Separar as referências.** Os vídeos que pegaram e podem servir de molde.

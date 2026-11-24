@@ -95,10 +95,10 @@ Quando o vídeo é da bolha do card (o grupo que o vídeo quer alcançar, em [fu
 
 ## Coletor pago, quando a pessoa deu o OK
 
-Para o TikTok, prefira um coletor que traga vídeo, capa, números e transcrição na mesma chamada, e um de comentários. Para o Instagram, use o coletor de Instagram que a ferramenta dela já tenha.
+Para o TikTok, use um coletor que traga vídeo, capa, números e transcrição na mesma chamada, e um de comentários. Para o Instagram, use o coletor de Instagram que a ferramenta dela já tenha.
 
 - Chame uma vez por link, para cada resultado ficar ligado ao vídeo certo.
-- Prefira a legenda que o vídeo já tem. Transcrição feita pelo coletor custa mais.
+- Use a legenda que o vídeo já tem. Transcrição feita pelo coletor custa mais.
 - Números úteis: views, curtidas, comentários, compartilhamentos e salvos.
 - Capa e transcrição podem voltar como registro guardado no próprio coletor. Leia pelas ferramentas dele. Baixar esses links por fora costuma falhar.
 - Sem o arquivo de vídeo, diga uma vez: "Consegui ver a capa e ler a transcrição, os números e os comentários. Os quadros do meio ficaram de fora. Para ver cortes, gestos e texto na tela, preciso do arquivo do vídeo." Não descreva edição nem gesto que você não viu.
