@@ -21,15 +21,19 @@ quer plantar na mente do público. Ela é o fio que liga o posicionamento dele �
    oferta.
 2. **Movimento:** uma causa maior que o líder, com um inimigo comum. O público entra no movimento e se
    reconhece nele.
-3. **Produto:** os mecanismos únicos do aluno, uma solução nova para um problema antigo.
+3. **Produto:** os mecanismos únicos do aluno. Quem assiste precisa enxergar ali uma solução nova para um
+   problema antigo, que explica por que as soluções que vieram antes falharam.
 
 ## 3. Como construir com o aluno
 
 Em conversa, uma pergunta por vez. Cada resposta vai para o cérebro do perfil só com o OK dele (item 5).
 
-1. **Recorte intencional.** O que da vida e do trabalho dele entra nos vídeos, e o que fica de fora. O
-   que ele não quer mostrar fica de fora.
-2. **Histórias de prova.** Para cada pilar, ao menos uma história real que prova o que ele diz.
+1. **Recorte intencional.** O perfil mostra um recorte da personalidade real dele, escolhido de
+   propósito para fortalecer o posicionamento do negócio. Ele não precisa expor 100% da vida, como num
+   diário aberto. Combine o que da vida e do trabalho dele entra nos vídeos e o que fica de fora. O que
+   ele não quer mostrar fica de fora.
+2. **Histórias de prova.** Para cada pilar, a pergunta: "Quais histórias reais da minha vida, da minha
+   comunidade ou dos meus clientes provam esse ponto?" Cada pilar precisa de ao menos uma.
 3. **Brain dump.** Ele despeja tudo o que sabe e faz sobre o assunto, sem filtro. Depois, junte em 3 ou 4
    blocos: cada bloco vira um mecanismo do produto, com nome próprio.
 4. **Virada pessoal.** "O que você vivia no passado que superou, e hoje olha para o mercado e sente que
@@ -39,11 +43,13 @@ Em conversa, uma pergunta por vez. Cada resposta vai para o cérebro do perfil s
 
 ### Autenticidade
 
-- Interesses aleatórios: hobbies, manias e paixões.
+- Interesses aleatórios: hobbies e gostos específicos (como músicas, animais de estimação, artes ou
+  dança), que criam pontos de conexão com quem assiste no dia a dia.
 - Livros, filmes, criadores e marcas que ele admira.
-- Vulnerabilidades seguras: fraquezas e erros que ele topa mostrar sem se expor demais.
-- 5 características dele, cada uma com uma ação visível no vídeo (exemplo: "organizado" vira a mesa
-  arrumada e a agenda aberta na tela).
+- Vulnerabilidades seguras: dificuldades ou traços reais que ele topa mostrar para ficar mais humano
+  (como ansiedade ou medos superados), sem se expor demais.
+- 5 características dele, cada uma com uma ação visível no vídeo (exemplos: acordar cedo para mostrar
+  disciplina; usar o "meta-ensino" para mostrar genialidade técnica).
 - A criança interior: o que ele amava fazer quando pequeno e ainda aparece nele hoje.
 
 ### Movimento
@@ -52,7 +58,8 @@ Em conversa, uma pergunta por vez. Cada resposta vai para o cérebro do perfil s
 - O inimigo comum: o comportamento, a crença ou o jeito de fazer que o movimento combate (exemplo: a
   "normose", o normal que adoece).
 - O nome da comunidade (exemplo: "CDFs").
-- Símbolos e rituais.
+- Símbolos e rituais: imagens que representam o movimento (exemplo: uma bola de cristal para prever o
+  futuro) e práticas que se repetem (exemplos: respirações guiadas, saudações próprias).
 - Linguagem própria: bordões e expressões (exemplos: "It's time for action!", "Aha!").
 - Crenças inegociáveis (exemplos: "O futuro é dos ousados", "Conhecimento mata a insegurança", "Quem se
   diverte não desiste").
@@ -81,16 +88,18 @@ as três notas.
 
 - **Uma semente por roteiro.** Cada vídeo planta uma ideia só, de um dos pilares. A ideia do card diz o
   pilar e a frase que fica na cabeça de quem assiste, numa linha: "Semente (Movimento): [a frase]".
-- **Elevação de consciência.** As sementes se somam ao longo das semanas. De um vídeo para o outro, o
-  público dá um passo: perceber o problema, conhecer o jeito novo, conhecer o mecanismo do aluno, querer
-  a oferta.
-- **Autenticidade e movimento entram na história,** sem pausa para propaganda: num gancho narrativo,
-  numa piada interna, num detalhe da rotina, no bicho de estimação que aparece no fundo.
+- **Elevação de consciência.** As sementes se somam ao longo das semanas. Quem assiste a uma sequência
+  de vídeos ganha uma camada de consciência a cada um. Quando encontra a oferta, já reconhece o valor de
+  cada etapa do método.
+- **Autenticidade e movimento entram na história,** sem pausa para propaganda. Ganchos narrativos e
+  piadas de propósito: expressões sarcásticas, analogias pessoais ou menções rápidas à rotina (exemplo:
+  um comentário descontraído sobre os gostos dele, ou o gato cruzando a gravação).
 - **O fechamento reforça uma crença do movimento** (exemplo: "Deixe de ser mero espectador e torne-se um
   criador de conteúdo").
 - **Chamada escondida, na maioria dos vídeos.** A oferta aparece dentro de uma história, sem pedir nada.
   Exemplos: "Semana passada, uma aluna da minha comunidade me perguntou...", "Quando eu estava atendendo
-  um cliente cara a cara...", "Na minha última consultoria, reparei em um padrão...". A história precisa
+  um cliente cara a cara...", "Na minha última consultoria, reparei em um padrão...". Quem assiste
+  registra na hora a autoridade dele e que existe um serviço que dá para contratar. A história precisa
   ter acontecido. Sem caso real, use outra chamada.
 - **Chamada direta, em cerca de 2 a cada 10 vídeos,** e nos stories. Exemplo: "Eu tenho um método
   focado nisso. Clique no link da bio para garantir sua vaga." Também vale uma assinatura fixa no fim

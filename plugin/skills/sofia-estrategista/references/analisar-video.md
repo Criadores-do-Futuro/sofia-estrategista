@@ -89,6 +89,10 @@ Pegue os comentários pelo caminho que existir, nesta ordem:
 
 Guarde até 20 entre os mais curtidos: ordene pelas curtidas, porque a ordem da lista que chega nem sempre segue a popularidade. Guarde só o texto, as curtidas e a data. Nunca guarde o nome, o @ ou o identificador de quem escreveu. Copie o texto como foi escrito, sem corrigir.
 
+## Vídeo da bolha
+
+Quando o vídeo é da bolha do card (o grupo que o vídeo quer alcançar, em [furar-bolha.md](furar-bolha.md)), anote o vocabulário dela (as palavras e as expressões que se repetem na fala, na tela e nos comentários) e o que mexe com ela (o que gera identificação ou conflito). Com o conector, ofereça guardar na bolha o vocabulário, o que mexe com ela e o vídeo como referência, com `cerebro_bolha` (`vocabulario`, `emocoes`, `referencias`), só com o OK da pessoa. Sem o conector, entregue no chat em duas listas: "Vocabulário" e "O que mexe com a bolha". O roteiro usa essas palavras.
+
 ## Coletor pago, quando a pessoa deu o OK
 
 Para o TikTok, prefira um coletor que traga vídeo, capa, números e transcrição na mesma chamada, e um de comentários. Para o Instagram, use o coletor de Instagram que a ferramenta dela já tenha.

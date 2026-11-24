@@ -26,6 +26,8 @@ Palavras que esta skill usa e como dizer cada uma para quem nunca estudou roteir
 | Intenção de comando | A ideia que você quer plantar na cabeça do público em cada vídeo, ligada ao que você vende |
 | Semente | A frase da intenção de comando que um vídeo planta. Uma por vídeo |
 | Chamada escondida | O convite para o seu produto dentro de uma história que aconteceu, sem cara de propaganda |
+| Cubo mágico | Girar os ângulos do tema até achar o ponto em comum entre a bolha e o que você vende, sem junção forçada |
+| Escorregador | O caminho do roteiro: abre com a bolha, desliza pelo ponto em comum e fecha com a intenção de comando e uma chamada para ação clara |
 | Lacuna de curiosidade | A pergunta que fica na cabeça de quem assiste |
 | Aha | A hora em que tudo faz sentido |
 | Debate mental | A pessoa fica pensando "será?" e escolhe um lado |

@@ -33,7 +33,8 @@ a prova pesa mais que tudo, porque mostra que a promessa do hook tem base.
 ### Identificação
 
 Uma pessoa real, do mesmo mundo de quem assiste, com a cara que se espera de quem fala daquele assunto.
-No roteiro, a identificação aparece em detalhes do dia a dia da bolha, nas palavras dela (peça
+Por exemplo, um perfil mais jovem falando de tendências modernas, ou uma figura tradicional falando de
+contabilidade e finanças. No roteiro, a identificação aparece em detalhes do dia a dia da bolha, nas palavras dela (peça
 `furar-bolha`).
 
 ### Presença

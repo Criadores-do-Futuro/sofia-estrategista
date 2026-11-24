@@ -25,8 +25,8 @@ Uma bolha tem nome de assunto ou de comunidade: o que essa gente ama, acompanha,
 
 1. **Do momento (midiática):** assuntos quentes da semana ou do mês que estão no debate público, como a escala 6x1, o BBB, lançamentos de séries e tretas públicas.
 2. **Universal:** dilemas de todo ser humano, que não envelhecem, como relacionamento, família, a breve natureza da vida (e o que vem dela, como a crise dos 20 ou dos 30), rejeição, propósito e injustiça.
-3. **Ideológica:** temas com polarização forte e muita convicção, como política, religião, veganismo e feminismo.
-4. **De criador de conteúdo:** quando uma pessoa consolida um formato e vira o centro do interesse, como Felipe Neto, Rodrigo Pantera, Jenny Keller, Rafael Gratta, Mari Krieger, Nina Talks e Hanna Franklin.
+3. **Ideológica:** temas com polarização forte e muita convicção, como política (por exemplo, as discussões que envolvem Lula e Bolsonaro), religião, veganismo e feminismo.
+4. **De criador de conteúdo:** quando uma pessoa consolida um formato e vira o centro do interesse, como Felipe Neto, Rodrigo Pantera, Jenny Keller, Rafael Gratta, Mari Krieger, Nina Talks (Nina Baiocchi) e Hanna Franklin.
 5. **De interesse aleatório:** paixões e assuntos específicos, como café especial, salsicha mofado (dachshund), gatos pretos, crochê, futebol, signos, estourar espinha, fontes tipográficas, doramas, rap nacional, Linkin Park e xadrez.
 6. **De nicho e profissão:** segmentos profissionais e de mercado, como nutrição (ou nutrição para gestantes), musculação, marketing digital, tráfego pago (a comunidade do Pedro Sobral) e social media.
 
@@ -83,9 +83,9 @@ Para entrar em qualquer grupo, o vídeo aciona pelo menos uma destas forças:
 
 No caso do curso que choca uma crença sagrada (o do Pantera, no item 9), a provocação abre o vídeo e logo depois a narrativa vira para exaltar o criador.
 
-## 7. O olhar do criador
+## 7. O olhar do criador (a Lente da Matrix)
 
-O criador ativo não assiste vídeo de forma passiva. Diante de um vídeo que viralizou, ele pergunta:
+O criador ativo não assiste vídeo de forma passiva. Ele lê os códigos escondidos: é o que o curso chama de Lente da Matrix. Diante de um vídeo que viralizou, ele pergunta:
 
 1. Qual bolha esse vídeo está furando?
 2. Qual formato ele usou?
