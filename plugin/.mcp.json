@@ -2,7 +2,7 @@
   "mcpServers": {
     "sofia-estrategista": {
       "type": "http",
-      "url": "https://criador-estrategista.vercel.app/api/mcp"
+      "url": "https://plataforma.criadorestrategista.com.br/api/mcp"
     }
   }
 }

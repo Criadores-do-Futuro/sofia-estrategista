@@ -1,66 +1,85 @@
-# Formatos
+# Formatos de Gravação
 
-Formato é o jeito de gravar e montar o vídeo. Ele anda junto com a estrutura e os elementos viciantes, e cada um responde uma coisa diferente.
+> Cópia da peça `formatos/README` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/README`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
-| Conceito | O que define | Onde fica |
+Este é o eixo **"COMO se grava"** do modelo de 4 eixos da Sofia. Até aqui ele era citado (`knowledge/arquetipos-nichos-bolhas`) mas não tinha referência própria: esta pasta preenche isso.
+
+## Os 4 eixos (não confundir)
+
+| Eixo | Pergunta | Onde vive |
 |---|---|---|
-| **Formato** | Como grava e monta (tela dividida, narrado, cine, palestrinha) | Esta pasta |
-| **Estrutura** | A ordem da história (AIDA, IHC, Análise) | [estruturas.md](../estruturas.md) |
-| **Elementos viciantes** | O que prende em cada frase (contraste, conflito, curiosidade) | [elementos-viciantes.md](../elementos-viciantes.md) |
+| **Princípios da viralização** | POR QUE funciona | `principios`: é a lei; tudo passa por aqui |
+| **Estrutura de roteiro** | COMO o argumento se organiza | `estruturas-de-roteiro/`, as 5: AIDA, IHC, Jeito Errado × Jeito Certo, Ele/Eu/Você/Futuro, Análise |
+| **Arquétipo de conteúdo** | QUAL ângulo já provou pegar | `knowledge/arquetipos-nichos-bolhas`: A1 a A15 (série, newsjacking, listicle, esquete, hot-take...) |
+| **Formato de gravação** (ESTA pasta) | COMO se grava e monta | Tela dividida, narrado, cine, palestrinha... |
 
-Com o conector ligado, leia o formato pelo `sofia_metodo` (`formatos/README` e `formatos/<formato>`): a versão do servidor é a mais nova. Os arquivos desta pasta servem quando o conector está desligado.
+Os elementos que prendem em **cada frase** (contraste, conflito, curiosidade) vivem em `elementos-viciantes/` e atravessam os quatro eixos.
 
-Todo roteiro tem os três ao mesmo tempo: um formato, uma estrutura e vários elementos. O formato muda as regras de escrita: a mesma estrutura escrita para "narrado" e para "palestrinha" resulta em roteiros diferentes.
-
-Todo arquivo de formato tem as mesmas partes: o que é, a assinatura visual, as regras de escrita, o tipo de hook que o formato pede, os elementos viciantes dominantes e a estrutura que combina. A ideia que usa o formato segue o [modelo de ideia](../modelo-de-ideia.md).
+Um roteiro tem os quatro ao mesmo tempo. O formato é o que muda as **regras de escrita**: a mesma estrutura escrita para "narrado" e para "palestrinha" resulta em roteiros diferentes.
 
 ## Formatos disponíveis
 
 | Formato | O que é | Estrutura que combina melhor |
 |---|---|---|
-| [Bastidores](bastidores.md) | Mostra o processo real por trás de um resultado | IHC (abre pelo resultado) |
-| [Caixinha Polêmica](caixinha-de-perguntas.md) | Responde a caixinha de perguntas da rede com uma pergunta provocativa | Jeito errado e jeito certo, ou Ele, Eu, Você, Futuro |
-| [Cine](cine.md) | Estética de mini-filme: planos, trilha, cortes precisos | IHC (abre em cena imersiva) |
-| [Comparação](comparacao.md) | Opõe duas opções com critérios claros | Análise, com o contraste como elemento principal |
-| [Diálogo](dialogo.md) | O criador faz dois personagens conversando | Jeito errado e jeito certo, ou IHC |
-| [Dinamismo](dinamismo.md) | Cortes rápidos, ritmo acelerado, energia visual | AIDA, ou Análise com os motivos em sequência |
-| [Experimento Social](experimento-social.md) | Teste com pessoas de verdade, com o resultado revelado no fim | IHC (abre pela premissa) |
-| [Narrado](narrado.md) | Voz off sobre imagens, clipes ou textos | IHC ou Análise |
-| [Palestrinha](palestrinha.md) | Fala direto para a câmera, sem apoio visual | IHC, ou Jeito errado e jeito certo |
-| [Storytelling Visual](storytelling-visual.md) | História com apoio de textos e gráficos animados | IHC, ou Ele, Eu, Você, Futuro |
-| [Tela Dividida](tela-dividida.md) | Comenta um conteúdo de fora que aparece ao lado | Ele, Eu, Você, Futuro, com o contraste como elemento principal |
-| [Tela Verde](tela-verde.md) | Fundo trocado por print, gráfico ou cena | Análise ou IHC |
-| [The Office](the-office.md) | Imitação de documentário: olhar para a câmera, tom de confissão irônica | IHC, com o olhar para a câmera como confissão |
-| [Conflito Situacional](conflito-situacional.md) | Abre com uma situação urgente que parece real | IHC (abre dentro da cena de conflito) |
-| [Trivial](trivial.md) | Conversa íntima em contexto do dia a dia | Ele, Eu, Você, Futuro, ou IHC |
-| [Lo-Fi](lo-fi.md) | Produção crua e simples de propósito | IHC curto, com a opinião dita de cara |
-| [Vlog](vlog.md) | Registra uma experiência real em momentos e lugares | IHC |
-| [Análise](analise.md) | Explica por que alguém de fora faz sucesso, com clipes dele | Análise ou AIDA |
-| [Conversa de Bar](conversa-de-bar.md) | Fala informal com o olhar fora da lente | Ele, Eu, Você, Futuro |
-| [Analogia](analogia.md) | Um objeto concreto explica uma ideia abstrata | IHC |
-| [Criativo Preguiçoso](criativo-preguicoso.md) | Hook visual forte e o resto simples | AIDA ou IHC |
-| [Narrador](narrador.md) | Um personagem reage a um narrador que não aparece | IHC, com a troca de falas como a história |
-| [Formato Combinado](formato-combinado.md) | Junta dois formatos conhecidos | A do formato que conduz |
+| Bastidores | Mostra o processo real por trás de um resultado | IHC (abre pelo resultado) |
+| Caixinha Polêmica | Responde caixinha nativa com pergunta provocativa | Jeito Errado × Jeito Certo / Ele-Eu-Você-Futuro |
+| Cine | Estética de mini-filme: planos, trilha, cortes precisos | IHC (abre em cena imersiva) |
+| Comparação | Opõe duas opções com critérios claros | Análise + Contraste |
+| Diálogo | Criador interpreta dois personagens conversando | Jeito Errado × Jeito Certo / IHC |
+| Dinamismo | Cortes rápidos, ritmo acelerado, energia visual | AIDA / Análise em lista |
+| Experimento Social | Experimento real com pessoas reais, resultado revelado | IHC (abre pela premissa-gancho) |
+| Narrado | Voz off sobre imagens, clips ou textos | IHC / Análise |
+| Palestrinha | Fala direto pra câmera, sem apoio visual | IHC / Jeito Errado × Jeito Certo |
+| Storytelling Visual | História com apoio de textos e gráficos animados | IHC / Ele-Eu-Você-Futuro |
+| Tela Dividida | Comenta conteúdo externo que aparece ao lado | Ele-Eu-Você-Futuro + Contraste |
+| Tela Verde | Fundo substituído por print, gráfico ou cena | Análise + IHC |
+| The Office | Mockumentary: olhar pra câmera, tom confessional irônico | IHC com narração interna |
+| Conflito Situacional | Abre com situação urgente que parece real | IHC |
+| Trivial | Conversa íntima em contexto cotidiano | Ele-Eu-Você-Futuro / IHC |
+| Lo-Fi | Produção crua e simples de propósito | IHC / hot-take |
+| Vlog | Registra experiência real em momentos e cenários | IHC |
+| Análise | Interpreta sujeito definido usando inserts como evidência | Análise / AIDA |
+| Conversa de Bar | Fala informal com olhar fora da lente | Ele-Eu-Você-Futuro |
+| Analogia | Usa situação concreta para explicar ideia abstrata | IHC |
+| Criativo Preguiçoso | Hook visual forte seguido de gravação simples | AIDA / IHC |
+| Narrador | Personagem em cena reage a narrador off-screen | Diálogo curto / IHC |
+| Formato Combinado | Funde dois formatos reconhecíveis com intenção | Depende da combinação |
+
+> Nota honesta, no mesmo espírito de `arquetipos-nichos-bolhas`: as 5 estruturas da Sofia são de monólogo/narração. Nos formatos de esquete/diálogo (**Diálogo**, **The Office**) a estrutura sugerida é aproximação: nesses, aplique os princípios direto.
 
 ## Como escolher
 
-| Se o tema... | Formatos |
+1. **O tema pede prova visual?** (dado, print, comparação) → Tela Verde, Comparação, Storytelling Visual
+2. **O tema é uma história ou experiência real?** → Cine, Narrado, Vlog, Storytelling Visual, Bastidores
+3. **O tema é opinião, análise ou posicionamento?** → Análise, Palestrinha, Caixinha Polêmica, Conversa de Bar, Lo-Fi
+4. **O tema reage a algo que já existe?** → Tela Dividida
+5. **O tema é uma lista de valor rápido?** → Dinamismo
+6. **O tema precisa de evidência de comportamento real?** → Experimento Social, Vlog, Diálogo
+7. **Existe uma ideia abstrata que precisa ficar concreta?** → Analogia
+8. **O hook precisa parar pelo visual com produção mínima depois?** → Criativo Preguiçoso
+9. **A ideia nasce de uma cena de tensão?** → Conflito Situacional
+10. **Duas linguagens são essenciais, não decorativas?** → Formato Combinado
+
+Se o usuário não tem condições de produção para o formato ideal, escolha o segundo melhor e diga por quê.
+
+## Combinação com arquétipo
+
+O arquétipo (o ângulo) e o formato (a gravação) são escolhas independentes que precisam conversar. Pares que aparecem juntos com frequência:
+
+| Arquétipo | Formato que costuma acompanhar |
 |---|---|
-| pede prova visual (dado, print, comparação) | Tela Verde, Comparação, Storytelling Visual |
-| é uma história ou experiência real | Cine, Narrado, Vlog, Storytelling Visual, Bastidores |
-| é opinião, análise ou posição | Análise, Palestrinha, Caixinha Polêmica, Conversa de Bar, Lo-Fi |
-| reage a algo que já existe | Tela Dividida |
-| é uma lista de valor rápido | Dinamismo |
-| precisa mostrar como as pessoas se comportam de verdade | Experimento Social, Vlog, Diálogo |
-| é uma ideia abstrata que precisa ficar concreta | Analogia |
-| tem um hook visual forte e pouca produção depois | Criativo Preguiçoso |
-| nasce de uma cena de tensão | Conflito Situacional |
-| precisa de duas linguagens | Formato Combinado |
+| A1 série numerada | Dinamismo, Palestrinha |
+| A2 newsjacking | Tela Verde, Tela Dividida |
+| A3 listicle | Dinamismo, Tela Verde |
+| A4 prova de renda / caso real | Palestrinha, Bastidores |
+| A6 tutorial-demo | Tela Verde, Narrado |
+| A8 polêmica | Caixinha Polêmica, Palestrinha |
+| A14 esquete de cena | Diálogo, The Office |
+| A15 hot-take | Palestrinha, The Office |
 
-Se a pessoa não tem como produzir o formato ideal, escolha o segundo melhor e diga por quê.
+## Como os agentes usam
 
-## Como a Sofia usa estes formatos
-
-- **Ao escrever:** escolhe o formato antes da estrutura e aplica as regras de escrita daquele formato em cada frase.
-- **Ao analisar** ([analisar-video.md](../analisar-video.md)): identifica qual formato o vídeo usa e se as regras dele foram respeitadas.
-- **Ao lapidar** ([critica-e-lapidacao.md](../critica-e-lapidacao.md)): grifa os trechos que quebram as regras do formato.
+- O **roteirista** escolhe o formato depois da bolha/arquétipo e antes de escrever, e aplica as regras de escrita daquele formato em cada frase
+- Na análise de um vídeo, a Sofia identifica qual formato o vídeo analisado usa
+- O **critico** verifica se as regras de escrita do formato escolhido foram respeitadas
+- Na melhoria de um roteiro, a Sofia reescreve trechos que quebram as regras do formato

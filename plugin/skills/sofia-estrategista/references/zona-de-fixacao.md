@@ -1,6 +1,6 @@
 # A zona de fixação: os segundos logo depois do hook
 
-> Cópia da peça `zona-de-fixacao` do método. Com o conector ligado, vale a versão de `sofia_metodo` com `zona-de-fixacao`, que é a mais nova. Sem o conector, as peças citadas aqui ficam nestes arquivos: `fazer-hook` em [fazer-hook.md](fazer-hook.md), `furar-bolha` em [furar-bolha.md](furar-bolha.md), `intencao-de-comando` em [intencao-de-comando.md](intencao-de-comando.md) e os formatos em [formatos/README.md](formatos/README.md).
+> Cópia da peça `zona-de-fixacao` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `zona-de-fixacao`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 O hook faz a pessoa parar de rolar. A zona de fixação faz ela ficar. São os 5 a 10 segundos logo depois
 do hook, de 2 a 4 frases, e é ali que quem assiste decide se vai até o fim. Esta peça vale para a ponte
@@ -84,11 +84,11 @@ e é essa coisa que segura o cliente."
 
 Confira os segundos logo depois do hook:
 
-- [ ] As 2 a 4 frases tratam do mesmo assunto que o hook prometeu.
-- [ ] Um pedaço concreto da promessa chega nesses segundos.
-- [ ] Há uma prova real, com fonte, ou um exemplo concreto da pessoa.
-- [ ] A bolha se reconhece: um detalhe do dia a dia dela, nas palavras dela.
-- [ ] Nada de introdução, propaganda ou mudança de tema nesse trecho.
-- [ ] Presença e capricho estão na lista de gravação.
+- **ZF1.** As 2 a 4 frases tratam do mesmo assunto que o hook prometeu.
+- **ZF2.** Um pedaço concreto da promessa chega nesses segundos.
+- **ZF3.** Há uma prova real, com fonte, ou um exemplo concreto da pessoa.
+- **ZF4.** A bolha se reconhece: um detalhe do dia a dia dela, nas palavras dela.
+- **ZF5.** Nada de introdução, propaganda ou mudança de tema nesse trecho.
+- **ZF6.** Presença e capricho estão na lista de gravação.
 
 O que falhar vira grifo.

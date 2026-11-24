@@ -2,7 +2,7 @@
 
 O conector guarda o método da Sofia na versão mais nova, os números de cada perfil, o cérebro com o que a Sofia já aprendeu, a biblioteca de referências e os cards do planejamento. Esta página diz o que cada ferramenta faz e quando chamar.
 
-Sobre como usar cada ferramenta (nome, campos, ordem das chamadas), a descrição que vem nela e as instruções que o conector manda no começo da conversa valem mais que esta página. Os nomes podem mudar entre versões: se um nome daqui não existir, procure o mais parecido e leia a descrição dele. O nome pode vir com um prefixo do aplicativo (por exemplo `mcp__plugin_sofia-estrategista_sofia-estrategista__`). O Piso, a segurança e o OK antes de guardar algo sobre a pessoa valem sempre, mesmo que a descrição de uma ferramenta mande guardar na hora.
+Sobre como usar cada ferramenta (nome, campos, ordem das chamadas), a descrição que vem nela e as instruções que o conector manda no começo da conversa valem mais que esta página. Os nomes podem mudar entre versões: se um nome daqui não existir, procure o mais parecido e leia a descrição dele. O nome pode vir com um prefixo do aplicativo na frente, que muda conforme o conector veio do plugin ou do site do Claude (por exemplo "Sofia Estrategista: planejamento_quadro"): é a mesma ferramenta. O Piso, a segurança e o OK antes de guardar algo sobre a pessoa valem sempre, mesmo que a descrição de uma ferramenta mande guardar na hora.
 
 ## Sumário
 
@@ -20,6 +20,8 @@ Sobre como usar cada ferramenta (nome, campos, ordem das chamadas), a descriçã
 |---|---|---|
 | `sofia_meus_videos` | Os vídeos em andamento, a etapa de cada um, se a voz está salva e o próximo passo sugerido | Começo de toda conversa de conteúdo |
 | `sofia_preparar_escrita` | Devolve o pacote da escrita: as regras, como trabalhar com esta pessoa neste perfil, o que ela já recusou, a versão atual (no ajuste e na crítica), o público, o cérebro, o método, a pesquisa, a base de conhecimento do assunto, o card e, no fim, o selo do pacote | Uma vez por etapa do card: antes de sugerir ideias, escrever hooks, escrever ou ajustar o roteiro e criticar |
+| `sofia_briefing` | O briefing de um papel da equipe numa etapa: o procedimento, as cartas (regras com código), o que vale do card e as peças inteiras, em partes. Com `modo: "cartas"` e vários papéis, só as cartas e o procedimento de conferir | Cada agente da equipe, no começo; nas passadas, antes de escrever e antes de conferir (veja `passadas.md`) |
+| `sofia_conferir` | Confere por código as regras M1 a M16 nas opções, vê se os vereditos dos revisores cobrem todas as cartas e, quando tudo passa, devolve o selo de conferência | Depois de escrever, para limpar o que é de código, e no fim, com os vereditos, para o selo |
 | `sofia_metodo` | Devolve uma peça do método | As peças que o passo pede além do pacote, uma vez por conversa, enquanto ainda estiverem nela (depois de um resumo da conversa, de novo); fora isso, só o formato, a estrutura ou o elemento que a pessoa citar e o pacote não trouxe, ou sem card |
 | `sofia_video` | O vídeo inteiro: ficha, pesquisa, estrutura, roteiros com os grifos numerados, lista de gravação e os ids | Ver versões anteriores, referências ligadas, antes de gravar |
 | `sofia_salvar` | Salva a parte `roteiro` (cada versão) ou a parte `gravacao` (cenas e teleprompter) | Logo depois de escrever |
@@ -28,10 +30,11 @@ Sobre como usar cada ferramenta (nome, campos, ordem das chamadas), a descriçã
 | `sofia_exportar` | O vídeo inteiro em Markdown | A pessoa quer copiar ou baixar |
 | `sofia_apagar` | Apaga dados da pessoa | Só a pedido dela, nesta conversa |
 
-**Peças do `sofia_metodo`:** `principios`, `regras-universais`, `sem-slop`, `sem-slop-resumo`, `como-escrever-bem`, `diagnostico`, `formatos/<formato>` (e `formatos/README`), `estruturas-de-roteiro/<estrutura>`, `elementos-viciantes/README`, `exemplos-analisados/<formato>`, `knowledge/arquetipos-nichos-bolhas`, `knowledge/hooks-que-funcionam`, `knowledge/principios-exemplos`, `instrucoes/roteiro`, `instrucoes/critica`, `instrucoes/estilo`, `instrucoes/ler-videos`, `hook` ou `hook/<formato>`. Com `lista`, ela devolve o que existe.
+**Peças do `sofia_metodo`:** `principios`, `regras-universais`, `sem-slop`, `sem-slop-resumo`, `como-escrever-bem`, `diagnostico`, `formatos/<formato>` (e `formatos/README`), `estruturas-de-roteiro/<estrutura>`, `elementos-viciantes/README`, `exemplos-analisados/<formato>`, `knowledge/arquetipos-nichos-bolhas`, `knowledge/hooks-que-funcionam`, `knowledge/principios-exemplos`, `instrucoes/roteiro`, `instrucoes/critica`, `instrucoes/estilo`, `instrucoes/ler-videos`, `hook` ou `hook/<formato>`, `fazer-hook`, `zona-de-fixacao`, `furar-bolha`, `intencao-de-comando`, `pesquisa-de-bolha`, `modelo-de-ideia`, `piso`, `linguagem-simples`, `voz-do-aluno`, `fatos-e-fontes` e `pesquisa-manual`. Com `lista`, ela devolve o que existe, os papéis da equipe e as cartas de cada peça.
 
 **Detalhes do `sofia_preparar_escrita`:**
 - Recebe o `videoId` (o id do card) e o `tipo`: `ideia`, `hook`, `roteiro`, `ajuste` ou `critica`.
+- **`entrega`.** Com `entrega: "orquestrar"`, o pacote vem curto: as regras, os passos e a equipe desta etapa, como trabalhar com a pessoa, a voz, as recusas e o selo. O método vai pelos briefings de cada papel (`sofia_briefing`). Sem o campo, vem o pacote inteiro, como antes. Os dois modos trazem a seção "Passos e equipe desta etapa".
 - **Um pacote por etapa.** Cada etapa (ideia, hook, roteiro, ajuste, crítica) pede o seu pacote. Não peça o pacote de novo só para gravar: o selo basta. Peça de novo, com `ja_tenho` e o selo, para registrar uma recusa (`recusou`), para trazer novas opções ou se partes do pacote saíram da conversa.
 - **O selo.** O pacote termina com um selo. Ao gravar o que saiu dele, mande o selo, como veio, no campo `selo` de `sofia_salvar` (roteiro), `sofia_grifos` (grifos novos da Sofia) ou `planejamento_mover_card` (hook e estilo). Essas três só gravam com o selo de um pacote do tipo certo deste card: use o do pacote mais recente do tipo que vai gravar. Se o pacote não terminar com um selo, grave sem ele logo depois do pacote. Sem ele, ou com o selo vencido ou de outro card, devolvem o pacote no lugar de gravar: leia, confira o texto com ele e chame de novo com o selo novo. As 2 ou 3 versões da primeira escrita usam o mesmo selo.
 - **`ja_tenho`.** No pacote seguinte do mesmo card, diga em `ja_tenho` o que do pacote anterior ainda está na conversa (`metodo`, `perfil`, `cerebro`, `pesquisa`, `base`; `[]` quando nada) e mande o selo dele em `selo`. Essas partes não voltam, a não ser que tenham mudado depois do selo: o que mudou volta sozinho. As regras delas continuam valendo. Parte que saiu da conversa (por exemplo, depois de um resumo da conversa) não entra em `ja_tenho`. Sem o selo, o pacote vem inteiro.
@@ -51,10 +54,16 @@ Sobre como usar cada ferramenta (nome, campos, ordem das chamadas), a descriçã
 - Em Brainstorming ou Estruturar, sem hook e estilo escolhidos, a ferramenta não salva e devolve o pacote de hook.
 - Salvar um roteiro com o card em Estruturar leva o card para Revisar. O card nunca volta de coluna.
 - Tema, pesquisa, ideia e estrutura têm ferramenta própria no quadro (veja a parte 2).
+- **`conferencia`.** O selo que o `sofia_conferir` devolveu para esta versão. Com ele e o texto igual ao conferido, a versão fica marcada como conferida. Sem ele, a versão é salva assim mesmo e fica marcada como sem conferência. A resposta traz a linha "Conferência: …".
+
+**Detalhes do `sofia_briefing` e do `sofia_conferir`:**
+- `sofia_briefing` recebe o `papel` (o nome do agente: `estrategista-de-ideias`, `especialista-em-bolha`, `pesquisador`, `redator-de-hook`, `roteirista`, `revisor-o-que-nao-fazer`, `revisor-de-hook`, `revisor-de-voz`, `revisor-de-estrutura`, `revisor-de-fatos` ou `critico`), a `etapa`, o `videoId`, e `formato` e `estrutura` quando o card ainda não tem. A resposta vem em partes (`parte`, de 1 a 6): ela diz no fim se continua. Papel fora da etapa dá erro, e o erro diz quem atua nela.
+- `sofia_conferir` recebe a `etapa` (`ideia`, `hook`, `roteiro`, `ajuste`, `critica` ou `texto`), o `videoId`, as `opcoes` (até 12, com `id`, `fala`, `textoNaTela`, `abertura`, `logoDepois`, `roteiro` ou `texto`), os `vereditos` dos revisores (`conferidas`, com os códigos, e `falhas` ainda em aberto) e a `equipe` (`completa` ou `economica`). O selo sai com `videoId`, vereditos que cobrem as cartas de julgamento, nenhuma falha de código e nenhuma falha em aberto. Ele vale 12 horas.
 
 **Detalhes do `sofia_grifos`:**
 - Cada grifo leva: o trecho exato do roteiro (que só aparece num lugar), o tipo (`cortar`, `trocar`, `reforcar` ou `duvida`), o comentário em palavras simples com o princípio entre parênteses e a sugestão (vazia em cortar, a pergunta em dúvida).
-- Grifos novos da Sofia vão com o selo do pacote da crítica (`sofia_preparar_escrita` com `tipo: "critica"`) no campo `selo`.
+- Grifos novos da Sofia vão com o selo do pacote da crítica (`sofia_preparar_escrita` com `tipo: "critica"`) no campo `selo`, e com o selo de conferência da etapa critica no campo `conferencia`.
+- Cada grifo pode levar `regras`: até 6 códigos das regras que ele aponta (FH1, M3…). O site mostra o princípio em palavras; o código fica guardado.
 - **Grifos da pessoa:** com `doAluno: true`, o comentário vai nas palavras dela e o tipo é cortar, trocar ou dúvida. Não há aceito nem recusado: são os pedidos dela. Para escrever a versão nova a partir deles, chame `sofia_preparar_escrita` (ajuste) e salve com `nasceuDe` da versão grifada.
 - Respostas vão pelo número do grifo. Sem grifos nem respostas, a ferramenta lista os grifos da versão.
 - Com todos respondidos, o servidor monta e salva a versão nova.

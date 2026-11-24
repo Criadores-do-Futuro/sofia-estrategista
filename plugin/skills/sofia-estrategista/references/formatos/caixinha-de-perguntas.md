@@ -1,32 +1,35 @@
 # Formato: Caixinha Polêmica
 
-**Nome no método:** `caixinha-de-perguntas`
+> Cópia da peça `formatos/caixinha-de-perguntas` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/caixinha-de-perguntas`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
+**ID oficial:** `caixinha-de-perguntas`
 
 ## O que é
-Resposta a uma pergunta provocativa que aparece na caixinha de perguntas do Instagram. A pergunta na tela é a premissa e o hook. Responder um comentário ou um texto qualquer é outro formato.
+Resposta a uma pergunta provocativa exibida na caixinha nativa do Instagram. A pergunta visível é a premissa e o hook; não é resposta a comentário nem apenas texto digitado sobre o vídeo.
 
 ## Assinatura visual
-- O adesivo da caixinha, da própria rede, com a pergunta escrita.
-- O criador reage e responde aquela pergunta.
-- A pergunta abre debate, tensão ou identificação.
+- Sticker nativo de perguntas visível, com a pergunta escrita
+- Criador reage e responde àquela pergunta específica
+- Pergunta abre debate, tensão ou identificação
 
-## Não confundir com
-- **Resposta a comentário:** é outro formato.
-- **Pergunta escrita num texto comum:** pode virar uma Palestrinha ou um Lo-Fi com opinião forte. Sem a caixinha, não é este formato.
-
-## Regras de escrita
-1. Escolha uma pergunta ligada a uma crença, uma dor ou uma divisão real do público. A pergunta vem de um seguidor de verdade. Copie como foi escrita e não mostre o nome de quem mandou.
-2. Mostre e leia a pergunta logo no começo.
-3. Reaja antes de responder.
-4. Tome uma posição clara, com um caso, um raciocínio ou um contraste.
-5. A resposta serve também para quem não mandou a pergunta.
-6. Feche pedindo novas perguntas ou que a pessoa escolha um lado nos comentários.
+## Estrutura que combina melhor
+Jeito Errado × Jeito Certo ou Ele-Eu-Você-Futuro.
 
 ## Tipo de hook que este formato pede
 Provocação direta: a pergunta da caixinha lida em voz alta, seguida da reação do criador.
 
 ## Elementos viciantes dominantes
-Relevância emocional, contraste, tema e moral. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+Relevância emocional, contraste, tema e moral
 
-## Estrutura que combina melhor
-[Jeito errado e jeito certo](../estruturas.md) ou [Ele, Eu, Você, Futuro](../estruturas.md).
+## Regras de escrita
+1. Escolha uma pergunta que encoste numa crença, dor ou divisão real da audiência.
+2. Mostre e leia a pergunta cedo; ela precisa ser entendida sem contexto extra.
+3. Reaja antes de entregar a resposta para criar expectativa.
+4. Dê posição específica, sustentada por caso, raciocínio ou contraste.
+5. Faça a resposta servir também a quem não enviou a pergunta.
+6. Feche convidando novas perguntas ou uma tomada de posição.
+
+## Não confundir
+- Resposta a comentário: não é Caixinha Polêmica.
+- Pergunta criada como texto comum: pode ser palestrinha ou hot-take, mas não este formato.
+- Pergunta neutra sem potencial de debate: usa a interface, mas não executa bem o formato.

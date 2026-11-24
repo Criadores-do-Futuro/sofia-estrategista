@@ -1,0 +1,12 @@
+{
+  "name": "criadores-do-futuro",
+  "interface": {"displayName": "Criadores do Futuro"},
+  "plugins": [
+    {
+      "name": "sofia-estrategista",
+      "source": {"source": "local", "path": "./plugin"},
+      "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"},
+      "category": "Productivity"
+    }
+  ]
+}

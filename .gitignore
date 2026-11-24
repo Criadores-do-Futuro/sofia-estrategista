@@ -1,6 +1,34 @@
 .DS_Store
 dist/
 node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Credenciais e dados de contas, em qualquer pasta. As regras do plugin (mídia, manuais,
+# derivados do painel e do treinamento) ficam em plugin/.gitignore.
+.env
+.env.*
+!.env.example
+.envrc
+.npmrc
+.pypirc
+.netrc
+credentials/
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.jks
+*service-account*.json
+*service_account*.json
+*credentials*.json
+*credential*.json
+*oauth*.json
+*token*.json
 
 # Configuração de assistente da máquina de quem programa
 .claude/

@@ -1,32 +1,34 @@
 # Formato: Vlog
 
+> Cópia da peça `formatos/vlog` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/vlog`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
 ## O que é
-Registro de um pedaço da vida acontecendo: rotina, ida a um lugar, bastidor ou processo. Momentos reais em lugares diferentes formam uma história com começo, meio e fim.
+Registro de um pedaço da vida acontecendo: rotina, ida a um lugar, bastidor ou processo. Momentos reais e cenários diferentes formam uma história com começo, meio e fim, mesmo que curta.
 
 ## Assinatura visual
-- Dois ou mais momentos, atividades ou lugares.
-- O tempo passa ou o lugar muda.
-- Narração em primeira pessoa ligando os acontecimentos.
-- A experiência sendo vivida na hora.
+- Dois ou mais momentos, atividades ou cenários distintos
+- Passagem perceptível de tempo ou lugar
+- Narração em primeira pessoa conectando os acontecimentos
+- Experiência real sendo vivida, não apenas contada depois diante da câmera
 
-## Não confundir com
-- **Trivial:** em geral fica num lugar só.
-- **Dinamismo:** muda de posição sem precisar de uma história vivida.
-- **Narrado:** não precisa de uma experiência com começo, meio e fim.
-
-## Regras de escrita
-1. Diga logo no começo o que a pessoa vai ver acontecer: a promessa do vlog.
-2. Narre as passagens que a imagem não explica. O óbvio fica sem narração.
-3. Escolha os momentos que mudam a história.
-4. Inclua um obstáculo, uma surpresa ou uma decisão.
-5. Alterne a câmera, o lugar e os detalhes.
-6. Termine com o resultado e com o que mudou.
+## Estrutura que combina melhor
+IHC ou Ele-Eu-Você-Futuro.
 
 ## Tipo de hook que este formato pede
 Cena imersiva do momento mais forte do vlog, ou declaração de consequência ("Fui a {lugar} achando que {expectativa}. Voltei {mudança}.").
 
 ## Elementos viciantes dominantes
-Conflito e mudança, curiosidade e aha, relevância emocional. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+Conflito e mudança, curiosidade e aha, relevância emocional
 
-## Estrutura que combina melhor
-[IHC](../estruturas.md) ou [Ele, Eu, Você, Futuro](../estruturas.md).
+## Regras de escrita
+1. Defina a promessa da jornada: o que vai acontecer, ser decidido ou descoberto.
+2. Narre transições que a imagem sozinha não explica, sem descrever o óbvio.
+3. Selecione momentos que mudam o estado da história; não catalogue tudo que aconteceu.
+4. Inclua obstáculo, surpresa ou decisão para criar progressão.
+5. Alterne presença em câmera, ambiente e detalhes para dar textura à experiência.
+6. Termine mostrando o resultado e o que mudou para o criador.
+
+## Não confundir
+- Trivial: geralmente permanece num contexto cotidiano único, sem jornada.
+- Dinamismo: muda posição para dar ritmo, mas não necessariamente registra uma experiência real.
+- Narrado: pode usar muitos B-rolls, porém não exige que sejam etapas de uma vivência com arco.

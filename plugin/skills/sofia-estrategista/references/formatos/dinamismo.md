@@ -1,34 +1,41 @@
 # Formato: Dinamismo
 
+> Cópia da peça `formatos/dinamismo` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/dinamismo`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
+> Eixo **formato de gravação** (COMO se grava). Não confundir com a **estrutura** (a sequência do argumento: `estruturas-de-roteiro/`) nem com o **arquétipo** (o ângulo: `knowledge/arquetipos-nichos-bolhas`). Um roteiro tem os três.
+
 ## O que é
-Vídeo com cortes rápidos, câmera em movimento, troca de enquadramento e ritmo acelerado. A energia da imagem segura a pessoa.
+Vídeo com cortes rápidos, movimentação de câmera, mudanças de enquadramento e ritmo acelerado. A energia visual sustenta a retenção.
 
 ## Assinatura visual
-- Um corte a cada 1 a 2 segundos, com zoom, troca de enquadramento e de lugar.
-- Muito elemento gráfico: legenda animada, emoji, efeito sonoro, imagens de apoio curtas.
-- Fala rápida e sem pausa, muitas vezes com corte seco.
-- Pouco tempo parado no mesmo plano.
-
-## Não confundir com
-- **Cine:** corta para construir cena. Dinamismo corta para manter a energia alta.
-- **Palestrinha com edição acelerada:** se os cortes só tiram pausas e o plano é sempre o mesmo, o formato é Palestrinha.
-- **Criativo Preguiçoso:** a energia fica só no hook. No Dinamismo, ela vai até o fim.
-
-## Regras de escrita
-1. Cada frase vira um corte ou um movimento de câmera. Escreva curto.
-2. Use uma lista que a pessoa sente andar, mesmo sem dizer "número um".
-3. Vá direto, sem introdução.
-4. Cada ponto é mais surpreendente ou mais útil que o anterior.
-5. Varie o tipo de informação: número com fonte, exemplo, afirmação, cena.
-6. Troque conectivo longo por corte.
-7. O aha é o ponto mais forte. Ponha no pico do ritmo.
-8. O CTA entra no pico da energia, sem desacelerar antes.
-
-## Tipo de hook que este formato pede
-Declaração de consequência ou curiosidade numérica em uma frase, com corte imediato para o primeiro ponto.
-
-## Elementos viciantes dominantes
-Curiosidade e aha, linguagem familiar, conflito e mudança. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+- Cortes a cada 1–2 segundos, zooms, trocas de enquadramento e de cenário
+- Muitos elementos gráficos: legenda animada, emojis, efeitos sonoros, B-roll curto
+- Fala rápida e sem pausas, muitas vezes com jump cuts
+- Pouco tempo parado no mesmo plano
 
 ## Estrutura que combina melhor
-[AIDA](../estruturas.md), ou [Análise](../estruturas.md) com os três motivos em sequência rápida.
+AIDA ou Análise (em formato de lista)
+
+## Tipo de hook que este formato pede
+Declaração direta de benefício ou resultado em 1 frase, seguida de corte imediato para o primeiro ponto.
+
+## Elementos viciantes dominantes
+Curiosidade e Efeito AHA, Linguagem Familiar, Conflito e Mudança
+
+## Regras de escrita
+1. Cada frase corresponde a um corte ou movimento de câmera: escreva curto
+2. Use listas numeradas implícitas: o espectador deve sentir progressão
+3. Linguagem direta e objetiva, sem introduções longas
+4. Cada ponto deve ser mais surpreendente ou valioso que o anterior
+5. Varie o tipo de informação: estatística → exemplo → pergunta → afirmação
+6. Evite conectivos longos: use cortes para fazer a transição
+7. O Efeito Ahá deve ser o ponto mais forte: posicione no clímax do ritmo
+8. O CTA deve ser entregue no pico da energia: não desacelere antes de terminar
+
+## Não confundir
+- Cine: corta para construir cena; Dinamismo corta para manter a energia alta.
+- Palestrinha com edição acelerada: se os cortes só tiram pausas e o plano é sempre o mesmo, é Palestrinha.
+- Criativo Preguiçoso: a energia fica só no hook; no Dinamismo ela se mantém até o fim.
+
+## Exemplo analisado
+Ainda não há roteiro deste formato anotado em `exemplos-analisados/`.

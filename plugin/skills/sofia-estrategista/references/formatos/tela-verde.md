@@ -1,34 +1,41 @@
 # Formato: Tela Verde
 
+> Cópia da peça `formatos/tela-verde` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/tela-verde`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
+> Eixo **formato de gravação** (COMO se grava). Não confundir com a **estrutura** (a sequência do argumento: `estruturas-de-roteiro/`) nem com o **arquétipo** (o ângulo: `knowledge/arquetipos-nichos-bolhas`). Um roteiro tem os três.
+
 ## O que é
-O criador aparece na frente de um fundo trocado por imagem, print, gráfico ou cena real. O fundo faz parte da história.
+Criador aparece em frente a um fundo substituído por imagem, print, gráfico ou cena real. O visual de fundo é parte ativa da narrativa.
 
 ## Assinatura visual
-- O criador recortado na frente de um fundo trocado: print, post, gráfico, site ou cena.
-- O fundo muda conforme o argumento anda.
-- O criador aponta para o fundo ou fica ao lado do que comenta.
-- Em geral, plano médio ou fechado, com o criador ocupando parte do quadro.
-
-## Não confundir com
-- **Tela Dividida:** o conteúdo de fora divide o quadro com o criador. Na Tela Verde, ele é o fundo.
-- **Storytelling Visual:** os gráficos contam a história sozinhos. Na Tela Verde, o criador está sempre em cena comentando.
-- **Palestrinha:** se o fundo é o lugar de verdade e não carrega conteúdo, o formato é Palestrinha.
-
-## Regras de escrita
-1. O hook cita ou aponta para o fundo.
-2. Cada frase trata o fundo como prova do que está sendo dito.
-3. Use dado com fonte, print que dá para conferir e nomes conhecidos.
-4. Crie suspense antes do aha.
-5. A virada é o momento em que o fundo e a fala se encaixam.
-6. A moral sai do que o fundo prova. A opinião do criador vem depois, dita como opinião.
-7. Fale como um amigo explicando algo que descobriu.
-8. O CTA liga o que o fundo mostrou a uma ação de quem assiste.
-
-## Tipo de hook que este formato pede
-Declaração de consequência apontando para o fundo.
-
-## Elementos viciantes dominantes
-Curiosidade e aha, contraste, relevância emocional. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+- O criador recortado na frente de um fundo substituído: print, post, gráfico, site ou cena
+- O fundo muda conforme o argumento avança
+- O criador aponta para o fundo ou se posiciona ao lado do que comenta
+- Normalmente plano médio ou fechado, com o criador ocupando parte do quadro
 
 ## Estrutura que combina melhor
-[Análise](../estruturas.md) ou [IHC](../estruturas.md).
+Análise + IHC
+
+## Tipo de hook que este formato pede
+Declaração de consequência apontando diretamente para o elemento visual de fundo.
+
+## Elementos viciantes dominantes
+Curiosidade e Efeito AHA, Contraste, Relevância Emocional
+
+## Regras de escrita
+1. O hook deve mencionar ou apontar diretamente para o visual de fundo
+2. Cada frase deve ser construída como se o visual fosse uma prova do que está sendo dito
+3. Use dados reais, prints verificáveis e nomes reconhecíveis
+4. Construa suspense antes de revelar o Efeito Ahá
+5. A virada narrativa deve ser o momento em que o visual e a fala se alinham
+6. A moral deve ser extraída do que o visual prova, não do que o criador opina
+7. Use linguagem analítica mas acessível, como um amigo explicando algo que descobriu
+8. O CTA deve conectar o insight visual com uma ação específica do espectador
+
+## Não confundir
+- Tela Dividida: o conteúdo externo divide o quadro com o criador; na Tela Verde ele é o fundo.
+- Storytelling Visual: os gráficos contam a história sozinhos; na Tela Verde o criador está sempre em cena comentando.
+- Palestrinha: se o fundo é o ambiente real e não carrega conteúdo, é Palestrinha.
+
+## Exemplo analisado
+Roteiro real deste formato, anotado frase a frase: `exemplos-analisados/tela-verde`

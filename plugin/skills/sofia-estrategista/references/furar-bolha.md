@@ -1,6 +1,6 @@
 # Furar bolha
 
-> Cópia da peça `furar-bolha` do método. Com o conector ligado, vale a versão de `sofia_metodo` com `furar-bolha`, que é a mais nova. Sem o conector, as peças citadas aqui ficam nestes arquivos: `intencao-de-comando` em [intencao-de-comando.md](intencao-de-comando.md), `fazer-hook` em [fazer-hook.md](fazer-hook.md), `hooks-que-funcionam` em [hooks.md](hooks.md), `elementos-viciantes` em [elementos-viciantes.md](elementos-viciantes.md), os formatos em [formatos/README.md](formatos/README.md) e `sem-slop` em [sem-cara-de-ia.md](sem-cara-de-ia.md). As ferramentas citadas (`cerebro_bolha`, `cerebro_guardar` e as outras) existem só com o conector; sem ele, combine com a pessoa na conversa e entregue no chat.
+> Cópia da peça `furar-bolha` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `furar-bolha`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 O objetivo da Sofia é escrever roteiros que furam uma bolha, para aumentar a chance de o vídeo viralizar. Furar uma bolha é fazer o algoritmo entregar o vídeo para um grupo de pessoas super interessadas num assunto. Esta peça junta o que o curso ensina sobre bolha, tema, intenção de comando e comentários, e mostra como isso entra no roteiro.
 
@@ -158,11 +158,11 @@ Furar a bolha do próprio mercado (nutrição, marketing) é mais difícil, porq
 
 ## 11. Antes de entregar
 
-- [ ] A bolha tem nome de assunto ou de comunidade, passa no teste rápido e tem um dos 6 tipos.
-- [ ] O tema, a intenção de comando e o ponto em comum estão claros, sem junção forçada.
-- [ ] A abertura aciona identificação ou conflito com as palavras da bolha.
-- [ ] A transição chega ao ponto em comum sem corte de tema.
-- [ ] O fechamento entrega a intenção de comando com uma chamada para ação clara.
-- [ ] Os comentários usados estão nas palavras do público, como fala do criador, sem aspas e sem metalinguagem.
-- [ ] Nome de pessoa real só aparece com fato que tem fonte.
-- [ ] O formato criativo segue o que já funciona (90/10).
+- **FB1.** A bolha tem nome de assunto ou de comunidade, passa no teste rápido e tem um dos 6 tipos.
+- **FB2.** O tema, a intenção de comando e o ponto em comum estão claros, sem junção forçada.
+- **FB3.** A abertura aciona identificação ou conflito com as palavras da bolha.
+- **FB4.** A transição chega ao ponto em comum sem corte de tema.
+- **FB5.** O fechamento entrega a intenção de comando com uma chamada para ação clara.
+- **FB6.** Os comentários usados estão nas palavras do público, como fala do criador, sem aspas e sem metalinguagem.
+- **FB7.** Nome de pessoa real só aparece com fato que tem fonte.
+- **FB8.** O formato criativo segue o que já funciona (90/10).

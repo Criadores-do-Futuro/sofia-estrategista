@@ -1,6 +1,6 @@
 # Como fazer o hook
 
-> Cópia da peça `fazer-hook` do método. Com o conector ligado, vale a versão de `sofia_metodo` com `fazer-hook`, que é a mais nova. Sem o conector, as peças citadas aqui ficam nestes arquivos: `zona-de-fixacao` em [zona-de-fixacao.md](zona-de-fixacao.md), `hooks-que-funcionam` em [hooks.md](hooks.md), `furar-bolha` em [furar-bolha.md](furar-bolha.md), os formatos em [formatos/README.md](formatos/README.md), `elementos-viciantes` em [elementos-viciantes.md](elementos-viciantes.md) e `sem-slop` em [sem-cara-de-ia.md](sem-cara-de-ia.md).
+> Cópia da peça `fazer-hook` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `fazer-hook`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 O hook é o primeiro segundo do vídeo: a fala, o texto na tela e o que aparece. Esta peça é a base de
 todo hook. As outras peças de hook (`hooks-que-funcionam`, `furar-bolha` e o formato do card) dizem que
@@ -41,16 +41,16 @@ fala trata de uma terceira, a pessoa se confunde e pula.
 
 ## 4. Os quatro erros que matam o hook
 
-- **Demorar a dizer o assunto.** Saudação ("oi, gente", "fala, pessoal"), introdução ou rodeio como
+- **FH9.** **Demorar a dizer o assunto.** Saudação ("oi, gente", "fala, pessoal"), introdução ou rodeio como
   "hoje vi a coisa mais inacreditável do mundo", sem dizer o assunto. O público sai nos 2 primeiros
   segundos. Corte o que enrola e diga o assunto exato no primeiro ou no segundo segundo.
-- **Confundir.** Frase longa, na voz passiva, cortada no meio ou com dois sentidos. Se a pessoa precisa
+- **FH10.** **Confundir.** Frase longa, na voz passiva, cortada no meio ou com dois sentidos. Se a pessoa precisa
   parar para decifrar a frase, ela pula. Voz ativa, palavras do dia a dia e o menor número de palavras.
-- **Parecer que não é para ela.** A pessoa entende o assunto, mas não se vê nele. Acontece muito quando
+- **FH11.** **Parecer que não é para ela.** A pessoa entende o assunto, mas não se vê nele. Acontece muito quando
   o criador fala de si: "Eu tenho esse problema" cria distância. Fale com quem assiste ("Se você passa
   por esse problema", "o seu negócio") e prenda a frase numa dor que a pessoa conhece ou num resultado
   prático que ela quer.
-- **Não dar vontade de saber mais.** O hook é claro e é para ela, mas não abre curiosidade nenhuma. O
+- **FH12.** **Não dar vontade de saber mais.** O hook é claro e é para ela, mas não abre curiosidade nenhuma. O
   contraste resolve: o que a maioria faz ou acredita, ao lado de um jeito mais rápido, mais simples ou
   inesperado que funciona (passo 3).
 
@@ -155,12 +155,12 @@ Na versão do roteiro, o campo `hook` leva só a fala, porque é o que vai para 
 
 ## 8. Antes de mostrar
 
-- [ ] Em 2 segundos dá para saber sobre o que é o vídeo e o que se ganha.
-- [ ] Um assunto e uma dúvida, sem saudação, introdução nem rodeio.
-- [ ] A fala tem de 1 a 3 frases curtas, em voz ativa, com o assunto nas primeiras palavras e o que
-  está em jogo.
-- [ ] O texto na tela tem de 3 a 5 palavras, em até duas linhas.
-- [ ] Imagem, texto e fala tratam da mesma coisa (sem som e só ouvindo).
-- [ ] O problema é dito com "você".
-- [ ] Um contraste concreto dá vontade de saber mais.
-- [ ] O segundo seguinte entrega valor e abre a zona de fixação (peça `zona-de-fixacao`).
+- **FH1.** Em 2 segundos dá para saber sobre o que é o vídeo e o que se ganha.
+- **FH2.** Um assunto e uma dúvida, sem saudação, introdução nem rodeio.
+- **FH3.** A fala tem de 1 a 3 frases curtas, em voz ativa, com o assunto nas primeiras palavras e o
+  que está em jogo.
+- **FH4.** O texto na tela tem de 3 a 5 palavras, em até duas linhas.
+- **FH5.** Imagem, texto e fala tratam da mesma coisa (sem som e só ouvindo).
+- **FH6.** O problema é dito com "você".
+- **FH7.** Um contraste concreto dá vontade de saber mais.
+- **FH8.** O segundo seguinte entrega valor e abre a zona de fixação (peça `zona-de-fixacao`).

@@ -1,6 +1,12 @@
 # Glossário
 
-Palavras que esta skill usa e como dizer cada uma para quem nunca estudou roteiro. Com a pessoa, use a coluna da direita. Se precisar do termo técnico, diga a explicação junto, na mesma frase.
+> Cópia da peça `glossario` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `glossario`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
+Palavras que a Sofia usa e como dizer cada uma para quem nunca estudou roteiro. Com a pessoa, use a coluna da direita. Se precisar do termo técnico, diga a explicação junto, na mesma frase. O glossário oficial do curso (a ferramenta `glossario`) traz o vocabulário das aulas; esta peça traz o jeito de explicar cada palavra na conversa e no texto.
+
+## A regra
+
+- **GL1.** Termo do método (hook, CTA, bolha, retenção, B-roll e os outros desta peça) aparece para a pessoa do jeito da coluna "Como explicar", ou com essa explicação na mesma frase.
 
 ## O vídeo
 
@@ -43,7 +49,7 @@ Palavras que esta skill usa e como dizer cada uma para quem nunca estudou roteir
 
 | Palavra | Como explicar |
 |---|---|
-| Normal do perfil | Quantas views um vídeo desse perfil costuma ter. Nunca diga "mediana" |
+| Normal do perfil | Quantas views um vídeo desse perfil costuma ter. Use sempre esta expressão, no lugar do termo de estatística |
 | Retenção | Quanto tempo a pessoa fica assistindo |
 | Engajamento | Comentar, curtir, salvar ou mandar para alguém |
 | Acima do normal | "2 vezes o normal do perfil", "perto do normal" |

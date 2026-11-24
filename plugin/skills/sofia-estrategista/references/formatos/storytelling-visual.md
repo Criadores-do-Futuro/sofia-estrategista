@@ -1,34 +1,41 @@
 # Formato: Storytelling Visual
 
+> Cópia da peça `formatos/storytelling-visual` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/storytelling-visual`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
+> Eixo **formato de gravação** (COMO se grava). Não confundir com a **estrutura** (a sequência do argumento: `estruturas-de-roteiro/`) nem com o **arquétipo** (o ângulo: `knowledge/arquetipos-nichos-bolhas`). Um roteiro tem os três.
+
 ## O que é
-História contada com apoio de textos na tela, gráficos animados e transições, que reforçam o que é falado.
+História contada com apoio de elementos visuais (textos na tela, gráficos animados, transições) que amplificam a narrativa falada.
 
 ## Assinatura visual
-- Textos, gráficos, ícones ou desenhos animados contando a história na tela.
-- O criador pode aparecer, e a história anda pelos elementos visuais.
-- Transições e animações marcam cada etapa da história.
-- Números, datas e nomes aparecem escritos, além de falados.
-
-## Não confundir com
-- **Narrado:** quem conta é a voz off. No Storytelling Visual, quem conta são os textos e gráficos.
-- **Cine:** conta com planos e atuação. O Storytelling Visual conta com elementos gráficos.
-- **Tela Verde:** um print atrás do criador é um apoio de vez em quando. No Storytelling Visual, os gráficos carregam a história inteira.
-
-## Regras de escrita
-1. O roteiro diz qual elemento visual aparece em cada trecho.
-2. Fala e imagem trabalham juntas. Cada uma traz uma informação diferente.
-3. A imagem prova o que a fala diz.
-4. A história tem começo, conflito, virada e resolução.
-5. Cada transição visual cai numa virada da história.
-6. Use pessoas e casos reais, com fonte.
-7. O aha é o momento em que imagem e fala se encontram de um jeito que surpreende.
-8. O CTA é falado e aparece na tela.
-
-## Tipo de hook que este formato pede
-Declaração de consequência com imagem: a primeira frase cria uma cena que o visual confirma na hora.
-
-## Elementos viciantes dominantes
-Conflito e mudança, relevância emocional, curiosidade e aha. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+- Textos, gráficos, ícones ou ilustrações animadas contando a história na tela
+- O criador pode aparecer, mas a narrativa avança pelos elementos visuais
+- Transições e animações marcam cada etapa da história
+- Números, datas e nomes aparecem escritos, não só falados
 
 ## Estrutura que combina melhor
-[IHC](../estruturas.md) ou [Ele, Eu, Você, Futuro](../estruturas.md).
+IHC ou Ele-Eu-Você-Futuro
+
+## Tipo de hook que este formato pede
+Declaração de consequência visual: a primeira frase cria uma imagem que o visual confirma imediatamente.
+
+## Elementos viciantes dominantes
+Conflito e Mudança, Relevância Emocional, Curiosidade e Efeito AHA
+
+## Regras de escrita
+1. O roteiro deve indicar quais elementos visuais aparecem em cada trecho
+2. Fala e visual devem trabalhar juntos: nunca dupliquem a mesma informação
+3. Use o visual para provar o que a fala argumenta
+4. A história deve ter arco completo: setup → conflito → virada → resolução
+5. Cada transição visual deve coincidir com uma virada narrativa
+6. Use personagens reais com histórias verificáveis
+7. O Efeito Ahá deve ser o momento em que visual e fala se encontram de forma surpreendente
+8. O CTA deve ser reforçado visualmente, não apenas falado
+
+## Não confundir
+- Narrado: quem conta é a voz off; no Storytelling Visual quem conta são os textos e gráficos.
+- Cine: conta com planos e atuação; Storytelling Visual conta com elementos gráficos.
+- Tela Verde: um print atrás do criador é apoio pontual; no Storytelling Visual os gráficos são a espinha da história.
+
+## Exemplo analisado
+Roteiro real deste formato, anotado frase a frase: `exemplos-analisados/storytelling-visual`

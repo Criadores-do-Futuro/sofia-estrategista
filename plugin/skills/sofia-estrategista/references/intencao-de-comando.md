@@ -1,6 +1,6 @@
 # Intenção de comando
 
-> Cópia da peça `intencao-de-comando` do método. Com o conector ligado, vale a versão de `sofia_metodo` com `intencao-de-comando`, que é a mais nova. Sem o conector, as peças citadas aqui ficam nestes arquivos: `furar-bolha` em [furar-bolha.md](furar-bolha.md), `fazer-hook` em [fazer-hook.md](fazer-hook.md), `elementos-viciantes` em [elementos-viciantes.md](elementos-viciantes.md) e `sem-slop` em [sem-cara-de-ia.md](sem-cara-de-ia.md). As ferramentas citadas (`cerebro_guardar` e as outras) existem só com o conector; sem ele, nada fica guardado entre conversas: combine a semente com a pessoa na conversa.
+> Cópia da peça `intencao-de-comando` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `intencao-de-comando`, que é a mais nova. Não edite à mão: o arquivo é regerado.
 
 A intenção de comando é o objetivo central e a mensagem principal de cada conteúdo: a ideia que o aluno
 quer plantar na mente do público. Ela é o fio que liga o posicionamento dele à oferta. Na peça
@@ -107,9 +107,10 @@ as três notas.
 
 ## 7. Antes de entregar
 
-- [ ] O roteiro planta uma semente só, de um pilar, escrita na ideia do card.
-- [ ] A semente sai das notas do perfil ou do que o aluno disse na conversa, sem mecanismo, história ou
-  crença inventada.
-- [ ] Autenticidade e movimento aparecem dentro da história, sem pausa para propaganda.
-- [ ] O fechamento reforça uma crença do movimento.
-- [ ] A chamada para ação tem tipo: escondida (com caso real) ou direta (cerca de 2 a cada 10 vídeos).
+- **IC1.** O roteiro planta uma semente só, de um pilar, escrita na ideia do card.
+- **IC2.** A semente sai das notas do perfil ou do que o aluno disse na conversa, sem mecanismo,
+  história ou crença inventada.
+- **IC3.** Autenticidade e movimento aparecem dentro da história, sem pausa para propaganda.
+- **IC4.** O fechamento reforça uma crença do movimento.
+- **IC5.** A chamada para ação tem tipo: escondida (com caso real) ou direta (cerca de 2 a cada 10
+  vídeos).

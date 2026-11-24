@@ -1,0 +1,16 @@
+interface:
+  display_name: "Sofia Estrategista"
+  short_description: "Ideia, pesquisa, hook e roteiro de vídeo curto pelo método do curso"
+  brand_color: "#5E183A"
+  default_prompt: "Use $sofia-estrategista para escrever o hook e o roteiro do meu card, com a equipe e a conferência do método."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "sofia-estrategista"
+      description: "Conector Sofia Estrategista: planejamento, cérebro do perfil, método, briefing de cada papel da equipe e conferência"
+      transport: "streamable_http"
+      url: "https://plataforma.criadorestrategista.com.br/api/mcp"
+
+policy:
+  allow_implicit_invocation: true
