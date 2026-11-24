@@ -1,5 +1,7 @@
 # Princípios do método: psicologia do engajamento
 
+> Cópia da peça `principios` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `principios`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
 Esta página é a teoria do método da Sofia. São observações do método, tiradas da análise de vídeos, sem estudo científico citado. Fale delas para a pessoa como "o método observa", nunca como ciência comprovada.
 
 ## O objetivo único
@@ -16,7 +18,7 @@ Retenção é o que permite a distribuição: sem ela, o vídeo não chega em ni
 
 ## A hierarquia dos princípios
 
-A ordem abaixo vale para os princípios: é a ordem em que você julga por que um vídeo prende ou não. Os elementos viciantes têm a ordem deles, em [elementos-viciantes.md](elementos-viciantes.md), e ela vale só na hora de escolher os elementos de um roteiro. Os nomes se parecem, e cada lista serve para uma coisa.
+A ordem abaixo vale para os princípios: é a ordem em que você julga por que um vídeo prende ou não. Os elementos viciantes têm a ordem deles, na peça `elementos-viciantes/README`, e ela vale só na hora de escolher os elementos de um roteiro. Os nomes se parecem, e cada lista serve para uma coisa.
 
 ### 1. Tema
 
@@ -80,17 +82,17 @@ Dois caminhos:
 
 **Recusar o aha:** deixar uma dúvida aberta de propósito. A pessoa procura resolver fora do vídeo: nos comentários, no compartilhamento, na conversa. Na observação do método, esse é o caminho que mais gera comentário.
 
-Recusar o aha é uma escolha: a Sofia diz à pessoa que deixou a dúvida aberta e por quê, e a promessa do hook continua paga. Dúvida esquecida, sem intenção, é isca (veja a tabela de curiosidade em [elementos-viciantes.md](elementos-viciantes.md)).
+Recusar o aha é uma escolha: a Sofia diz à pessoa que deixou a dúvida aberta e por quê, e a promessa do hook continua paga. Dúvida esquecida, sem intenção, é isca (veja a tabela de curiosidade na peça `elementos-viciantes/README`).
 
 ## Como diagnosticar um roteiro
 
-Antes de avaliar qualquer elemento técnico, responda nesta ordem:
+Antes de avaliar qualquer elemento técnico, responda nesta ordem. Cada item é uma carta:
 
-1. **A ideia que esse vídeo vende.** Sem resposta clara, o problema vem antes de qualquer técnica.
-2. **O tema e o tamanho do mundo que ele alcança.** Isso define o teto antes de qualquer análise.
-3. **Onde o conflito e a mudança acontecem**, na tela ou na cabeça do público. Se não acontecem em lugar nenhum, não há emoção e não há retenção.
-4. **Onde as dúvidas abrem e quando fecham.** Dúvida que fecha cedo demais mata o debate. Dúvida concreta deixada aberta de propósito gera comentário.
-5. **Se o aha chega depois de a pessoa pensar.** Cedo demais satisfaz sem prender. A ausência escolhida leva o debate para os comentários.
+- **PV1.** **A ideia que esse vídeo vende.** Sem resposta clara, o problema vem antes de qualquer técnica.
+- **PV2.** **O tema e o tamanho do mundo que ele alcança.** Isso define o teto antes de qualquer análise.
+- **PV3.** **Onde o conflito e a mudança acontecem**, na tela ou na cabeça do público. Se não acontecem em lugar nenhum, não há emoção e não há retenção.
+- **PV4.** **Onde as dúvidas abrem e quando fecham.** Dúvida que fecha cedo demais mata o debate. Dúvida concreta deixada aberta de propósito gera comentário.
+- **PV5.** **Se o aha chega depois de a pessoa pensar.** Cedo demais satisfaz sem prender. A ausência escolhida leva o debate para os comentários.
 
 ## Regra de diagnóstico
 

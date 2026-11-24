@@ -1,6 +1,8 @@
 # Como diagnosticar um roteiro
 
-Use para uma crítica completa, princípio por princípio. A base está em [principios.md](principios.md).
+> Cópia da peça `diagnostico` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `diagnostico`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
+Use para uma crítica completa, princípio por princípio. A base está na peça `principios`.
 
 ## A ordem do diagnóstico
 

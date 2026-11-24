@@ -1,35 +1,153 @@
 # Sofia Estrategista
 
-A estrategista de vídeo curto do curso Criador Estrategista, dos Criadores do Futuro. Ela ajuda a criar vídeos para Instagram, TikTok e YouTube com o método do curso: ideia, pesquisa com fonte, formato, estrutura, hook, roteiro, grifos e análise de vídeo ou de perfil.
+A Sofia Estrategista do curso Criador Estrategista, dos Criadores do Futuro, numa Sofia só: o método, o conector e a edição de vídeo. Um plugin só, para o Claude e para o Codex, que junta:
+
+- **a Sofia Estrategista:** o método do curso inteiro (princípios da viralização, elementos viciantes, formatos, estruturas, hooks, pesquisa com fonte, roteiro, grifos, análise de vídeo e de perfil), a equipe de revisores que confere cada texto e o conector que lê e salva no planejamento da pessoa no site;
+- **o bEditor Estrategista:** edição na timeline do CapCut ou do DaVinci Resolve, aprendizado de estilo a partir de um vídeo já editado, biblioteca de estilos, plano editorial validado e motion;
+- **o bEditor original:** guia de edição do diretor, decupagem com revisão, corte de silêncio e de erro, motion graphics em Remotion e no estilo editorial `motion-vox`, cama musical, legenda, master, QA medido, branding do canal, painel de revisão e preparo da publicação.
+
+O mesmo método que escolhe o formato, a estrutura e o hook decide o corte, a imagem, a legenda e o som.
 
 ## O que vem no plugin
 
-- **Skill `sofia-estrategista`:** o método inteiro (princípios da viralização, elementos viciantes, formatos, estruturas, hooks, pesquisa e checagem de fatos) e o caminho de cada tarefa.
-- **Atalhos:** `roteiro`, `ideias`, `pesquisa`, `analisar`, `critica` e `conectar`.
-- **Ajudantes** (no Claude Code e no Cowork): `pesquisador`, que pesquisa em fonte primária, e `critico`, que faz a primeira leitura crítica de um roteiro. Os dois só leem e devolvem o resultado.
-- **Conector Sofia Estrategista:** liga o Claude ao planejamento do aluno no site do curso.
+| Parte | O que é |
+|---|---|
+| Skill `sofia-estrategista` | Ideia, pesquisa, formato, estrutura, hook, roteiro, grifos, análise de vídeo e de perfil, com e sem o conector |
+| Skill `sofia-editora` | Edição na timeline, aprendizado de estilo, biblioteca de estilos e motion |
+| Skill `beditor` | Decupagem, guia de edição, montagem, motion graphics em Remotion, finalização, QA e publicação (o bEditor original) |
+| Skill `motion-vox` | Motion graphics no estilo editorial de papel e legenda queimada sobre um clipe vertical já cortado |
+| Atalhos da Sofia | `roteiro`, `ideias`, `pesquisa`, `analisar`, `critica`, `conectar`, `atualizar`, `editar`, `aprender-edicao` e `estilos` |
+| Atalhos do bEditor | `setup`, `dirigir`, `cortar`, `motion-graficos`, `finalizar`, `publicar`, `montar`, `plano`, `motion`, `aprender-motion`, `editar-analise`, `qa`, `branding` e `painel` |
+| Equipe da Sofia (agentes no Claude Code e no Cowork) | quem escreve: `estrategista-de-ideias`, `especialista-em-bolha`, `pesquisador`, `redator-de-hook` e `roteirista`; quem confere: `revisor-o-que-nao-fazer`, `revisor-de-hook`, `revisor-de-voz`, `revisor-de-estrutura`, `revisor-de-fatos`, `especialista-em-bolha` e `critico`. Cada um busca no conector o briefing do seu papel |
+| Ajudantes da edição (Claude Code e Cowork) | `analista-de-edicao` (lê as pranchas de quadros de uma referência), `diretor` (guia de edição de um take), `enriquecedor` (confere os fatos marcados no guia) e `analista-de-estilo` (lê as folhas de contato de um estilo de motion) |
+| Conector | Sofia Estrategista, em `.mcp.json` |
+| Painel (só no Claude Code) | `hooks/register.tsx`: um painel ao lado da conversa com os cards de cada etapa do planejamento, o @ do perfil e o uso das janelas de 5 horas e de 7 dias do Claude, com quanto falta para zerar. Abre sozinho no início da sessão e pelo comando `/sofia-painel`. No site, no app de conversa e no Codex, fica parado |
+| Ferramentas | `scripts/` e o pacote Python `beditor/` (medição, pranchas, transcrição, biblioteca, plano editorial, pontes do CapCut e do DaVinci), `schemas/`, `motion/`, os scripts das skills `beditor` e `motion-vox`, o `painel/` de revisão e as fontes livres (OFL) do motion |
 
-## Como funciona com e sem o conector
+## Versão 2.0.0: uma Sofia só
 
-Sem o conector, a Sofia trabalha com o método que vem no plugin e entrega tudo no chat.
+- **Um nome, um marketplace.** A Sofia Estrategista (`sofia-estrategista` 1.6.0) e a Sofia Estrategista com edição (`sofia-estrategista-editora` 0.6.0) viraram um plugin só, o `sofia-estrategista`, instalado pelo marketplace `criadores-do-futuro`. Nada das duas ficou de fora: o método, a equipe, a conferência, a trava de gravação dos agentes, o espelho do método, a análise de vídeo e de perfil e toda a edição de vídeo.
+- **Os nomes mudaram junto.** Os atalhos são `/sofia-estrategista:<atalho>` e os agentes, `sofia-estrategista:<papel>`. O conector da conta não muda: o que está salvo no site continua lá.
+- **Quem tem uma Sofia de antes** troca uma vez, pelo prompt de migração do [README do repositório](https://github.com/Criadores-do-Futuro/sofia-estrategista#já-tem-uma-sofia-instalada), que também está na página Conector do site do curso. Depois disso, as versões novas chegam por atualização.
+- **A chave de volta:** se o conector desligar a equipe, o pacote de cada etapa chega sem a seção "Passos e equipe desta etapa", e a Sofia segue o pacote inteiro na conversa, como antes da equipe.
 
-Com o conector ligado e com login (o e-mail de compra do curso), ela lê os números do perfil, o cérebro e os cards, e salva ideias, pesquisas, roteiros e grifos no site. Também guarda a leitura dos números do perfil, quando a pessoa pede, e o site mostra a evolução semana a semana. Com o YouTube, o Instagram ou o TikTok conectado em Meus dados, a Sofia lê os números direto da rede e o site lê o perfil sozinho toda segunda; sem a rede conectada, a pessoa pode pedir uma tarefa agendada para toda segunda. Toda gravação é contada no chat. Preferências da pessoa só são guardadas com o OK dela, e aparecem na página Cérebro do perfil, onde podem ser apagadas.
+## A equipe da Sofia
+
+Ideia, hook, roteiro, ajuste e crítica não são escritos e conferidos numa passada só:
+
+- **Quem escreve** gera mais opções do que mostra, com o método inteiro da etapa e a voz da pessoa.
+- **Os revisores** conferem juntos, cada um com uma fatia do método e as regras com código dela (as cartas): o que não fazer, o hook, a voz, a estrutura, os fatos e a bolha. Até 2 rodadas de correção.
+- **O conector** manda o plano de cada etapa, o briefing de cada papel e confere por código o que é mecânico. Quando tudo passa, devolve o selo de conferência, que vai junto ao salvar. Texto salvo sem o selo fica marcado como sem conferência.
+- **Em cada app:** no Claude Code e no Cowork, os papéis são agentes do plugin; no Codex, subagentes do próprio Codex; no Claude do site e do celular e no ChatGPT, passadas na conversa (`skills/sofia-estrategista/references/passadas.md`).
+- **As referências do método** são cópia gerada do conector (`exportar-referencias.mts`, no webapp), com as cartas de cada papel em `cartas.md`, para quando o conector está desligado. O que antes só existia no plugin (os tipos de hook, as estruturas, a crítica, a voz, a análise de vídeo e o glossário) passou para o conector e chega aos agentes pelo briefing.
+- **Os agentes não gravam no site:** as ferramentas do conector que gravam, mudam ou apagam ficam travadas neles (`disallowedTools`, gerado pelo mesmo script do espelho). Só a conversa grava, com o OK do aluno.
+
+## O que a Sofia faz na edição
+
+1. **Do card ao corte.** Lê o card do planejamento (formato, estrutura, hook, roteiro escolhido), entende o bruto (inventário, transcrição, erros, respiros, pranchas), monta um plano editorial por momento, valida, monta no editor escolhido e confere o projeto salvo contra o plano.
+2. **Aprender a editar com um vídeo editado.** Mede cada quadro decodificado e cada trilha de áudio, gera pranchas com todos os quadros, transcreve com tempo por palavra e lê a edição bloco a bloco: cortes e ritmo, J-cut e L-cut, enquadramento, zoom e movimento, transições, legenda, lettering, imagens de apoio, cor, som, abertura e fim. Cada regra do guia tem evidência de tempo e diz se foi medida, inferida ou se não deu para saber. O guia vai para a biblioteca, com versões, e é aplicado nos próximos brutos.
+3. **Estilos.** Lista, carrega e versiona os guias guardados. Estilo salvo nunca é usado como se a pessoa tivesse escolhido.
+4. **Motion.** Cria, mostra a prévia, registra a revisão, renderiza e importa o clipe numa pista própria.
+5. **Take a take, em etapas aprovadas.** `dirigir` (guia), `cortar` (decupagem), `motion-graficos`, `finalizar` (cama, legenda, grade e master) e `publicar` (título, descrição, capa e agendamento). Cada etapa entrega algo para a pessoa ver antes da seguinte. Detalhes em [docs/beditor-motion.md](docs/beditor-motion.md).
+
+## Regras do produto
+
+- A montagem, o texto, a legenda, o som, os efeitos e a revisão final vivem na timeline do editor escolhido. Os scripts medem, preparam e conferem; não trocam a timeline por um MP4 montado fora.
+- Projeto editável salvo e vídeo exportado são entregas diferentes. Exportar, publicar e marcar o card como gravado ou postado só com pedido da pessoa.
+- Geração de vídeo, imagem ou voz e coletor pago só com OK, depois de dizer o que vai gerar e quanto custa.
+- Medição de quadro não reconhece efeito, fonte, máscara nem intenção. O que vem da leitura das pranchas fica como hipótese quando não há prova.
+- Preferência da pessoa só é guardada com o OK dela.
 
 ## Instalar
 
-- **Claude no navegador ou no app:** baixe o arquivo do plugin na página Kit do site do curso e envie em Personalizar › Plugins › Adicionar › Enviar plugin. Depois, na aba Conectores do plugin, clique em Conectar e entre com o e-mail do curso.
-- **Claude Code:** para instalar direto do repositório, no terminal: `claude plugin install sofia-estrategista --marketplace bento-dev-ia/sofia-estrategista`. Dentro do Claude Code: `/plugin marketplace add bento-dev-ia/sofia-estrategista` e depois `/plugin install sofia-estrategista@criadores-do-futuro`. Depois, `/mcp` para entrar no conector.
+**Claude Code**
 
-O passo a passo está em https://criador-estrategista.vercel.app/kit, depois do login com o e-mail do curso.
+```sh
+claude plugin marketplace add Criadores-do-Futuro/sofia-estrategista
+claude plugin install sofia-estrategista@criadores-do-futuro
+```
 
-## Privacidade
+Depois, `/reload-plugins` (ou uma sessão nova) e `/mcp` para entrar no conector Sofia Estrategista com o e-mail do curso. Para as versões novas chegarem sozinhas, ligue a atualização automática do marketplace `criadores-do-futuro` em `/plugin`, na aba dos marketplaces. Para testar um checkout: `claude --plugin-dir "CAMINHO_DO_REPOSITORIO/plugin"`.
 
-O conector só funciona para alunos do curso, depois do login. O que ele guarda e como apagar está em https://criador-estrategista.vercel.app/privacidade.
+**Já tem uma Sofia instalada?** Se for a `sofia-estrategista-editora`, ou a `sofia-estrategista` de outro marketplace (como o `sofia-plugins`), use o prompt de migração do [README do repositório](https://github.com/Criadores-do-Futuro/sofia-estrategista#já-tem-uma-sofia-instalada): ele desinstala a antiga e instala esta, com o seu OK.
 
-## English
+**Claude no navegador ou no app**
 
-Sofia Estrategista is the short-form video strategist from the Criador Estrategista course (Brazilian Portuguese). It helps with video ideas, primary-source research, format, structure, hooks, scripts, line-by-line critique, and video or profile analysis, following the course method. It works on its own, and when the Sofia Estrategista connector is connected and signed in with a course account, it reads and saves to the student's planning board on the course website. It asks before remembering a preference, and says what it saved after every write.
+O `.zip` da página Kit do site traz o plugin dentro da pasta `sofia-estrategista/` (o `scripts/empacotar.sh` do repositório gera esse arquivo). Envie o `.zip` em Personalizar › Plugins › Adicionar › Enviar plugin e conecte o conector na aba Conectores do plugin. O método e o conector funcionam ali. A edição precisa de um computador com Python, FFmpeg e o editor aberto, então depende do que o host oferece.
+
+**Codex**
+
+```sh
+codex plugin marketplace add Criadores-do-Futuro/sofia-estrategista
+codex plugin add sofia-estrategista@criadores-do-futuro
+```
+
+O catálogo do Codex é o `.agents/plugins/marketplace.json` da raiz do repositório. Com o `.zip` do kit, descompacte e aponte para a pasta:
+
+```sh
+unzip sofia-estrategista.zip
+codex plugin marketplace add ./sofia-estrategista
+codex plugin add sofia-estrategista@sofia-estrategista-local
+```
+
+No Codex, a Sofia aparece como "só no computador" (`requires_local_executor`): a edição e a leitura dos quadros de um vídeo rodam programas na máquina da pessoa.
+
+Os detalhes por ferramenta estão em [docs/instalacao-e-compatibilidade.md](docs/instalacao-e-compatibilidade.md).
+
+## O que precisa no computador para editar
+
+- Python 3.10 ou mais novo, FFmpeg e ffprobe.
+- `yt-dlp` para baixar referência por link; Whisper com um modelo `.pt` já baixado para transcrição local.
+- `pip install -r requirements-editorial.txt` para validar o plano editorial; `requirements-capcut-desktop.txt` para a ponte do CapCut Desktop.
+- Node, Chrome e `npm ci --prefix motion` para motion.
+- Para as skills `beditor` e `motion-vox`: `pip install -r requirements-motion.txt`, e o `/sofia-estrategista:setup` confere o resto e diz o comando de cada item que falta.
+- O editor: o plugin oficial do CapCut no host (CapCut Web), a ponte local (CapCut Desktop) ou o MCP do DaVinci Resolve com o Resolve aberto.
+
+A biblioteca de estilos fica na pasta de `BIBLIOTECA_ESTILOS_RAIZ`. Aponte para um disco com espaço: pranchas e análises de vídeo longo crescem rápido.
+
+## Documentação
+
+- [De onde veio cada parte](docs/origens.md)
+- [Instalação e compatibilidade](docs/instalacao-e-compatibilidade.md)
+- [Contrato editorial e validação](docs/contrato-editorial.md)
+- [Análise de estilo](docs/analise-de-estilo.md) e [enriquecer o manual](docs/enriquecer-manual-estilo.md)
+- [Baixar referência](docs/download-referencia.md) e [transcrição local](docs/transcricao-local.md)
+- [CapCut Web](docs/ponte-capcut-web.md), [CapCut Desktop](docs/ponte-capcut-desktop.md) e [DaVinci Resolve](docs/ponte-davinci.md)
+- [Arquitetura](docs/arquitetura.md), [plano e critérios](docs/plano.md), [referências técnicas](docs/referencias-tecnicas.md)
+- [Proteção de arquivos e distribuição](docs/seguranca-distribuicao.md)
+- [bEditor: motion, decupagem, finalização e publicação](docs/beditor-motion.md) e o [manual interativo](docs/manual.html) que o setup preenche
+
+Os testes, o empacotamento e o envio aos diretórios ficam na raiz do repositório, fora do plugin.
+
+## O que o plugin roda, envia e baixa
+
+**Roda no computador**, só quando a pessoa pede a etapa: Python 3, FFmpeg e ffprobe, Whisper local (mlx-whisper ou faster-whisper), OpenCV, Node com Remotion e Chrome para o render de motion, `xcrun swiftc` no macOS para compilar o recorte de pessoa (Vision), e um servidor de prévia só em `127.0.0.1`.
+
+**Instala só com o sim da pessoa:** `setup.py --instalar` e `--atualizar` mostram os comandos (`brew`, `pip`, `git pull --ff-only` num clone, `claude plugin install`, `claude plugin marketplace update criadores-do-futuro` e `claude plugin update`) e só executam com `--sim`. O comando `/atualizar` mostra o caminho de atualizar em cada app e, no Claude Code, só roda os comandos depois do OK da pessoa.
+
+**Envia**, sempre com a conta e a escolha da pessoa:
+
+- ao conector Sofia Estrategista (`https://plataforma.criadorestrategista.com.br/api/mcp`), depois do login: o que ela pede para ler ou salvar no planejamento, no cérebro e nas referências;
+- à API Gemini do Google, só com a chave `GEMINI_API_KEY` da própria pessoa: os prompts das imagens geradas;
+- ao Zernio ou ao Metricool, só com o sim a cada publicação: vídeo, capa, título e descrição do post;
+- ao CapCut e ao DaVinci Resolve, pelas ferramentas dos próprios fornecedores: a montagem na timeline.
+
+**Baixa:** vídeo público pelo link que a pessoa der (`yt-dlp`, sem cookies nem login); modelos de visão na primeira vez (OpenCV Zoo no GitHub e MediaPipe no Google Cloud Storage); fontes do Google Fonts e a GSAP do jsDelivr nas prévias em HTML; pacotes npm do `motion/` com `npm ci`; os pacotes do projeto de motion da skill `beditor` com `npm install` (`scripts/projeto.sh`, versões fixas no `package.json` do modelo); e o CLI de render `hyperframes@0.9.58` da HeyGen pelo `npx`, só nas etapas de motion e legenda que o usam (a variável `BEDITOR_HYPERFRAMES` troca a versão).
+
+**Lê no computador**, só quando a pessoa roda: `custos.py` e `painel/telemetria.py` leem os registros de sessão do Claude Code (`~/.claude/projects`) para somar tokens e tempo por etapa. O resultado fica num arquivo local.
+
+Nada é enviado para a Criadores do Futuro além do que passa pelo conector. Não há telemetria.
+
+## Privacidade, termos e suporte
+
+O conector só funciona para alunos do curso, depois do login. Vídeos, transcrições, pranchas e guias de estilo ficam no computador de quem usa; o plugin nunca copia nem altera o vídeo original.
+
+| | Português | Español | English |
+|---|---|---|---|
+| Privacidade | [privacidade](https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/privacidade) | [privacidad](https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/privacidad) | [privacy](https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/privacy) |
+| Termos de uso | [termos](https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/termos) | [términos](https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/terminos) | [terms](https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/terms) |
+| Suporte | [suporte](https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/suporte) | [soporte](https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/soporte) | [support](https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/support) |
 
 ## Licença
 
-Pode baixar, instalar e usar para criar o seu conteúdo ou o de clientes. Redistribuir, revender ou publicar cópias não é permitido. O conector é de uso dos alunos do curso. Veja [LICENSE](LICENSE).
+Pode baixar, instalar e usar para criar o seu conteúdo ou o de clientes. Redistribuir, revender ou publicar cópias não é permitido. Veja [LICENSE](LICENSE).

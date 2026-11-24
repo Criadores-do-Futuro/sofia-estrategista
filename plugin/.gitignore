@@ -1,0 +1,116 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+credentials/
+secrets/
+media/
+renders/
+exports/
+local-state/
+
+# Credenciais e dados de contas (em qualquer subdiretório)
+.npmrc
+.pypirc
+.netrc
+*.pem
+*.key
+*.p12
+*.pfx
+*.mobileprovision
+*.keystore
+*.jks
+*service-account*.json
+*service_account*.json
+*credentials*.json
+*credential*.json
+*oauth*.json
+*token*.json
+
+# Dados de trabalho e caches; não publicar gravações ou rascunhos pessoais
+*.mp4
+*.mov
+*.m4v
+*.avi
+*.mkv
+*.webm
+*.wav
+*.mp3
+*.m4a
+*.aac
+*.flac
+*.srt
+*.vtt
+*.ass
+*.sqlite
+*.sqlite3
+*.db
+*.log
+*.tgz
+*.zip
+.coverage
+.pytest_cache/
+.mypy_cache/
+.cache/
+.envrc
+.venv*/
+venv/
+biblioteca-de-estilos/
+estilos-locais/
+# Imagens pessoais, extrações e manuais de projetos locais
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.heic
+*.jsonl
+*.csv
+manual-estilo*.json
+estilo-local*.json
+# Arquivos produzidos pela análise de referências e transcrição
+ref-*-audio.json
+ref-*-trilhas-audio.json
+ref-*-mudancas.json
+*transcricao*.json
+manual.json
+manual-visual.json
+analise.json
+estilo.json
+
+# Pacotes gerados por scripts/empacotar.sh
+dist/
+# Tipos que o Claude Code escreve ao carregar o painel (hooks/register.tsx)
+.claude-plugin/types/
+
+# bEditor: material de terceiros do treinamento nunca entra (só ESTILO.md e medicoes.json)
+treinamento/**/videos/
+treinamento/**/frames-por-categoria/
+treinamento/**/raw_frames/
+treinamento/**/folhas/
+treinamento/**/metadata/
+treinamento/**/PROCEDENCIA*
+# bEditor: painel derivado do código e da máquina, regenerado a cada uso
+painel/index.html
+painel/estado.json
+painel/telemetria.json
+painel/revisao.json
+painel/revisao/
+painel/previa/
+docs/superpowers/
+
+# Configuração de assistente da máquina de quem programa
+.claude/
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+.cursor*
+.aider*
+.gitnexus/
+
+# Arquivos do plugin que as regras acima pegariam
+!assets/icon.png
+!schemas/*.schema.json

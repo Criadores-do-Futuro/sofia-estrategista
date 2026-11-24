@@ -1,0 +1,17 @@
+# Falsos positivos conferidos em 24/11/2026: são o sha256 de arquivos do espelho do método em
+# .espelho.json. Os nomes que terminam em "-resumo.md" fazem a regra sumologic-access-token achar
+# que o hash é um token. Cada valor foi comparado com o sha256 do arquivo que ele descreve.
+# Se o espelho for regerado e o gitleaks voltar a acusar o mesmo arquivo, confira de novo antes
+# de acrescentar a impressão nova aqui.
+71448354c426797d377d658f1af99c68f9cf65ee:plugin/skills/sofia-estrategista/references/.espelho.json:sumologic-access-token:102
+71448354c426797d377d658f1af99c68f9cf65ee:plugin/skills/sofia-estrategista/references/.espelho.json:sumologic-access-token:105
+71448354c426797d377d658f1af99c68f9cf65ee:plugin/skills/sofia-estrategista/references/.espelho.json:sumologic-access-token:85
+71448354c426797d377d658f1af99c68f9cf65ee:plugin/skills/sofia-estrategista/references/.espelho.json:sumologic-access-token:92
+7a18118c0b4703981da58dc6bfc581a17b4784d8:plugin/skills/sofia-estrategista/references/.espelho.json:sumologic-access-token:51
+7a18118c0b4703981da58dc6bfc581a17b4784d8:plugin/skills/sofia-estrategista/references/.espelho.json:sumologic-access-token:55
+7a18118c0b4703981da58dc6bfc581a17b4784d8:plugin/skills/sofia-estrategista/references/.espelho.json:sumologic-access-token:65
+7a18118c0b4703981da58dc6bfc581a17b4784d8:plugin/skills/sofia-estrategista/references/.espelho.json:sumologic-access-token:68
+plugin/skills/sofia-estrategista/references/.espelho.json:sumologic-access-token:102
+plugin/skills/sofia-estrategista/references/.espelho.json:sumologic-access-token:105
+plugin/skills/sofia-estrategista/references/.espelho.json:sumologic-access-token:85
+plugin/skills/sofia-estrategista/references/.espelho.json:sumologic-access-token:92

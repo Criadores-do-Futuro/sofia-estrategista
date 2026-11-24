@@ -1,34 +1,41 @@
 # Formato: Tela Dividida
 
+> Cópia da peça `formatos/tela-dividida` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/tela-dividida`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
+> Eixo **formato de gravação** (COMO se grava). Não confundir com a **estrutura** (a sequência do argumento: `estruturas-de-roteiro/`) nem com o **arquétipo** (o ângulo: `knowledge/arquetipos-nichos-bolhas`). Um roteiro tem os três.
+
 ## O que é
-O criador comenta um conteúdo de fora (vídeo de outra pessoa, cena real, notícia) enquanto esse conteúdo aparece ao lado.
+Criador narra ou comenta um conteúdo externo (vídeo de outra pessoa, cena real) enquanto esse conteúdo aparece ao lado ou ao fundo.
 
 ## Assinatura visual
-- A tela partida em duas: o conteúdo de fora de um lado (ou em cima) e o criador reagindo do outro.
-- O conteúdo de fora é de outra pessoa: vídeo, post, cena real, notícia.
-- O criador pausa, aponta ou comenta partes desse conteúdo.
-- Às vezes aparece o recurso de dueto ou remix da própria rede.
-
-## Não confundir com
-- **Comparação:** os dois lados são opções comparadas. Na Tela Dividida, um lado é o conteúdo comentado e o outro é o criador.
-- **Tela Verde:** o conteúdo de fora aparece atrás do criador, como fundo. Na Tela Dividida, ele divide o quadro.
-- **Análise:** explica alguém com clipes intercalados. Se o conteúdo de fora fica na tela junto do criador, o formato é Tela Dividida.
-
-## Regras de escrita
-1. Abra pela consequência. O contexto vem depois.
-2. Use o "mas" para virar o contraste.
-3. Ponha quem assiste na cena com "você" e "seu".
-4. Cada trecho aumenta o conflito do anterior.
-5. O aha é o pagamento da curiosidade aberta no começo. Ele só chega depois da tensão.
-6. A moral vira a câmera para quem assiste.
-7. Use marcas, programas e nomes reais, com fonte.
-8. O CTA sai da moral, sem forçar.
-
-## Tipo de hook que este formato pede
-Declaração de consequência que deixa curiosidade, ou cena imersiva falando com "você".
-
-## Elementos viciantes dominantes
-Relevância emocional, contraste, linguagem familiar, curiosidade e aha. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+- A tela partida em duas: conteúdo externo de um lado (ou em cima), o criador reagindo do outro
+- O conteúdo externo é de outra pessoa: vídeo, post, cena real, notícia
+- O criador pausa, aponta ou comenta partes do conteúdo externo
+- Às vezes aparece o recurso nativo de dueto ou remix da plataforma
 
 ## Estrutura que combina melhor
-[Ele, Eu, Você, Futuro](../estruturas.md), com o contraste como elemento principal: o "Ele" é o conteúdo de fora, e o contraste aparece entre o que ele mostra e o que o criador conta.
+Ele-Eu-Você-Futuro + Contraste
+
+## Tipo de hook que este formato pede
+Declaração de consequência curiosa ou cena imersiva em segunda pessoa.
+
+## Elementos viciantes dominantes
+Relevância Emocional, Contraste, Linguagem Familiar, Curiosidade e Efeito AHA
+
+## Regras de escrita
+1. Abra com consequência, não com contexto
+2. Use "mas" como dispositivo técnico de contraste
+3. Coloque o espectador dentro da cena com "você" e "seu"
+4. Cada trecho deve intensificar o conflito do anterior
+5. O Efeito Ahá é o payoff do loop: nunca revele antes de construir tensão
+6. A moral deve virar a câmera para o espectador
+7. Use marcas, programas e nomes reais e verificáveis
+8. O CTA deve ser consequência natural da moral
+
+## Não confundir
+- Comparação: os dois lados são opções sendo comparadas; na Tela Dividida um lado é o conteúdo comentado e o outro é o criador.
+- Tela Verde: o conteúdo externo aparece ATRÁS do criador, como fundo; na Tela Dividida ele divide o quadro.
+- Análise: interpreta um sujeito com inserts intercalados; se o conteúdo externo fica na tela junto do criador, é Tela Dividida.
+
+## Exemplo analisado
+Roteiro real deste formato, anotado frase a frase: `exemplos-analisados/tela-dividida`

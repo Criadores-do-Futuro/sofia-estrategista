@@ -1,5 +1,16 @@
 # Desenho do plugin Sofia Estrategista
 
+## Desde a 2.0.0: uma Sofia só
+
+A versão 2.0.0 juntou aqui a Sofia com edição (`sofia-estrategista-editora`). O que mudou neste desenho:
+
+- **A edição de vídeo entrou no escopo:** CapCut, DaVinci Resolve, bEditor, motion e publicação, com as skills `sofia-editora`, `beditor` e `motion-vox` (detalhes em `plugin/docs/`).
+- **O plugin passou a ter hooks** (o painel do Claude Code, um mod) **e scripts**. Por isso ele não passa nas regras "Verified only" do diretório da Anthropic, como a Sofia com edição já não passava; a distribuição principal é o marketplace `criadores-do-futuro` deste repositório.
+- **Os ajudantes viraram a equipe** (11 agentes que só leem e devolvem; os que gravam ficam travados) mais os 4 ajudantes da edição.
+- **O kit** sai do `scripts/empacotar.sh`: `sofia-estrategista.zip` (e a cópia `.plugin`) com o plugin inteiro e `sofia-estrategista.skill` com a skill solta.
+
+O resto deste arquivo é o desenho da primeira versão, que continua valendo onde não briga com a lista acima.
+
 ## Para que serve
 
 O aluno do Criador Estrategista escreve roteiros com a Sofia no Claude, e o site do curso é o banco de dados e o orquestrador: perfil, cérebro, referências, cards, versões e grifos. O plugin junta numa instalação só o método (skill), os atalhos, os ajudantes e o conector, para a Sofia sempre aplicar o método e usar o site sempre que puder.

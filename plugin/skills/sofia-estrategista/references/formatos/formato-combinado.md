@@ -1,32 +1,35 @@
 # Formato: Formato Combinado
 
+> Cópia da peça `formatos/formato-combinado` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/formato-combinado`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
 ## O que é
-Dois formatos conhecidos se juntam de propósito num jeito de gravar que faz sentido. Um recurso rápido não basta: cada formato precisa ajudar a contar a história.
+Dois formatos reconhecíveis são fundidos deliberadamente e geram uma linguagem coerente com personalidade própria. Não basta acrescentar um efeito pontual: cada formato precisa contribuir estruturalmente.
 
 ## Assinatura visual
-- Dá para dizer o nome dos dois formatos.
-- Cada parte mantém os sinais do seu formato.
-- A troca entre eles, ou os dois juntos, é de propósito.
-- A mistura acrescenta ritmo, sentido ou ponto de vista.
+- É possível nomear os dois formatos presentes
+- Cada camada mantém características reconhecíveis
+- A transição ou simultaneidade parece intencional
+- A fusão acrescenta ritmo, sentido ou ponto de vista
 
-## Não confundir com
-- **Troca de lugar ou um clipe rápido** no meio do vídeo: isso não junta dois formatos.
-- **Mistura sem padrão:** se nenhum dos dois formatos se reconhece, a combinação não aconteceu.
-
-## Regras de escrita
-1. Decida qual formato conduz e qual completa.
-2. Dê uma função diferente a cada formato.
-3. Planeje onde cada um entra, sai ou aparece junto do outro.
-4. Mantenha os sinais mínimos dos dois.
-5. A troca de um para o outro carrega sentido.
-6. Revise pelas regras dos dois formatos.
-7. Na análise, escreva o nome assim: `Formato A + Formato B`.
+## Estrutura que combina melhor
+Depende dos dois formatos. Escolha uma estrutura narrativa dominante e adapte as regras visuais de ambos.
 
 ## Tipo de hook que este formato pede
 O hook do formato que conduz. Quando a própria mistura surpreende (por exemplo, uma Palestrinha que vira Cine no meio da frase), use um contraste inesperado.
 
 ## Elementos viciantes dominantes
-Os do formato que conduz, mais o contraste quando a mistura cria contraste. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+Os do formato que conduz, mais o contraste quando a mistura cria contraste
 
-## Estrutura que combina melhor
-A estrutura do formato que conduz. As regras visuais dos dois se adaptam a ela.
+## Regras de escrita
+1. Declare internamente qual formato conduz a narrativa e qual amplia a execução.
+2. Dê função diferente a cada formato; evite duplicar o mesmo efeito.
+3. Planeje onde cada camada entra, sai ou se sobrepõe.
+4. Preserve os sinais mínimos que tornam cada formato identificável.
+5. Faça as transições carregar significado, não apenas variedade.
+6. Revise o roteiro pelas regras dos dois formatos e resolva conflitos conscientemente.
+7. Ao analisar, nomeie a combinação como `Formato A + Formato B`.
+
+## Não confundir
+- Um formato com variação de cenário ou um insert breve continua sendo um formato só.
+- Mistura caótica sem dois padrões reconhecíveis não é combinação.
+- Um segundo formato presente por poucos segundos e sem função estrutural é apenas recurso pontual.

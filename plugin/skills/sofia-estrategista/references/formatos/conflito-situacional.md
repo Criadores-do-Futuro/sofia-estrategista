@@ -1,32 +1,35 @@
 # Formato: Conflito Situacional
 
+> Cópia da peça `formatos/conflito-situacional` do método (gerada do webapp, método 660ad6a20d05). Com o conector ligado, vale a versão de `sofia_metodo` com `formatos/conflito-situacional`, que é a mais nova. Não edite à mão: o arquivo é regerado.
+
 ## O que é
-O vídeo abre com um conflito forte que parece real: discussão, ameaça, acidente, roubo, confronto ou urgência. É uma cena encenada. Depois de prender, o vídeo pode virar explicação, analogia ou conversa.
+O vídeo abre com uma situação de conflito forte que parece real: discussão, ameaça, acidente, roubo, confronto ou urgência. O conflito funciona como porta de entrada; depois, o vídeo pode revelar a encenação e migrar para explicação, analogia ou conversa.
 
 ## Assinatura visual
-- Ação ou tensão nos primeiros segundos.
-- Personagens que querem coisas que não cabem juntas.
-- A situação se entende antes de qualquer explicação.
-- Uma passagem clara do conflito para a mensagem.
+- Ação ou tensão já nos primeiros segundos
+- Personagens com objetivos incompatíveis
+- Situação concreta, compreensível antes de qualquer explicação
+- Mudança clara do conflito para a mensagem principal
 
-## Não confundir com
-- **Diálogo:** não precisa de urgência que parece real.
-- **Experimento Social:** registra a reação de verdade de pessoas que não sabem do teste. No Conflito Situacional, todo mundo em cena sabe que é encenação.
-
-## Regras de escrita
-1. Comece dentro da ação, sem explicar antes.
-2. Dê a cada personagem um objetivo simples, oposto ao do outro.
-3. Use falas curtas, de reação, do jeito que a gente fala.
-4. Deixe quem assiste querendo saber o que aconteceu ou como termina.
-5. A passagem para a mensagem paga a promessa da abertura.
-6. No fim, a cena ganha um sentido novo.
-7. Nada de risco de verdade. Quem passa por perto não pode achar que é real: grave em lugar controlado, só com quem sabe da encenação.
+## Estrutura que combina melhor
+IHC: impacto visual, história/conflito e conclusão/revelação.
 
 ## Tipo de hook que este formato pede
 Cena imersiva dentro da ação: a primeira imagem e a primeira fala já estão no meio do conflito.
 
 ## Elementos viciantes dominantes
-Conflito e mudança, curiosidade e aha, relevância emocional. Veja [elementos-viciantes.md](../elementos-viciantes.md).
+Conflito e mudança, curiosidade e aha, relevância emocional
 
-## Estrutura que combina melhor
-[IHC](../estruturas.md), abrindo dentro da cena de conflito. A cena faz a identificação, a explicação faz a história e o novo sentido da cena entrega o conteúdo.
+## Regras de escrita
+1. Comece dentro da ação; não explique a cena antes de ela acontecer.
+2. Dê a cada personagem um objetivo simples e oposto.
+3. Use falas curtas, reativas e naturais; conflito explicado soa falso.
+4. Plante uma pergunta imediata: “o que aconteceu?” ou “como isso vai terminar?”.
+5. Faça a transição para a mensagem sem quebrar a promessa da abertura.
+6. A conclusão precisa ressignificar a cena, não apenas abandoná-la.
+7. Evite encenações que possam causar risco real ou enganar terceiros fora do contexto do vídeo.
+
+## Não confundir
+- Diálogo: pode ter discordância, mas não exige uma situação urgente que pareça real.
+- Experimento Social: registra reações reais de desconhecidos; aqui o conflito pode ser encenado.
+- Hook verbal agressivo diante da câmera: conflito de ideia, não conflito situacional.
