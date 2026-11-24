@@ -229,6 +229,8 @@ A evolução guarda uma leitura por dia dos números de um perfil já avaliado (
 
 Escrever fica separado de conferir. Cada papel da equipe recebe do conector, na hora, só a fatia do método que usa (o briefing), e o código confere o que é mecânico. O plano de cada etapa vem do pacote, na seção "Passos e equipe desta etapa": os passos em ordem, quem faz cada um, o que roda junto e quantas rodadas. Se o plano do pacote disser outra coisa que esta seção, vale o pacote.
 
+Se o pacote não trouxer a seção "Passos e equipe desta etapa", ou disser que a equipe está desligada, siga o pacote inteiro na conversa principal, sem agentes e sem passadas.
+
 | Etapa | Escreve | Confere |
 |---|---|---|
 | Ideia | `estrategista-de-ideias`, `especialista-em-bolha` (propor) e `pesquisador` | `revisor-de-estrutura` e `especialista-em-bolha` |

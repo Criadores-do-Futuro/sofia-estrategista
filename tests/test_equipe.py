@@ -8,8 +8,8 @@ agente, agente que a skill não cita, ferramenta citada que o conector não tem 
 Com a variável SOFIA_WEBAPP apontando para um checkout do webapp, a lista de ferramentas abaixo também é
 comparada com as que o servidor registra.
 
-Os testes ficam na raiz do repositório, fora do pacote: o plugin é a pasta plugin/. É o mesmo teste do plugin
-sofia-estrategista-editora, com o caminho e o nome do plugin trocados. Para rodar: python3 -m unittest discover -s tests
+Os testes ficam na raiz do repositório, fora do pacote: o plugin é a pasta plugin/. Desde a 2.0.0 (a Sofia
+única) há um plugin só, sofia-estrategista, com a edição de vídeo. Para rodar: python3 -m unittest discover -s tests
 """
 import hashlib
 import json
@@ -52,6 +52,7 @@ COMANDOS_DA_EQUIPE = {'ideias', 'pesquisa', 'roteiro', 'critica'}
 TEXTOS_NOVOS = [
     *(ROOT / 'agents' / f'{n}.md' for n in sorted(AGENTES_DA_SOFIA)),
     *(ROOT / 'commands' / f'{n}.md' for n in sorted(COMANDOS_DA_EQUIPE)),
+    ROOT / 'commands' / 'atualizar.md',
     REFERENCIAS / 'passadas.md',
     SKILL / 'agents/openai.yaml',
 ]
@@ -226,6 +227,36 @@ class TravaTest(unittest.TestCase):
         linha = next(l for l in saida.stdout.splitlines() if l.startswith('GRAVAM='))
         gravam, _ = trava_esperada()
         self.assertEqual(json.loads(linha[len('GRAVAM='):]), gravam, 'rode exportar-referencias.mts no webapp')
+
+
+class SofiaUnicaTest(unittest.TestCase):
+    def test_skill_diz_a_versao_que_o_conector_compara(self):
+        # O conector lê "Esta é a versão X" na seção "Versão e atualização": sem a frase, quem já está na 2.0.0
+        # recebe o aviso de troca de Sofia.
+        texto = (SKILL / 'SKILL.md').read_text(encoding='utf-8')
+        secao = texto.split('## Versão e atualização', 1)[1].split('\n## ', 1)[0]
+        versao = json.loads((ROOT / '.claude-plugin/plugin.json').read_text(encoding='utf-8'))['version']
+        self.assertEqual(versao, '2.0.0')
+        self.assertIn(f'Esta é a versão {versao}', secao)
+
+    def test_chave_de_volta_na_skill_e_nas_passadas(self):
+        # Contrato da chave de volta: com SOFIA_EQUIPE=desligada, o pacote vem sem a seção da equipe ou com a
+        # linha da equipe desligada, e a Sofia segue o pacote inteiro na conversa, como antes.
+        frase = ('Se o pacote não trouxer a seção "Passos e equipe desta etapa", ou disser que a equipe está '
+                 'desligada, siga o pacote inteiro na conversa principal, sem agentes e sem passadas.')
+        for arquivo in (SKILL / 'SKILL.md', REFERENCIAS / 'passadas.md'):
+            with self.subTest(arquivo=arquivo.name):
+                self.assertIn(frase, arquivo.read_text(encoding='utf-8'))
+
+    def test_atualizar_usa_o_marketplace_criadores_do_futuro(self):
+        texto = (ROOT / 'commands/atualizar.md').read_text(encoding='utf-8')
+        for trecho in ('claude plugin marketplace update criadores-do-futuro',
+                       'claude plugin update sofia-estrategista@criadores-do-futuro',
+                       'codex plugin marketplace upgrade criadores-do-futuro', 'prompt de migração'):
+            with self.subTest(trecho=trecho):
+                self.assertIn(trecho, texto)
+        self.assertNotIn('sofia-plugins`\n', texto)
+        self.assertNotIn('@sofia-plugins', texto)
 
 
 class TextoNovoTest(unittest.TestCase):

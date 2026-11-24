@@ -4,6 +4,8 @@ No Claude Code e no Cowork, cada papel da equipe é um agente do plugin. No Clau
 
 O plano de cada etapa vem do conector, na seção "Passos e equipe desta etapa" do pacote (`sofia_preparar_escrita`). Se o plano do pacote disser outra coisa que esta página, vale o pacote.
 
+Se o pacote não trouxer a seção "Passos e equipe desta etapa", ou disser que a equipe está desligada, siga o pacote inteiro na conversa principal, sem agentes e sem passadas.
+
 ## Sumário
 
 1. As regras de toda passada
