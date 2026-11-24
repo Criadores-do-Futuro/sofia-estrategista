@@ -244,9 +244,9 @@ Escrever fica separado de conferir. Cada papel da equipe recebe do conector, na 
 4. Espere a equipe inteira voltar antes de mostrar qualquer coisa. Os resultados chegam como mensagens, um de cada vez.
 5. Junte os vereditos nesta ordem, quando dois brigam: Piso; fatos; voz e "como trabalhar" da pessoa; hook (assunto e clareza antes de estilo); bolha; método.
 6. Com falhas, retome o mesmo escritor (pelo nome ou pelo id, sem abrir outro) com a lista; na segunda rodada, os revisores conferem só os códigos que falharam. No máximo 2 rodadas. O que ainda falhar vai para a pessoa como observação curta.
-7. `sofia_conferir` com as opções finais, o `videoId` e os vereditos (`conferidas` com todos os códigos e `falhas` com o que ficou em aberto). Quando tudo passa, ele devolve o selo de conferência. Sem selo, a resposta diz o motivo: corrija se der.
+7. `sofia_conferir` com as opções finais, o `videoId` e os vereditos (`conferidas` com todos os códigos e `falhas` com o que ficou em aberto). Quando tudo passa, ele devolve o selo de conferência. Sem selo, a resposta diz o motivo: corrija se der. O selo vale para o texto que vai ser salvo: no roteiro, no ajuste e na crítica, o hook vai em `fala` e o campo `roteiro` leva o mesmo texto de `dados.roteiro` (no ajuste, a versão nova inteira; na crítica, a versão sem a linha do hook).
 8. Mostre poucas opções e uma linha só sobre a conferência ("passou pela conferência"). A tabela dos vereditos fica para quando a pessoa pedir.
-9. Salve com os dois selos: o do pacote em `selo` e o de conferência em `conferencia`. Sem o de conferência, salve assim mesmo: a versão fica marcada como sem conferência.
+9. Salve o roteiro e os grifos com os dois selos: o do pacote em `selo` e o de conferência em `conferencia`. Sem o de conferência, salve assim mesmo: a versão fica marcada como sem conferência. O hook escolhido vai para o quadro com o selo do pacote (`planejamento_mover_card`) e a ideia com `planejamento_editar_card`, como nos caminhos acima: o quadro ainda não recebe o selo de conferência.
 
 Se um agente devolver "sem acesso ao conector", ou não abrir, faça aquele papel em passada. Na primeira vez, o app pede licença para os agentes usarem as ferramentas do conector: diga numa linha que "permitir para a sessão" evita pedir de novo.
 

@@ -68,7 +68,7 @@ Igual ao hook, com estas trocas:
 
 - `sofia_preparar_escrita` com `tipo: "roteiro"` e `entrega: "orquestrar"`.
 - O escritor é o `roteirista`, com 2 ou 3 versões (uma, se a pessoa pediu). O briefing dele vem em até 4 partes: leia todas.
-- `sofia_conferir` com `etapa: "roteiro"` e cada versão em `opcoes` (campo `roteiro`).
+- `sofia_conferir` com `etapa: "roteiro"` e cada versão em `opcoes`: o hook em `fala` e, em `roteiro`, o mesmo texto que vai em `dados.roteiro` do `sofia_salvar`. O selo de conferência vale para esse texto.
 - Revisores, equipe completa: `revisor-o-que-nao-fazer`, `revisor-de-hook` (só o hook e a zona de fixação), `revisor-de-voz`, `especialista-em-bolha`, `revisor-de-estrutura` e `revisor-de-fatos`. Com seis papéis, o modo cartas fica grande: chame em dois grupos de três.
 - Equipe econômica, quando o plano do pacote mandar: `revisor-o-que-nao-fazer`, `revisor-de-estrutura` e `revisor-de-voz`, e `equipe: "economica"` no `sofia_conferir`.
 - Salve cada versão com `sofia_salvar`, o selo do pacote em `selo` e o selo de conferência em `conferencia`. A lista de gravação vai junto, como antes.
@@ -76,7 +76,7 @@ Igual ao hook, com estas trocas:
 ## 6. Ajuste
 
 - `sofia_preparar_escrita` com `tipo: "ajuste"`.
-- Mude só o trecho pedido. `sofia_conferir` com `etapa: "ajuste"` e o trecho novo em `texto`.
+- Mude só o trecho pedido. `sofia_conferir` com `etapa: "ajuste"` e o trecho novo em `texto`. Na chamada do selo, mande também a versão nova inteira em `roteiro`, igual à que vai em `dados.roteiro`: o selo vale para ela.
 - `sofia_briefing` com `papel: ["revisor-o-que-nao-fazer", "revisor-de-voz"]`, `etapa: "ajuste"` e `modo: "cartas"`, só sobre o trecho mudado.
 - Quando o ajuste muda um bloco inteiro, escreva pelo briefing do `roteirista` com `etapa: "ajuste"`.
 - Salve com `sofia_salvar`, `nasceuDe`, o selo do pacote e o de conferência.
@@ -84,7 +84,7 @@ Igual ao hook, com estas trocas:
 ## 7. Crítica e lapidar
 
 1. `sofia_preparar_escrita` com `tipo: "critica"` e `entrega: "orquestrar"`.
-2. `sofia_conferir` com `etapa: "critica"` e o roteiro em `opcoes`. Cada falha de código vira grifo pronto, com o código M.
+2. `sofia_conferir` com `etapa: "critica"` e a versão em `opcoes`: o hook em `fala` e o texto da versão em `roteiro`, sem a linha do hook. Cada falha de código vira grifo pronto, com o código M.
 3. `sofia_briefing` com os revisores do roteiro e o `critico`, `etapa: "critica"` e `modo: "cartas"` (em dois grupos, se ficar grande). Cada falha vira grifo: trecho exato, tipo (cortar, trocar, reforçar ou dúvida), comentário em palavras simples com o princípio entre parênteses, sugestão e os códigos.
 4. Tire os grifos repetidos e ordene do que mais muda o vídeo para o que menos muda.
 5. `sofia_conferir` com os vereditos completos para o selo. Na crítica, as falhas viram grifos e não seguram o selo.
