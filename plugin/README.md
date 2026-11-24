@@ -6,8 +6,18 @@ A estrategista de vídeo curto do curso Criador Estrategista, dos Criadores do F
 
 - **Skill `sofia-estrategista`:** o método inteiro (princípios da viralização, elementos viciantes, formatos, estruturas, hooks, pesquisa e checagem de fatos) e o caminho de cada tarefa.
 - **Atalhos:** `roteiro`, `ideias`, `pesquisa`, `analisar`, `critica`, `conectar` e `atualizar`. O `/atualizar` mostra o caminho de atualizar a Sofia em cada app e, no Claude Code, só roda os comandos depois do OK da pessoa.
-- **Ajudantes** (no Claude Code e no Cowork): `pesquisador`, que pesquisa em fonte primária, e `critico`, que faz a primeira leitura crítica de um roteiro. Os dois só leem e devolvem o resultado.
+- **Equipe da Sofia** (agentes no Claude Code e no Cowork): quem escreve são `estrategista-de-ideias`, `especialista-em-bolha`, `pesquisador`, `redator-de-hook` e `roteirista`; quem confere são `revisor-o-que-nao-fazer`, `revisor-de-hook`, `revisor-de-voz`, `revisor-de-estrutura`, `revisor-de-fatos`, `especialista-em-bolha` e `critico`. Cada um busca no conector o briefing do seu papel, e todos só leem e devolvem o resultado.
 - **Conector Sofia Estrategista:** liga o Claude ao planejamento do aluno no site do curso.
+
+## Versão 1.6.0: a equipe da Sofia
+
+Ideia, hook, roteiro, ajuste e crítica deixam de ser escritos e conferidos numa passada só:
+
+- **Quem escreve** gera mais opções do que mostra, com o método inteiro da etapa e a voz da pessoa.
+- **Os revisores** conferem juntos, cada um com uma fatia do método e as regras com código dela (as cartas): o que não fazer, o hook, a voz, a estrutura, os fatos e a bolha. Até 2 rodadas de correção.
+- **O conector** manda o plano de cada etapa, o briefing de cada papel e confere por código o que é mecânico. Quando tudo passa, devolve o selo de conferência, que vai junto ao salvar. Texto salvo sem o selo fica marcado como sem conferência.
+- **Em cada app:** no Claude Code e no Cowork, os papéis são agentes do plugin; no Codex, subagentes do próprio Codex; no Claude do site e do celular e no ChatGPT, passadas na conversa (`skills/sofia-estrategista/references/passadas.md`).
+- **As referências do método** são cópia gerada do conector, com as cartas de cada papel em `cartas.md`, para quando o conector está desligado.
 
 ## Como funciona com e sem o conector
 
