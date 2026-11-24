@@ -89,7 +89,7 @@ material de referência e a procedência (de quem é, de onde veio) ficam na sua
 
 | Você tem | Comando |
 | --- | --- |
-| um take de câmera falando | `/sofia-estrategista:cortar take.mov` — e depois `/sofia-estrategista:motion-graficos`, `/sofia-estrategista:finalizar` |
+| um take de câmera falando | `/sofia-estrategista:cortar take.mov`, e depois `/sofia-estrategista:motion-graficos`, `/sofia-estrategista:finalizar` |
 | um comentário sobre o vídeo de outra pessoa | `/sofia-estrategista:editar-analise "Projetos/01 - Nome/"` |
 | o master pronto e quer publicar | `/sofia-estrategista:publicar entrega/master.mp4` |
 | dúvida sobre o que existe | `~/.beditor/manual.html` — aba Fluxos, cada passo com o comando que roda |
