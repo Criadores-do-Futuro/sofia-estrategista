@@ -25,6 +25,8 @@ declare module 'claude-code' {
       ofereceuLigar: StateFamily<boolean>
       /** Se o último prompt da pessoa deixa o modelo trocar o modo pela skill, pela sessão. */
       podeTrocarModo: StateFamily<boolean>
+      /** Se o mod pôs a linha do primeiro uso no último prompt (a resposta curta do modo vale no seguinte), pela sessão. */
+      perguntouModo: StateFamily<boolean>
     }
   }
 }

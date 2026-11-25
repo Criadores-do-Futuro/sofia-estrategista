@@ -10,6 +10,7 @@ import {
   ehLivre,
   lerEstado,
   pedidoDeModo,
+  respostaDoModo,
 } from './interruptor'
 import type { Estado } from './interruptor'
 
@@ -74,6 +75,28 @@ describe('pedidoDeModo', () => {
     expect(pedidoDeModo('o que acontece se eu desligar a Sofia?')).toBe(null)
     expect(pedidoDeModo('Sofia, faz o roteiro')).toBe(null)
     expect(pedidoDeModo('')).toBe(null)
+  })
+})
+
+describe('respostaDoModo (a resposta à pergunta do primeiro uso, sem o nome)', () => {
+  test('só quando chamar', () => {
+    expect(respostaDoModo('só quando eu chamar')).toBe('so-quando-chamada')
+    expect(respostaDoModo('Só quando chamar.')).toBe('so-quando-chamada')
+    expect(respostaDoModo('quando eu chamar')).toBe('so-quando-chamada')
+    expect(respostaDoModo('so quando eu te chamar, por favor')).toBe('so-quando-chamada')
+  })
+
+  test('sempre ligada', () => {
+    expect(respostaDoModo('sempre ligada')).toBe('ligada')
+    expect(respostaDoModo('Pode ficar ligada!')).toBe('ligada')
+    expect(respostaDoModo('fica ligada')).toBe('ligada')
+    expect(respostaDoModo('fica sempre ligada')).toBe('ligada')
+  })
+
+  test('qualquer outra frase não é resposta', () => {
+    expect(respostaDoModo('faz o roteiro da segunda ideia')).toBe(null)
+    expect(respostaDoModo('a luz fica ligada quando eu chamar o técnico?')).toBe(null)
+    expect(respostaDoModo('')).toBe(null)
   })
 })
 

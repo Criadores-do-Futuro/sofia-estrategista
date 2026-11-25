@@ -9,6 +9,7 @@ import {
   decidir,
   lerEstado,
   pedidoDeModo,
+  respostaDoModo,
 } from './interruptor'
 import type { Estado, Modo } from './interruptor'
 
@@ -35,6 +36,7 @@ const ESTOU_DESLIGADA = 'Estou desligada aqui. Quer que eu ligue?'
 const LINHA_DESLIGADA_CHAMADA = `A pessoa chamou a Sofia, mas ela está desligada aqui. Responda só: "${ESTOU_DESLIGADA}"`
 const LINHA_ENSINAR =
   'A pessoa quer aprender a usar a Sofia. Mostre o tutorial de skills/sofia-estrategista/references/primeiro-uso.md, mesmo com a Sofia desligada.'
+const LINHA_PRIMEIRO_USO = 'Primeiro uso da Sofia neste lugar.'
 const COMO_TROCAR = 'Para trocar: /sofia-modo ligada, /sofia-modo so-quando-chamada ou /sofia-modo desligada.'
 const linhaDoModo = (modo: Modo) => `Interruptor local: ${modo}.`
 
@@ -144,10 +146,12 @@ async function marcarChamada($: EngineInterface, sessao: string | null) {
   }
 }
 
-// Duas marcas por sessão para o modelo só trocar o modo quando a pessoa pediu:
+// Três marcas por sessão:
 // - ofereceuLigar: o mod pôs a frase "Estou desligada aqui. Quer que eu ligue?" no último prompt;
-// - podeTrocarModo: o último prompt de verdade chamou a Sofia, ou veio logo depois dessa frase.
-type Marca = 'ofereceuLigar' | 'podeTrocarModo'
+// - podeTrocarModo: o último prompt de verdade chamou a Sofia, ou veio logo depois dessa frase;
+// - perguntouModo: o mod pôs a linha do primeiro uso no último prompt, e a Sofia terminou com a pergunta do
+//   modo; a resposta curta, sem o nome ("só quando eu chamar", "sempre ligada"), vale só no prompt seguinte.
+type Marca = 'ofereceuLigar' | 'podeTrocarModo' | 'perguntouModo'
 
 async function lerMarca($: EngineInterface, marca: Marca, sessao: string | null): Promise<boolean> {
   if (!sessao) return false
@@ -155,7 +159,9 @@ async function lerMarca($: EngineInterface, marca: Marca, sessao: string | null)
     const lido =
       marca === 'ofereceuLigar'
         ? await $.state.get({ plugin: 'sofia-estrategista', key: 'ofereceuLigar', id: sessao })
-        : await $.state.get({ plugin: 'sofia-estrategista', key: 'podeTrocarModo', id: sessao })
+        : marca === 'podeTrocarModo'
+          ? await $.state.get({ plugin: 'sofia-estrategista', key: 'podeTrocarModo', id: sessao })
+          : await $.state.get({ plugin: 'sofia-estrategista', key: 'perguntouModo', id: sessao })
     return lido.value === true
   } catch {
     return false
@@ -166,19 +172,37 @@ async function gravarMarca($: EngineInterface, marca: Marca, sessao: string | nu
   if (!sessao) return
   try {
     if (marca === 'ofereceuLigar') await $.state.set({ plugin: 'sofia-estrategista', key: 'ofereceuLigar', id: sessao }, valor)
-    else await $.state.set({ plugin: 'sofia-estrategista', key: 'podeTrocarModo', id: sessao }, valor)
+    else if (marca === 'podeTrocarModo') await $.state.set({ plugin: 'sofia-estrategista', key: 'podeTrocarModo', id: sessao }, valor)
+    else await $.state.set({ plugin: 'sofia-estrategista', key: 'perguntouModo', id: sessao }, valor)
   } catch {
     // sem a marca, o modelo não troca o modo sozinho: a pessoa usa a frase ou o comando
   }
 }
 
+/** Grava apresentada: true, sem mudar o modo. Devolve false quando não deu para gravar. */
+async function marcarApresentada($: EngineInterface, estado: Estado): Promise<boolean> {
+  const pasta = await pastaDeDados($)
+  if (!pasta) return false
+  try {
+    const depois: Estado = { ...estado, apresentada: true }
+    await $.fs.write(`${pasta}/${ESTADO}`, JSON.stringify(depois, null, 2) + '\n')
+    return true
+  } catch {
+    return false
+  }
+}
+
 /** As linhas que o modelo lê junto do que a pessoa digitou. Muda o modo quando a frase pede. */
 async function linhasDoPrompt($: EngineInterface, texto: string, comando?: { name: string; args: string }): Promise<string[]> {
+  const sessao = await idDaSessao($)
   const digitado = comandoDigitado(texto, comando)
-  const pedido = digitado ? pedidoDoComando(digitado.nome, digitado.args) : pedidoDeModo(texto)
+  let pedido = digitado ? pedidoDoComando(digitado.nome, digitado.args) : pedidoDeModo(texto)
+  // A resposta curta à pergunta do modo vale só no prompt logo depois do primeiro uso; aqui a janela fecha.
+  const perguntouAntes = await lerMarca($, 'perguntouModo', sessao)
+  await gravarMarca($, 'perguntouModo', sessao, false)
+  if (!pedido && !digitado && perguntouAntes) pedido = respostaDoModo(texto)
   let estado = await lerInterruptor($)
   if (pedido && pedido !== 'ensinar') estado = await gravarModo($, pedido)
-  const sessao = await idDaSessao($)
   const chamou = digitado !== null || chamaSofia(texto)
   if (chamou) await marcarChamada($, sessao)
   // A oferta de ligar vale só para a resposta seguinte ("sim"): aqui ela é consumida. Desligada, chamar a
@@ -200,6 +224,10 @@ async function linhasDoPrompt($: EngineInterface, texto: string, comando?: { nam
       }
     } else if (estado.modo === 'so-quando-chamada' && !(await foiChamada($, sessao))) {
       linhas.push(AVISO_SO_QUANDO_CHAMADA)
+    } else if (chamou && !estado.apresentada && (await marcarApresentada($, estado))) {
+      // Primeiro uso: a Sofia vai agir porque foi chamada. A linha sai uma vez por computador.
+      linhas.push(LINHA_PRIMEIRO_USO)
+      await gravarMarca($, 'perguntouModo', sessao, true)
     }
   }
   await gravarMarca($, 'ofereceuLigar', sessao, ofereceAgora)

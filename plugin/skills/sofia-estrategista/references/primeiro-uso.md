@@ -8,7 +8,7 @@ Mostre quando as três coisas valerem:
 
 1. A Sofia está ativa: ligada, ou só quando chamada e já chamada (veja [interruptor.md](interruptor.md)).
 2. Ela ainda não se apresentou neste lugar:
-   - **com a linha `Interruptor local:`** (Claude Code): só quando o contexto trouxer a linha `Primeiro uso da Sofia neste lugar.`, que o gancho põe e marca;
+   - **com a linha `Interruptor local:`** (Claude Code): só quando o contexto trouxer a linha `Primeiro uso da Sofia neste lugar.`. O gancho põe essa linha uma vez por computador, no primeiro prompt que chama a Sofia pelo nome com ela ativa, e já marca que ela se apresentou;
    - **no chat com memória:** quando a memória não tiver a nota `Sofia Estrategista: já apresentada no chat.`
 3. O tutorial ainda não apareceu nesta conversa.
 
@@ -39,5 +39,5 @@ Na reprise ("Sofia, me ensina"), mostre só as 5 linhas. A pergunta do modo entr
 ## A resposta à pergunta do modo
 
 - **"Sempre", "ligada", "pode ficar":** fica ligada. No chat, nada mais a guardar.
-- **"Só quando eu chamar":** mude para só quando chamada, como em [interruptor.md](interruptor.md), "Ligar, desligar e mudar o modo". Confirme em uma linha.
+- **"Só quando eu chamar":** mude para só quando chamada, como em [interruptor.md](interruptor.md), "Ligar, desligar e mudar o modo". Confirme em uma linha. No Claude Code, a resposta curta logo depois da pergunta ("só quando eu chamar", "sempre ligada") já é guardada pelo gancho: a linha `Interruptor local:` desse prompt mostra o modo novo, e você só confirma.
 - **Sem resposta, ou a pessoa seguiu com outro pedido:** fica ligada. Não pergunte de novo.

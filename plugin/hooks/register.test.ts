@@ -417,7 +417,8 @@ describe('o modelo só troca o modo quando a pessoa pediu', () => {
   test('"Sofia, para de aparecer": o modelo desliga pela skill', async ($, on) => {
     const m = mundo(on)
     await $.prompt.submit(digitado('Sofia, para de aparecer'))
-    expect(m.modoGravado()).toBeUndefined()
+    // O chamado grava apresentada (primeiro uso), mas o modo segue ligada até a skill.
+    expect(m.modoGravado() ?? 'ligada').toBe('ligada')
     await $.tool.call(DESLIGAR)
     expect(m.modoGravado()).toBe('desligada')
   })
@@ -442,5 +443,72 @@ describe('a ferramenta roda uma vez só', () => {
     const m = mundo(on, DESLIGADA)
     await $.tool.call({ tool: 'Skill', skill: 'sofia-estrategista:roteiro' } as never)
     expect(m.execucoes()).toBe(0)
+  })
+})
+
+describe('primeiro uso neste computador', () => {
+  const PRIMEIRO_USO = 'Primeiro uso da Sofia neste lugar.'
+  const LIGADA_APRESENTADA = JSON.stringify({ modo: 'ligada', apresentada: true, mudouEm: '2026-11-20T10:00:00.000Z' })
+  const SO_QUANDO_NOVA = JSON.stringify({ modo: 'so-quando-chamada', apresentada: false })
+  const temPrimeiroUso = (p: { context?: readonly string[] }) => (p.context ?? []).includes(PRIMEIRO_USO)
+  const apresentada = (m: Mundo) => JSON.parse(m.arquivos.get(ARQUIVO) ?? '{}').apresentada
+
+  test('o primeiro chamado põe a linha uma vez e grava apresentada', async ($, on) => {
+    const m = mundo(on)
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, me dá uma ideia de vídeo')))).toBe(true)
+    expect(apresentada(m)).toBe(true)
+    expect(m.modoGravado()).toBe('ligada')
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, outra ideia')))).toBe(false)
+    m.sessao.id = 'sessao-2'
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, mais uma')))).toBe(false)
+  })
+
+  test('com apresentada no arquivo, sem linha', async ($, on) => {
+    mundo(on, LIGADA_APRESENTADA)
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, me dá uma ideia')))).toBe(false)
+  })
+
+  test('sem chamado, desligada, pedido de modo ou "me ensina": sem linha e apresentada fica como está', async ($, on) => {
+    const m = mundo(on)
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('faz um resumo do arquivo')))).toBe(false)
+    expect(m.arquivos.has(ARQUIVO)).toBe(false)
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, me ensina')))).toBe(false)
+    expect(m.arquivos.has(ARQUIVO)).toBe(false)
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, desliga')))).toBe(false)
+    expect(apresentada(m)).toBe(false)
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, faz o roteiro')))).toBe(false)
+    expect(apresentada(m)).toBe(false)
+  })
+
+  test('depois da linha, "só quando eu chamar" muda para so-quando-chamada', async ($, on) => {
+    const m = mundo(on)
+    await $.prompt.submit(digitado('Sofia, me dá uma ideia'))
+    const p = await $.prompt.submit(digitado('só quando eu chamar'))
+    expect(m.modoGravado()).toBe('so-quando-chamada')
+    expect(p.context).toContain('Interruptor local: so-quando-chamada.')
+    expect(apresentada(m)).toBe(true)
+  })
+
+  test('depois da linha, "sempre ligada" muda para ligada', async ($, on) => {
+    const m = mundo(on, SO_QUANDO_NOVA)
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, me dá uma ideia')))).toBe(true)
+    const p = await $.prompt.submit(digitado('sempre ligada'))
+    expect(m.modoGravado()).toBe('ligada')
+    expect(p.context).toContain('Interruptor local: ligada.')
+  })
+
+  test('sem a linha antes, "só quando eu chamar" não muda nada', async ($, on) => {
+    const m = mundo(on, LIGADA_APRESENTADA)
+    await $.prompt.submit(digitado('Sofia, me dá uma ideia'))
+    await $.prompt.submit(digitado('só quando eu chamar'))
+    expect(m.modoGravado()).toBe('ligada')
+  })
+
+  test('a janela da resposta dura um prompt só', async ($, on) => {
+    const m = mundo(on)
+    await $.prompt.submit(digitado('Sofia, me dá uma ideia'))
+    await $.prompt.submit(digitado('faz a segunda'))
+    await $.prompt.submit(digitado('só quando eu chamar'))
+    expect(m.modoGravado()).toBe('ligada')
   })
 })
