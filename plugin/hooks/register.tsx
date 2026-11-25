@@ -144,6 +144,34 @@ async function marcarChamada($: EngineInterface, sessao: string | null) {
   }
 }
 
+// Duas marcas por sessão para o modelo só trocar o modo quando a pessoa pediu:
+// - ofereceuLigar: o mod pôs a frase "Estou desligada aqui. Quer que eu ligue?" no último prompt;
+// - podeTrocarModo: o último prompt de verdade chamou a Sofia, ou veio logo depois dessa frase.
+type Marca = 'ofereceuLigar' | 'podeTrocarModo'
+
+async function lerMarca($: EngineInterface, marca: Marca, sessao: string | null): Promise<boolean> {
+  if (!sessao) return false
+  try {
+    const lido =
+      marca === 'ofereceuLigar'
+        ? await $.state.get({ plugin: 'sofia-estrategista', key: 'ofereceuLigar', id: sessao })
+        : await $.state.get({ plugin: 'sofia-estrategista', key: 'podeTrocarModo', id: sessao })
+    return lido.value === true
+  } catch {
+    return false
+  }
+}
+
+async function gravarMarca($: EngineInterface, marca: Marca, sessao: string | null, valor: boolean) {
+  if (!sessao) return
+  try {
+    if (marca === 'ofereceuLigar') await $.state.set({ plugin: 'sofia-estrategista', key: 'ofereceuLigar', id: sessao }, valor)
+    else await $.state.set({ plugin: 'sofia-estrategista', key: 'podeTrocarModo', id: sessao }, valor)
+  } catch {
+    // sem a marca, o modelo não troca o modo sozinho: a pessoa usa a frase ou o comando
+  }
+}
+
 /** As linhas que o modelo lê junto do que a pessoa digitou. Muda o modo quando a frase pede. */
 async function linhasDoPrompt($: EngineInterface, texto: string, comando?: { name: string; args: string }): Promise<string[]> {
   const digitado = comandoDigitado(texto, comando)
@@ -153,28 +181,43 @@ async function linhasDoPrompt($: EngineInterface, texto: string, comando?: { nam
   const sessao = await idDaSessao($)
   const chamou = digitado !== null || chamaSofia(texto)
   if (chamou) await marcarChamada($, sessao)
+  // A oferta de ligar vale só para a resposta seguinte ("sim"): aqui ela é consumida.
+  const ofereceuAntes = await lerMarca($, 'ofereceuLigar', sessao)
+  await gravarMarca($, 'podeTrocarModo', sessao, chamou || ofereceuAntes)
 
   const linhas = [linhaDoModo(estado.modo)]
+  let ofereceAgora = false
   if (pedido === 'ensinar') linhas.push(LINHA_ENSINAR)
   // Um pedido de modo ou de "me ensina" nunca se nega.
-  if (pedido) return linhas
-  if (estado.modo === 'desligada') {
-    linhas.push(AVISO_DESLIGADA)
-    if (chamou) linhas.push(LINHA_DESLIGADA_CHAMADA)
-  } else if (estado.modo === 'so-quando-chamada' && !(await foiChamada($, sessao))) {
-    linhas.push(AVISO_SO_QUANDO_CHAMADA)
+  if (!pedido) {
+    if (estado.modo === 'desligada') {
+      linhas.push(AVISO_DESLIGADA)
+      if (chamou) {
+        linhas.push(LINHA_DESLIGADA_CHAMADA)
+        ofereceAgora = true
+      }
+    } else if (estado.modo === 'so-quando-chamada' && !(await foiChamada($, sessao))) {
+      linhas.push(AVISO_SO_QUANDO_CHAMADA)
+    }
   }
+  await gravarMarca($, 'ofereceuLigar', sessao, ofereceAgora)
   return linhas
 }
 
-/** A linha de negação para a ferramenta, ou null para liberar. Também grava o modo de um comando de modo. */
+/**
+ * A linha de negação para a ferramenta, ou null para liberar. Quando o modelo chama a skill de ligar,
+ * desligar ou modo, grava o modo só se o último prompt da pessoa chamou a Sofia ou respondeu à oferta de
+ * ligar; senão a skill roda e o modo fica como está (o modelo não liga a Sofia sozinho).
+ */
 async function negacao($: EngineInterface, ferramenta: string, entrada: Record<string, unknown>): Promise<string | null> {
   let estado = await lerInterruptor($)
   if (ferramenta === 'Skill' && typeof entrada.skill === 'string') {
     const nome = entrada.skill.trim().toLowerCase()
     if (nome.startsWith(PREFIXO_DO_PLUGIN)) {
       const pedido = pedidoDoComando(nome.slice(PREFIXO_DO_PLUGIN.length), typeof entrada.args === 'string' ? entrada.args : '')
-      if (pedido && pedido !== 'ensinar' && pedido !== estado.modo) estado = await gravarModo($, pedido)
+      if (pedido && pedido !== 'ensinar' && pedido !== estado.modo && (await lerMarca($, 'podeTrocarModo', await idDaSessao($)))) {
+        estado = await gravarModo($, pedido)
+      }
     }
   }
   if (estado.modo === 'ligada') return null
@@ -377,9 +420,17 @@ export const register: Register = (on) => {
   })
 
   // O interruptor nega a ferramenta da Sofia quando o modo manda. Depois de uma ferramenta do planejamento,
-  // o quadro pode ter mudado: lê de novo. Se este hook falhar, a ferramenta segue: na dúvida, ligada.
+  // o quadro pode ter mudado: lê de novo. Se a decisão falhar, a ferramenta segue: na dúvida, ligada.
+  // O try cobre só a decisão: o next(e) roda uma vez, fora dele. O .catch fica para o que escapar; nele o
+  // next é seguro de repetir (tipo Caught): se o hook já chamou next, next(e) devolve o mesmo resultado sem
+  // rodar a ferramenta de novo; se não chamou, roda uma vez.
   on('tool.call', async ($, e, next) => {
-    const negar = await negacao($, e.tool, e as unknown as Record<string, unknown>)
+    let negar: string | null = null
+    try {
+      negar = await negacao($, e.tool, e as unknown as Record<string, unknown>)
+    } catch {
+      negar = null
+    }
     if (negar) return { deny: negar }
     const r = await next(e)
     if (/planejamento_|referencia_salvar/.test(e.tool) && !/planejamento_quadro$/.test(e.tool)) lerEmSegundoPlano($)
@@ -391,8 +442,13 @@ export const register: Register = (on) => {
   // segundo plano e mensagens de outra sessão não são a pessoa: passam sem nada.
   on('prompt.submit', async ($, e, next) => {
     if (e.origin?.kind === 'task-notification' || e.origin?.kind === 'peer') return next(e)
-    const linhas = await linhasDoPrompt($, e.text, e.command)
-    return next({ ...e, context: [...(e.context ?? []), ...linhas] })
+    let linhas: string[] = []
+    try {
+      linhas = await linhasDoPrompt($, e.text, e.command)
+    } catch {
+      linhas = []
+    }
+    return next(linhas.length ? { ...e, context: [...(e.context ?? []), ...linhas] } : e)
   }).catch(($, e, next) => next(e))
 
   on('command.run', { command: 'sofia-ligar' }, ($) => rodarComandoDeModo($, 'ligada'))

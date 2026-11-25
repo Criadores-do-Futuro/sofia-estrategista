@@ -18,6 +18,9 @@ type Mundo = {
   comandos: string[]
   relogio: { settle: () => Promise<void> }
   modoGravado: () => string | undefined
+  /** Quantas vezes a ferramenta rodou de fato, e se ela lança erro ao rodar. */
+  execucoes: () => number
+  ferramenta: { falha: boolean }
 }
 
 /** Monta o engine de mentira. `estado` é o texto de estado.json (undefined: o arquivo não existe). */
@@ -28,6 +31,8 @@ function mundo(on: On, estado?: string): Mundo {
   let quadro = 0
   let conexoes = 0
   const comandos: string[] = []
+  let execucoes = 0
+  const ferramenta = { falha: false }
 
   on('process.hookEnv', () => ({ value: { CLAUDE_PLUGIN_DATA: PASTA } }))
   on('session.id', () => ({ value: sessao.id }))
@@ -37,7 +42,11 @@ function mundo(on: On, estado?: string): Mundo {
     return { value: undefined }
   })
   on('fs.exists', (_, e) => ({ value: arquivos.has(e.path) }))
-  on('tool.call', () => ({ result: {} }) as never)
+  on('tool.call', () => {
+    execucoes++
+    if (ferramenta.falha) throw new Error('a ferramenta quebrou')
+    return { result: {} } as never
+  })
   on('mcp.connect', () => {
     conexoes++
     return { value: { server: 'sofia-estrategista', isConnected: true } } as never
@@ -64,6 +73,8 @@ function mundo(on: On, estado?: string): Mundo {
     conexoes: () => conexoes,
     comandos,
     relogio,
+    execucoes: () => execucoes,
+    ferramenta,
     modoGravado: () => {
       const texto = arquivos.get(ARQUIVO)
       if (texto === undefined) return undefined
@@ -343,5 +354,76 @@ describe('painel', () => {
     await $.command.run(comando('sofia-painel', ''))
     await m.relogio.settle()
     expect(m.chamadasAoQuadro()).toBeGreaterThan(0)
+  })
+})
+
+describe('o modelo só troca o modo quando a pessoa pediu', () => {
+  const LIGAR = { tool: 'Skill', skill: 'sofia-estrategista:ligar' } as never
+  const DESLIGAR = { tool: 'Skill', skill: 'sofia-estrategista:desligar' } as never
+
+  test('so-quando-chamada, sem chamado na sessão: a skill de ligar roda e o modo não muda', async ($, on) => {
+    const m = mundo(on, SO_QUANDO)
+    const r = await $.tool.call(LIGAR)
+    expect(r.deny).toBeUndefined()
+    expect(m.modoGravado()).toBe('so-quando-chamada')
+    await $.prompt.submit(digitado('faz um resumo do arquivo'))
+    await $.tool.call(LIGAR)
+    expect(m.modoGravado()).toBe('so-quando-chamada')
+  })
+
+  test('desligada, a pessoa responde "sim" à oferta de ligar: o modelo liga', async ($, on) => {
+    const m = mundo(on, DESLIGADA)
+    const p = await $.prompt.submit(digitado('Sofia, faz o roteiro'))
+    expect((p.context ?? []).some((c) => c.includes(ESTOU_DESLIGADA))).toBe(true)
+    await $.prompt.submit(digitado('sim'))
+    await $.tool.call(LIGAR)
+    expect(m.modoGravado()).toBe('ligada')
+  })
+
+  test('a oferta de ligar vale só para a resposta seguinte', async ($, on) => {
+    const m = mundo(on, DESLIGADA)
+    await $.prompt.submit(digitado('Sofia, faz o roteiro'))
+    await $.prompt.submit(digitado('sim'))
+    await $.prompt.submit(digitado('e o tempo amanhã?'))
+    await $.tool.call(LIGAR)
+    expect(m.modoGravado()).toBe('desligada')
+  })
+
+  test('desligada, "Sofia, volta a funcionar": o modelo liga pela skill', async ($, on) => {
+    const m = mundo(on, DESLIGADA)
+    await $.prompt.submit(digitado('Sofia, volta a funcionar'))
+    expect(m.modoGravado()).toBe('desligada')
+    await $.tool.call(LIGAR)
+    expect(m.modoGravado()).toBe('ligada')
+  })
+
+  test('"Sofia, para de aparecer": o modelo desliga pela skill', async ($, on) => {
+    const m = mundo(on)
+    await $.prompt.submit(digitado('Sofia, para de aparecer'))
+    expect(m.modoGravado()).toBeUndefined()
+    await $.tool.call(DESLIGAR)
+    expect(m.modoGravado()).toBe('desligada')
+  })
+})
+
+describe('a ferramenta roda uma vez só', () => {
+  test('quando a ferramenta lança erro, ela não roda de novo', async ($, on) => {
+    const m = mundo(on)
+    m.ferramenta.falha = true
+    await $.tool.call({ tool: 'Bash', command: 'rm arquivo' } as never).catch(() => undefined)
+    expect(m.execucoes()).toBe(1)
+  })
+
+  test('com a Sofia desligada e a ferramenta lançando erro, também roda uma vez', async ($, on) => {
+    const m = mundo(on, DESLIGADA)
+    m.ferramenta.falha = true
+    await $.tool.call({ tool: 'Bash', command: 'rm arquivo' } as never).catch(() => undefined)
+    expect(m.execucoes()).toBe(1)
+  })
+
+  test('a ferramenta negada não roda', async ($, on) => {
+    const m = mundo(on, DESLIGADA)
+    await $.tool.call({ tool: 'Skill', skill: 'sofia-estrategista:roteiro' } as never)
+    expect(m.execucoes()).toBe(0)
   })
 })

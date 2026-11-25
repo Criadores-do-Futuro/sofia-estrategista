@@ -21,6 +21,10 @@ declare module 'claude-code' {
       modo: Shaped<ModoDoInterruptor>
       /** Se a pessoa chamou a Sofia pelo nome nesta sessão, pelo id da sessão. */
       chamada: StateFamily<boolean>
+      /** Se o mod ofereceu ligar ("Estou desligada aqui. Quer que eu ligue?") no último prompt, pela sessão. */
+      ofereceuLigar: StateFamily<boolean>
+      /** Se o último prompt da pessoa deixa o modelo trocar o modo pela skill, pela sessão. */
+      podeTrocarModo: StateFamily<boolean>
     }
   }
 }
