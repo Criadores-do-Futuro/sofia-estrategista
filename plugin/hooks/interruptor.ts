@@ -21,9 +21,10 @@ const PREFIXO_DO_CONECTOR_NO_SITE = 'mcp__claude_ai_Sofia_Estrategista__'
 
 /**
  * Os nomes (sem prefixo) das skills e dos comandos do plugin: as pastas de plugin/skills e os arquivos de
- * plugin/commands. A skill pode chegar com ou sem o prefixo do plugin, então a trava casa o nome puro.
- * Os comandos ligar, desligar, modo e ensinar entram na frente dos arquivos; interruptor.pastas.check.mjs
- * confere a lista contra as pastas.
+ * plugin/commands. Com o prefixo `sofia-estrategista:` qualquer um deles é da Sofia. Sem o prefixo, só as
+ * quatro skills de verdade (NOMES_SEM_PREFIXO): um comando solto como "plano" ou "painel" pode ser de outro
+ * plugin. Os comandos ligar, desligar, modo e ensinar entram na frente dos arquivos; tests/test_interruptor.py
+ * confere a lista contra as pastas e roda no `python3 -m unittest discover -s tests`.
  */
 export const NOMES_DA_SOFIA: readonly string[] = [
   // skills
@@ -62,6 +63,9 @@ export const NOMES_DA_SOFIA: readonly string[] = [
   'modo',
   'ensinar',
 ]
+
+// As skills que valem como da Sofia mesmo chamadas sem o prefixo do plugin.
+const NOMES_SEM_PREFIXO: readonly string[] = ['sofia-estrategista', 'sofia-editora', 'beditor', 'motion-vox']
 
 // Os comandos que nunca se negam: o plugin (ligar, desligar, modo, ensinar) e os do mod (sofia-*).
 const LIVRES_NO_PLUGIN: readonly string[] = ['ligar', 'desligar', 'modo', 'ensinar']
@@ -169,8 +173,9 @@ export function ehDaSofia(ferramenta: string, entrada: unknown): boolean {
   if (ferramenta === 'Skill') {
     const skill = campo(entrada, 'skill')
     if (skill?.trim().toLowerCase().startsWith(PREFIXO_DO_PLUGIN)) return true
+    // Sem prefixo: só as quatro skills. Comando solto ("plano", "painel"...) não é da Sofia.
     const nome = nomeNoPlugin(skill)
-    return nome !== null && NOMES_DA_SOFIA.includes(nome)
+    return nome !== null && NOMES_SEM_PREFIXO.includes(nome)
   }
   if (ferramenta === 'Agent' || ferramenta === 'Task') {
     return (campo(entrada, 'subagent_type') ?? '').trim().toLowerCase().startsWith(PREFIXO_DO_PLUGIN)

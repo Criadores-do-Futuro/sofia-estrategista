@@ -14,7 +14,7 @@ import {
 import type { Estado } from './interruptor'
 
 // Só funções: nenhum evento, nenhum arquivo. A conferência da lista de nomes contra as pastas do plugin
-// precisa ler disco, e este executor não deixa; ela mora em interruptor.pastas.check.mjs.
+// precisa ler disco, e este executor não deixa; ela mora em tests/test_interruptor.py (unittest discover).
 
 const PADRAO: Estado = { modo: 'ligada', apresentada: false }
 
@@ -107,11 +107,19 @@ describe('ehDaSofia', () => {
     expect(ehDaSofia('Skill', { skill: 'sofia-estrategista:sofia-estrategista' })).toBe(true)
   })
 
-  test('Skill com o nome sem prefixo de skill ou comando do plugin', () => {
+  test('sem prefixo, só as quatro skills do plugin são da Sofia', () => {
     expect(ehDaSofia('Skill', { skill: 'sofia-estrategista' })).toBe(true)
     expect(ehDaSofia('Skill', { skill: 'sofia-editora' })).toBe(true)
     expect(ehDaSofia('Skill', { skill: 'beditor' })).toBe(true)
-    expect(ehDaSofia('Skill', { skill: 'roteiro' })).toBe(true)
+    expect(ehDaSofia('Skill', { skill: 'motion-vox' })).toBe(true)
+  })
+
+  test('comando sem prefixo não é da Sofia; com prefixo é', () => {
+    for (const nome of ['plano', 'painel', 'setup', 'roteiro']) {
+      expect(ehDaSofia('Skill', { skill: nome })).toBe(false)
+      expect(ehDaSofia('Skill', { skill: `sofia-estrategista:${nome}` })).toBe(true)
+    }
+    expect(ehDaSofia('Skill', { skill: 'sofia-estrategista:roteiro' })).toBe(true)
   })
 
   test('Skill de outro plugin ou desconhecida não é da Sofia', () => {
