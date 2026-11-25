@@ -78,8 +78,11 @@ function normalizar(texto: string): string {
   return texto.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/\s+/g, ' ').trim()
 }
 
-// "sofia" só vale como palavra inteira: nada de letra ou número colado antes ou depois.
-const PALAVRA_SOFIA = /(?<![\p{L}\p{N}_])sofia(?![\p{L}\p{N}_])/u
+// "sofia" só vale como palavra inteira: nada de letra ou número colado antes ou depois, e nada de caminho,
+// nome de pasta ou e-mail ("skills/sofia-estrategista", "sofia@x.com", "notas.sofia.md"). Um ponto depois
+// do nome só tira o chamado quando vem colado a outra letra ("sofia.md"); o ponto final ("liga a Sofia.") vale.
+// O comando digitado do plugin (/sofia-estrategista:) e o /sofia-ensinar do mod são conferidos à parte.
+const PALAVRA_SOFIA = /(?<![\p{L}\p{N}_\-/.@\\])sofia(?![\p{L}\p{N}_\-/@\\]|\.[\p{L}\p{N}])/u
 
 /** A pessoa chamou a Sofia pelo nome, ou digitou um comando do plugin. */
 export function chamaSofia(prompt: string): boolean {
@@ -140,6 +143,17 @@ export function respostaDoModo(prompt: string): Modo | null {
   if (RESPOSTA_SO_QUANDO.test(texto)) return 'so-quando-chamada'
   if (RESPOSTA_LIGADA.test(texto)) return 'ligada'
   return null
+}
+
+// O "sim" curto à oferta "Estou desligada aqui. Quer que eu ligue?", com ou sem o nome. Só vale no prompt
+// logo depois da oferta: quem confere é o mod.
+const SIM_CURTO = /^(?:sofia )?(?:sim|pode|pode ligar|liga|quero|claro|ok|isso)(?: sofia)?$/u
+
+/** A pessoa respondeu com um sim curto ("sim", "pode", "Sofia, sim"); a pontuação não conta. */
+export function simCurto(prompt: string): boolean {
+  if (typeof prompt !== 'string') return false
+  const texto = normalizar(prompt.replace(/[^\p{L}\p{N}\s]/gu, ' '))
+  return SIM_CURTO.test(texto)
 }
 
 // ---------- estado ----------

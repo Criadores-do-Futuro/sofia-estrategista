@@ -1,6 +1,6 @@
 # Enviar aos diretórios da Anthropic e da OpenAI
 
-O que o repositório já cumpre e o que só o dono da conta pode fazer. Conferido em 16/11/2026 contra a documentação oficial (links no fim) e atualizado para a Sofia única 2.0.0 em 24/11/2026. O plugin é a pasta `plugin/`; os caminhos abaixo são relativos a ela, menos os de `tests/` e `scripts/`, que ficam na raiz do repositório.
+O que o repositório já cumpre e o que só o dono da conta pode fazer. Conferido em 16/11/2026 contra a documentação oficial (links no fim) e atualizado para a Sofia 2.1.0 (o interruptor) em 25/11/2026. O plugin é a pasta `plugin/`; os caminhos abaixo são relativos a ela, menos os de `tests/` e `scripts/`, que ficam na raiz do repositório.
 
 ## Diretório de plugins da Anthropic
 

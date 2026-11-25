@@ -38,10 +38,14 @@ O mesmo método que escolhe o formato, a estrutura e o hook decide o corte, a im
 
 - **O que o gancho lê e grava:** um arquivo só, o `estado.json`, na pasta de dados do próprio plugin (`CLAUDE_PLUGIN_DATA`), neste computador. Ele guarda o modo (`ligada`, `so-quando-chamada` ou `desligada`), se a Sofia já se apresentou (`apresentada`) e quando o modo mudou (`mudouEm`). Só é gravado quando a pessoa muda o modo ou quando a Sofia se apresenta pela primeira vez. Sem o arquivo, ou com ele ilegível, a Sofia fica ligada.
 - **O que ele faz com isso:** põe no contexto de cada pedido a linha `Interruptor local: <modo>.` e, quando o modo manda, nega a skill da Sofia e as ferramentas do conector Sofia Estrategista. Com a Sofia desligada, o painel também não lê o quadro de cards no conector.
-- **Nada vai ao servidor ao desligar.** O modo não é enviado ao conector nem a nenhum outro serviço, e a marca de "chamada pelo nome" vale só a sessão em curso.
+- **As marcas da sessão:** além do `estado.json`, o gancho guarda algumas marcas por sessão no armazenamento local do Claude Code: se a Sofia foi chamada pelo nome, se ela ofereceu ligar, se o modelo pode trocar o modo e se ela perguntou o modo (e se a linha do primeiro uso já veio na sessão). Elas valem só a sessão em curso e ficam neste computador.
+- **Nada vai ao servidor ao desligar.** O modo e as marcas não são enviados ao conector nem a nenhum outro serviço.
+- **Desligada, chamar a Sofia faz uma oferta.** Se a pessoa fala com a Sofia desligada, ela responde só "Estou desligada aqui. Quer que eu ligue?" e liga só com o sim da pessoa ("sim", "pode", "Sofia, sim"). Um "não", ou qualquer outra resposta, não liga e não repete a oferta.
 - **Cada computador tem o seu:** o modo vale para este computador, em todos os projetos. Em outro computador, ou no chat, é outro interruptor.
 
-**No chat do claude.ai** (navegador, app e telefone), onde não há gancho, o modo fica numa nota da memória da conta (`Sofia Estrategista: desligada no chat. Para ligar, dizer "liga a Sofia".` ou `Sofia Estrategista: só quando chamada pelo nome.`), que a Sofia guarda e apaga com a ferramenta de memória do próprio chat. Sem memória, o pedido vale só na conversa. Dentro de um Projeto, a memória pode ser separada. A regra completa, para quem escreve a Sofia, está em `skills/sofia-estrategista/references/interruptor.md`.
+**No Cowork:** ainda não testado.
+
+**No chat do claude.ai** (navegador, app e telefone) não há trava técnica: quem segue a regra é o Claude, pela nota na memória da conta (`Sofia Estrategista: desligada no chat. Para ligar, dizer "liga a Sofia".` ou `Sofia Estrategista: só quando chamada pelo nome.`), quando a memória aceitar a nota. A Sofia guarda e apaga a nota com a ferramenta de memória do próprio chat. Sem memória, o desligar vale só na conversa. Dentro de um Projeto, a memória pode ser separada. A regra completa, para quem escreve a Sofia, está em `skills/sofia-estrategista/references/interruptor.md`.
 
 **Os comandos:**
 

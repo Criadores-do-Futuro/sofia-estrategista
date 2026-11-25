@@ -27,6 +27,8 @@ declare module 'claude-code' {
       podeTrocarModo: StateFamily<boolean>
       /** Se o mod pôs a linha do primeiro uso no último prompt (a resposta curta do modo vale no seguinte), pela sessão. */
       perguntouModo: StateFamily<boolean>
+      /** Se a linha do primeiro uso já veio nesta sessão (sem chamar a Sofia, ela não volta), pela sessão. */
+      avisouPrimeiroUso: StateFamily<boolean>
     }
   }
 }

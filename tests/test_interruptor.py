@@ -1,8 +1,10 @@
 """Confere a lista de nomes do interruptor (plugin/hooks/interruptor.ts) contra as pastas do plugin.
 
 A regra em TypeScript não consegue ler disco dentro do `claude plugin test`; então a conferência mora aqui,
-onde o `python3 -m unittest discover -s tests` a pega. Sem ela, uma skill ou um comando novo que ficasse
-fora de NOMES_DA_SOFIA escaparia do modo "desligada".
+onde o `python3 -m unittest discover -s tests` a pega. NOMES_DA_SOFIA é uma lista de conferência, não a
+decisão: a regra nega qualquer skill com o prefixo `sofia-estrategista:` sem olhar a lista, e sem o prefixo
+só as quatro skills de NOMES_SEM_PREFIXO. A conferência avisa quando uma pasta nova (skill ou comando) fica
+fora da lista, para que a lista e a regra sem prefixo sejam revistas juntas.
 """
 import re
 import unittest

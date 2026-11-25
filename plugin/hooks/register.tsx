@@ -12,6 +12,7 @@ import {
   lerEstado,
   pedidoDeModo,
   respostaDoModo,
+  simCurto,
 } from './interruptor'
 import type { Estado, Modo } from './interruptor'
 
@@ -35,10 +36,15 @@ const modoNoPainel = atom({ plugin: 'sofia-estrategista', key: 'modo' } as const
 const ESTADO = 'estado.json'
 const PREFIXO_DO_PLUGIN = 'sofia-estrategista:'
 const ESTOU_DESLIGADA = 'Estou desligada aqui. Quer que eu ligue?'
-const LINHA_DESLIGADA_CHAMADA = `A pessoa chamou a Sofia, mas ela está desligada aqui. Responda só: "${ESTOU_DESLIGADA}"`
+const LINHA_DESLIGADA_CHAMADA = `Se a pessoa falou com a Sofia (e não de um arquivo ou de outra pessoa chamada Sofia), responda só: "${ESTOU_DESLIGADA}"; senão, atenda o pedido sem a Sofia.`
+const LINHA_DISSE_SIM = 'A pessoa disse sim: a Sofia está ligada. Confirme em uma linha e faça o pedido de antes.'
 const LINHA_ENSINAR =
   'A pessoa quer aprender a usar a Sofia. Mostre o tutorial de skills/sofia-estrategista/references/primeiro-uso.md, mesmo com a Sofia desligada.'
-const LINHA_PRIMEIRO_USO = 'Primeiro uso da Sofia neste lugar.'
+const LINHA_PRIMEIRO_USO =
+  'Primeiro uso da Sofia neste lugar: só se você agir como Sofia nesta resposta, abra com o tutorial de primeiro-uso.md; senão, ignore esta linha.'
+/** A negação da skill de ligar, desligar ou modo quando a troca não foi gravada: a Sofia não confirma o que não houve. */
+const naoTroquei = (comando: string) =>
+  `Não troquei o modo da Sofia. Peça à pessoa para dizer 'liga a Sofia' ou 'Sofia, desliga', ou digitar /sofia-estrategista:${comando}.`
 // O comando do mod /sofia-ensinar, se ele chegar também como prompt digitado.
 const ENSINAR_DO_MOD = /^\s*\/sofia-ensinar\b/i
 const COMO_TROCAR = 'Para trocar: /sofia-modo ligada, /sofia-modo so-quando-chamada ou /sofia-modo desligada.'
@@ -48,6 +54,13 @@ const linhaDoModo = (modo: Modo) => `Interruptor local: ${modo}.`
 function modoDoTexto(texto: string): Modo | null {
   const t = texto.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim().replace(/[\s_]+/g, '-')
   return t === 'ligada' || t === 'so-quando-chamada' || t === 'desligada' ? t : null
+}
+
+/** Os argumentos pedem o modo de só quando chamada: "so-quando-chamada", "só quando chamada", "só quando eu chamar". */
+function pedeSoQuandoChamada(args: string): boolean {
+  if (modoDoTexto(args) === 'so-quando-chamada') return true
+  const t = args.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/[\s_-]+/g, ' ').trim()
+  return /\bso quando\b/.test(t)
 }
 
 /** O comando do plugin que a pessoa digitou (`/sofia-estrategista:nome args`), sem o prefixo, ou null. */
@@ -61,7 +74,8 @@ function comandoDigitado(texto: string, comando?: { name: string; args: string }
 
 /** O que um comando de ligar, desligar, modo ou ensinar pede; null para qualquer outro comando. */
 function pedidoDoComando(nome: string, args: string): Modo | 'ensinar' | null {
-  if (nome === 'ligar') return 'ligada'
+  // "ligar só quando chamada" liga no modo de só quando chamada; sem isso, ligada.
+  if (nome === 'ligar') return pedeSoQuandoChamada(args) ? 'so-quando-chamada' : 'ligada'
   if (nome === 'desligar') return 'desligada'
   if (nome === 'ensinar') return 'ensinar'
   if (nome === 'modo') return modoDoTexto(args)
@@ -150,12 +164,13 @@ async function marcarChamada($: EngineInterface, sessao: string | null) {
   }
 }
 
-// Três marcas por sessão:
+// Quatro marcas por sessão:
 // - ofereceuLigar: o mod pôs a frase "Estou desligada aqui. Quer que eu ligue?" no último prompt;
 // - podeTrocarModo: o último prompt de verdade chamou a Sofia, ou veio logo depois dessa frase;
 // - perguntouModo: o mod pôs a linha do primeiro uso no último prompt, e a Sofia terminou com a pergunta do
-//   modo; a resposta curta, sem o nome ("só quando eu chamar", "sempre ligada"), vale só no prompt seguinte.
-type Marca = 'ofereceuLigar' | 'podeTrocarModo' | 'perguntouModo'
+//   modo; a resposta curta, sem o nome ("só quando eu chamar", "sempre ligada"), vale só no prompt seguinte;
+// - avisouPrimeiroUso: a linha do primeiro uso já veio nesta sessão; sem chamar a Sofia, ela não volta.
+type Marca = 'ofereceuLigar' | 'podeTrocarModo' | 'perguntouModo' | 'avisouPrimeiroUso'
 
 async function lerMarca($: EngineInterface, marca: Marca, sessao: string | null): Promise<boolean> {
   if (!sessao) return false
@@ -165,7 +180,9 @@ async function lerMarca($: EngineInterface, marca: Marca, sessao: string | null)
         ? await $.state.get({ plugin: 'sofia-estrategista', key: 'ofereceuLigar', id: sessao })
         : marca === 'podeTrocarModo'
           ? await $.state.get({ plugin: 'sofia-estrategista', key: 'podeTrocarModo', id: sessao })
-          : await $.state.get({ plugin: 'sofia-estrategista', key: 'perguntouModo', id: sessao })
+          : marca === 'perguntouModo'
+            ? await $.state.get({ plugin: 'sofia-estrategista', key: 'perguntouModo', id: sessao })
+            : await $.state.get({ plugin: 'sofia-estrategista', key: 'avisouPrimeiroUso', id: sessao })
     return lido.value === true
   } catch {
     return false
@@ -177,7 +194,8 @@ async function gravarMarca($: EngineInterface, marca: Marca, sessao: string | nu
   try {
     if (marca === 'ofereceuLigar') await $.state.set({ plugin: 'sofia-estrategista', key: 'ofereceuLigar', id: sessao }, valor)
     else if (marca === 'podeTrocarModo') await $.state.set({ plugin: 'sofia-estrategista', key: 'podeTrocarModo', id: sessao }, valor)
-    else await $.state.set({ plugin: 'sofia-estrategista', key: 'perguntouModo', id: sessao }, valor)
+    else if (marca === 'perguntouModo') await $.state.set({ plugin: 'sofia-estrategista', key: 'perguntouModo', id: sessao }, valor)
+    else await $.state.set({ plugin: 'sofia-estrategista', key: 'avisouPrimeiroUso', id: sessao }, valor)
   } catch {
     // sem a marca, o modelo não troca o modo sozinho: a pessoa usa a frase ou o comando
   }
@@ -221,19 +239,27 @@ async function linhasDoPrompt($: EngineInterface, texto: string, comando?: { nam
   await gravarMarca($, 'perguntouModo', sessao, false)
   if (!pedido && !digitado && perguntouAntes) pedido = respostaDoModo(texto)
   let estado = await lerInterruptor($)
+  // A oferta de ligar vale só para a resposta seguinte: aqui ela é consumida. Um "sim" curto a ela liga
+  // pelo próprio gancho (a Sofia só liga com o sim da pessoa, nunca no mesmo prompt em que foi chamada).
+  const ofereceuAntes = await lerMarca($, 'ofereceuLigar', sessao)
+  let disseSim = false
+  if (!pedido && !digitado && ofereceuAntes && estado.modo === 'desligada' && simCurto(texto)) {
+    pedido = 'ligada'
+    disseSim = true
+  }
   if (pedido && pedido !== 'ensinar') estado = await gravarModo($, pedido)
   const chamou = digitado !== null || chamaSofia(texto)
   if (chamou) await marcarChamada($, sessao)
-  // A oferta de ligar vale só para a resposta seguinte ("sim"): aqui ela é consumida. Desligada, chamar a
-  // Sofia só faz a oferta: ela liga com o "sim" da pessoa, nunca no mesmo prompt em que foi chamada.
-  // Na janela da pergunta do modo, a skill de modo também troca (resposta com outras palavras).
-  const ofereceuAntes = await lerMarca($, 'ofereceuLigar', sessao)
-  const soOferta = estado.modo === 'desligada' && !pedido && chamou
+  // Desligada, chamar a Sofia só faz a oferta. Na janela da pergunta do modo, a skill de modo também troca
+  // (resposta com outras palavras).
+  const soOferta = estado.modo === 'desligada' && !pedido && chamou && !ofereceuAntes
   await gravarMarca($, 'podeTrocarModo', sessao, soOferta ? false : chamou || ofereceuAntes || perguntouAntes)
   const ativa =
     estado.modo === 'ligada' || (estado.modo === 'so-quando-chamada' && (await foiChamada($, sessao)))
 
   const linhas = [linhaDoModo(estado.modo)]
+  // O gancho gravou o sim: a linha só sai se o modo de fato virou ligada.
+  if (disseSim && estado.modo === 'ligada') linhas.push(LINHA_DISSE_SIM)
   let ofereceAgora = false
   if (pedido === 'ensinar') {
     linhas.push(LINHA_ENSINAR)
@@ -244,16 +270,21 @@ async function linhasDoPrompt($: EngineInterface, texto: string, comando?: { nam
   if (!pedido) {
     if (estado.modo === 'desligada') {
       linhas.push(AVISO_DESLIGADA)
-      if (chamou) {
+      // Logo depois da oferta, a resposta que não é sim não liga e não repete a oferta.
+      if (chamou && !ofereceuAntes) {
         linhas.push(LINHA_DESLIGADA_CHAMADA)
         ofereceAgora = true
       }
     } else if (estado.modo === 'so-quando-chamada' && !(await foiChamada($, sessao))) {
       linhas.push(AVISO_SO_QUANDO_CHAMADA)
-    } else if (!estado.apresentada) {
-      // Primeiro uso: a linha vem em todo prompt até a primeira skill ou ferramenta da Sofia passar
-      // (primeiroUsoNaFerramenta), que grava apresentada e abre a janela da pergunta do modo.
-      linhas.push(LINHA_PRIMEIRO_USO)
+    } else if (!estado.apresentada && (await pastaDeDados($))) {
+      // Primeiro uso: a linha vem no primeiro prompt de cada sessão e quando a Sofia é chamada, até a
+      // primeira skill ou ferramenta da Sofia passar (primeiroUsoNaFerramenta), que grava apresentada e abre
+      // a janela da pergunta do modo. Sem pasta de dados não há onde guardar o apresentada: nunca vem.
+      if (chamou || !(await lerMarca($, 'avisouPrimeiroUso', sessao))) {
+        linhas.push(LINHA_PRIMEIRO_USO)
+        await gravarMarca($, 'avisouPrimeiroUso', sessao, true)
+      }
     }
   }
   await gravarMarca($, 'ofereceuLigar', sessao, ofereceAgora)
@@ -262,17 +293,21 @@ async function linhasDoPrompt($: EngineInterface, texto: string, comando?: { nam
 
 /**
  * A linha de negação para a ferramenta, ou null para liberar. Quando o modelo chama a skill de ligar,
- * desligar ou modo, grava o modo só se o último prompt da pessoa chamou a Sofia ou respondeu à oferta de
- * ligar; senão a skill roda e o modo fica como está (o modelo não liga a Sofia sozinho).
+ * desligar ou modo (com ou sem o prefixo do plugin) pedindo outro modo, grava o modo só se o último prompt
+ * da pessoa chamou a Sofia ou respondeu à oferta de ligar. Se a troca não ficou gravada (sem essa marca, sem
+ * pasta de dados ou com a gravação falhando), a skill é negada: a Sofia não confirma um modo que não mudou.
+ * O comando digitado pela pessoa não passa por aqui: ele grava no prompt.submit.
  */
 async function negacao($: EngineInterface, ferramenta: string, entrada: Record<string, unknown>): Promise<string | null> {
   let estado = await lerInterruptor($)
   if (ferramenta === 'Skill' && typeof entrada.skill === 'string') {
-    const nome = entrada.skill.trim().toLowerCase()
-    if (nome.startsWith(PREFIXO_DO_PLUGIN)) {
-      const pedido = pedidoDoComando(nome.slice(PREFIXO_DO_PLUGIN.length), typeof entrada.args === 'string' ? entrada.args : '')
-      if (pedido && pedido !== 'ensinar' && pedido !== estado.modo && (await lerMarca($, 'podeTrocarModo', await idDaSessao($)))) {
-        estado = await gravarModo($, pedido)
+    const cru = entrada.skill.trim().toLowerCase()
+    const nome = cru.startsWith(PREFIXO_DO_PLUGIN) ? cru.slice(PREFIXO_DO_PLUGIN.length) : cru.includes(':') ? null : cru
+    if (nome === 'ligar' || nome === 'desligar' || nome === 'modo') {
+      const pedido = pedidoDoComando(nome, typeof entrada.args === 'string' ? entrada.args : '')
+      if (pedido && pedido !== 'ensinar' && pedido !== estado.modo) {
+        if (await lerMarca($, 'podeTrocarModo', await idDaSessao($))) estado = await gravarModo($, pedido)
+        if (estado.modo !== pedido) return naoTroquei(nome)
       }
     }
   }
@@ -414,7 +449,8 @@ async function lerQuadro($: EngineInterface) {
           servidor = ligado.server
           const lido: Quadro = { situacao: 'ok', perfil: perfil ?? 'sem perfil', etapas, lidoEm: agora }
           await update($, quadro, () => lido)
-          atualizarStatus($)
+          // A barra de status é enfeite: uma falha nela (inclusive com a sessão já fechada) não vira erro solto.
+          atualizarStatus($).catch(() => undefined)
           return
         } catch {
           motivo = `O conector Sofia Estrategista não respondeu. Digite /mcp, escolha ${ligado.server} e entre de novo com o e-mail do curso.`
@@ -533,7 +569,8 @@ export const register: Register = (on) => {
     } catch {
       // sem a janela, a pessoa responde com o nome ("Sofia, só quando eu chamar") ou pelo comando
     }
-    return { text: 'A Sofia vai mostrar como funciona.', context: [LINHA_ENSINAR] }
+    // O comando só põe a linha no contexto: o tutorial vem na próxima resposta, não agora.
+    return { text: 'Diga qualquer coisa e a Sofia mostra como funciona.', context: [LINHA_ENSINAR] }
   })
 
   on('ui.render', { component: 'Pane', requestId: PAINEL }, async ($, e) => {

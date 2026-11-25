@@ -46,7 +46,7 @@ A pessoa pede com as próprias palavras ("liga a Sofia", "Sofia, desliga", "Sofi
 
 **Com a linha `Interruptor local:` (Claude Code):** quem guarda o modo neste computador é o gancho do plugin. Não grave arquivo nenhum.
 - Se a linha `Interruptor local:` deste prompt já mostra o modo pedido (a pessoa usou a frase, como "liga a Sofia" ou "Sofia, desliga", ou digitou o comando), o gancho já guardou: confirme em uma linha.
-- Se ela respondeu "sim" à pergunta de ligar, ou pediu com outras palavras, chame a skill `sofia-estrategista:ligar`, `sofia-estrategista:desligar` ou `sofia-estrategista:modo` (com `so-quando-chamada`). O gancho guarda nessa hora e você confirma em uma linha.
+- Se ela respondeu "sim" à pergunta de ligar, ou pediu com outras palavras, chame a skill `sofia-estrategista:ligar`, `sofia-estrategista:desligar` ou `sofia-estrategista:modo` (com `so-quando-chamada`). O gancho guarda nessa hora e você confirma em uma linha. Se a skill voltar negada com `Não troquei o modo da Sofia.`, não confirme: passe à pessoa o que a linha pede.
 - Se a linha `Interruptor local:` do próximo contexto não mostrar o modo novo, ensine o comando: `/sofia-estrategista:modo ligada`, `so-quando-chamada` ou `desligada`.
 
 **No chat com memória:** guarde o pedido na memória da conta, com a ferramenta de memória do chat, usando as notas fixas:

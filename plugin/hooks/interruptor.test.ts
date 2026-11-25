@@ -11,6 +11,7 @@ import {
   lerEstado,
   pedidoDeModo,
   respostaDoModo,
+  simCurto,
 } from './interruptor'
 import type { Estado } from './interruptor'
 
@@ -42,6 +43,33 @@ describe('chamaSofia', () => {
     expect(chamaSofia('faz o roteiro do vídeo')).toBe(false)
     expect(chamaSofia('')).toBe(false)
     expect(chamaSofia('/outro-plugin:roteiro')).toBe(false)
+  })
+
+  test('não vale em caminho, nome de pasta ou e-mail', () => {
+    expect(chamaSofia('corrige o teste em skills/sofia-estrategista/SKILL.md')).toBe(false)
+    expect(chamaSofia('sofia-estrategista')).toBe(false)
+    expect(chamaSofia('o e-mail sofia@x.com')).toBe(false)
+    expect(chamaSofia('abre o arquivo notas.sofia.md')).toBe(false)
+    expect(chamaSofia('C:\\projetos\\sofia\\a.txt')).toBe(false)
+  })
+
+  test('o ponto final depois do nome ainda vale', () => {
+    expect(chamaSofia('liga a Sofia.')).toBe(true)
+    expect(chamaSofia('Sofia, faz um roteiro')).toBe(true)
+  })
+})
+
+describe('simCurto (o "sim" à oferta de ligar)', () => {
+  test('vale para o sim curto, com ou sem o nome', () => {
+    for (const t of ['sim', 'Sim!', 'pode', 'pode ligar', 'liga', 'quero', 'claro', 'ok', 'isso', 'Sofia, sim', 'sim, Sofia.']) {
+      expect(simCurto(t)).toBe(true)
+    }
+  })
+
+  test('não vale para o não nem para outro pedido', () => {
+    for (const t of ['não', 'nao, Sofia', 'sim, mas faz outra coisa', 'faz o roteiro', '']) {
+      expect(simCurto(t)).toBe(false)
+    }
   })
 })
 
