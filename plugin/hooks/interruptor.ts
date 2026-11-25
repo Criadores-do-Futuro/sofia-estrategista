@@ -23,8 +23,8 @@ const PREFIXO_DO_CONECTOR_NO_SITE = 'mcp__claude_ai_Sofia_Estrategista__'
  * Os nomes (sem prefixo) das skills e dos comandos do plugin: as pastas de plugin/skills e os arquivos de
  * plugin/commands. Com o prefixo `sofia-estrategista:` qualquer um deles é da Sofia. Sem o prefixo, só as
  * quatro skills de verdade (NOMES_SEM_PREFIXO): um comando solto como "plano" ou "painel" pode ser de outro
- * plugin. Os comandos ligar, desligar, modo e ensinar entram na frente dos arquivos; tests/test_interruptor.py
- * confere a lista contra as pastas e roda no `python3 -m unittest discover -s tests`.
+ * plugin. tests/test_interruptor.py confere a lista contra as pastas e roda no
+ * `python3 -m unittest discover -s tests`.
  */
 export const NOMES_DA_SOFIA: readonly string[] = [
   // skills
@@ -57,7 +57,7 @@ export const NOMES_DA_SOFIA: readonly string[] = [
   'qa',
   'roteiro',
   'setup',
-  // comandos do interruptor (ainda sem arquivo)
+  // comandos do interruptor
   'ligar',
   'desligar',
   'modo',

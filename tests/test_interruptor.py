@@ -12,9 +12,8 @@ PLUGIN = Path(__file__).resolve().parents[1] / 'plugin'
 RAIZ = PLUGIN.parent
 TS = PLUGIN / 'hooks' / 'interruptor.ts'
 
-# Os comandos do interruptor que a Tarefa 4 cria. Podem faltar enquanto não existirem os arquivos;
-# qualquer outro nome na lista sem pasta ou arquivo é erro.
-COMANDOS_A_CRIAR = {'ligar', 'desligar', 'modo', 'ensinar'}
+# Os comandos do interruptor: precisam estar na lista e ter arquivo em plugin/commands.
+COMANDOS_DO_INTERRUPTOR = {'ligar', 'desligar', 'modo', 'ensinar'}
 
 
 def _literal(nome: str) -> list[str]:
@@ -52,11 +51,15 @@ class NomesDaSofiaTest(unittest.TestCase):
 
     def test_nome_na_lista_tem_pasta_ou_arquivo(self):
         existentes = _skills() | _comandos()
-        sobram = set(self.lista) - existentes - COMANDOS_A_CRIAR
+        sobram = set(self.lista) - existentes
         self.assertFalse(sobram, f'nome em NOMES_DA_SOFIA sem pasta nem arquivo: {sorted(sobram)}')
 
     def test_os_quatro_comandos_do_interruptor_estao_na_lista(self):
-        self.assertFalse(COMANDOS_A_CRIAR - set(self.lista))
+        self.assertFalse(COMANDOS_DO_INTERRUPTOR - set(self.lista))
+
+    def test_os_quatro_comandos_do_interruptor_tem_arquivo(self):
+        faltam = COMANDOS_DO_INTERRUPTOR - _comandos()
+        self.assertFalse(faltam, f'comando do interruptor sem arquivo em plugin/commands: {sorted(faltam)}')
 
 
 class NomesSemPrefixoTest(unittest.TestCase):
