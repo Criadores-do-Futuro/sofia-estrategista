@@ -45,7 +45,7 @@ A mensagem da pessoa tem "Sofia" como palavra, com ou sem maiúscula e acento ("
 A pessoa pede com as próprias palavras ("liga a Sofia", "Sofia, desliga", "Sofia, só quando eu chamar") ou pelos comandos `/sofia-estrategista:ligar`, `desligar`, `modo` e `ensinar`. Faça conforme o lugar:
 
 **Com a linha `Interruptor local:` (Claude Code):** quem guarda o modo neste computador é o gancho do plugin. Não grave arquivo nenhum.
-- Se a pessoa usou a frase ("liga a Sofia", "Sofia, desliga") ou digitou o comando, o gancho já guardou: confirme em uma linha.
+- Se a linha `Interruptor local:` deste prompt já mostra o modo pedido (a pessoa usou a frase, como "liga a Sofia" ou "Sofia, desliga", ou digitou o comando), o gancho já guardou: confirme em uma linha.
 - Se ela respondeu "sim" à pergunta de ligar, ou pediu com outras palavras, chame a skill `sofia-estrategista:ligar`, `sofia-estrategista:desligar` ou `sofia-estrategista:modo` (com `so-quando-chamada`). O gancho guarda nessa hora e você confirma em uma linha.
 - Se a linha `Interruptor local:` do próximo contexto não mostrar o modo novo, ensine o comando: `/sofia-estrategista:modo ligada`, `so-quando-chamada` ou `desligada`.
 

@@ -8,7 +8,7 @@ Mostre quando as três coisas valerem:
 
 1. A Sofia está ativa: ligada, ou só quando chamada e já chamada (veja [interruptor.md](interruptor.md)).
 2. Ela ainda não se apresentou neste lugar:
-   - **com a linha `Interruptor local:`** (Claude Code): só quando o contexto trouxer a linha `Primeiro uso da Sofia neste lugar.`. O gancho põe essa linha uma vez por computador, no primeiro prompt que chama a Sofia pelo nome com ela ativa, e já marca que ela se apresentou;
+   - **com a linha `Interruptor local:`** (Claude Code): só quando o contexto trouxer a linha `Primeiro uso da Sofia neste lugar.`. O gancho põe essa linha em todo prompt, com a Sofia ativa, até ela agir pela primeira vez neste computador. Por isso a linha sozinha não pede tutorial: mostre o tutorial só na resposta em que você age como Sofia (com esta skill). A primeira skill ou ferramenta da Sofia que roda marca que ela se apresentou, e a linha para de vir;
    - **no chat com memória:** quando a memória não tiver a nota `Sofia Estrategista: já apresentada no chat.`
 3. O tutorial ainda não apareceu nesta conversa.
 
@@ -39,5 +39,10 @@ Na reprise ("Sofia, me ensina"), mostre só as 5 linhas. A pergunta do modo entr
 ## A resposta à pergunta do modo
 
 - **"Sempre", "ligada", "pode ficar":** fica ligada. No chat, nada mais a guardar.
-- **"Só quando eu chamar":** mude para só quando chamada, como em [interruptor.md](interruptor.md), "Ligar, desligar e mudar o modo". Confirme em uma linha. No Claude Code, a resposta curta logo depois da pergunta ("só quando eu chamar", "sempre ligada") já é guardada pelo gancho: a linha `Interruptor local:` desse prompt mostra o modo novo, e você só confirma.
+- **"Só quando eu chamar":** mude para só quando chamada, como em [interruptor.md](interruptor.md), "Ligar, desligar e mudar o modo". Confirme em uma linha.
+- **No Claude Code**, confira a linha `Interruptor local:` do prompt da resposta:
+  - se ela já mostra o modo novo, o gancho guardou: confirme em uma linha;
+  - se não mostra, chame a skill `sofia-estrategista:modo` com o modo pedido (`so-quando-chamada` ou `ligada`), que o gancho guarda nessa hora, e confirme;
+  - se nem assim der, ensine o comando `/sofia-estrategista:modo so-quando-chamada`.
+  - Nunca confirme uma troca que a linha não mostra e que você não pediu à skill.
 - **Sem resposta, ou a pessoa seguiu com outro pedido:** fica ligada. Não pergunte de novo.

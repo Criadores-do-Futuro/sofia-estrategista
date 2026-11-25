@@ -84,6 +84,12 @@ describe('respostaDoModo (a resposta à pergunta do primeiro uso, sem o nome)', 
     expect(respostaDoModo('Só quando chamar.')).toBe('so-quando-chamada')
     expect(respostaDoModo('quando eu chamar')).toBe('so-quando-chamada')
     expect(respostaDoModo('so quando eu te chamar, por favor')).toBe('so-quando-chamada')
+    expect(respostaDoModo('só quando eu te chamar pelo nome')).toBe('so-quando-chamada')
+    expect(respostaDoModo('quando eu te chamar pelo nome')).toBe('so-quando-chamada')
+    expect(respostaDoModo('só quando chamada')).toBe('so-quando-chamada')
+    expect(respostaDoModo('prefiro só quando eu chamar')).toBe('so-quando-chamada')
+    expect(respostaDoModo('só quando eu chamar mesmo')).toBe('so-quando-chamada')
+    expect(respostaDoModo('Só quando você for chamada pelo nome.')).toBe('so-quando-chamada')
   })
 
   test('sempre ligada', () => {
@@ -91,6 +97,8 @@ describe('respostaDoModo (a resposta à pergunta do primeiro uso, sem o nome)', 
     expect(respostaDoModo('Pode ficar ligada!')).toBe('ligada')
     expect(respostaDoModo('fica ligada')).toBe('ligada')
     expect(respostaDoModo('fica sempre ligada')).toBe('ligada')
+    expect(respostaDoModo('prefiro sempre ligada')).toBe('ligada')
+    expect(respostaDoModo('sempre ligada mesmo')).toBe('ligada')
   })
 
   test('qualquer outra frase não é resposta', () => {

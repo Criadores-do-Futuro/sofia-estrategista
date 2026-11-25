@@ -7,6 +7,8 @@ import {
   AVISO_SO_QUANDO_CHAMADA,
   chamaSofia,
   decidir,
+  ehDaSofia,
+  ehLivre,
   lerEstado,
   pedidoDeModo,
   respostaDoModo,
@@ -37,6 +39,8 @@ const LINHA_DESLIGADA_CHAMADA = `A pessoa chamou a Sofia, mas ela está desligad
 const LINHA_ENSINAR =
   'A pessoa quer aprender a usar a Sofia. Mostre o tutorial de skills/sofia-estrategista/references/primeiro-uso.md, mesmo com a Sofia desligada.'
 const LINHA_PRIMEIRO_USO = 'Primeiro uso da Sofia neste lugar.'
+// O comando do mod /sofia-ensinar, se ele chegar também como prompt digitado.
+const ENSINAR_DO_MOD = /^\s*\/sofia-ensinar\b/i
 const COMO_TROCAR = 'Para trocar: /sofia-modo ligada, /sofia-modo so-quando-chamada ou /sofia-modo desligada.'
 const linhaDoModo = (modo: Modo) => `Interruptor local: ${modo}.`
 
@@ -192,12 +196,27 @@ async function marcarApresentada($: EngineInterface, estado: Estado): Promise<bo
   }
 }
 
+/** A Sofia fez (ou vai fazer) a pergunta do modo: marca apresentada e abre a janela do prompt seguinte. */
+async function abrirPerguntaDoModo($: EngineInterface, estado: Estado, sessao: string | null) {
+  if (!estado.apresentada) await marcarApresentada($, estado)
+  await gravarMarca($, 'perguntouModo', sessao, true)
+}
+
+/** A primeira skill ou ferramenta da Sofia que passou neste computador: é o primeiro uso de fato. */
+async function primeiroUsoNaFerramenta($: EngineInterface, ferramenta: string, entrada: Record<string, unknown>) {
+  if (!ehDaSofia(ferramenta, entrada) || ehLivre(ferramenta, entrada)) return
+  const estado = await lerInterruptor($)
+  if (estado.apresentada || estado.modo === 'desligada') return
+  await abrirPerguntaDoModo($, estado, await idDaSessao($))
+}
+
 /** As linhas que o modelo lê junto do que a pessoa digitou. Muda o modo quando a frase pede. */
 async function linhasDoPrompt($: EngineInterface, texto: string, comando?: { name: string; args: string }): Promise<string[]> {
   const sessao = await idDaSessao($)
   const digitado = comandoDigitado(texto, comando)
-  let pedido = digitado ? pedidoDoComando(digitado.nome, digitado.args) : pedidoDeModo(texto)
-  // A resposta curta à pergunta do modo vale só no prompt logo depois do primeiro uso; aqui a janela fecha.
+  const ensinarDoMod = comando?.name.toLowerCase() === 'sofia-ensinar' || ENSINAR_DO_MOD.test(texto)
+  let pedido = digitado ? pedidoDoComando(digitado.nome, digitado.args) : ensinarDoMod ? 'ensinar' : pedidoDeModo(texto)
+  // A resposta à pergunta do modo vale só no prompt logo depois dela; aqui a janela fecha.
   const perguntouAntes = await lerMarca($, 'perguntouModo', sessao)
   await gravarMarca($, 'perguntouModo', sessao, false)
   if (!pedido && !digitado && perguntouAntes) pedido = respostaDoModo(texto)
@@ -207,13 +226,20 @@ async function linhasDoPrompt($: EngineInterface, texto: string, comando?: { nam
   if (chamou) await marcarChamada($, sessao)
   // A oferta de ligar vale só para a resposta seguinte ("sim"): aqui ela é consumida. Desligada, chamar a
   // Sofia só faz a oferta: ela liga com o "sim" da pessoa, nunca no mesmo prompt em que foi chamada.
+  // Na janela da pergunta do modo, a skill de modo também troca (resposta com outras palavras).
   const ofereceuAntes = await lerMarca($, 'ofereceuLigar', sessao)
   const soOferta = estado.modo === 'desligada' && !pedido && chamou
-  await gravarMarca($, 'podeTrocarModo', sessao, soOferta ? false : chamou || ofereceuAntes)
+  await gravarMarca($, 'podeTrocarModo', sessao, soOferta ? false : chamou || ofereceuAntes || perguntouAntes)
+  const ativa =
+    estado.modo === 'ligada' || (estado.modo === 'so-quando-chamada' && (await foiChamada($, sessao)))
 
   const linhas = [linhaDoModo(estado.modo)]
   let ofereceAgora = false
-  if (pedido === 'ensinar') linhas.push(LINHA_ENSINAR)
+  if (pedido === 'ensinar') {
+    linhas.push(LINHA_ENSINAR)
+    // Com a Sofia ativa, o tutorial termina com a pergunta do modo: a janela abre para a resposta.
+    if (ativa) await abrirPerguntaDoModo($, estado, sessao)
+  }
   // Um pedido de modo ou de "me ensina" nunca se nega.
   if (!pedido) {
     if (estado.modo === 'desligada') {
@@ -224,10 +250,10 @@ async function linhasDoPrompt($: EngineInterface, texto: string, comando?: { nam
       }
     } else if (estado.modo === 'so-quando-chamada' && !(await foiChamada($, sessao))) {
       linhas.push(AVISO_SO_QUANDO_CHAMADA)
-    } else if (chamou && !estado.apresentada && (await marcarApresentada($, estado))) {
-      // Primeiro uso: a Sofia vai agir porque foi chamada. A linha sai uma vez por computador.
+    } else if (!estado.apresentada) {
+      // Primeiro uso: a linha vem em todo prompt até a primeira skill ou ferramenta da Sofia passar
+      // (primeiroUsoNaFerramenta), que grava apresentada e abre a janela da pergunta do modo.
       linhas.push(LINHA_PRIMEIRO_USO)
-      await gravarMarca($, 'perguntouModo', sessao, true)
     }
   }
   await gravarMarca($, 'ofereceuLigar', sessao, ofereceAgora)
@@ -462,6 +488,11 @@ export const register: Register = (on) => {
       negar = null
     }
     if (negar) return { deny: negar }
+    try {
+      await primeiroUsoNaFerramenta($, e.tool, e as unknown as Record<string, unknown>)
+    } catch {
+      // sem a marca, a linha do primeiro uso volta no próximo prompt
+    }
     const r = await next(e)
     if (/planejamento_|referencia_salvar/.test(e.tool) && !/planejamento_quadro$/.test(e.tool)) lerEmSegundoPlano($)
     return r
@@ -495,10 +526,15 @@ export const register: Register = (on) => {
     return rodarComandoDeModo($, modo)
   })
 
-  on('command.run', { command: 'sofia-ensinar' }, async () => ({
-    text: 'A Sofia vai mostrar como funciona.',
-    context: [LINHA_ENSINAR],
-  }))
+  on('command.run', { command: 'sofia-ensinar' }, async ($) => {
+    try {
+      const estado = await lerInterruptor($)
+      if (estado.modo !== 'desligada') await abrirPerguntaDoModo($, estado, await idDaSessao($))
+    } catch {
+      // sem a janela, a pessoa responde com o nome ("Sofia, só quando eu chamar") ou pelo comando
+    }
+    return { text: 'A Sofia vai mostrar como funciona.', context: [LINHA_ENSINAR] }
+  })
 
   on('ui.render', { component: 'Pane', requestId: PAINEL }, async ($, e) => {
     const { Box, Text } = $.ui.resolve(e)

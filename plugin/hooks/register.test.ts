@@ -453,9 +453,15 @@ describe('primeiro uso neste computador', () => {
   const temPrimeiroUso = (p: { context?: readonly string[] }) => (p.context ?? []).includes(PRIMEIRO_USO)
   const apresentada = (m: Mundo) => JSON.parse(m.arquivos.get(ARQUIVO) ?? '{}').apresentada
 
-  test('o primeiro chamado põe a linha uma vez e grava apresentada', async ($, on) => {
+  const SKILL = { tool: 'Skill', skill: 'sofia-estrategista' } as never
+  const CONECTOR = { tool: 'mcp__plugin_sofia-estrategista_sofia-estrategista__planejamento_quadro' } as never
+
+  test('ligada, sem o nome: a linha vem em todo prompt até a primeira skill da Sofia passar', async ($, on) => {
     const m = mundo(on)
-    expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, me dá uma ideia de vídeo')))).toBe(true)
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('escreve um roteiro sobre pão')))).toBe(true)
+    expect(m.arquivos.has(ARQUIVO)).toBe(false)
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('faz um resumo do arquivo')))).toBe(true)
+    expect((await $.tool.call(SKILL)).deny).toBeUndefined()
     expect(apresentada(m)).toBe(true)
     expect(m.modoGravado()).toBe('ligada')
     expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, outra ideia')))).toBe(false)
@@ -463,52 +469,114 @@ describe('primeiro uso neste computador', () => {
     expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, mais uma')))).toBe(false)
   })
 
+  test('a ferramenta do conector também marca; ligar e ferramenta de fora não marcam', async ($, on) => {
+    const m = mundo(on)
+    await $.prompt.submit(digitado('escreve um roteiro sobre pão'))
+    await $.tool.call({ tool: 'Bash', command: 'ls' } as never)
+    await $.tool.call({ tool: 'Skill', skill: 'sofia-estrategista:ligar' } as never)
+    expect(m.arquivos.has(ARQUIVO)).toBe(false)
+    await $.tool.call(CONECTOR)
+    expect(apresentada(m)).toBe(true)
+  })
+
   test('com apresentada no arquivo, sem linha', async ($, on) => {
     mundo(on, LIGADA_APRESENTADA)
     expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, me dá uma ideia')))).toBe(false)
   })
 
-  test('sem chamado, desligada, pedido de modo ou "me ensina": sem linha e apresentada fica como está', async ($, on) => {
-    const m = mundo(on)
-    expect(temPrimeiroUso(await $.prompt.submit(digitado('faz um resumo do arquivo')))).toBe(false)
-    expect(m.arquivos.has(ARQUIVO)).toBe(false)
-    expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, me ensina')))).toBe(false)
-    expect(m.arquivos.has(ARQUIVO)).toBe(false)
-    expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, desliga')))).toBe(false)
-    expect(apresentada(m)).toBe(false)
+  test('desligada: sem linha, e a ferramenta negada não marca', async ($, on) => {
+    const m = mundo(on, JSON.stringify({ modo: 'desligada', apresentada: false }))
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('escreve um roteiro sobre pão')))).toBe(false)
     expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, faz o roteiro')))).toBe(false)
+    expect((await $.tool.call(SKILL)).deny).toBe(AVISO_DESLIGADA)
     expect(apresentada(m)).toBe(false)
   })
 
-  test('depois da linha, "só quando eu chamar" muda para so-quando-chamada', async ($, on) => {
+  test('só quando chamada: sem linha até o chamado, com linha depois', async ($, on) => {
+    mundo(on, SO_QUANDO_NOVA)
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('escreve um roteiro sobre pão')))).toBe(false)
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, me dá uma ideia')))).toBe(true)
+  })
+
+  test('pedido de modo não leva a linha', async ($, on) => {
+    mundo(on)
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, desliga')))).toBe(false)
+  })
+
+  test('depois da primeira skill, "só quando eu chamar" muda para so-quando-chamada', async ($, on) => {
     const m = mundo(on)
-    await $.prompt.submit(digitado('Sofia, me dá uma ideia'))
-    const p = await $.prompt.submit(digitado('só quando eu chamar'))
+    await $.prompt.submit(digitado('escreve um roteiro sobre pão'))
+    await $.tool.call(SKILL)
+    const p = await $.prompt.submit(digitado('só quando eu te chamar pelo nome'))
     expect(m.modoGravado()).toBe('so-quando-chamada')
     expect(p.context).toContain('Interruptor local: so-quando-chamada.')
     expect(apresentada(m)).toBe(true)
   })
 
-  test('depois da linha, "sempre ligada" muda para ligada', async ($, on) => {
+  test('depois da primeira skill, "sempre ligada" muda para ligada', async ($, on) => {
     const m = mundo(on, SO_QUANDO_NOVA)
     expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, me dá uma ideia')))).toBe(true)
+    await $.tool.call(SKILL)
     const p = await $.prompt.submit(digitado('sempre ligada'))
     expect(m.modoGravado()).toBe('ligada')
     expect(p.context).toContain('Interruptor local: ligada.')
   })
 
-  test('sem a linha antes, "só quando eu chamar" não muda nada', async ($, on) => {
-    const m = mundo(on, LIGADA_APRESENTADA)
-    await $.prompt.submit(digitado('Sofia, me dá uma ideia'))
-    await $.prompt.submit(digitado('só quando eu chamar'))
+  test('na janela, a skill de modo também troca (resposta com outras palavras)', async ($, on) => {
+    const m = mundo(on)
+    await $.prompt.submit(digitado('escreve um roteiro sobre pão'))
+    await $.tool.call(SKILL)
+    await $.prompt.submit(digitado('acho melhor você aparecer só quando eu pedir'))
     expect(m.modoGravado()).toBe('ligada')
+    await $.tool.call({ tool: 'Skill', skill: 'sofia-estrategista:modo', args: 'so-quando-chamada' } as never)
+    expect(m.modoGravado()).toBe('so-quando-chamada')
+  })
+
+  test('sem a skill antes, "só quando eu chamar" não muda nada', async ($, on) => {
+    const m = mundo(on)
+    await $.prompt.submit(digitado('escreve um roteiro sobre pão'))
+    await $.prompt.submit(digitado('só quando eu chamar'))
+    expect(m.modoGravado() ?? 'ligada').toBe('ligada')
   })
 
   test('a janela da resposta dura um prompt só', async ($, on) => {
     const m = mundo(on)
     await $.prompt.submit(digitado('Sofia, me dá uma ideia'))
+    await $.tool.call(SKILL)
     await $.prompt.submit(digitado('faz a segunda'))
     await $.prompt.submit(digitado('só quando eu chamar'))
     expect(m.modoGravado()).toBe('ligada')
+  })
+
+  test('"Sofia, me ensina" com a Sofia ativa marca apresentada e abre a janela', async ($, on) => {
+    const m = mundo(on)
+    expect(temPrimeiroUso(await $.prompt.submit(digitado('Sofia, me ensina')))).toBe(false)
+    expect(apresentada(m)).toBe(true)
+    await $.prompt.submit(digitado('só quando eu chamar'))
+    expect(m.modoGravado()).toBe('so-quando-chamada')
+  })
+
+  test('"Sofia, me ensina" desligada não abre a janela nem marca', async ($, on) => {
+    const m = mundo(on, JSON.stringify({ modo: 'desligada', apresentada: false }))
+    await $.prompt.submit(digitado('Sofia, me ensina'))
+    await $.prompt.submit(digitado('só quando eu chamar'))
+    expect(m.modoGravado()).toBe('desligada')
+    expect(apresentada(m)).toBe(false)
+  })
+
+  test('o comando /sofia-ensinar que também chega como prompt abre a janela', async ($, on) => {
+    const m = mundo(on)
+    await $.prompt.submit(digitado('/sofia-ensinar'))
+    expect(apresentada(m)).toBe(true)
+    await $.prompt.submit(digitado('só quando eu chamar'))
+    expect(m.modoGravado()).toBe('so-quando-chamada')
+  })
+
+  test('o comando sofia-ensinar com a Sofia ativa marca apresentada e abre a janela', async ($, on) => {
+    const m = mundo(on)
+    await $.command.run(comando('sofia-ensinar', ''))
+    expect(apresentada(m)).toBe(true)
+    await $.prompt.submit(digitado('só quando eu chamar'))
+    expect(m.modoGravado()).toBe('so-quando-chamada')
   })
 })

@@ -123,8 +123,15 @@ export function pedidoDeModo(prompt: string): Modo | 'ensinar' | null {
 
 // A resposta curta à pergunta do primeiro uso ("Quer que eu fique sempre ligada, ou só quando você me chamar
 // pelo nome?"), sem o nome da Sofia. Só vale no prompt logo depois da pergunta: quem confere é o mod.
-const RESPOSTA_SO_QUANDO = frase('(?:so )?quando (?:eu )?(?:te )?chamar')
-const RESPOSTA_LIGADA = frase('(?:fica |ficar )?sempre ligada', '(?:fica|ficar) ligada')
+const PREFIRO = '(?:prefiro )?'
+const MESMO = '(?: mesmo)?'
+const RESPOSTA_SO_QUANDO = frase(
+  PREFIRO + '(?:(?:so|apenas) )?quando (?:(?:eu|voce) )?(?:te )?(?:chamar|for chamada|chamada)(?: pelo nome)?' + MESMO,
+)
+const RESPOSTA_LIGADA = frase(
+  PREFIRO + '(?:(?:fica|ficar) )?sempre ligada' + MESMO,
+  PREFIRO + '(?:fica|ficar) ligada' + MESMO,
+)
 
 /** O modo que a resposta curta pede, ou null quando a frase é outra coisa. */
 export function respostaDoModo(prompt: string): Modo | null {
