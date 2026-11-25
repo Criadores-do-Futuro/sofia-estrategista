@@ -1,10 +1,21 @@
 import { atom, read, update } from 'claude-code'
 import type { EngineInterface, Register } from 'claude-code'
 
-import type { Etapa, Janela, Quadro } from '../types'
+import type { Etapa, Janela, ModoDoInterruptor, Quadro } from '../types'
+import {
+  AVISO_DESLIGADA,
+  AVISO_SO_QUANDO_CHAMADA,
+  chamaSofia,
+  decidir,
+  lerEstado,
+  pedidoDeModo,
+} from './interruptor'
+import type { Estado, Modo } from './interruptor'
 
 // Painel da Sofia Estrategista: quantos cards há em cada etapa do planejamento no site e quanto já foi
 // usado das janelas de 5 horas e de 7 dias do Claude, com quanto falta para cada uma zerar.
+// Também é o interruptor da Sofia neste computador: lê e grava estado.json na pasta de dados do plugin,
+// nega as ferramentas dela quando o modo manda (a regra está em interruptor.ts) e avisa o modelo do modo.
 // Só roda onde há mods (Claude Code): no site, no app de conversa e no Codex este arquivo fica parado.
 
 const PAINEL = 'sofia-painel'
@@ -12,6 +23,178 @@ const TITULO = 'Sofia Estrategista'
 // Troque a marca quando o formato guardado mudar: um reload mantém o que a versão anterior guardou.
 const quadro = atom({ plugin: 'sofia-estrategista', key: 'quadro' } as const, null, { shape: 'quadro-1' })
 const janelas = atom({ plugin: 'sofia-estrategista', key: 'janelas' } as const, [], { shape: 'janelas-1' })
+const modoNoPainel = atom({ plugin: 'sofia-estrategista', key: 'modo' } as const, 'ligada' as ModoDoInterruptor, {
+  shape: 'modo-1',
+})
+
+// ---------- interruptor ----------
+
+const ESTADO = 'estado.json'
+const PREFIXO_DO_PLUGIN = 'sofia-estrategista:'
+const ESTOU_DESLIGADA = 'Estou desligada aqui. Quer que eu ligue?'
+const LINHA_DESLIGADA_CHAMADA = `A pessoa chamou a Sofia, mas ela está desligada aqui. Responda só: "${ESTOU_DESLIGADA}"`
+const LINHA_ENSINAR =
+  'A pessoa quer aprender a usar a Sofia. Mostre o tutorial de skills/sofia-estrategista/references/primeiro-uso.md, mesmo com a Sofia desligada.'
+const COMO_TROCAR = 'Para trocar: /sofia-modo ligada, /sofia-modo so-quando-chamada ou /sofia-modo desligada.'
+const linhaDoModo = (modo: Modo) => `Interruptor local: ${modo}.`
+
+/** Minúsculas, sem acento, espaços e sublinhados viram hífen: "Só quando chamada" vira "so-quando-chamada". */
+function modoDoTexto(texto: string): Modo | null {
+  const t = texto.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim().replace(/[\s_]+/g, '-')
+  return t === 'ligada' || t === 'so-quando-chamada' || t === 'desligada' ? t : null
+}
+
+/** O comando do plugin que a pessoa digitou (`/sofia-estrategista:nome args`), sem o prefixo, ou null. */
+function comandoDigitado(texto: string, comando?: { name: string; args: string }): { nome: string; args: string } | null {
+  if (comando && comando.name.toLowerCase().startsWith(PREFIXO_DO_PLUGIN)) {
+    return { nome: comando.name.slice(PREFIXO_DO_PLUGIN.length).toLowerCase(), args: comando.args }
+  }
+  const m = /^\s*\/sofia-estrategista:([\w-]+)\s*([\s\S]*)$/i.exec(texto)
+  return m ? { nome: (m[1] ?? '').toLowerCase(), args: (m[2] ?? '').trim() } : null
+}
+
+/** O que um comando de ligar, desligar, modo ou ensinar pede; null para qualquer outro comando. */
+function pedidoDoComando(nome: string, args: string): Modo | 'ensinar' | null {
+  if (nome === 'ligar') return 'ligada'
+  if (nome === 'desligar') return 'desligada'
+  if (nome === 'ensinar') return 'ensinar'
+  if (nome === 'modo') return modoDoTexto(args)
+  return null
+}
+
+/** A pasta de dados do próprio plugin. Nunca $.env: ele lê o ambiente do processo, que traz a de outro plugin. */
+async function pastaDeDados($: EngineInterface): Promise<string | null> {
+  try {
+    const pasta = (await $.process.hookEnv()).CLAUDE_PLUGIN_DATA
+    return typeof pasta === 'string' && pasta ? pasta : null
+  } catch {
+    return null
+  }
+}
+
+/** Põe o modo no painel quando ele mudou. Falhar aqui não muda nada do interruptor. */
+async function mostrarModo($: EngineInterface, modo: Modo) {
+  try {
+    if ((await read($, modoNoPainel)) !== modo) {
+      await update($, modoNoPainel, () => modo)
+      await atualizarStatus($)
+    }
+  } catch {
+    // o painel fica com o modo antigo até a próxima leitura
+  }
+}
+
+/** O estado de estado.json. Sem pasta, sem arquivo ou com o arquivo torto: ligada. Nunca lança. */
+async function lerInterruptor($: EngineInterface): Promise<Estado> {
+  const pasta = await pastaDeDados($)
+  let texto: string | null = null
+  if (pasta) {
+    try {
+      texto = await $.fs.read(`${pasta}/${ESTADO}`)
+    } catch {
+      texto = null
+    }
+  }
+  const estado = lerEstado(texto)
+  await mostrarModo($, estado.modo)
+  return estado
+}
+
+/** Grava o modo e devolve o estado que vale agora: o antigo quando não deu para gravar. */
+async function gravarModo($: EngineInterface, modo: Modo): Promise<Estado> {
+  const antes = await lerInterruptor($)
+  const pasta = await pastaDeDados($)
+  if (!pasta) return antes
+  try {
+    const depois: Estado = { modo, apresentada: antes.apresentada, mudouEm: new Date(await $.clock.now()).toISOString() }
+    await $.fs.write(`${pasta}/${ESTADO}`, JSON.stringify(depois, null, 2) + '\n')
+    await mostrarModo($, modo)
+    // Saiu de desligada: o painel volta a ler o quadro.
+    if (antes.modo === 'desligada' && modo !== 'desligada') lerEmSegundoPlano($)
+    return depois
+  } catch {
+    return antes
+  }
+}
+
+async function idDaSessao($: EngineInterface): Promise<string | null> {
+  try {
+    return (await $.session.id()) || null
+  } catch {
+    return null
+  }
+}
+
+/** A pessoa chamou a Sofia pelo nome nesta sessão. O chamado vale a sessão inteira. */
+async function foiChamada($: EngineInterface, sessao: string | null): Promise<boolean> {
+  if (!sessao) return false
+  try {
+    return (await $.state.get({ plugin: 'sofia-estrategista', key: 'chamada', id: sessao })).value === true
+  } catch {
+    return false
+  }
+}
+
+async function marcarChamada($: EngineInterface, sessao: string | null) {
+  if (!sessao) return
+  try {
+    await $.state.set({ plugin: 'sofia-estrategista', key: 'chamada', id: sessao }, true)
+  } catch {
+    // sem o registro, o modo "só quando chamada" segue negando: a pessoa chama de novo
+  }
+}
+
+/** As linhas que o modelo lê junto do que a pessoa digitou. Muda o modo quando a frase pede. */
+async function linhasDoPrompt($: EngineInterface, texto: string, comando?: { name: string; args: string }): Promise<string[]> {
+  const digitado = comandoDigitado(texto, comando)
+  const pedido = digitado ? pedidoDoComando(digitado.nome, digitado.args) : pedidoDeModo(texto)
+  let estado = await lerInterruptor($)
+  if (pedido && pedido !== 'ensinar') estado = await gravarModo($, pedido)
+  const sessao = await idDaSessao($)
+  const chamou = digitado !== null || chamaSofia(texto)
+  if (chamou) await marcarChamada($, sessao)
+
+  const linhas = [linhaDoModo(estado.modo)]
+  if (pedido === 'ensinar') linhas.push(LINHA_ENSINAR)
+  // Um pedido de modo ou de "me ensina" nunca se nega.
+  if (pedido) return linhas
+  if (estado.modo === 'desligada') {
+    linhas.push(AVISO_DESLIGADA)
+    if (chamou) linhas.push(LINHA_DESLIGADA_CHAMADA)
+  } else if (estado.modo === 'so-quando-chamada' && !(await foiChamada($, sessao))) {
+    linhas.push(AVISO_SO_QUANDO_CHAMADA)
+  }
+  return linhas
+}
+
+/** A linha de negação para a ferramenta, ou null para liberar. Também grava o modo de um comando de modo. */
+async function negacao($: EngineInterface, ferramenta: string, entrada: Record<string, unknown>): Promise<string | null> {
+  let estado = await lerInterruptor($)
+  if (ferramenta === 'Skill' && typeof entrada.skill === 'string') {
+    const nome = entrada.skill.trim().toLowerCase()
+    if (nome.startsWith(PREFIXO_DO_PLUGIN)) {
+      const pedido = pedidoDoComando(nome.slice(PREFIXO_DO_PLUGIN.length), typeof entrada.args === 'string' ? entrada.args : '')
+      if (pedido && pedido !== 'ensinar' && pedido !== estado.modo) estado = await gravarModo($, pedido)
+    }
+  }
+  if (estado.modo === 'ligada') return null
+  const chamada = estado.modo === 'so-quando-chamada' ? await foiChamada($, await idDaSessao($)) : false
+  return decidir(estado, chamada, ferramenta, entrada).negar ?? null
+}
+
+/** Os comandos do mod: mudam o modo neste computador sem passar pelo modelo. */
+async function rodarComandoDeModo($: EngineInterface, modo: Modo): Promise<{ text: string; context: string[] }> {
+  const estado = await gravarModo($, modo)
+  if (estado.modo !== modo) {
+    return { text: `Não consegui guardar o modo neste computador. A Sofia segue ${estado.modo}.`, context: [linhaDoModo(estado.modo)] }
+  }
+  const textos: Record<Modo, string> = {
+    ligada: 'Sofia ligada neste computador.',
+    'so-quando-chamada': 'Sofia no modo so-quando-chamada: ela só age quando você a chama pelo nome.',
+    desligada: 'Sofia desligada neste computador. Para ligar de novo: /sofia-ligar, ou diga "liga a Sofia".',
+  }
+  return { text: textos[modo], context: [linhaDoModo(modo)] }
+}
 
 // O conector: a chave dele no .mcp.json deste plugin (a primeira), e os nomes com que o /mcp lista o
 // mesmo conector quando a pessoa o ligou pelo site do Claude em vez do plugin.
@@ -112,6 +295,8 @@ async function lerQuadro($: EngineInterface) {
     if (lendo) return
     lendo = true
     try {
+      // Desligada, a Sofia não toca no conector: o painel mostra só o uso do Claude.
+      if ((await lerInterruptor($)).modo === 'desligada') return
       const agora = await $.clock.now()
       let motivo = `O conector Sofia Estrategista não está ligado. Digite /mcp, escolha ${NOME_NO_MCP} e entre com o e-mail do curso.`
       const candidatos = servidor ? [servidor] : CONECTORES
@@ -148,8 +333,10 @@ async function lerQuadro($: EngineInterface) {
 async function atualizarStatus($: EngineInterface) {
     const q = await read($, quadro)
     const js = await read($, janelas)
+    const modo = await read($, modoNoPainel)
     const partes: string[] = []
-    if (q?.situacao === 'ok') partes.push(`${q.etapas.reduce((s, e) => s + e.total, 0)} cards`)
+    if (modo === 'desligada') partes.push('desligada')
+    else if (q?.situacao === 'ok') partes.push(`${q.etapas.reduce((s, e) => s + e.total, 0)} cards`)
     for (const j of js) partes.push(`${j.tipo === 'five_hour' ? '5h' : '7d'} ${Math.round(j.usado)}%`)
     $.ui.status(partes.length ? `Sofia · ${partes.join(' · ')}` : undefined)
 }
@@ -157,6 +344,15 @@ async function atualizarStatus($: EngineInterface) {
 export const register: Register = (on) => {
   on('session.start', async ($, e, next) => {
     await $.command.register({ name: 'sofia-painel', description: 'Abre o painel da Sofia: cards por etapa e uso do Claude' })
+    await $.command.register({ name: 'sofia-ligar', description: 'Liga a Sofia neste computador' })
+    await $.command.register({ name: 'sofia-desligar', description: 'Desliga a Sofia neste computador' })
+    await $.command.register({
+      name: 'sofia-modo',
+      description: 'Mostra ou troca o modo da Sofia neste computador',
+      argumentHint: '[ligada|so-quando-chamada|desligada]',
+    })
+    await $.command.register({ name: 'sofia-ensinar', description: 'A Sofia mostra como funciona' })
+    await lerInterruptor($)
     const uso = await $.session.usage()
     await update($, janelas, () => janelasDoUso(uso.rateLimits))
     lerEmSegundoPlano($)
@@ -180,16 +376,49 @@ export const register: Register = (on) => {
     return next(e)
   })
 
-  // Depois de uma ferramenta do planejamento, o quadro pode ter mudado: lê de novo.
+  // O interruptor nega a ferramenta da Sofia quando o modo manda. Depois de uma ferramenta do planejamento,
+  // o quadro pode ter mudado: lê de novo. Se este hook falhar, a ferramenta segue: na dúvida, ligada.
   on('tool.call', async ($, e, next) => {
+    const negar = await negacao($, e.tool, e as unknown as Record<string, unknown>)
+    if (negar) return { deny: negar }
     const r = await next(e)
     if (/planejamento_|referencia_salvar/.test(e.tool) && !/planejamento_quadro$/.test(e.tool)) lerEmSegundoPlano($)
     return r
+  }).catch(($, e, next) => next(e))
+
+  // O que a pessoa digitou: muda o modo quando a frase ou o comando pede, marca o chamado da sessão e põe
+  // para o modelo a linha do interruptor local (e a de negação quando o modo nega). Avisos de tarefa em
+  // segundo plano e mensagens de outra sessão não são a pessoa: passam sem nada.
+  on('prompt.submit', async ($, e, next) => {
+    if (e.origin?.kind === 'task-notification' || e.origin?.kind === 'peer') return next(e)
+    const linhas = await linhasDoPrompt($, e.text, e.command)
+    return next({ ...e, context: [...(e.context ?? []), ...linhas] })
+  }).catch(($, e, next) => next(e))
+
+  on('command.run', { command: 'sofia-ligar' }, ($) => rodarComandoDeModo($, 'ligada'))
+  on('command.run', { command: 'sofia-desligar' }, ($) => rodarComandoDeModo($, 'desligada'))
+
+  on('command.run', { command: 'sofia-modo' }, async ($, e) => {
+    const pedido = e.args.trim()
+    if (!pedido) {
+      const { modo } = await lerInterruptor($)
+      return { text: `A Sofia está ${modo} neste computador. ${COMO_TROCAR}`, context: [linhaDoModo(modo)] }
+    }
+    const modo = modoDoTexto(pedido)
+    if (!modo) return { text: `Não conheço o modo "${pedido}". ${COMO_TROCAR}` }
+    return rodarComandoDeModo($, modo)
   })
+
+  on('command.run', { command: 'sofia-ensinar' }, async () => ({
+    text: 'A Sofia vai mostrar como funciona.',
+    context: [LINHA_ENSINAR],
+  }))
 
   on('ui.render', { component: 'Pane', requestId: PAINEL }, async ($, e) => {
     const { Box, Text } = $.ui.resolve(e)
-    const q = await read($, quadro)
+    const desligada = (await read($, modoNoPainel)) === 'desligada'
+    // Desligada, o quadro não aparece (nem o lido antes): o painel mostra o aviso e o uso do Claude.
+    const q = desligada ? undefined : await read($, quadro)
     const js = await read($, janelas)
     const agora = await $.clock.now()
     const colunas = e.viewport?.columns ?? 60
@@ -210,6 +439,8 @@ export const register: Register = (on) => {
             <Text bold>Planejamento</Text>
             {q?.situacao === 'ok' && <Text color="magenta">{`  ${q.perfil}`}</Text>}
           </Box>
+          {desligada && <Text color="yellow">Sofia desligada</Text>}
+          {desligada && <Text dimColor>Para ligar: /sofia-ligar, ou diga "liga a Sofia".</Text>}
           {q === null && <Text dimColor>Lendo o quadro no site…</Text>}
           {q?.situacao === 'sem-conector' && <Text color="yellow">{q.motivo}</Text>}
           {q?.situacao === 'ok' &&
