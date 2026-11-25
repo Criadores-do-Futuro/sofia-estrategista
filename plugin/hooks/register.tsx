@@ -181,9 +181,11 @@ async function linhasDoPrompt($: EngineInterface, texto: string, comando?: { nam
   const sessao = await idDaSessao($)
   const chamou = digitado !== null || chamaSofia(texto)
   if (chamou) await marcarChamada($, sessao)
-  // A oferta de ligar vale só para a resposta seguinte ("sim"): aqui ela é consumida.
+  // A oferta de ligar vale só para a resposta seguinte ("sim"): aqui ela é consumida. Desligada, chamar a
+  // Sofia só faz a oferta: ela liga com o "sim" da pessoa, nunca no mesmo prompt em que foi chamada.
   const ofereceuAntes = await lerMarca($, 'ofereceuLigar', sessao)
-  await gravarMarca($, 'podeTrocarModo', sessao, chamou || ofereceuAntes)
+  const soOferta = estado.modo === 'desligada' && !pedido && chamou
+  await gravarMarca($, 'podeTrocarModo', sessao, soOferta ? false : chamou || ofereceuAntes)
 
   const linhas = [linhaDoModo(estado.modo)]
   let ofereceAgora = false

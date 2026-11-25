@@ -389,10 +389,27 @@ describe('o modelo só troca o modo quando a pessoa pediu', () => {
     expect(m.modoGravado()).toBe('desligada')
   })
 
-  test('desligada, "Sofia, volta a funcionar": o modelo liga pela skill', async ($, on) => {
+  test('desligada, "Sofia, volta a funcionar": só oferece; o modelo liga depois do "sim"', async ($, on) => {
     const m = mundo(on, DESLIGADA)
-    await $.prompt.submit(digitado('Sofia, volta a funcionar'))
+    const p = await $.prompt.submit(digitado('Sofia, volta a funcionar'))
+    expect((p.context ?? []).some((c) => c.includes(ESTOU_DESLIGADA))).toBe(true)
+    await $.tool.call(LIGAR)
     expect(m.modoGravado()).toBe('desligada')
+    await $.prompt.submit(digitado('sim'))
+    await $.tool.call(LIGAR)
+    expect(m.modoGravado()).toBe('ligada')
+  })
+
+  test('desligada, "Sofia, faz o roteiro": o modelo não liga no mesmo prompt', async ($, on) => {
+    const m = mundo(on, DESLIGADA)
+    await $.prompt.submit(digitado('Sofia, faz o roteiro'))
+    await $.tool.call(LIGAR)
+    expect(m.modoGravado()).toBe('desligada')
+  })
+
+  test('so-quando-chamada, chamada pelo nome: o modelo pode ligar no mesmo prompt', async ($, on) => {
+    const m = mundo(on, SO_QUANDO)
+    await $.prompt.submit(digitado('Sofia, fica sempre ligada'))
     await $.tool.call(LIGAR)
     expect(m.modoGravado()).toBe('ligada')
   })
