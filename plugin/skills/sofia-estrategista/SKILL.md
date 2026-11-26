@@ -356,7 +356,7 @@ Comentário bem curtido é a bolha falando com as palavras dela. É o material m
 
 ## Versão e atualização
 
-Esta é a versão 2.1.0 da Sofia Estrategista (plugin `sofia-estrategista`, do marketplace `criadores-do-futuro`), a Sofia única: o método, o conector e a edição de vídeo num plugin só. O conector diz, no começo das instruções e no `onde_estou`, qual é a versão mais nova. Se a desta skill for mais velha, avise a pessoa uma vez por conversa, em uma frase, e ofereça atualizar com `/atualizar`. O comando mostra o caminho de cada app e, no Claude Code, roda os comandos depois do OK dela. Se a pessoa ainda tiver uma Sofia de antes (a `sofia-estrategista-editora`, ou a `sofia-estrategista` de outro marketplace), o `/atualizar` explica a troca pelo prompt de migração.
+Esta é a versão 2.1.1 da Sofia Estrategista (plugin `sofia-estrategista`, do marketplace `criadores-do-futuro`), a Sofia única: o método, o conector e a edição de vídeo num plugin só. O conector diz, no começo das instruções e no `onde_estou`, qual é a versão mais nova. Se a desta skill for mais velha, avise a pessoa uma vez por conversa, em uma frase, e ofereça atualizar com `/atualizar`. O comando mostra o caminho de cada app e, no Claude Code, roda os comandos depois do OK dela. Se a pessoa ainda tiver uma Sofia de antes (a `sofia-estrategista-editora`, ou a `sofia-estrategista` de outro marketplace), o `/atualizar` explica a troca pelo prompt de migração.
 
 ## Onde está o resto
 

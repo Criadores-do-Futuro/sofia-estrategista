@@ -1,6 +1,6 @@
 # Enviar aos diretórios da Anthropic e da OpenAI
 
-O que o repositório já cumpre e o que só o dono da conta pode fazer. Conferido em 16/11/2026 contra a documentação oficial (links no fim) e atualizado para a Sofia 2.1.0 (o interruptor) em 25/11/2026. O plugin é a pasta `plugin/`; os caminhos abaixo são relativos a ela, menos os de `tests/` e `scripts/`, que ficam na raiz do repositório.
+O que o repositório já cumpre e o que só o dono da conta pode fazer. Conferido em 16/11/2026 contra a documentação oficial (links no fim) e atualizado para a Sofia 2.1.1 (a descrição do plugin cabe nos 500 caracteres do envio pelo app) em 26/11/2026; a 2.1.0 trouxe o interruptor. O plugin é a pasta `plugin/`; os caminhos abaixo são relativos a ela, menos os de `tests/` e `scripts/`, que ficam na raiz do repositório.
 
 ## Diretório de plugins da Anthropic
 
@@ -8,7 +8,7 @@ O que o repositório já cumpre e o que só o dono da conta pode fazer. Conferid
 
 | Exigência | Como está |
 |---|---|
-| `plugin.json` válido, nome em minúsculas com hífen | `sofia-estrategista`, versão `2.1.0`; `claude plugin validate --strict --profile directory` passa na pasta do `.zip` |
+| `plugin.json` válido, nome em minúsculas com hífen | `sofia-estrategista`, versão `2.1.1`; `claude plugin validate --strict --profile directory` passa na pasta do `.zip` |
 | Cabeçalhos de skills, comandos e agentes | YAML válido; skills e comandos só com os campos aceitos no envio, e agentes só com os campos que o Claude Code lê (`tests/test_pacote.py`) |
 | Agentes da equipe da Sofia | sem `tools`, com `disallowedTools` (as ferramentas que gravam ficam fora), para alcançar o conector com qualquer prefixo de nome. Nenhum relato de regra "Verified only" sobre esses campos até 23/11 (issue 7024); o plugin já não é elegível ao Verified pelos hooks, pelo mod e pelos scripts |
 | Espelho do método | as peças marcadas como "Cópia da peça" e o `cartas.md` são gerados do conector; `tests/test_equipe.py` confere o sha256 de cada um |
@@ -44,7 +44,7 @@ O que o repositório já cumpre e o que só o dono da conta pode fazer. Conferid
 
 | Exigência | Como está |
 |---|---|
-| Manifesto `.codex-plugin/plugin.json` | nome, versão `2.1.0`, autor, site, repositório, licença, skills e conector; `name`, `version`, `description` e `author` iguais aos do manifesto do Claude |
+| Manifesto `.codex-plugin/plugin.json` | nome, versão `2.1.1`, autor, site, repositório, licença, skills e conector; `name`, `version`, `description` e `author` iguais aos do manifesto do Claude |
 | Ficha da loja | `interface`: nome de exibição, descrições curta e longa, categoria `Productivity`, capacidades, três sugestões de pedido, ícone e logo |
 | Privacidade, termos e suporte | `privacyPolicyURL`, `termsOfServiceURL` e `supportURL` (páginas em inglês) |
 | 5 casos positivos e 3 negativos | `extensions.com.openai.review.test_cases`, com as ferramentas reais do conector |

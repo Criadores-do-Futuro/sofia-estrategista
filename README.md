@@ -2,7 +2,7 @@
 
 A Sofia Estrategista do curso Criador Estrategista, dos Criadores do Futuro: estrategista e editora de vídeo curto, numa Sofia só. O plugin junta o método do curso (ideia, pesquisa com fonte, formato, estrutura, hook, roteiro, grifos, análise de vídeo e de perfil), a equipe de agentes que escreve e confere cada etapa, o conector do planejamento do site e a edição do vídeo gravado no CapCut ou no DaVinci Resolve. O que o plugin faz, para quem usa, está em [plugin/README.md](plugin/README.md).
 
-Este repositório é o marketplace `criadores-do-futuro`. A versão atual é a **2.1.0**: a Sofia liga e desliga com um pedido e pode agir só quando chamada pelo nome (o que o gancho lê e grava está no [README do plugin](plugin/README.md#ligar-desligar-e-só-quando-chamada)). A 2.0.0 foi a Sofia única: a Sofia Estrategista (`sofia-estrategista`) e a Sofia Estrategista com edição (`sofia-estrategista-editora`) viraram um plugin só, o `sofia-estrategista`.
+Este repositório é o marketplace `criadores-do-futuro`. A versão atual é a **2.1.1**: a descrição do plugin passou a caber no limite de 500 caracteres do envio pelo app (Customize › Plugins › Upload). A 2.1.0 trouxe o interruptor: a Sofia liga e desliga com um pedido e pode agir só quando chamada pelo nome (o que o gancho lê e grava está no [README do plugin](plugin/README.md#ligar-desligar-e-só-quando-chamada)). A 2.0.0 foi a Sofia única: a Sofia Estrategista (`sofia-estrategista`) e a Sofia Estrategista com edição (`sofia-estrategista-editora`) viraram um plugin só, o `sofia-estrategista`.
 
 ## Instalar
 
