@@ -16,7 +16,7 @@ O resto deste arquivo conta a junção anterior, que criou a Sofia com edição 
 
 ## Como os arquivos foram arrumados
 
-- A pasta `plugin/` da Sofia virou a raiz: `skills/sofia-estrategista/`, `commands/`, `agents/`, `.mcp.json`, `.claude-plugin/icon.png` e `LICENSE`.
+- A pasta `plugin/` da Sofia virou a raiz: `skills/sofia-estrategista/`, `commands/`, `agents/`, `.mcp.json`, o ícone da pasta .claude-plugin e `LICENSE`.
 - O bEditor entrou inteiro, na mesma posição: `beditor/`, `scripts/`, `schemas/`, `motion/`, `docs/`, `tests/`, `requirements-*.txt` e os ignores.
 - A skill `skills/beditor-estrategista/` virou `skills/sofia-editora/`. O pacote Python continua com o nome `beditor`, para não quebrar importações.
 - `docs/desenho.md` da Sofia virou `docs/desenho-sofia.md`. `scripts/empacotar.sh` e `scripts/conferir-ferramentas.mjs` vieram da Sofia.
@@ -40,7 +40,7 @@ Fora os arquivos listados abaixo, todos são cópias idênticas da origem (53 da
 - `scripts/localizar_sofia.py`: sem `--acervo`, procura em `SOFIA_ACERVO_DIR`, depois em `BEDITOR_SOFIA_DIR`, depois nas fichas da skill `sofia-estrategista`.
 - `scripts/analisar_referencias_estilo.py`: caminho novo de `analisar_quadros.py`.
 - `.claude-plugin/marketplace.json` (marketplace `sofia-editora`), `.codex-plugin/plugin.json` (skills e conector) e `.agents/plugins/marketplace.json` (marketplace `sofia-editora-local`).
-- `.gitignore`, `.cloudignore` e `.npmignore`: somadas as regras da Sofia (`dist/` e configuração de assistente) e liberados `.claude-plugin/icon.png` e `schemas/*.schema.json`.
+- `.gitignore`, `.cloudignore` e `.npmignore`: somadas as regras da Sofia (`dist/` e configuração de assistente) e liberados o ícone da pasta .claude-plugin e `schemas/*.schema.json`.
 - `docs/instalacao-e-compatibilidade.md`: nomes e comandos novos.
 - `tests/test_marketplaces.py`, `tests/test_localizar_sofia.py` e `tests/test_analisar_quadros.py`: manifestos, skills, conector, comandos e fichas do plugin junto.
 

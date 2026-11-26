@@ -28,6 +28,10 @@ Pastas de análise e pranchas crescem rápido. Pergunte onde guardar e prefira u
 
 ## Passo 0: o que está ligado
 
+Primeiro, a própria Sofia: siga o Passo 0 da skill `sofia-estrategista` e as regras de [../sofia-estrategista/references/interruptor.md](../sofia-estrategista/references/interruptor.md). Desligada, ou só quando chamada sem ter sido chamada, responda sem a Sofia e sem as ferramentas do conector. Chamada pelo nome com ela desligada, responda só `Estou desligada aqui. Quer que eu ligue?`. No primeiro uso, siga [../sofia-estrategista/references/primeiro-uso.md](../sofia-estrategista/references/primeiro-uso.md).
+
+Com a Sofia ativa, confira o resto:
+
 1. **Conector Sofia Estrategista:** siga o Passo 1 da skill `sofia-estrategista`. Sem ele, a edição funciona, mas você não lê o card nem guarda nada no site.
 2. **Editor:** veja [references/editores.md](references/editores.md). CapCut é o padrão quando a pessoa não escolhe. Confira a integração de verdade (o plugin oficial do CapCut no host, a ponte local do CapCut Desktop ou o MCP do DaVinci Resolve com o Resolve aberto). Ferramenta registrada sem o programa aberto não prova conexão.
 3. **FFmpeg e ffprobe:** `ffprobe -version`. Sem eles, nada de medição.

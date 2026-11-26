@@ -14,7 +14,7 @@ class MarketplaceTest(unittest.TestCase):
         manifests = [json.loads((ROOT / '.claude-plugin/plugin.json').read_text()),
                      json.loads((ROOT / '.codex-plugin/plugin.json').read_text())]
         self.assertEqual(manifests[0]['name'], 'sofia-estrategista')
-        self.assertEqual(manifests[0]['version'], '2.0.0')
+        self.assertEqual(manifests[0]['version'], '2.1.0')
         for campo in ('name', 'version', 'description', 'author'):
             self.assertEqual(manifests[0][campo], manifests[1][campo], campo)
         # O conector e o /atualizar mandam rodar `... marketplace update/upgrade criadores-do-futuro`

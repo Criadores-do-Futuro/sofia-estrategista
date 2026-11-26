@@ -231,12 +231,12 @@ class TravaTest(unittest.TestCase):
 
 class SofiaUnicaTest(unittest.TestCase):
     def test_skill_diz_a_versao_que_o_conector_compara(self):
-        # O conector lê "Esta é a versão X" na seção "Versão e atualização": sem a frase, quem já está na 2.0.0
-        # recebe o aviso de troca de Sofia.
+        # O conector lê "Esta é a versão X" na seção "Versão e atualização": sem a frase, quem já está na versão
+        # atual recebe o aviso de atualizar.
         texto = (SKILL / 'SKILL.md').read_text(encoding='utf-8')
         secao = texto.split('## Versão e atualização', 1)[1].split('\n## ', 1)[0]
         versao = json.loads((ROOT / '.claude-plugin/plugin.json').read_text(encoding='utf-8'))['version']
-        self.assertEqual(versao, '2.0.0')
+        self.assertEqual(versao, '2.1.0')
         self.assertIn(f'Esta é a versão {versao}', secao)
 
     def test_chave_de_volta_na_skill_e_nas_passadas(self):

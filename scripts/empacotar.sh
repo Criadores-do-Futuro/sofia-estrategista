@@ -45,7 +45,7 @@ ITENS=(
 
 FORA=(
   '*.DS_Store' '.claude-plugin/types/*'
-  '*/__pycache__/*' '*.pyc' '*/node_modules/*'
+  '*/__pycache__/*' '*.pyc' '*/node_modules/*' 'hooks/*.test.ts'
   'skills/*/tests/*' 'painel/index.html' 'painel/estado.json' 'painel/telemetria.json'
   'painel/revisao.json' 'painel/revisao/*' 'painel/previa/*' 'docs/superpowers/*'
   'treinamento/*/videos/*' 'treinamento/*/folhas/*' 'treinamento/*/raw_frames/*'
