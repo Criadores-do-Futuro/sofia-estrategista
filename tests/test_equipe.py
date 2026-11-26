@@ -236,7 +236,7 @@ class SofiaUnicaTest(unittest.TestCase):
         texto = (SKILL / 'SKILL.md').read_text(encoding='utf-8')
         secao = texto.split('## Versão e atualização', 1)[1].split('\n## ', 1)[0]
         versao = json.loads((ROOT / '.claude-plugin/plugin.json').read_text(encoding='utf-8'))['version']
-        self.assertEqual(versao, '2.1.0')
+        self.assertEqual(versao, '2.1.1')
         self.assertIn(f'Esta é a versão {versao}', secao)
 
     def test_chave_de_volta_na_skill_e_nas_passadas(self):

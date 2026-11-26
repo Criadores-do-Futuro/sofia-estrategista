@@ -1,7 +1,7 @@
 {
   "name": "sofia-estrategista",
-  "version": "2.1.0",
-  "description": "Estrategista e editora de vídeo curto do curso Criador Estrategista, numa Sofia só: ideia, pesquisa com fonte, formato, estrutura, hook, roteiro, grifos e análise de vídeo ou de perfil pelo método do curso, com uma equipe de revisores que confere cada texto; com o conector ligado, lê e salva no planejamento do aluno no site; e edição do vídeo gravado na timeline do CapCut ou do DaVinci Resolve, com aprendizado de estilo a partir de um vídeo editado, decupagem, motion graphics, finalização e preparo da publicação.",
+  "version": "2.1.1",
+  "description": "Estrategista e editora de vídeo curto do curso Criador Estrategista, numa Sofia só: ideia, pesquisa com fonte, hook, roteiro, grifos e análise de vídeo ou de perfil pelo método do curso, com revisores que conferem cada texto. Com o conector, lê e salva no planejamento do aluno no site. Edita o vídeo gravado no CapCut ou no DaVinci Resolve, aprende o estilo de um vídeo editado, faz motion graphics e prepara a publicação.",
   "author": {
     "name": "Criadores do Futuro",
     "email": "co.criadoresdofuturo@gmail.com",
@@ -88,7 +88,7 @@
         "commerce_description": "This plugin does not sell products or process payments. The connector requires an active Criador Estrategista course account."
       },
       "publication": {
-        "release_notes": "Interruptor da Sofia (2.1.0): a pessoa liga e desliga a Sofia com um pedido (\"Sofia, desliga\", \"liga a Sofia\") e escolhe entre sempre ligada, só quando chamada pelo nome e desligada. No Claude Code, o plugin guarda o modo neste computador, num arquivo estado.json na pasta de dados do próprio plugin; desligada, ele nega a skill e as ferramentas do conector e o painel não lê o planejamento no site. Nada vai ao servidor quando a pessoa desliga. No chat do claude.ai não há trava técnica: o modo fica numa nota da memória da conta, quando a memória aceitar a nota, e sem memória o desligar vale só na conversa. Novos atalhos: ligar, desligar, modo e ensinar. No primeiro uso a Sofia se apresenta em poucas linhas, com exemplos de pedido e como desligar, e pergunta se fica sempre ligada ou só quando chamada. Quem não mexe em nada continua com a Sofia ligada, como na 2.0.0. Para voltar ao padrão, apague o estado.json ou diga \"liga a Sofia\"."
+        "release_notes": "Sofia 2.1.1: a descrição do plugin cabe no limite de 500 caracteres do app, e o envio pelo app (Customize › Plugins › Upload) volta a funcionar. Interruptor da Sofia (2.1.0): a pessoa liga e desliga a Sofia com um pedido (\"Sofia, desliga\", \"liga a Sofia\") e escolhe entre sempre ligada, só quando chamada pelo nome e desligada. No Claude Code, o plugin guarda o modo neste computador, num arquivo estado.json na pasta de dados do próprio plugin; desligada, ele nega a skill e as ferramentas do conector e o painel não lê o planejamento no site. Nada vai ao servidor quando a pessoa desliga. No chat do claude.ai não há trava técnica: o modo fica numa nota da memória da conta, quando a memória aceitar a nota, e sem memória o desligar vale só na conversa. Novos atalhos: ligar, desligar, modo e ensinar. No primeiro uso a Sofia se apresenta em poucas linhas, com exemplos de pedido e como desligar, e pergunta se fica sempre ligada ou só quando chamada. Quem não mexe em nada continua com a Sofia ligada, como na 2.0.0. Para voltar ao padrão, apague o estado.json ou diga \"liga a Sofia\"."
       }
     }
   }

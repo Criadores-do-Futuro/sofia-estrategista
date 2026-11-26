@@ -14,9 +14,13 @@ class MarketplaceTest(unittest.TestCase):
         manifests = [json.loads((ROOT / '.claude-plugin/plugin.json').read_text()),
                      json.loads((ROOT / '.codex-plugin/plugin.json').read_text())]
         self.assertEqual(manifests[0]['name'], 'sofia-estrategista')
-        self.assertEqual(manifests[0]['version'], '2.1.0')
+        self.assertEqual(manifests[0]['version'], '2.1.1')
         for campo in ('name', 'version', 'description', 'author'):
             self.assertEqual(manifests[0][campo], manifests[1][campo], campo)
+        # O upload de plugin no app (Customize › Plugins › Upload) recusa descrição com mais de 500
+        # caracteres ("Plugin description must be at most 500 characters"); o `claude plugin validate`
+        # não confere isso.
+        self.assertLessEqual(len(manifests[0]['description']), 500)
         # O conector e o /atualizar mandam rodar `... marketplace update/upgrade criadores-do-futuro`
         # no terminal e no Codex: os dois catálogos têm esse nome.
         self.assertEqual(claude['name'], 'criadores-do-futuro')

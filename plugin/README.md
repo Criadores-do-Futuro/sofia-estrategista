@@ -25,6 +25,11 @@ O mesmo método que escolhe o formato, a estrutura e o hook decide o corte, a im
 | Painel (só no Claude Code) | `hooks/register.tsx`: um painel ao lado da conversa com os cards de cada etapa do planejamento, o @ do perfil e o uso das janelas de 5 horas e de 7 dias do Claude, com quanto falta para zerar. Abre sozinho no início da sessão e pelo comando `/sofia-painel`. É também o interruptor da Sofia neste computador (veja "Ligar, desligar e só quando chamada"). No site, no app de conversa e no Codex, fica parado |
 | Ferramentas | `scripts/` e o pacote Python `beditor/` (medição, pranchas, transcrição, biblioteca, plano editorial, pontes do CapCut e do DaVinci), `schemas/`, `motion/`, os scripts das skills `beditor` e `motion-vox`, o `painel/` de revisão e as fontes livres (OFL) do motion |
 
+## Versão 2.1.1: a descrição cabe no limite do app
+
+- **O que mudou.** A descrição do plugin tinha 518 caracteres desde a 2.0.0, e o app recusava o pacote com "Plugin description must be at most 500 characters". Agora ela tem 423 e cabe no limite, então o envio pelo app (Customize › Plugins › Upload) volta a funcionar. Nada mais mudou no comportamento da Sofia.
+- **O teste.** `tests/test_marketplaces.py` passou a exigir descrição de até 500 caracteres, porque o `claude plugin validate` não confere esse limite.
+
 ## Versão 2.1.0: liga, desliga e só quando chamada
 
 - **O interruptor.** A pessoa liga e desliga a Sofia com um pedido ("Sofia, desliga", "liga a Sofia", "Sofia, só quando eu chamar") e escolhe o modo: `ligada` (o padrão), `so-quando-chamada` (a Sofia só age depois que a pessoa a chama pelo nome) ou `desligada` (o Claude responde sem ela). Quem não mexe em nada continua com a Sofia ligada, como na 2.0.0.
