@@ -33,6 +33,7 @@ O mesmo método que escolhe o formato, a estrutura e o hook decide o corte, a im
 - **O interruptor volta para "ligada" uma vez.** O `estado.json` passou para a pasta de dados do `sofia-painel`. Quem tinha desligado a Sofia ou escolhido "só quando chamada" no Claude Code escolhe de novo, uma vez, depois de instalar o `sofia-painel`.
 - **Sem o `sofia-painel`,** no Cowork e no Claude Code, o interruptor segue o mesmo caminho do chat: a nota na memória (veja "Ligar, desligar e só quando chamada").
 - **O pacote do app** (`scripts/empacotar.sh`) sai sem `hooks/`, e o teste confere.
+- **Dois painéis, nomes parecidos:** `/sofia-painel` é o painel do `sofia-painel`, ao lado da conversa. `/sofia-estrategista:painel` continua aqui e é o painel de revisão da edição (bEditor).
 
 ## Versão 2.1.1: a descrição cabe no limite do app
 

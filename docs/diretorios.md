@@ -10,7 +10,7 @@ O que o repositório já cumpre e o que só o dono da conta pode fazer. Conferid
 |---|---|
 | `plugin.json` válido, nome em minúsculas com hífen | `sofia-estrategista`, versão `2.2.0`; `claude plugin validate --strict --profile directory` passa na pasta do `.zip` |
 | Cabeçalhos de skills, comandos e agentes | YAML válido; skills e comandos só com os campos aceitos no envio, e agentes só com os campos que o Claude Code lê (`tests/test_pacote.py`) |
-| Agentes da equipe da Sofia | sem `tools`, com `disallowedTools` (as ferramentas que gravam ficam fora), para alcançar o conector com qualquer prefixo de nome. Nenhum relato de regra "Verified only" sobre esses campos até 23/11 (issue 7024); o plugin já não é elegível ao Verified pelos hooks, pelo mod e pelos scripts |
+| Agentes da equipe da Sofia | sem `tools`, com `disallowedTools` (as ferramentas que gravam ficam fora), para alcançar o conector com qualquer prefixo de nome. Nenhum relato de regra "Verified only" sobre esses campos até 23/11 (issue 7024); o plugin já não é elegível ao Verified pelos scripts. Desde a 2.2.0 o mod do painel mora no `sofia-painel`, que não vai a diretório |
 | Espelho do método | as peças marcadas como "Cópia da peça" e o `cartas.md` são gerados do conector; `tests/test_equipe.py` confere o sha256 de cada um |
 | Ícone | `assets/icon.png` e `.claude-plugin/icon.png`, 512 × 512, em `icon` (Claude) e em `composerIcon` e `logo` (Codex) |
 | README com 40 palavras ou mais, fora de bloco de código | `plugin/README.md` |

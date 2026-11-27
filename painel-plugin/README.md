@@ -23,6 +23,8 @@ Ele precisa do plugin `sofia-estrategista` (campo `dependencies` do manifesto) e
 
 Os atalhos da Sofia (`/sofia-estrategista:ligar`, `desligar`, `modo` e `ensinar`) também mudam o modo quando este plugin está instalado.
 
+`/sofia-painel` (este painel ao lado da conversa) e `/sofia-estrategista:painel` são coisas diferentes: o segundo é o painel de revisão da edição de vídeo (bEditor), da própria Sofia.
+
 ## O que ele lê, grava e envia
 
 - **Lê e grava um arquivo só:** `estado.json`, na pasta de dados deste plugin (`CLAUDE_PLUGIN_DATA`), neste computador. Ele guarda o modo, se a Sofia já se apresentou (`apresentada`) e quando o modo mudou (`mudouEm`). É lido a cada pedido e só é gravado quando a pessoa muda o modo ou quando a Sofia se apresenta pela primeira vez. Sem o arquivo, ou com ele ilegível, a Sofia fica ligada.
@@ -50,6 +52,7 @@ Este plugin não entra no catálogo do Codex nem no pacote `.zip` do kit: o Code
 
 - `hooks/hooks.json` carrega o módulo `hooks/register.tsx`. A regra do interruptor (funções puras) está em `hooks/interruptor.ts`. O contrato do estado está em `types/index.d.ts`.
 - Testes do mod: `claude plugin test painel-plugin`. Validação: `claude plugin validate --strict painel-plugin`.
+- O `validate` não confere os tipos de um mod que tem `dependencies`. Confira com o `tsc`: carregue o mod uma vez com `claude --plugin-dir` (o Claude Code escreve os tipos em `.claude-plugin/types/`) e rode `tsc -p painel-plugin`, ou use um `tsconfig.json` fora da pasta que inclua o `claude-code.d.ts` da skill `plugin-authoring`, `painel-plugin/hooks` e `painel-plugin/types`.
 - A lista de nomes da Sofia em `interruptor.ts` é conferida contra as pastas de `plugin/skills` e `plugin/commands` por `tests/test_interruptor.py`, na raiz do repositório.
 
 ## Licença

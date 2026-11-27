@@ -465,7 +465,9 @@ async function guardarDoResultado($: EngineInterface, ferramenta: string, r: Too
       return
     }
     const { perfil, etapas } = etapasDaResposta(estruturadoDoResultado(r.result), texto)
-    if (etapas.length === 0) return
+    // Sem etapas e sem perfil, a resposta não deu para ler: o painel fica como estava. Com o perfil, o quadro
+    // está vazio de verdade e o painel mostra 0 cards.
+    if (etapas.length === 0 && !perfil) return
     const lido: Quadro = { situacao: 'ok', perfil: perfil ?? 'sem perfil', etapas, lidoEm: agora, mudouDepois: false }
     await update($, quadro, () => lido)
     // A barra de status é enfeite: uma falha nela (inclusive com a sessão já fechada) não vira erro solto.

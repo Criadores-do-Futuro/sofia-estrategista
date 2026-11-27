@@ -467,6 +467,25 @@ describe('painel', () => {
     await ui.unmount()
   })
 
+  test('quadro vazio de verdade mostra 0 cards; resposta que não dá para ler deixa o painel como estava', async ($, on) => {
+    const m = mundo(on)
+    m.respostas.set(QUADRO_NO_PLUGIN, { result: {}, text: 'Resposta sem quadro.' })
+    await $.tool.call({ tool: QUADRO_NO_PLUGIN } as never)
+    let ui = await $.ui.mount({ ...PAINEL, surface: 'terminal' })
+    expect(await ui.find({ type: 'Text', text: /quando a Sofia ler/ })).toBeTruthy()
+    await ui.unmount()
+
+    m.respostas.set(QUADRO_NO_PLUGIN, {
+      result: { structuredContent: { perfilId: 'p1', perfis: [{ id: 'p1', arroba: 'vazio' }], colunas: [] } },
+      text: '',
+    })
+    await $.tool.call({ tool: QUADRO_NO_PLUGIN } as never)
+    ui = await $.ui.mount({ ...PAINEL, surface: 'terminal' })
+    expect(await ui.find({ type: 'Text', text: /0 cards no quadro/ })).toBeTruthy()
+    expect(await ui.find({ type: 'Text', text: /quando a Sofia ler/ })).toBeFalsy()
+    await ui.unmount()
+  })
+
   test('uma ferramenta que grava no planejamento marca o quadro como mudado; uma de leitura não', async ($, on) => {
     const m = mundo(on)
     m.respostas.set(QUADRO_NO_PLUGIN, { result: {}, text: TEXTO_DO_QUADRO })
