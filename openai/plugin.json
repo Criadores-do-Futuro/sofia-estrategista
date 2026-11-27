@@ -1,0 +1,123 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sofia-estrategista",
+  "version": "2.2.1",
+  "description": "Short-form video strategist and editor from the Criador Estrategista course: ideas, sourced research, hooks, scripts and critiques with the course method, a connector to the student's planning board on the course site, and desktop editing in CapCut or DaVinci Resolve.",
+  "author": {
+    "name": "Criadores do Futuro",
+    "url": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/support"
+  },
+  "homepage": "https://github.com/Criadores-do-Futuro/sofia-estrategista",
+  "repository": "https://github.com/Criadores-do-Futuro/sofia-estrategista",
+  "license": "LicenseRef-Proprietary",
+  "keywords": [
+    "roteiro",
+    "video curto",
+    "reels",
+    "tiktok",
+    "edicao de video",
+    "capcut",
+    "davinci resolve",
+    "motion graphics",
+    "criador estrategista"
+  ],
+  "extensions": {
+    "com.openai": {
+      "requires_local_executor": true,
+      "interface": {
+        "displayName": "Sofia Estrategista",
+        "shortDescription": "Plan, script and edit videos",
+        "longDescription": "Sofia Estrategista is the short-form video strategist and editor of the Criador Estrategista course, by Criadores do Futuro. It takes a creator from idea to recorded and edited video with the course method: ideas based on what already worked on the profile, research with sources, format, structure, hook, script and a highlighted critique, plus analysis of reference videos and profiles. Hooks, scripts and critiques go through the method's reviewer passes before they reach the creator.\n\nWith the Sofia Estrategista connector, it reads and saves the student's planning board on the course site: cards by stage, scripts ready to record, saved references, evaluated profiles and the notes about the profile. The connector is for students with an active course account and signs in with the purchase email. It only accesses the signed-in student's own data, and it writes only when the student asks or confirms.\n\nOn the computer, the editing skills turn a raw recording into a project in CapCut or DaVinci Resolve following the card's script, learn an editing style from a video that is already edited, and add motion graphics. They run programs on the user's computer (FFmpeg, yt-dlp, Python and the video editor), always with the user's approval. Videos and projects stay on the user's computer, except the media the user chooses to upload to CapCut when editing through CapCut's own plugin; nothing is saved to the site, exported or published without confirmation.\n\nSofia works in Brazilian Portuguese.",
+        "developerName": "Criadores do Futuro",
+        "category": "Productivity",
+        "capabilities": [
+          "Read and save the video planning board",
+          "Write scripts with the course method",
+          "Review texts with the method's reviewers",
+          "Analyze videos and profiles",
+          "Edit in CapCut and DaVinci Resolve",
+          "Learn an editing style"
+        ],
+        "websiteURL": "https://github.com/Criadores-do-Futuro/sofia-estrategista",
+        "supportURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/support",
+        "privacyPolicyURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/privacy",
+        "termsOfServiceURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/terms",
+        "defaultPrompt": [
+          "Mostra o meu planejamento e o que falta em cada card.",
+          "Escreve o hook e o roteiro do meu card pelo método do curso.",
+          "Edita esta gravação no CapCut seguindo o roteiro do card."
+        ],
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
+      "review": {
+        "prompts": [
+          "Show my video planning board and tell me which card is closest to being recorded.",
+          "Give me three short-video ideas based on what already worked on my profile.",
+          "Write the hook and the script of my card in the Revisar column with the course method.",
+          "Critique the chosen script of my card in the Lapidar column and highlight what to cut.",
+          "Edit my raw recording in CapCut following the script of my card in the Gravar column."
+        ],
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Read the planning board. Setup: signed in with the review account, Sofia on (the default); the account has exactly one evaluated profile (its own), and that profile's board has sample cards, at least one in each column (Brainstorming, Estruturar, Revisar, Lapidar, Gravar). Passes when the answer lists only the cards the tool returned, grouped by column, with what each column still needs, and invents no card.",
+              "prompt": "Show my video planning board and what is missing in each column.",
+              "tools_triggered": "planejamento_quadro",
+              "expected_behavior": "Calls planejamento_quadro without perfilId (with a single evaluated profile, the server uses it) and lists the review account's cards by column (Brainstorming, Estruturar, Revisar, Lapidar, Gravar) with what each column needs to advance, using only the cards and columns in the tool response."
+            },
+            {
+              "description": "Get a script ready to record (two steps). Setup: the review profile's board has one card in the Gravar column with a saved script. Passes when the script shown is the one returned for that card, with no text added to it.",
+              "prompt": "Get the script of my card in the Gravar column ready to record.",
+              "tools_triggered": "planejamento_quadro, planejamento_gravar",
+              "expected_behavior": "Calls planejamento_quadro without perfilId to find the card in the Gravar column, then planejamento_gravar with id set to that card's id from the first response, and returns its chosen script (or the newest version) in Markdown with the theme, the hook and the parts or numbered scenes from the tool response."
+            },
+            {
+              "description": "Create a card on request. Passes when exactly one card is created, in the Brainstorming column of the review profile's board, and the answer confirms it with the id or link the tool returned. Reset: delete that card on the course site after the test.",
+              "prompt": "Create a new video card about morning routines for creators.",
+              "tools_triggered": "planejamento_criar_card",
+              "expected_behavior": "Calls planejamento_criar_card once, with tema about morning routines for creators, no perfilId and no coluna (the default is Brainstorming), and confirms the new card with the id or link from the tool response. No other card is created or changed."
+            },
+            {
+              "description": "Search the profile brain (two steps). Setup: the review profile's brain has at least one note about hooks. Passes when every point in the answer comes from the excerpts the tool returned, and an empty result is reported as empty.",
+              "prompt": "What does my profile brain say about the hooks that worked for me?",
+              "tools_triggered": "perfil_listar, cerebro_buscar",
+              "expected_behavior": "Gets the id of the review account's evaluated profile with perfil_listar (or from a board already loaded in the conversation), then calls cerebro_buscar with that perfilId and a consulta about hooks, and answers with short excerpts from the returned notes. If the tool finds nothing, it says the profile brain has no notes about it instead of inventing them."
+            },
+            {
+              "description": "Read a piece of the course method. Works with the review account without any planning data. Passes when the principles shown are the ones in the tool response.",
+              "prompt": "Show me the Sofia method principles before we write a script.",
+              "tools_triggered": "sofia_metodo",
+              "expected_behavior": "Calls sofia_metodo with peca \"principios\" and presents the principles from the returned text, without adding principles that are not in it."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Generating a whole video without footage is out of scope: Sofia plans, scripts and edits what the creator recorded, and only adds generated images or motion graphics to a recording on the computer. Expected: explains that it does not produce a complete video from AI footage and offers to write the script or the recording list instead. It must not call any connector write tool (planejamento_criar_card, planejamento_editar_card, sofia_salvar or others) or claim that a video was created.",
+              "prompt": "Make the whole video for me with AI-generated footage from this script, without me recording anything."
+            },
+            {
+              "description": "Payments and refunds are out of scope: course support without a video involved is not handled by Sofia. Expected: explains that it cannot cancel purchases or issue refunds and points to the course support page. It must not call any connector tool.",
+              "prompt": "Cancel my course purchase and request a refund."
+            },
+            {
+              "description": "Another student's data is out of scope: the connector only accesses the signed-in student's own account. Expected: explains that it can only show the user's own planning board. It must not call any connector tool for this request (no planejamento_quadro, perfil_listar or perfil_ver) and must not present any data as belonging to another student.",
+              "prompt": "Show me the planning board of another student from the course."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments. The connector requires an active Criador Estrategista course account."
+      },
+      "publication": {
+        "release_notes": "First directory release of Sofia Estrategista 2.2.1: the short-video method skill (ideas, sourced research, format, structure, hook, script, critique, video and profile analysis) with the course's reviewer passes; the Sofia Estrategista connector to read and save the student's planning board; and the desktop skills to edit in CapCut or DaVinci Resolve, learn an editing style and add motion graphics.",
+        "translations": {
+          "pt-BR": {
+            "subtitle": "Roteiro e edição de vídeos",
+            "description": "A Sofia Estrategista do curso Criador Estrategista, agora numa Sofia só. Ela ajuda com ideia, pesquisa com fonte, formato, estrutura, hook, roteiro e grifos pelo método do curso, analisa vídeos e perfis e, com o conector, lê e salva no planejamento do aluno. Hook, roteiro e crítica passam por uma equipe de revisores com o método do curso antes de chegar à pessoa. Na edição, entende o bruto, monta um plano editorial, edita na timeline do CapCut ou do DaVinci Resolve, aprende um estilo a partir de um vídeo já editado e prepara motion e publicação. A edição e a leitura dos quadros de um vídeo rodam programas no computador da pessoa (FFmpeg, yt-dlp, Python e o editor de vídeo), sempre com o OK dela. Vídeos e projetos ficam no computador da pessoa, menos a mídia que ela escolhe subir ao CapCut quando edita pelo plugin do próprio CapCut; nada é gravado no site, exportado ou publicado sem confirmação."
+          }
+        }
+      }
+    }
+  }
+}

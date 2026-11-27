@@ -20,9 +20,11 @@ Desde a versão 2.0.0 existe uma Sofia só, a `sofia-estrategista@criadores-do-f
 
 Depois de instalar, rode `/sofia-estrategista:setup`: ele confere Python, FFmpeg, Whisper, Node e o resto, e mostra o comando de cada item que falta. Para atualizar: `claude plugin marketplace update criadores-do-futuro` e depois `claude plugin update sofia-estrategista@criadores-do-futuro`, ou a atualização automática do marketplace, ligada em `/plugin`.
 
-## Claude no navegador, no app e no Cowork
+## Claude no navegador, no app, no celular e no Cowork
 
-O `scripts/empacotar.sh` da raiz do repositório gera `dist/sofia-estrategista.zip`, com o plugin inteiro dentro da pasta `sofia-estrategista/` (a forma que o envio aceita: o `.claude-plugin/plugin.json` dentro de uma única pasta no topo do `.zip`). Envie o `.zip` em Personalizar › Plugins › Adicionar › Enviar plugin e conecte na aba Conectores do plugin.
+O caminho preferido é o marketplace: em Customize › Plugins › Add › Add marketplace, cole `Criadores-do-Futuro/sofia-estrategista`, instale a Sofia Estrategista, ligue o Sync automatically e conecte na aba Connectors do plugin. A Sofia fica na conta, recebe as versões novas sozinha e vale nas conversas do site, do app e do celular, no Cowork e no Claude Code que entra com a mesma conta, onde aparece como `sofia-estrategista@synced` ([plataformas](https://claude.com/docs/plugins/platform-support), conferido em 27/11/2026). Na conta Team ou Enterprise, quem é Owner pode precisar adicionar o marketplace em Organization settings › Plugins & skills.
+
+Alternativa com o arquivo, que não se atualiza sozinho: o `scripts/empacotar.sh` da raiz do repositório gera `dist/sofia-estrategista.zip`, com o plugin inteiro dentro da pasta `sofia-estrategista/` (a forma que o envio aceita: o `.claude-plugin/plugin.json` dentro de uma única pasta no topo do `.zip`), e a cópia `.plugin`. Envie em Customize › Plugins › Add › Upload plugin e conecte na aba Connectors do plugin.
 
 Desde a 2.2.0 o pacote não leva mod nem `hooks/`. A página de plataformas do Claude diz que o Cowork carrega skills, comandos, agentes e o MCP remoto de um plugin, e o diretório lista um mod só para o Claude Code; até a 2.1.1, com o mod dentro, o Cowork recusava as skills do plugin e só o conector funcionava. O `empacotar.sh` recusa montar o pacote se `hooks/` voltar.
 
@@ -39,7 +41,9 @@ codex plugin marketplace add Criadores-do-Futuro/sofia-estrategista
 codex plugin add sofia-estrategista@criadores-do-futuro
 ```
 
-Pelo `.zip` do kit, que traz o próprio catálogo (marketplace `sofia-estrategista-local`):
+O app do ChatGPT para Mac e Windows lê o mesmo marketplace: depois do `marketplace add`, reinicie o app e instale a Sofia em Plugins. Para atualizar, `codex plugin marketplace upgrade criadores-do-futuro` e de novo o `codex plugin add`. Testado em 27/11/2026 no Codex CLI 0.171.0 com um `CODEX_HOME` vazio: o marketplace do GitHub instala a versão publicada e o `upgrade` roda.
+
+Alternativa com o arquivo, pelo `.zip` do kit, que traz o próprio catálogo (marketplace `sofia-estrategista-local`). Para a versão nova, troque a pasta pela nova no mesmo lugar e rode de novo o `codex plugin add`: testado em 27/11/2026, ele instala a versão da pasta nova, e o `marketplace upgrade` recusa marketplace local.
 
 ```sh
 unzip sofia-estrategista.zip
@@ -52,7 +56,9 @@ O caminho pelo `.zip` foi testado num perfil limpo do Codex CLI 0.160.0, ainda c
 
 ## ChatGPT e outras ferramentas
 
-ChatGPT na web e no celular, GPTs personalizados e outras IAs não rodam este pacote sozinhos nem herdam conectores de outra sessão. Cada host, o acesso aos arquivos, as ferramentas do editor e o login precisam ser comprovados um por um. Os recursos do CapCut variam por cliente: não prometa edição colaborativa, geração ou legenda automática onde essas operações não existem.
+No ChatGPT, a Sofia é o plugin com o conector, como nos outros apps. Hoje ela entra pelo app do computador (o marketplace do Codex, acima) e pelas contas de empresa ou escola, em que quem administra importa este repositório em Admin › Plugins › Add › Import marketplace e o ChatGPT sincroniza todo dia. No site e no celular de uma conta pessoal, plugin de terceiro só chega pelo diretório público da OpenAI: o pacote está em `openai/` e o passo a passo em `docs/envio-openai.md` do repositório.
+
+GPTs personalizados e outras IAs não rodam este pacote sozinhos nem herdam conectores de outra sessão. Cada host, o acesso aos arquivos, as ferramentas do editor e o login precisam ser comprovados um por um. Os recursos do CapCut variam por cliente: não prometa edição colaborativa, geração ou legenda automática onde essas operações não existem.
 
 ## Dependências e privacidade
 

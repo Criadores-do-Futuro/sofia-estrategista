@@ -8,7 +8,7 @@ O que o repositório já cumpre e o que só o dono da conta pode fazer. Conferid
 
 | Exigência | Como está |
 |---|---|
-| `plugin.json` válido, nome em minúsculas com hífen | `sofia-estrategista`, versão `2.2.0`; `claude plugin validate --strict --profile directory` passa na pasta do `.zip` |
+| `plugin.json` válido, nome em minúsculas com hífen | `sofia-estrategista`, versão `2.2.1`; `claude plugin validate --strict --profile directory` passa na pasta do `.zip` |
 | Cabeçalhos de skills, comandos e agentes | YAML válido; skills e comandos só com os campos aceitos no envio, e agentes só com os campos que o Claude Code lê (`tests/test_pacote.py`) |
 | Agentes da equipe da Sofia | sem `tools`, com `disallowedTools` (as ferramentas que gravam ficam fora), para alcançar o conector com qualquer prefixo de nome. Nenhum relato de regra "Verified only" sobre esses campos até 23/11 (issue 7024); o plugin já não é elegível ao Verified pelos scripts. Desde a 2.2.0 o mod do painel mora no `sofia-painel`, que não vai a diretório |
 | Espelho do método | as peças marcadas como "Cópia da peça" e o `cartas.md` são gerados do conector; `tests/test_equipe.py` confere o sha256 de cada um |
@@ -38,29 +38,11 @@ O que o repositório já cumpre e o que só o dono da conta pode fazer. Conferid
 4. Para publicar, o repositório precisa estar público; depois, **Check for new commits** na página do plugin.
 5. Conferir que o plano e o papel na organização permitem enviar.
 
-## Diretório de plugins da OpenAI (Codex)
+## Diretório de plugins da OpenAI (ChatGPT e Codex)
 
-### Já cumprido no repositório
+Desde 27/11/2026 o envio à OpenAI tem pacote próprio, no formato Agent Plugins: `scripts/empacotar-openai.sh` monta `dist/sofia-estrategista-openai.zip` a partir de `openai/plugin.json`, `openai/mcp.json` e das pastas de `plugin/`, e o `scripts/validar_pacote_openai.py` confere cada regra da página de erros do portal. O passo a passo, o que já está no pacote e o que só o dono faz estão em [envio-openai.md](envio-openai.md).
 
-| Exigência | Como está |
-|---|---|
-| Manifesto `.codex-plugin/plugin.json` | nome, versão `2.2.0`, autor, site, repositório, licença, skills e conector; `name`, `version`, `description` e `author` iguais aos do manifesto do Claude |
-| Ficha da loja | `interface`: nome de exibição, descrições curta e longa, categoria `Productivity`, capacidades, três sugestões de pedido, ícone e logo |
-| Privacidade, termos e suporte | `privacyPolicyURL`, `termsOfServiceURL` e `supportURL` (páginas em inglês) |
-| 5 casos positivos e 3 negativos | `extensions.com.openai.review.test_cases`, com as ferramentas reais do conector |
-| Notas da versão | `extensions.com.openai.publication.release_notes` |
-| Só no computador | `"requires_local_executor": true` no topo do manifesto, como pede a documentação para o formato `.codex-plugin`: a edição e a leitura dos quadros rodam programas na máquina |
-| Conector remoto | http, sem servidor local (servidor MCP local exige parceria aprovada) |
-| Catálogo | `.agents/plugins/marketplace.json` na raiz do repositório, marketplace `criadores-do-futuro`, com o plugin em `./plugin` |
-
-### O que só o dono faz
-
-1. Pedir acesso de envio e verificar a identidade da empresa (Action Criação Digital Ltda) na plataforma da OpenAI.
-2. Criar uma **conta de teste** no curso, com dados de exemplo, sem verificação em duas etapas nem código por e-mail, e informar login e senha em **Review information → Review details**. A conta precisa ter cards no planejamento para os casos de teste.
-3. Rodar os 8 casos de teste com essa conta e **gravar o vídeo de demonstração**; colar o link no portal.
-4. Gerar o ZIP (`scripts/empacotar.sh` gera `dist/sofia-estrategista.zip`) e enviar. O portal da OpenAI não aceita pacote com hooks; desde a 2.2.0 o pacote já sai sem `hooks/` e sem o campo `types`.
-5. Conferir no portal a categoria e os países. A categoria foi escolhida aqui, sem consulta à lista do painel.
-6. Testar a instalação num Codex desktop limpo antes de enviar, como pede a documentação.
+O `.codex-plugin/plugin.json` continua sendo o manifesto do Codex para quem instala pelo marketplace `criadores-do-futuro` ou pelo `.zip` do kit. Os casos de revisão e as notas da versão saíram dele e moram só em `openai/plugin.json`, para não haver duas cópias.
 
 ## Antes de cada envio
 
@@ -73,9 +55,10 @@ claude plugin validate plugin
 claude plugin validate .
 node scripts/conferir-ferramentas.mjs CAMINHO_DO_WEBAPP
 scripts/empacotar.sh
+scripts/empacotar-openai.sh --webapp CAMINHO_DO_WEBAPP --links
 ```
 
-Suba a versão nos dois manifestos (e na entrada do `.claude-plugin/marketplace.json`) e atualize as notas da versão no `.codex-plugin/plugin.json`.
+Suba a versão nos três manifestos (`plugin/.claude-plugin`, `plugin/.codex-plugin` e `openai/plugin.json`) e na entrada do `.claude-plugin/marketplace.json`, e atualize as notas da versão em `openai/plugin.json`.
 
 ## Fontes
 

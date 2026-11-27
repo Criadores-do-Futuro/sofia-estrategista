@@ -2,9 +2,11 @@
 
 A Sofia Estrategista do curso Criador Estrategista, dos Criadores do Futuro: estrategista e editora de vídeo curto, numa Sofia só. O plugin junta o método do curso (ideia, pesquisa com fonte, formato, estrutura, hook, roteiro, grifos, análise de vídeo e de perfil), a equipe de agentes que escreve e confere cada etapa, o conector do planejamento do site e a edição do vídeo gravado no CapCut ou no DaVinci Resolve. O que o plugin faz, para quem usa, está em [plugin/README.md](plugin/README.md).
 
-Este repositório é o marketplace `criadores-do-futuro`, com dois plugins: a `sofia-estrategista` e o `sofia-painel`. A versão atual da Sofia é a **2.2.0**: o painel do Claude Code e o interruptor técnico (um mod) saíram dela e viraram o plugin `sofia-painel` 1.0.0, só do Claude Code ([painel-plugin/README.md](painel-plugin/README.md)). Sem o mod, a Sofia carrega no chat, no Cowork e no Claude Code. A 2.1.1 fez a descrição caber no limite de 500 caracteres do envio pelo app. A 2.1.0 trouxe o interruptor: a Sofia liga e desliga com um pedido e pode agir só quando chamada pelo nome. A 2.0.0 foi a Sofia única: a Sofia Estrategista (`sofia-estrategista`) e a Sofia Estrategista com edição (`sofia-estrategista-editora`) viraram um plugin só, o `sofia-estrategista`.
+Este repositório é o marketplace `criadores-do-futuro`, com dois plugins: a `sofia-estrategista` e o `sofia-painel`. A versão atual da Sofia é a **2.2.1**: o marketplace vira o caminho ensinado em todo app (o arquivo do kit fica como alternativa) e o repositório ganha o pacote de envio ao diretório da OpenAI, em `openai/`. Na 2.2.0, o painel do Claude Code e o interruptor técnico (um mod) saíram dela e viraram o plugin `sofia-painel` 1.0.0, só do Claude Code ([painel-plugin/README.md](painel-plugin/README.md)). Sem o mod, a Sofia carrega no chat, no Cowork e no Claude Code. A 2.1.1 fez a descrição caber no limite de 500 caracteres do envio pelo app. A 2.1.0 trouxe o interruptor: a Sofia liga e desliga com um pedido e pode agir só quando chamada pelo nome. A 2.0.0 foi a Sofia única: a Sofia Estrategista (`sofia-estrategista`) e a Sofia Estrategista com edição (`sofia-estrategista-editora`) viraram um plugin só, o `sofia-estrategista`.
 
 ## Instalar
+
+Pelo marketplace, em todo app: é o caminho que recebe as versões novas. O arquivo da página Conector do site fica como alternativa, para quem não conseguir pelo marketplace.
 
 **Claude Code**
 
@@ -16,14 +18,17 @@ claude plugin install sofia-painel@criadores-do-futuro   # opcional: o painel e 
 
 Depois, `/reload-plugins` (ou uma sessão nova) e `/mcp` para entrar no conector com o e-mail do curso. Para as próximas versões chegarem sozinhas, digite `/plugin`, abra a aba Marketplaces, escolha `criadores-do-futuro` e ligue a atualização automática.
 
-**Claude no site ou no app de computador:** adicione o marketplace `Criadores-do-Futuro/sofia-estrategista` em Personalizar › Plugins, instale a Sofia Estrategista, ligue a sincronização automática do marketplace e conecte o conector na aba Conectores do plugin. O passo a passo com imagens está na página Conector do site do curso.
+**Claude no site, no app de computador, no celular e no Cowork:** adicione o marketplace `Criadores-do-Futuro/sofia-estrategista` em Personalizar › Plugins, instale a Sofia Estrategista, ligue a sincronização automática do marketplace e conecte o conector na aba Conectores do plugin. A Sofia fica na conta e chega também ao Claude Code que entra com a mesma conta. O passo a passo está na página Conector do site do curso.
 
-**Codex**
+**Codex e app do ChatGPT no computador**
 
 ```bash
 codex plugin marketplace add Criadores-do-Futuro/sofia-estrategista
 codex plugin add sofia-estrategista@criadores-do-futuro
+codex mcp login sofia-estrategista
 ```
+
+O app do ChatGPT para Mac e Windows lê o mesmo marketplace: reinicie o app e instale a Sofia em Plugins. No ChatGPT de empresa ou escola, quem administra importa este repositório em Admin › Plugins › Add › Import marketplace. O envio ao diretório da OpenAI, para o site e o celular de conta pessoal, está em [docs/envio-openai.md](docs/envio-openai.md).
 
 ## Já tem uma Sofia instalada?
 
@@ -66,18 +71,21 @@ Quem já tem o `sofia-painel`: `claude plugin update sofia-painel@criadores-do-f
 | `.claude-plugin/marketplace.json` | O catálogo `criadores-do-futuro`, com os dois plugins, para instalar pelo Claude Code direto deste repositório |
 | `.agents/plugins/marketplace.json` | O catálogo do Codex, com o mesmo nome e só a `sofia-estrategista` (o Codex não roda mod) |
 | `scripts/empacotar.sh` | Monta `dist/sofia-estrategista.zip` (o plugin numa pasta, para enviar no Claude e instalar no Codex), a cópia `dist/sofia-estrategista.plugin` e `dist/sofia-estrategista.skill` (só a skill) |
+| `openai/` | O `plugin.json` (formato Agent Plugins, com a ficha, os casos de revisão, as notas da versão e a tradução) e o `mcp.json` (o conector com o OAuth) do pacote de envio ao diretório da OpenAI |
+| `scripts/empacotar-openai.sh` | Monta `dist/sofia-estrategista-openai.zip`, o pacote de envio ao diretório da OpenAI, e confere com o `scripts/validar_pacote_openai.py` (o passo a passo do portal está em `docs/envio-openai.md`) |
 | `scripts/conferir-ferramentas.mjs` | Confere se toda ferramenta citada no plugin existe no conector |
 | `tests/` | Os testes do plugin (pacote, equipe, catálogos, scripts de análise, pontes dos editores, motion). Ficam fora do pacote. Os testes do bEditor ficam em `plugin/skills/beditor/tests/`. Os do mod (`painel-plugin/hooks/*.test.ts`) ficam dentro do `sofia-painel`, porque o `claude plugin test` só os acha ali: quem instala o `sofia-painel` recebe os dois arquivos junto (são inertes: o mod não os carrega) |
 | `docs/desenho.md` | Por que o plugin é assim: regras, escolhas e o que fica para depois |
 | `docs/diretorios.md` | O que falta para enviar aos diretórios da Anthropic e da OpenAI |
+| `docs/envio-openai.md` | O envio ao diretório da OpenAI (ChatGPT e Codex), passo a passo no portal |
 
 ## Antes de cada versão
 
 1. `claude plugin validate plugin`, `claude plugin validate --strict painel-plugin` e `claude plugin validate .` sem erro, e `claude plugin test painel-plugin` (os testes do mod) sem falha.
 2. `node scripts/conferir-ferramentas.mjs <pasta-do-webapp>` sem ferramenta faltando, com a pasta do webapp na `main` (é a `main` que está no ar). O script não confere os campos de cada ferramenta: confira à mão os que o plugin cita, como `nasceuDe`, `pediuCorte` e `escolhidoPeloAluno`.
 3. `python3 -m unittest discover -s tests` sem falha. Com `SOFIA_WEBAPP=<pasta-do-webapp>`, a lista de ferramentas do teste também é comparada com o servidor. Os do bEditor: `cd plugin/skills/beditor && python3 -m unittest discover -s tests`.
-4. Suba a versão em `plugin/.claude-plugin/plugin.json`, em `plugin/.codex-plugin/plugin.json` (com as notas da versão), na entrada do `.claude-plugin/marketplace.json` e na seção "Versão e atualização" da skill ("Esta é a versão X.Y.Z": o conector compara esse texto). Mudou o `sofia-painel`? Suba a versão em `painel-plugin/.claude-plugin/plugin.json` e na entrada dele no catálogo.
-5. `bash scripts/empacotar.sh` e copie os arquivos de `dist/` para `public/kit/` do webapp.
+4. Suba a versão em `plugin/.claude-plugin/plugin.json`, em `plugin/.codex-plugin/plugin.json`, em `openai/plugin.json` (com as notas da versão em `publication.release_notes`), na entrada do `.claude-plugin/marketplace.json` e na seção "Versão e atualização" da skill ("Esta é a versão X.Y.Z": o conector compara esse texto). Mudou o `sofia-painel`? Suba a versão em `painel-plugin/.claude-plugin/plugin.json` e na entrada dele no catálogo.
+5. `bash scripts/empacotar.sh` e copie os arquivos de `dist/` para `public/kit/` do webapp. Para o diretório da OpenAI, rode depois `bash scripts/empacotar-openai.sh` (o `empacotar.sh` limpa a pasta `dist/`) e siga `docs/envio-openai.md`.
 
 As referências marcadas como "Cópia da peça" e o `cartas.md` (em `plugin/skills/sofia-estrategista/references/`) não se editam aqui: mude a peça no webapp e rode, nele, `npx tsx scripts/exportar-referencias.mts CAMINHO_DESTE_REPOSITORIO/plugin`. O mesmo comando reescreve a linha `disallowedTools` de cada agente da equipe com as ferramentas do conector que gravam (a trava). O `tests/test_equipe.py` acusa arquivo do espelho mudado à mão e agente sem a trava completa.
 
