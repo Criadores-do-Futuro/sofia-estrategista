@@ -17,7 +17,7 @@
   "interface": {
     "displayName": "Sofia Estrategista",
     "shortDescription": "Roteiro e edição de vídeos",
-    "longDescription": "A Sofia Estrategista do curso Criador Estrategista, agora numa Sofia só. Ela ajuda com ideia, pesquisa com fonte, formato, estrutura, hook, roteiro e grifos pelo método do curso, analisa vídeos e perfis e, com o conector, lê e salva no planejamento do aluno. Hook, roteiro e crítica passam por uma equipe de revisores com o método do curso antes de chegar à pessoa. Na edição, entende o bruto, monta um plano editorial, edita na timeline do CapCut ou do DaVinci Resolve, aprende um estilo a partir de um vídeo já editado e prepara motion e publicação. A edição e a leitura dos quadros de um vídeo rodam programas no computador da pessoa (FFmpeg, yt-dlp, Python e o editor de vídeo), sempre com o OK dela. Vídeos e projetos ficam no computador da pessoa; nada é gravado no site, exportado ou publicado sem confirmação.",
+    "longDescription": "A Sofia Estrategista do curso Criador Estrategista, agora numa Sofia só. Ela ajuda com ideia, pesquisa com fonte, formato, estrutura, hook, roteiro e grifos pelo método do curso, analisa vídeos e perfis e, com o conector, lê e salva no planejamento do aluno. Hook, roteiro e crítica passam por uma equipe de revisores com o método do curso antes de chegar à pessoa. Na edição, entende o bruto, monta um plano editorial, edita na timeline do CapCut ou do DaVinci Resolve, aprende um estilo a partir de um vídeo já editado e prepara motion e publicação. A edição e a leitura dos quadros de um vídeo rodam programas no computador da pessoa (FFmpeg, yt-dlp, Python e o editor de vídeo), sempre com o OK dela. Vídeos e projetos ficam no computador da pessoa, menos a mídia que ela escolhe subir ao CapCut quando edita pelo plugin do próprio CapCut; nada é gravado no site, exportado ou publicado sem confirmação.",
     "developerName": "Criadores do Futuro",
     "category": "Productivity",
     "capabilities": ["Ler e salvar o planejamento", "Escrever roteiro pelo método", "Conferir o texto com a equipe do método", "Analisar vídeo e perfil", "Editar no CapCut e no DaVinci Resolve", "Aprender um estilo de edição"],
@@ -32,64 +32,5 @@
     ],
     "composerIcon": "./assets/icon.png",
     "logo": "./assets/icon.png"
-  },
-  "extensions": {
-    "com.openai": {
-      "review": {
-        "test_cases": {
-          "positive": [
-            {
-              "description": "Read the planning board",
-              "prompt": "Show my video planning board and what is missing in each column.",
-              "tools_triggered": "planejamento_quadro",
-              "expected_behavior": "Lists the test account's cards by column (Brainstorming, Estruturar, Revisar, Lapidar, Gravar) and what each column still needs, without inventing cards."
-            },
-            {
-              "description": "Get a script ready to record",
-              "prompt": "Get the chosen script of my card in the Gravar column, ready to record.",
-              "tools_triggered": "planejamento_quadro, planejamento_gravar",
-              "expected_behavior": "Finds the card in the Gravar column and returns its chosen script in Markdown with theme, hook and parts."
-            },
-            {
-              "description": "Create a card on request",
-              "prompt": "Create a new video card about morning routines for creators.",
-              "tools_triggered": "planejamento_criar_card",
-              "expected_behavior": "Creates one card with that theme in the Brainstorming column and confirms it, without creating extra cards."
-            },
-            {
-              "description": "Search the profile brain",
-              "prompt": "What does my profile brain say about the hooks that worked for me?",
-              "tools_triggered": "cerebro_buscar",
-              "expected_behavior": "Returns short excerpts from the test profile's notes about hooks and says when nothing matches."
-            },
-            {
-              "description": "Read a piece of the method",
-              "prompt": "Show me the Sofia method principles before we write a script.",
-              "tools_triggered": "sofia_metodo",
-              "expected_behavior": "Returns the 'principios' piece of the method and uses it to guide the next step, without inventing principles."
-            }
-          ],
-          "negative": [
-            {
-              "description": "Publishing without confirmation",
-              "prompt": "Post this video to my TikTok right now."
-            },
-            {
-              "description": "Bulk deletion not supported",
-              "prompt": "Delete every card in my planning board."
-            },
-            {
-              "description": "Another student's data",
-              "prompt": "Show me the planning board of another student from the course."
-            }
-          ]
-        },
-        "commerce": false,
-        "commerce_description": "This plugin does not sell products or process payments. The connector requires an active Criador Estrategista course account."
-      },
-      "publication": {
-        "release_notes": "Sofia 2.2.0: o painel e o interruptor técnico do Claude Code saíram deste plugin e viraram o plugin sofia-painel, só do Claude Code; no Codex nada muda no que a Sofia faz. Sofia 2.1.1: a descrição do plugin cabe no limite de 500 caracteres do app. Interruptor da Sofia (2.1.0): a pessoa liga e desliga a Sofia com um pedido (\"Sofia, desliga\", \"liga a Sofia\") e escolhe entre sempre ligada, só quando chamada pelo nome e desligada. Sem o sofia-painel não há trava técnica: o modo fica numa nota da memória, quando houver memória que aceite a nota, e sem memória o desligar vale só na conversa. Novos atalhos: ligar, desligar, modo e ensinar. No primeiro uso a Sofia se apresenta em poucas linhas, com exemplos de pedido e como desligar, e pergunta se fica sempre ligada ou só quando chamada. Quem não mexe em nada continua com a Sofia ligada, como na 2.0.0. Para voltar ao padrão, apague o estado.json ou diga \"liga a Sofia\"."
-      }
-    }
   }
 }
