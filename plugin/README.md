@@ -22,8 +22,18 @@ O mesmo método que escolhe o formato, a estrutura e o hook decide o corte, a im
 | Equipe da Sofia (agentes no Claude Code e no Cowork) | quem escreve: `estrategista-de-ideias`, `especialista-em-bolha`, `pesquisador`, `redator-de-hook` e `roteirista`; quem confere: `revisor-o-que-nao-fazer`, `revisor-de-hook`, `revisor-de-voz`, `revisor-de-estrutura`, `revisor-de-fatos`, `especialista-em-bolha` e `critico`. Cada um busca no conector o briefing do seu papel |
 | Ajudantes da edição (Claude Code e Cowork) | `analista-de-edicao` (lê as pranchas de quadros de uma referência), `diretor` (guia de edição de um take), `enriquecedor` (confere os fatos marcados no guia) e `analista-de-estilo` (lê as folhas de contato de um estilo de motion) |
 | Conector | Sofia Estrategista, em `.mcp.json` |
-| Painel (só no Claude Code) | `hooks/register.tsx`: um painel ao lado da conversa com os cards de cada etapa do planejamento, o @ do perfil e o uso das janelas de 5 horas e de 7 dias do Claude, com quanto falta para zerar. Abre sozinho no início da sessão e pelo comando `/sofia-painel`. É também o interruptor da Sofia neste computador (veja "Ligar, desligar e só quando chamada"). No site, no app de conversa e no Codex, fica parado |
+| Painel e interruptor técnico (só no Claude Code) | Desde a 2.2.0 ficam num plugin à parte, o `sofia-painel`, do mesmo marketplace: um painel ao lado da conversa com os cards de cada etapa e o uso das janelas de 5 horas e de 7 dias do Claude, e o interruptor que guarda o modo da Sofia neste computador. Veja "Versão 2.2.0" e o README em `painel-plugin/` no repositório |
 | Ferramentas | `scripts/` e o pacote Python `beditor/` (medição, pranchas, transcrição, biblioteca, plano editorial, pontes do CapCut e do DaVinci), `schemas/`, `motion/`, os scripts das skills `beditor` e `motion-vox`, o `painel/` de revisão e as fontes livres (OFL) do motion |
+
+## Versão 2.2.0: o painel vira um plugin à parte
+
+- **O que mudou.** O painel do Claude Code e o interruptor técnico (o mod em `hooks/register.tsx`) saíram deste plugin e viraram o plugin `sofia-painel` 1.0.0, no mesmo marketplace `criadores-do-futuro`. A Sofia Estrategista não traz mais `hooks/` nem `types/`.
+- **Por quê.** Mod só roda no Claude Code (terminal, aba Code do app e extensões de IDE). O Cowork recusava o plugin inteiro por causa dele ("this plugin entry is off here"), e só o conector funcionava. Sem o mod, a Sofia carrega no chat, no Cowork e no Claude Code com as skills, os atalhos, os agentes e o conector.
+- **No Claude Code, para manter o painel:** instale também o `sofia-painel` (`claude plugin install sofia-painel@criadores-do-futuro`). Ele depende da `sofia-estrategista` e não traz uma segunda cópia do conector: aprende o quadro com as leituras que a Sofia já faz (`planejamento_quadro`). Sem leitura ainda, o painel diz que os cards aparecem quando a Sofia ler o planejamento.
+- **O interruptor volta para "ligada" uma vez.** O `estado.json` passou para a pasta de dados do `sofia-painel`. Quem tinha desligado a Sofia ou escolhido "só quando chamada" no Claude Code escolhe de novo, uma vez, depois de instalar o `sofia-painel`.
+- **Sem o `sofia-painel`,** no Cowork e no Claude Code, o interruptor segue o mesmo caminho do chat: a nota na memória (veja "Ligar, desligar e só quando chamada").
+- **O pacote do app** (`scripts/empacotar.sh`) sai sem `hooks/`, e o teste confere.
+- **Dois painéis, nomes parecidos:** `/sofia-painel` é o painel do `sofia-painel`, ao lado da conversa. `/sofia-estrategista:painel` continua aqui e é o painel de revisão da edição (bEditor).
 
 ## Versão 2.1.1: a descrição cabe no limite do app
 
@@ -39,18 +49,12 @@ O mesmo método que escolhe o formato, a estrutura e o hook decide o corte, a im
 
 ## Ligar, desligar e só quando chamada
 
-**No Claude Code**, o painel (`hooks/register.tsx`) é também o interruptor, e é ele que guarda o modo:
+**No Claude Code com o plugin `sofia-painel`**, o painel é também o interruptor, e é ele que guarda o modo neste computador: lê e grava o `estado.json` na pasta de dados do `sofia-painel`, põe no contexto de cada pedido a linha `Interruptor local: <modo>.` e, quando o modo manda, nega a skill da Sofia e as ferramentas do conector. O que ele lê e grava, e por quê, está no README do `sofia-painel` (`painel-plugin/README.md` no repositório).
 
-- **O que o gancho lê e grava:** um arquivo só, o `estado.json`, na pasta de dados do próprio plugin (`CLAUDE_PLUGIN_DATA`), neste computador. Ele guarda o modo (`ligada`, `so-quando-chamada` ou `desligada`), se a Sofia já se apresentou (`apresentada`) e quando o modo mudou (`mudouEm`). Só é gravado quando a pessoa muda o modo ou quando a Sofia se apresenta pela primeira vez. Sem o arquivo, ou com ele ilegível, a Sofia fica ligada.
-- **O que ele faz com isso:** põe no contexto de cada pedido a linha `Interruptor local: <modo>.` e, quando o modo manda, nega a skill da Sofia e as ferramentas do conector Sofia Estrategista. Com a Sofia desligada, o painel também não lê o quadro de cards no conector.
-- **As marcas da sessão:** além do `estado.json`, o gancho guarda algumas marcas por sessão no armazenamento local do Claude Code: se a Sofia foi chamada pelo nome, se ela ofereceu ligar, se o modelo pode trocar o modo e se ela perguntou o modo (e se a linha do primeiro uso já veio na sessão). Elas valem só a sessão em curso e ficam neste computador.
-- **Nada vai ao servidor ao desligar.** O modo e as marcas não são enviados ao conector nem a nenhum outro serviço.
 - **Desligada, chamar a Sofia faz uma oferta.** Se a pessoa fala com a Sofia desligada, ela responde só "Estou desligada aqui. Quer que eu ligue?" e liga só com o sim da pessoa ("sim", "pode", "Sofia, sim"). Um "não", ou qualquer outra resposta, não liga e não repete a oferta.
-- **Cada computador tem o seu:** o modo vale para este computador, em todos os projetos. Em outro computador, ou no chat, é outro interruptor.
+- **Cada computador tem o seu:** com o `sofia-painel`, o modo vale para este computador, em todos os projetos. Em outro computador, ou no chat, é outro interruptor.
 
-**No Cowork:** ainda não testado.
-
-**No chat do claude.ai** (navegador, app e telefone) não há trava técnica: quem segue a regra é o Claude, pela nota na memória da conta (`Sofia Estrategista: desligada no chat. Para ligar, dizer "liga a Sofia".` ou `Sofia Estrategista: só quando chamada pelo nome.`), quando a memória aceitar a nota. A Sofia guarda e apaga a nota com a ferramenta de memória do próprio chat. Sem memória, o desligar vale só na conversa. Dentro de um Projeto, a memória pode ser separada. A regra completa, para quem escreve a Sofia, está em `skills/sofia-estrategista/references/interruptor.md`.
+**No chat do claude.ai** (navegador, app e telefone), **no Cowork e no Claude Code sem o `sofia-painel`** não há trava técnica: quem segue a regra é o Claude, pela nota na memória (`Sofia Estrategista: desligada no chat. Para ligar, dizer "liga a Sofia".` ou `Sofia Estrategista: só quando chamada pelo nome.`), quando houver memória que aceite a nota. Sem memória, o desligar vale só na conversa. Dentro de um Projeto, a memória pode ser separada. A regra completa, para quem escreve a Sofia, está em `skills/sofia-estrategista/references/interruptor.md`.
 
 **Os comandos:**
 
@@ -61,7 +65,7 @@ O mesmo método que escolhe o formato, a estrutura e o hook decide o corte, a im
 | `modo` | Sem argumento, diz qual modo vale e mostra os três. Com `ligada`, `so-quando-chamada` ou `desligada`, troca o modo |
 | `ensinar` | Mostra de novo o tutorial (o que a Sofia faz, exemplos, onde ficam os cards, como ligar e desligar), mesmo desligada, sem mudar o modo |
 
-No painel do Claude Code, os mesmos comandos existem sem o prefixo: `/sofia-ligar`, `/sofia-desligar`, `/sofia-modo` e `/sofia-ensinar`.
+Com o `sofia-painel` instalado no Claude Code, os mesmos comandos existem sem o prefixo: `/sofia-ligar`, `/sofia-desligar`, `/sofia-modo` e `/sofia-ensinar`, além de `/sofia-painel`.
 
 ## Versão 2.0.0: uma Sofia só
 
@@ -104,6 +108,7 @@ Ideia, hook, roteiro, ajuste e crítica não são escritos e conferidos numa pas
 ```sh
 claude plugin marketplace add Criadores-do-Futuro/sofia-estrategista
 claude plugin install sofia-estrategista@criadores-do-futuro
+claude plugin install sofia-painel@criadores-do-futuro   # opcional: o painel e o interruptor, só no Claude Code
 ```
 
 Depois, `/reload-plugins` (ou uma sessão nova) e `/mcp` para entrar no conector Sofia Estrategista com o e-mail do curso. Para as versões novas chegarem sozinhas, ligue a atualização automática do marketplace `criadores-do-futuro` em `/plugin`, na aba dos marketplaces. Para testar um checkout: `claude --plugin-dir "CAMINHO_DO_REPOSITORIO/plugin"`.
@@ -112,7 +117,7 @@ Depois, `/reload-plugins` (ou uma sessão nova) e `/mcp` para entrar no conector
 
 **Claude no navegador ou no app**
 
-O `.zip` da página Kit do site traz o plugin dentro da pasta `sofia-estrategista/` (o `scripts/empacotar.sh` do repositório gera esse arquivo). Envie o `.zip` em Personalizar › Plugins › Adicionar › Enviar plugin e conecte o conector na aba Conectores do plugin. O método e o conector funcionam ali. A edição precisa de um computador com Python, FFmpeg e o editor aberto, então depende do que o host oferece.
+O `.zip` da página Kit do site traz o plugin dentro da pasta `sofia-estrategista/` (o `scripts/empacotar.sh` do repositório gera esse arquivo). Envie o `.zip` em Personalizar › Plugins › Adicionar › Enviar plugin e conecte o conector na aba Conectores do plugin. O método e o conector funcionam ali. Desde a 2.2.0 o pacote não traz mod, então no Cowork a Sofia carrega com as skills, os atalhos e os agentes, além do conector. A edição precisa de um computador com Python, FFmpeg e o editor aberto, então depende do que o host oferece.
 
 **Codex**
 
@@ -175,7 +180,7 @@ Os testes, o empacotamento e o envio aos diretórios ficam na raiz do repositór
 
 **Lê no computador**, só quando a pessoa roda: `custos.py` e `painel/telemetria.py` leem os registros de sessão do Claude Code (`~/.claude/projects`) para somar tokens e tempo por etapa. O resultado fica num arquivo local.
 
-**Lê e grava no computador, pelo painel do Claude Code:** o `estado.json` do interruptor, na pasta de dados do próprio plugin (`CLAUDE_PLUGIN_DATA`): o modo da Sofia, se ela já se apresentou e quando o modo mudou. O gancho lê esse arquivo a cada pedido e só o grava quando a pessoa muda o modo ou na primeira apresentação. Ele não vai a lugar nenhum: ligar ou desligar a Sofia não manda nada ao servidor.
+**O interruptor técnico e o painel** não estão neste plugin desde a 2.2.0: são o plugin `sofia-painel`, que diz no próprio README o que lê e grava.
 
 Nada é enviado para a Criadores do Futuro além do que passa pelo conector. Não há telemetria.
 

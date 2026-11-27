@@ -3,16 +3,22 @@
   "owner": {
     "name": "Criadores do Futuro"
   },
-  "description": "Plugins do curso Criador Estrategista, dos Criadores do Futuro: a Sofia Estrategista, com o método, o conector e a edição de vídeo.",
+  "description": "Plugins do curso Criador Estrategista, dos Criadores do Futuro: a Sofia Estrategista, com o método, o conector e a edição de vídeo, e o painel dela no Claude Code.",
   "metadata": {
-    "description": "Plugins do curso Criador Estrategista, dos Criadores do Futuro: a Sofia Estrategista, com o método, o conector e a edição de vídeo."
+    "description": "Plugins do curso Criador Estrategista, dos Criadores do Futuro: a Sofia Estrategista, com o método, o conector e a edição de vídeo, e o painel dela no Claude Code."
   },
   "plugins": [
     {
       "name": "sofia-estrategista",
       "source": "./plugin",
-      "version": "2.1.1",
+      "version": "2.2.0",
       "description": "Estrategista e editora de vídeo curto do curso Criador Estrategista, numa Sofia só: o método do curso com a equipe de revisores, o conector do planejamento do site e a edição na timeline do CapCut ou do DaVinci Resolve."
+    },
+    {
+      "name": "sofia-painel",
+      "source": "./painel-plugin",
+      "version": "1.0.0",
+      "description": "O painel e o interruptor da Sofia Estrategista no Claude Code: os cards por etapa, o uso das janelas de 5 horas e de 7 dias, e os comandos para ligar e desligar a Sofia neste computador. Precisa da sofia-estrategista."
     }
   ]
 }

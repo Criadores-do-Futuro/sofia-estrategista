@@ -1,0 +1,4 @@
+.DS_Store
+node_modules/
+# Tipos que o Claude Code escreve ao carregar o mod (hooks/register.tsx)
+.claude-plugin/types/

@@ -83,8 +83,6 @@ estilo.json
 
 # Pacotes gerados por scripts/empacotar.sh
 dist/
-# Tipos que o Claude Code escreve ao carregar o painel (hooks/register.tsx)
-.claude-plugin/types/
 
 # bEditor: material de terceiros do treinamento nunca entra (só ESTILO.md e medicoes.json)
 treinamento/**/videos/

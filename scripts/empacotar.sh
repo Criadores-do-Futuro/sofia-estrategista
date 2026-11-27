@@ -10,7 +10,7 @@
 #                                   ChatGPT e para quem instala só a skill.
 #
 # Entram só as pastas e arquivos que o plugin usa; testes, caches, dependências instaladas e dados locais
-# ficam de fora. Os catálogos de marketplace moram na raiz do repositório, fora de plugin/, e não entram.
+# ficam de fora. O plugin sofia-painel (painel-plugin/, só do Claude Code) não entra. Os catálogos de marketplace moram na raiz do repositório, fora de plugin/, e não entram.
 # Antes de fechar o .zip, a pasta montada passa pelo `claude plugin validate`, quando ele está instalado.
 set -euo pipefail
 
@@ -24,8 +24,6 @@ ITENS=(
   .codex-plugin
   .mcp.json
   assets
-  hooks
-  types
   skills
   commands
   agents
@@ -44,8 +42,8 @@ ITENS=(
 )
 
 FORA=(
-  '*.DS_Store' '.claude-plugin/types/*'
-  '*/__pycache__/*' '*.pyc' '*/node_modules/*' 'hooks/*.test.ts'
+  '*.DS_Store'
+  '*/__pycache__/*' '*.pyc' '*/node_modules/*'
   'skills/*/tests/*' 'painel/index.html' 'painel/estado.json' 'painel/telemetria.json'
   'painel/revisao.json' 'painel/revisao/*' 'painel/previa/*' 'docs/superpowers/*'
   'treinamento/*/videos/*' 'treinamento/*/folhas/*' 'treinamento/*/raw_frames/*'
@@ -83,6 +81,12 @@ cat > "$MONTAGEM/$PASTA/.agents/plugins/marketplace.json" <<'JSON'
 JSON
 
 # 2. Confere a pasta exatamente como ela vai dentro do .zip.
+# Desde a 2.2.0 o pacote não leva mod nem hook: o Cowork recusa o plugin inteiro quando há mod, e o painel
+# do Claude Code é o plugin sofia-painel (painel-plugin/), que não entra neste pacote.
+if [ -e "$MONTAGEM/$PASTA/hooks" ] || [ -e "$MONTAGEM/$PASTA/types" ]; then
+  echo "O pacote não pode levar hooks/ nem types/: o painel é o plugin sofia-painel." >&2
+  exit 1
+fi
 # O envio de plugin do Claude recusa o .zip inteiro quando um caminho tem caractere fora de
 # letra sem acento, número, ponto, hífen e sublinhado ("Zip file contains path with invalid
 # characters"). Fonte variável baixada do Google Fonts vem como Nome[wght].ttf: renomeie antes.

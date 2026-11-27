@@ -1,10 +1,13 @@
 /** Uma etapa do quadro: o nome da coluna e quantos cards ela tem. */
 export type Etapa = { rotulo: string; total: number }
 
-/** O quadro lido do conector, ou o motivo de não ter lido. */
+/**
+ * O quadro que a Sofia leu por último com planejamento_quadro, ou o motivo de a leitura não ter dado certo.
+ * `mudouDepois`: uma ferramenta do planejamento mudou o quadro depois desta leitura.
+ */
 export type Quadro =
-  | { situacao: 'ok'; perfil: string; etapas: Etapa[]; lidoEm: number }
-  | { situacao: 'sem-conector'; motivo: string; lidoEm: number }
+  | { situacao: 'ok'; perfil: string; etapas: Etapa[]; lidoEm: number; mudouDepois: boolean }
+  | { situacao: 'sem-leitura'; motivo: string; lidoEm: number }
 
 /** Uma janela de uso do Claude: 5 horas ou 7 dias. */
 export type Janela = { tipo: string; usado: number; zeraEm?: number }
@@ -14,7 +17,8 @@ export type ModoDoInterruptor = 'ligada' | 'so-quando-chamada' | 'desligada'
 
 declare module 'claude-code' {
   interface PluginState {
-    'sofia-estrategista': {
+    'sofia-painel': {
+      /** null até a Sofia ler o planejamento nesta sessão. */
       quadro: Shaped<Quadro | null>
       janelas: Shaped<Janela[]>
       /** O modo lido de estado.json por último: o painel desenha a partir dele. */

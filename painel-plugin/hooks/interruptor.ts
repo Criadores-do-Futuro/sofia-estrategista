@@ -20,8 +20,9 @@ const PREFIXO_DO_CONECTOR_NO_PLUGIN = 'mcp__plugin_sofia-estrategista_sofia-estr
 const PREFIXO_DO_CONECTOR_NO_SITE = 'mcp__claude_ai_Sofia_Estrategista__'
 
 /**
- * Os nomes (sem prefixo) das skills e dos comandos do plugin: as pastas de plugin/skills e os arquivos de
- * plugin/commands. Com o prefixo `sofia-estrategista:` qualquer um deles é da Sofia. Sem o prefixo, só as
+ * Os nomes (sem prefixo) das skills e dos comandos do plugin sofia-estrategista: as pastas de plugin/skills e
+ * os arquivos de plugin/commands, neste repositório. Com o prefixo `sofia-estrategista:` qualquer um deles é
+ * da Sofia. Sem o prefixo, só as
  * quatro skills de verdade (NOMES_SEM_PREFIXO): um comando solto como "plano" ou "painel" pode ser de outro
  * plugin. tests/test_interruptor.py confere a lista contra as pastas e roda no
  * `python3 -m unittest discover -s tests`.

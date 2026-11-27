@@ -14,6 +14,8 @@ claude plugin install sofia-estrategista@criadores-do-futuro
 Depois, `/mcp` para entrar no conector Sofia Estrategista. Para desenvolver, carregue um checkout confiável com `claude --plugin-dir CAMINHO_DO_REPOSITORIO/plugin`. Confira o manifesto com `claude plugin validate plugin` e o catálogo com `claude plugin validate .`, os dois na raiz do repositório.
 [Documentação oficial dos marketplaces do Claude](https://code.claude.com/docs/en/plugin-marketplaces).
 
+O painel ao lado da conversa e o interruptor técnico são, desde a 2.2.0, o plugin `sofia-painel`, do mesmo marketplace: `claude plugin install sofia-painel@criadores-do-futuro`. Ele é um mod, que só roda no Claude Code, e depende da `sofia-estrategista`. Para desenvolver os dois juntos: `claude --plugin-dir CAMINHO_DO_REPOSITORIO/plugin --plugin-dir CAMINHO_DO_REPOSITORIO/painel-plugin`.
+
 Desde a versão 2.0.0 existe uma Sofia só, a `sofia-estrategista@criadores-do-futuro`. Se a `sofia-estrategista-editora`, ou a `sofia-estrategista` de outro marketplace, também estiver instalada, as skills `sofia-estrategista` aparecem repetidas: troque pelo prompt de migração do README do repositório, que desinstala a antiga. O mesmo vale para o plugin `beditor` antigo: este já traz as skills `beditor` e `motion-vox`, os ajudantes `diretor`, `enriquecedor` e `analista-de-estilo` e os atalhos, agora como `/sofia-estrategista:...` (`aprender` virou `aprender-motion` e `analise` virou `editar-analise`).
 
 Depois de instalar, rode `/sofia-estrategista:setup`: ele confere Python, FFmpeg, Whisper, Node e o resto, e mostra o comando de cada item que falta. Para atualizar: `claude plugin marketplace update criadores-do-futuro` e depois `claude plugin update sofia-estrategista@criadores-do-futuro`, ou a atualização automática do marketplace, ligada em `/plugin`.
@@ -21,6 +23,8 @@ Depois de instalar, rode `/sofia-estrategista:setup`: ele confere Python, FFmpeg
 ## Claude no navegador, no app e no Cowork
 
 O `scripts/empacotar.sh` da raiz do repositório gera `dist/sofia-estrategista.zip`, com o plugin inteiro dentro da pasta `sofia-estrategista/` (a forma que o envio aceita: o `.claude-plugin/plugin.json` dentro de uma única pasta no topo do `.zip`). Envie o `.zip` em Personalizar › Plugins › Adicionar › Enviar plugin e conecte na aba Conectores do plugin.
+
+Desde a 2.2.0 o pacote não leva mod nem `hooks/`. A página de plataformas do Claude diz que o Cowork carrega skills, comandos, agentes e o MCP remoto de um plugin, e o diretório lista um mod só para o Claude Code; até a 2.1.1, com o mod dentro, o Cowork recusava as skills do plugin e só o conector funcionava. O `empacotar.sh` recusa montar o pacote se `hooks/` voltar.
 
 O pacote segue as regras do envio: em `.claude-plugin/` vão só o `plugin.json` e o ícone (o `marketplace.json` fica na raiz do repositório, para instalar pelo GitHub); o ícone também fica em `assets/`; o cabeçalho de cada skill e de cada comando usa só os campos aceitos fora do Claude Code (`name`, `description`, `license`, `compatibility`, `metadata` e `allowed-tools`), porque no chat cada comando vira uma skill. O `tests/test_pacote.py` do repositório confere essas regras, e o `empacotar.sh` roda o `claude plugin validate` na pasta montada antes de fechar o `.zip`.
 

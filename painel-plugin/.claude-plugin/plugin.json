@@ -1,0 +1,18 @@
+{
+  "name": "sofia-painel",
+  "displayName": "Sofia Painel",
+  "version": "1.0.0",
+  "description": "O painel e o interruptor da Sofia Estrategista no Claude Code: os cards por etapa do planejamento, o uso das janelas de 5 horas e de 7 dias, e os comandos para ligar, desligar ou deixar a Sofia só quando chamada neste computador. Só roda no Claude Code (terminal, aba Code do app e extensões de IDE).",
+  "author": {
+    "name": "Criadores do Futuro",
+    "email": "co.criadoresdofuturo@gmail.com",
+    "url": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/suporte"
+  },
+  "homepage": "https://plataforma.criadorestrategista.com.br/kit",
+  "icon": "./assets/icon.png",
+  "repository": "https://github.com/Criadores-do-Futuro/sofia-estrategista",
+  "license": "LicenseRef-Proprietary",
+  "types": "./types/index.d.ts",
+  "dependencies": ["sofia-estrategista"],
+  "keywords": ["sofia estrategista", "painel", "planejamento", "criador estrategista"]
+}
