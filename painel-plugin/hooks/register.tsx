@@ -1,5 +1,5 @@
 import { atom, read, update } from 'claude-code'
-import type { EngineInterface, Register } from 'claude-code'
+import type { EngineInterface, Register, ToolCallResult } from 'claude-code'
 
 import type { Etapa, Janela, ModoDoInterruptor, Quadro } from '../types'
 import {
@@ -16,18 +16,22 @@ import {
 } from './interruptor'
 import type { Estado, Modo } from './interruptor'
 
-// Painel da Sofia Estrategista: quantos cards há em cada etapa do planejamento no site e quanto já foi
-// usado das janelas de 5 horas e de 7 dias do Claude, com quanto falta para cada uma zerar.
-// Também é o interruptor da Sofia neste computador: lê e grava estado.json na pasta de dados do plugin,
-// nega as ferramentas dela quando o modo manda (a regra está em interruptor.ts) e avisa o modelo do modo.
-// Só roda onde há mods (Claude Code): no site, no app de conversa e no Codex este arquivo fica parado.
+// Plugin sofia-painel: o painel da Sofia Estrategista no Claude Code. Mostra quantos cards há em cada etapa
+// do planejamento, pela última leitura que a Sofia fez com planejamento_quadro, e quanto já foi usado das
+// janelas de 5 horas e de 7 dias do Claude, com quanto falta para cada uma zerar.
+// Também é o interruptor da Sofia neste computador: lê e grava estado.json na pasta de dados deste plugin,
+// nega as ferramentas da Sofia quando o modo manda (a regra está em interruptor.ts) e avisa o modelo do modo.
+// As skills, os comandos e o conector são do plugin sofia-estrategista (dependência deste): por isso os
+// nomes conferidos aqui levam o prefixo `sofia-estrategista:`. Este mod não liga o conector nem o chama:
+// ele só observa o resultado das chamadas que a Sofia já faz (hook tool.call) e devolve o resultado igual.
+// Mods só rodam no Claude Code (terminal, aba Code do app, extensões de IDE).
 
 const PAINEL = 'sofia-painel'
 const TITULO = 'Sofia Estrategista'
 // Troque a marca quando o formato guardado mudar: um reload mantém o que a versão anterior guardou.
-const quadro = atom({ plugin: 'sofia-estrategista', key: 'quadro' } as const, null, { shape: 'quadro-1' })
-const janelas = atom({ plugin: 'sofia-estrategista', key: 'janelas' } as const, [], { shape: 'janelas-1' })
-const modoNoPainel = atom({ plugin: 'sofia-estrategista', key: 'modo' } as const, 'ligada' as ModoDoInterruptor, {
+const quadro = atom({ plugin: 'sofia-painel', key: 'quadro' } as const, null, { shape: 'quadro-2' })
+const janelas = atom({ plugin: 'sofia-painel', key: 'janelas' } as const, [], { shape: 'janelas-1' })
+const modoNoPainel = atom({ plugin: 'sofia-painel', key: 'modo' } as const, 'ligada' as ModoDoInterruptor, {
   shape: 'modo-1',
 })
 
@@ -129,8 +133,6 @@ async function gravarModo($: EngineInterface, modo: Modo): Promise<Estado> {
     const depois: Estado = { modo, apresentada: antes.apresentada, mudouEm: new Date(await $.clock.now()).toISOString() }
     await $.fs.write(`${pasta}/${ESTADO}`, JSON.stringify(depois, null, 2) + '\n')
     await mostrarModo($, modo)
-    // Saiu de desligada: o painel volta a ler o quadro.
-    if (antes.modo === 'desligada' && modo !== 'desligada') lerEmSegundoPlano($)
     return depois
   } catch {
     return antes
@@ -149,7 +151,7 @@ async function idDaSessao($: EngineInterface): Promise<string | null> {
 async function foiChamada($: EngineInterface, sessao: string | null): Promise<boolean> {
   if (!sessao) return false
   try {
-    return (await $.state.get({ plugin: 'sofia-estrategista', key: 'chamada', id: sessao })).value === true
+    return (await $.state.get({ plugin: 'sofia-painel', key: 'chamada', id: sessao })).value === true
   } catch {
     return false
   }
@@ -158,7 +160,7 @@ async function foiChamada($: EngineInterface, sessao: string | null): Promise<bo
 async function marcarChamada($: EngineInterface, sessao: string | null) {
   if (!sessao) return
   try {
-    await $.state.set({ plugin: 'sofia-estrategista', key: 'chamada', id: sessao }, true)
+    await $.state.set({ plugin: 'sofia-painel', key: 'chamada', id: sessao }, true)
   } catch {
     // sem o registro, o modo "só quando chamada" segue negando: a pessoa chama de novo
   }
@@ -177,12 +179,12 @@ async function lerMarca($: EngineInterface, marca: Marca, sessao: string | null)
   try {
     const lido =
       marca === 'ofereceuLigar'
-        ? await $.state.get({ plugin: 'sofia-estrategista', key: 'ofereceuLigar', id: sessao })
+        ? await $.state.get({ plugin: 'sofia-painel', key: 'ofereceuLigar', id: sessao })
         : marca === 'podeTrocarModo'
-          ? await $.state.get({ plugin: 'sofia-estrategista', key: 'podeTrocarModo', id: sessao })
+          ? await $.state.get({ plugin: 'sofia-painel', key: 'podeTrocarModo', id: sessao })
           : marca === 'perguntouModo'
-            ? await $.state.get({ plugin: 'sofia-estrategista', key: 'perguntouModo', id: sessao })
-            : await $.state.get({ plugin: 'sofia-estrategista', key: 'avisouPrimeiroUso', id: sessao })
+            ? await $.state.get({ plugin: 'sofia-painel', key: 'perguntouModo', id: sessao })
+            : await $.state.get({ plugin: 'sofia-painel', key: 'avisouPrimeiroUso', id: sessao })
     return lido.value === true
   } catch {
     return false
@@ -192,10 +194,10 @@ async function lerMarca($: EngineInterface, marca: Marca, sessao: string | null)
 async function gravarMarca($: EngineInterface, marca: Marca, sessao: string | null, valor: boolean) {
   if (!sessao) return
   try {
-    if (marca === 'ofereceuLigar') await $.state.set({ plugin: 'sofia-estrategista', key: 'ofereceuLigar', id: sessao }, valor)
-    else if (marca === 'podeTrocarModo') await $.state.set({ plugin: 'sofia-estrategista', key: 'podeTrocarModo', id: sessao }, valor)
-    else if (marca === 'perguntouModo') await $.state.set({ plugin: 'sofia-estrategista', key: 'perguntouModo', id: sessao }, valor)
-    else await $.state.set({ plugin: 'sofia-estrategista', key: 'avisouPrimeiroUso', id: sessao }, valor)
+    if (marca === 'ofereceuLigar') await $.state.set({ plugin: 'sofia-painel', key: 'ofereceuLigar', id: sessao }, valor)
+    else if (marca === 'podeTrocarModo') await $.state.set({ plugin: 'sofia-painel', key: 'podeTrocarModo', id: sessao }, valor)
+    else if (marca === 'perguntouModo') await $.state.set({ plugin: 'sofia-painel', key: 'perguntouModo', id: sessao }, valor)
+    else await $.state.set({ plugin: 'sofia-painel', key: 'avisouPrimeiroUso', id: sessao }, valor)
   } catch {
     // sem a marca, o modelo não troca o modo sozinho: a pessoa usa a frase ou o comando
   }
@@ -330,15 +332,16 @@ async function rodarComandoDeModo($: EngineInterface, modo: Modo): Promise<{ tex
   return { text: textos[modo], context: [linhaDoModo(modo)] }
 }
 
-// O conector: a chave dele no .mcp.json deste plugin (a primeira), e os nomes com que o /mcp lista o
-// mesmo conector quando a pessoa o ligou pelo site do Claude em vez do plugin.
-const CONECTORES = ['sofia-estrategista', 'claude.ai Sofia Estrategista', 'Sofia Estrategista']
-// O nome com que o /mcp lista o conector deste plugin: é o que a pessoa procura na lista para entrar.
-const NOME_NO_MCP = 'plugin:sofia-estrategista:sofia-estrategista'
+// As ferramentas do planejamento no conector Sofia Estrategista, pelos dois nomes com que chegam: o do
+// conector do plugin sofia-estrategista (.mcp.json dele) e o do conector ligado pelo site do Claude.
+// planejamento_quadro traz o quadro inteiro; as outras podem mudá-lo (referencia_salvar também mexe no card).
+const FERRAMENTAS_DO_PLANEJAMENTO =
+  /^mcp__(?:plugin_sofia-estrategista_sofia-estrategista|claude_ai_Sofia_Estrategista)__(?:planejamento_[a-z_]+|referencia_salvar)$/
+const LEITURA_DO_QUADRO = /__planejamento_quadro$/
+const SEM_LEITURA = 'Os cards aparecem aqui quando a Sofia ler o seu planejamento.'
 const ETAPAS = ['Brainstorming', 'Estruturar', 'Revisar', 'Lapidar', 'Gravar']
 const CORES_DAS_ETAPAS = ['magenta', 'blue', 'cyan', 'yellow', 'green']
 const NOME_DA_JANELA: Record<string, string> = { five_hour: 'Sessão de 5 horas', seven_day: 'Semana (7 dias)' }
-const RELER_A_CADA_MS = 5 * 60 * 1000
 
 // ---------- leitura ----------
 
@@ -415,54 +418,63 @@ const hora = (ms: number) => {
   return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`
 }
 
-// O nome com que o conector respondeu da última vez, e se uma leitura já está em andamento.
-let servidor: string | null = null
-let lendo = false
-
-/** Lê o quadro em segundo plano: uma falha na leitura nunca trava a ferramenta nem a sessão. */
-function lerEmSegundoPlano($: EngineInterface) {
-  lerQuadro($).catch(() => undefined)
+/**
+ * O texto do resultado como o modelo leu: `text`, que o Claude Code põe em todo resultado. Se faltar, os
+ * blocos de texto do resultado do MCP (`content`).
+ */
+export function textoDoResultado(r: { text?: string; result?: unknown }): string {
+  if (typeof r.text === 'string') return r.text
+  const bruto = r.result as { content?: unknown } | unknown[] | string | undefined
+  if (typeof bruto === 'string') return bruto
+  const blocos = Array.isArray(bruto) ? bruto : Array.isArray((bruto as { content?: unknown })?.content) ? ((bruto as { content: unknown[] }).content) : []
+  return blocos
+    .map((b) => {
+      const bloco = b as { type?: unknown; text?: unknown }
+      return bloco?.type === 'text' && typeof bloco.text === 'string' ? bloco.text : ''
+    })
+    .join('\n')
 }
 
-/** Lê o quadro no conector e guarda as contagens por etapa (ou o motivo de não ter lido). */
-async function lerQuadro($: EngineInterface) {
-    if (lendo) return
-    lendo = true
-    try {
-      // Desligada, a Sofia não toca no conector: o painel mostra só o uso do Claude.
-      if ((await lerInterruptor($)).modo === 'desligada') return
-      const agora = await $.clock.now()
-      let motivo = `O conector Sofia Estrategista não está ligado. Digite /mcp, escolha ${NOME_NO_MCP} e entre com o e-mail do curso.`
-      const candidatos = servidor ? [servidor] : CONECTORES
-      for (const nome of candidatos) {
-        const ligado = await $.mcp.connect(nome).catch(() => null)
-        if (!ligado || !ligado.isConnected) continue
-        try {
-          const r = await $.mcp.call(ligado.server, 'planejamento_quadro', {})
-          const texto = r.content.map((b) => (b.type === 'text' && typeof b.text === 'string' ? b.text : '')).join('\n')
-          if (r.isError) {
-            motivo = texto.slice(0, 160) || 'O conector não devolveu o quadro.'
-            continue
-          }
-          const { perfil, etapas } = etapasDaResposta(r.structuredContent, texto)
-          if (etapas.length === 0) continue
-          servidor = ligado.server
-          const lido: Quadro = { situacao: 'ok', perfil: perfil ?? 'sem perfil', etapas, lidoEm: agora }
-          await update($, quadro, () => lido)
-          // A barra de status é enfeite: uma falha nela (inclusive com a sessão já fechada) não vira erro solto.
-          atualizarStatus($).catch(() => undefined)
-          return
-        } catch {
-          motivo = `O conector Sofia Estrategista não respondeu. Digite /mcp, escolha ${ligado.server} e entre de novo com o e-mail do curso.`
-        }
-      }
-      servidor = null
-      const semConector: Quadro = { situacao: 'sem-conector', motivo, lidoEm: agora }
-      await update($, quadro, () => semConector)
-    } finally {
-      lendo = false
+/** Os dados estruturados do resultado do MCP (`structuredContent`), quando vierem no registro da ferramenta. */
+export function estruturadoDoResultado(resultado: unknown): unknown {
+  if (typeof resultado !== 'object' || resultado === null) return undefined
+  const r = resultado as { structuredContent?: unknown; colunas?: unknown }
+  if (r.structuredContent !== undefined) return r.structuredContent
+  return Array.isArray(r.colunas) ? r : undefined
+}
+
+/**
+ * Guarda o que a chamada da Sofia ao conector diz do quadro. Só lê o resultado: nunca muda o que o modelo
+ * recebe. Negada (a Sofia desligada), nada muda.
+ * - planejamento_quadro com sucesso: as contagens por etapa;
+ * - planejamento_quadro com erro: o motivo, se ainda não há quadro lido (um quadro lido antes fica);
+ * - outra ferramenta do planejamento que grava (não somente leitura) e deu certo: o quadro lido pode ter
+ *   mudado, e o painel avisa até a próxima leitura.
+ */
+async function guardarDoResultado($: EngineInterface, ferramenta: string, r: ToolCallResult) {
+  if (r.deny !== undefined) return
+  if (LEITURA_DO_QUADRO.test(ferramenta)) {
+    const agora = await $.clock.now()
+    const texto = textoDoResultado(r)
+    if (r.isError) {
+      const atual = await read($, quadro)
+      if (atual?.situacao === 'ok') return
+      const motivo = texto.trim().slice(0, 160) || 'O conector não devolveu o quadro.'
+      const semLeitura: Quadro = { situacao: 'sem-leitura', motivo, lidoEm: agora }
+      await update($, quadro, () => semLeitura)
+      return
     }
+    const { perfil, etapas } = etapasDaResposta(estruturadoDoResultado(r.result), texto)
+    if (etapas.length === 0) return
+    const lido: Quadro = { situacao: 'ok', perfil: perfil ?? 'sem perfil', etapas, lidoEm: agora, mudouDepois: false }
+    await update($, quadro, () => lido)
+    // A barra de status é enfeite: uma falha nela (inclusive com a sessão já fechada) não vira erro solto.
+    atualizarStatus($).catch(() => undefined)
+    return
   }
+  if (r.isError || r.isReadOnly) return
+  await update($, quadro, (q) => (q?.situacao === 'ok' && !q.mudouDepois ? { ...q, mudouDepois: true } : q))
+}
 
 /** A linha curta da barra de status, para quando o painel não cabe na tela. */
 async function atualizarStatus($: EngineInterface) {
@@ -490,15 +502,12 @@ export const register: Register = (on) => {
     await lerInterruptor($)
     const uso = await $.session.usage()
     await update($, janelas, () => janelasDoUso(uso.rateLimits))
-    lerEmSegundoPlano($)
-    $.clock.every(RELER_A_CADA_MS, () => lerEmSegundoPlano($))
     $.ui.open({ id: PAINEL, title: TITULO }).catch(() => undefined)
     return next(e)
   })
 
   on('command.run', { command: 'sofia-painel' }, async ($) => {
     await $.ui.open({ id: PAINEL, title: TITULO })
-    lerEmSegundoPlano($)
     return { text: 'Painel da Sofia aberto.' }
   })
 
@@ -511,8 +520,8 @@ export const register: Register = (on) => {
     return next(e)
   })
 
-  // O interruptor nega a ferramenta da Sofia quando o modo manda. Depois de uma ferramenta do planejamento,
-  // o quadro pode ter mudado: lê de novo. Se a decisão falhar, a ferramenta segue: na dúvida, ligada.
+  // O interruptor nega a ferramenta da Sofia quando o modo manda. Se a decisão falhar, a ferramenta segue:
+  // na dúvida, ligada.
   // O try cobre só a decisão: o next(e) roda uma vez, fora dele. O .catch fica para o que escapar; nele o
   // next é seguro de repetir (tipo Caught): se o hook já chamou next, next(e) devolve o mesmo resultado sem
   // rodar a ferramenta de novo; se não chamou, roda uma vez.
@@ -529,8 +538,18 @@ export const register: Register = (on) => {
     } catch {
       // sem a marca, a linha do primeiro uso volta no próximo prompt
     }
+    return next(e)
+  }).catch(($, e, next) => next(e))
+
+  // O painel aprende o quadro com as chamadas que a Sofia já faz ao conector: espera a ferramenta rodar, lê o
+  // resultado e o devolve sem mudar nada. Uma falha ao guardar nunca chega ao modelo.
+  on('tool.call', { tool: FERRAMENTAS_DO_PLANEJAMENTO }, async ($, e, next) => {
     const r = await next(e)
-    if (/planejamento_|referencia_salvar/.test(e.tool) && !/planejamento_quadro$/.test(e.tool)) lerEmSegundoPlano($)
+    try {
+      await guardarDoResultado($, e.tool, r)
+    } catch {
+      // o painel fica com a leitura anterior
+    }
     return r
   }).catch(($, e, next) => next(e))
 
@@ -600,8 +619,8 @@ export const register: Register = (on) => {
           </Box>
           {desligada && <Text color="yellow">Sofia desligada</Text>}
           {desligada && <Text dimColor>Para ligar: /sofia-ligar, ou diga "liga a Sofia".</Text>}
-          {q === null && <Text dimColor>Lendo o quadro no site…</Text>}
-          {q?.situacao === 'sem-conector' && <Text color="yellow">{q.motivo}</Text>}
+          {!desligada && (q === null || q === undefined) && <Text dimColor>{SEM_LEITURA}</Text>}
+          {q?.situacao === 'sem-leitura' && <Text color="yellow">{q.motivo}</Text>}
           {q?.situacao === 'ok' &&
             q.etapas.map((etapa, i) => {
               const [cheio, vazio] = barra(etapa.total / maior, larguraDaBarra)
@@ -615,6 +634,9 @@ export const register: Register = (on) => {
               )
             })}
           {q?.situacao === 'ok' && <Text dimColor>{total === 1 ? '1 card no quadro' : `${total} cards no quadro`}</Text>}
+          {q?.situacao === 'ok' && q.mudouDepois && (
+            <Text dimColor>O quadro mudou depois desta leitura. Atualiza quando a Sofia ler o planejamento de novo.</Text>
+          )}
         </Box>
 
         <Box marginTop={1} flexDirection="column">

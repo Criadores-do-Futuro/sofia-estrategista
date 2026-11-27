@@ -4,9 +4,9 @@ import type { CommandRunInput, On, PromptOrigin, PromptSubmitInput } from 'claud
 import { AVISO_DESLIGADA, AVISO_SO_QUANDO_CHAMADA } from './interruptor'
 
 // O mod do painel com o interruptor. Cada hook do teste faz o papel do engine: a pasta de dados, o id da
-// sessão, os arquivos (em memória), o conector e a ferramenta que roda de fato.
+// sessão, os arquivos (em memória) e a ferramenta que roda de fato (inclusive as do conector).
 
-const PASTA = '/dados/sofia-estrategista'
+const PASTA = '/dados/sofia-painel'
 const ARQUIVO = `${PASTA}/estado.json`
 const ESTOU_DESLIGADA = 'Estou desligada aqui. Quer que eu ligue?'
 const NAO_TROQUEI = 'Não troquei o modo da Sofia.'
@@ -15,8 +15,10 @@ const DISSE_SIM = 'A pessoa disse sim: a Sofia está ligada. Confirme em uma lin
 type Mundo = {
   arquivos: Map<string, string>
   sessao: { id: string }
-  chamadasAoQuadro: () => number
-  conexoes: () => number
+  /** Quantas vezes o mod pediu ao engine para ligar ou chamar um servidor MCP: tem de ser zero. */
+  chamadasAoMcp: () => number
+  /** A resposta que cada ferramenta devolve ao rodar, pelo nome; as outras devolvem `{ result: {} }`. */
+  respostas: Map<string, Record<string, unknown>>
   comandos: string[]
   relogio: { settle: () => Promise<void> }
   modoGravado: () => string | undefined
@@ -30,8 +32,8 @@ function mundo(on: On, estado?: string): Mundo {
   const arquivos = new Map<string, string>()
   if (estado !== undefined) arquivos.set(ARQUIVO, estado)
   const sessao = { id: 'sessao-1' }
-  let quadro = 0
-  let conexoes = 0
+  let mcp = 0
+  const respostas = new Map<string, Record<string, unknown>>()
   const comandos: string[] = []
   let execucoes = 0
   const ferramenta = { falha: false }
@@ -44,18 +46,18 @@ function mundo(on: On, estado?: string): Mundo {
     return { value: undefined }
   })
   on('fs.exists', (_, e) => ({ value: arquivos.has(e.path) }))
-  on('tool.call', () => {
+  on('tool.call', (_, e) => {
     execucoes++
     if (ferramenta.falha) throw new Error('a ferramenta quebrou')
-    return { result: {} } as never
+    return (respostas.get(e.tool) ?? { result: {} }) as never
   })
   on('mcp.connect', () => {
-    conexoes++
+    mcp++
     return { value: { server: 'sofia-estrategista', isConnected: true } } as never
   })
   on('mcp.call', () => {
-    quadro++
-    return { value: { content: [{ type: 'text', text: '### Brainstorming (2)' }] } } as never
+    mcp++
+    return { value: { content: [], isError: false } } as never
   })
   on('command.register', (_, e) => {
     comandos.push(e.name)
@@ -71,8 +73,8 @@ function mundo(on: On, estado?: string): Mundo {
   return {
     arquivos,
     sessao,
-    chamadasAoQuadro: () => quadro,
-    conexoes: () => conexoes,
+    chamadasAoMcp: () => mcp,
+    respostas,
     comandos,
     relogio,
     execucoes: () => execucoes,
@@ -103,7 +105,7 @@ const DESLIGADA = JSON.stringify({ modo: 'desligada', apresentada: true, mudouEm
 const SO_QUANDO = JSON.stringify({ modo: 'so-quando-chamada', apresentada: true, mudouEm: '2026-11-20T10:00:00.000Z' })
 
 const PAINEL = {
-  plugin: 'sofia-estrategista',
+  plugin: 'sofia-painel',
   component: 'Pane',
   requestId: 'sofia-painel',
   props: {
@@ -372,27 +374,139 @@ describe('comandos do mod', () => {
 })
 
 describe('painel', () => {
-  test('desligada: não lê o quadro e mostra Sofia desligada, com o uso do Claude', async ($, on) => {
+  const QUADRO_NO_PLUGIN = 'mcp__plugin_sofia-estrategista_sofia-estrategista__planejamento_quadro'
+  const QUADRO_NO_SITE = 'mcp__claude_ai_Sofia_Estrategista__planejamento_quadro'
+  const CRIAR_CARD = 'mcp__plugin_sofia-estrategista_sofia-estrategista__planejamento_criar_card'
+  const TEXTO_DO_QUADRO = [
+    '## Quadro do perfil p1',
+    '### Brainstorming (2)',
+    '### Estruturar (0)',
+    '### Gravar (1)',
+    '- `p1`: Bento (@mechamedebento, Instagram)',
+  ].join('\n')
+
+  test('desligada: mostra Sofia desligada, com o uso do Claude, e nunca chama o MCP', async ($, on) => {
     const m = mundo(on, DESLIGADA)
     await $.session.start({ cwd: '/', surface: 'terminal', isInteractive: true } as never)
     await $.command.run(comando('sofia-painel', ''))
     await m.relogio.settle()
-    expect(m.chamadasAoQuadro()).toBe(0)
-    expect(m.conexoes()).toBe(0)
+    expect(m.chamadasAoMcp()).toBe(0)
     for (const surface of ['terminal', 'desktop'] as const) {
       const ui = await $.ui.mount({ ...PAINEL, surface })
       expect((await ui.find({ type: 'Text', text: /Sofia desligada/ }))?.text).toContain('Sofia desligada')
       expect(await ui.find({ type: 'Text', text: /Uso do Claude/ })).toBeTruthy()
+      expect(await ui.find({ type: 'Text', text: /quando a Sofia ler/ })).toBeFalsy()
       await ui.unmount()
     }
   })
 
-  test('ligada: lê o quadro', async ($, on) => {
+  test('ligada, sem leitura ainda: a linha curta, e o mod não liga nem chama o conector', async ($, on) => {
     const m = mundo(on)
     await $.session.start({ cwd: '/', surface: 'terminal', isInteractive: true } as never)
     await $.command.run(comando('sofia-painel', ''))
     await m.relogio.settle()
-    expect(m.chamadasAoQuadro()).toBeGreaterThan(0)
+    expect(m.chamadasAoMcp()).toBe(0)
+    const ui = await $.ui.mount({ ...PAINEL, surface: 'terminal' })
+    expect((await ui.find({ type: 'Text', text: /quando a Sofia ler/ }))?.text).toBe(
+      'Os cards aparecem aqui quando a Sofia ler o seu planejamento.',
+    )
+    await ui.unmount()
+  })
+
+  test('a chamada da Sofia a planejamento_quadro enche o painel, e o resultado volta igual', async ($, on) => {
+    const m = mundo(on)
+    const resposta = { result: { content: [{ type: 'text', text: TEXTO_DO_QUADRO }] }, text: TEXTO_DO_QUADRO }
+    m.respostas.set(QUADRO_NO_PLUGIN, resposta)
+    const r = await $.tool.call({ tool: QUADRO_NO_PLUGIN } as never)
+    expect(r.deny).toBeUndefined()
+    expect(r.text).toBe(TEXTO_DO_QUADRO)
+    expect(r.result).toEqual(resposta.result)
+    expect(m.execucoes()).toBe(1)
+    expect(m.chamadasAoMcp()).toBe(0)
+    const ui = await $.ui.mount({ ...PAINEL, surface: 'terminal' })
+    expect(await ui.find({ type: 'Text', text: /@mechamedebento · Instagram/ })).toBeTruthy()
+    expect(await ui.find({ type: 'Text', text: /3 cards no quadro/ })).toBeTruthy()
+    expect(await ui.find({ type: 'Text', text: /quando a Sofia ler/ })).toBeFalsy()
+    await ui.unmount()
+  })
+
+  test('o conector ligado pelo site também conta, e os dados estruturados valem mais que o texto', async ($, on) => {
+    const m = mundo(on)
+    const estruturado = {
+      perfilId: 'p1',
+      perfis: [{ id: 'p1', arroba: 'outro', rede: 'TikTok' }],
+      colunas: [
+        { rotulo: 'Brainstorming', cards: [{}, {}, {}, {}] },
+        { rotulo: 'Gravar', cards: [] },
+      ],
+    }
+    m.respostas.set(QUADRO_NO_SITE, { result: { content: [], structuredContent: estruturado }, text: TEXTO_DO_QUADRO })
+    await $.tool.call({ tool: QUADRO_NO_SITE } as never)
+    const ui = await $.ui.mount({ ...PAINEL, surface: 'terminal' })
+    expect(await ui.find({ type: 'Text', text: /@outro · TikTok/ })).toBeTruthy()
+    expect(await ui.find({ type: 'Text', text: /4 cards no quadro/ })).toBeTruthy()
+    await ui.unmount()
+  })
+
+  test('erro do conector sem leitura antes: o motivo aparece; com leitura antes, o quadro fica', async ($, on) => {
+    const m = mundo(on)
+    m.respostas.set(QUADRO_NO_PLUGIN, { result: { content: [] }, text: 'Faça login no conector.', isError: true })
+    const r = await $.tool.call({ tool: QUADRO_NO_PLUGIN } as never)
+    expect(r.isError).toBe(true)
+    let ui = await $.ui.mount({ ...PAINEL, surface: 'terminal' })
+    expect(await ui.find({ type: 'Text', text: /Faça login no conector/ })).toBeTruthy()
+    await ui.unmount()
+
+    m.respostas.set(QUADRO_NO_PLUGIN, { result: {}, text: TEXTO_DO_QUADRO })
+    await $.tool.call({ tool: QUADRO_NO_PLUGIN } as never)
+    m.respostas.set(QUADRO_NO_PLUGIN, { result: {}, text: 'O site não respondeu.', isError: true })
+    await $.tool.call({ tool: QUADRO_NO_PLUGIN } as never)
+    ui = await $.ui.mount({ ...PAINEL, surface: 'terminal' })
+    expect(await ui.find({ type: 'Text', text: /3 cards no quadro/ })).toBeTruthy()
+    expect(await ui.find({ type: 'Text', text: /O site não respondeu/ })).toBeFalsy()
+    await ui.unmount()
+  })
+
+  test('uma ferramenta que grava no planejamento marca o quadro como mudado; uma de leitura não', async ($, on) => {
+    const m = mundo(on)
+    m.respostas.set(QUADRO_NO_PLUGIN, { result: {}, text: TEXTO_DO_QUADRO })
+    await $.tool.call({ tool: QUADRO_NO_PLUGIN } as never)
+    m.respostas.set('mcp__plugin_sofia-estrategista_sofia-estrategista__planejamento_gravar', {
+      result: {},
+      text: 'roteiro',
+      isReadOnly: true,
+    })
+    await $.tool.call({ tool: 'mcp__plugin_sofia-estrategista_sofia-estrategista__planejamento_gravar' } as never)
+    let ui = await $.ui.mount({ ...PAINEL, surface: 'terminal' })
+    expect(await ui.find({ type: 'Text', text: /mudou depois desta leitura/ })).toBeFalsy()
+    await ui.unmount()
+
+    m.respostas.set(CRIAR_CARD, { result: {}, text: 'Card criado.' })
+    const r = await $.tool.call({ tool: CRIAR_CARD } as never)
+    expect(r.text).toBe('Card criado.')
+    ui = await $.ui.mount({ ...PAINEL, surface: 'terminal' })
+    expect(await ui.find({ type: 'Text', text: /mudou depois desta leitura/ })).toBeTruthy()
+    await ui.unmount()
+
+    // A leitura seguinte tira o aviso.
+    await $.tool.call({ tool: QUADRO_NO_PLUGIN } as never)
+    ui = await $.ui.mount({ ...PAINEL, surface: 'terminal' })
+    expect(await ui.find({ type: 'Text', text: /mudou depois desta leitura/ })).toBeFalsy()
+    await ui.unmount()
+  })
+
+  test('desligada, a chamada ao conector é negada e o painel não aprende nada com ela', async ($, on) => {
+    const m = mundo(on, DESLIGADA)
+    m.respostas.set(QUADRO_NO_PLUGIN, { result: {}, text: TEXTO_DO_QUADRO })
+    const r = await $.tool.call({ tool: QUADRO_NO_PLUGIN } as never)
+    expect(r.deny).toBe(AVISO_DESLIGADA)
+    expect(m.execucoes()).toBe(0)
+    await $.tool.call({ tool: 'Skill', skill: 'sofia-estrategista:ligar' } as never)
+    await $.prompt.submit(digitado('liga a Sofia'))
+    const ui = await $.ui.mount({ ...PAINEL, surface: 'terminal' })
+    expect(await ui.find({ type: 'Text', text: /cards no quadro/ })).toBeFalsy()
+    expect(await ui.find({ type: 'Text', text: /quando a Sofia ler/ })).toBeTruthy()
+    await ui.unmount()
   })
 })
 

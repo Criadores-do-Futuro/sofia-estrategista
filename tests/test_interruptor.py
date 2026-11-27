@@ -1,4 +1,5 @@
-"""Confere a lista de nomes do interruptor (plugin/hooks/interruptor.ts) contra as pastas do plugin.
+"""Confere a lista de nomes do interruptor (painel-plugin/hooks/interruptor.ts, do plugin sofia-painel) contra
+as pastas do plugin sofia-estrategista (plugin/), onde moram as skills e os comandos que ele reconhece.
 
 A regra em TypeScript não consegue ler disco dentro do `claude plugin test`; então a conferência mora aqui,
 onde o `python3 -m unittest discover -s tests` a pega. NOMES_DA_SOFIA é uma lista de conferência, não a
@@ -12,7 +13,8 @@ from pathlib import Path
 
 PLUGIN = Path(__file__).resolve().parents[1] / 'plugin'
 RAIZ = PLUGIN.parent
-TS = PLUGIN / 'hooks' / 'interruptor.ts'
+PAINEL = RAIZ / 'painel-plugin'
+TS = PAINEL / 'hooks' / 'interruptor.ts'
 
 # Os comandos do interruptor: precisam estar na lista e ter arquivo em plugin/commands.
 COMANDOS_DO_INTERRUPTOR = {'ligar', 'desligar', 'modo', 'ensinar'}
@@ -69,12 +71,53 @@ class NomesSemPrefixoTest(unittest.TestCase):
         self.assertEqual(set(_literal('NOMES_SEM_PREFIXO')), _skills())
 
 
+class SemModNoPluginPrincipalTest(unittest.TestCase):
+    """Desde a 2.2.0 o mod mora no sofia-painel: o Cowork recusa o plugin inteiro quando há mod."""
+
+    def test_o_plugin_principal_nao_tem_hooks_nem_types(self):
+        self.assertFalse((PLUGIN / 'hooks').exists())
+        self.assertFalse((PLUGIN / 'types').exists())
+        manifesto = (PLUGIN / '.claude-plugin' / 'plugin.json').read_text(encoding='utf-8')
+        self.assertNotIn('"types"', manifesto)
+        self.assertNotIn('"hooks"', manifesto)
+
+    def test_o_mod_esta_no_sofia_painel(self):
+        self.assertEqual((PAINEL / 'hooks' / 'hooks.json').read_text(encoding='utf-8').strip(),
+                         '{ "modules": ["./register.tsx"] }')
+        for arquivo in ('register.tsx', 'interruptor.ts', 'register.test.ts', 'interruptor.test.ts'):
+            self.assertTrue((PAINEL / 'hooks' / arquivo).is_file(), arquivo)
+        self.assertTrue((PAINEL / 'types' / 'index.d.ts').is_file())
+
+    def test_o_mod_nao_liga_nem_chama_o_conector(self):
+        # A referência dos mods: `$.mcp.connect` liga só um servidor do manifesto do próprio plugin, e o
+        # sofia-painel não declara conector. O painel aprende o quadro pelo hook tool.call.
+        fonte = (PAINEL / 'hooks' / 'register.tsx').read_text(encoding='utf-8')
+        self.assertNotIn('$.mcp.', fonte)
+        self.assertIn("on('tool.call', { tool: FERRAMENTAS_DO_PLANEJAMENTO }", fonte)
+        self.assertFalse((PAINEL / '.mcp.json').exists())
+
+    def test_o_estado_do_mod_e_do_proprio_sofia_painel(self):
+        # `$.state.set` só grava valor do próprio plugin.
+        fonte = (PAINEL / 'hooks' / 'register.tsx').read_text(encoding='utf-8')
+        self.assertNotIn("plugin: 'sofia-estrategista'", fonte)
+        self.assertIn("plugin: 'sofia-painel'", fonte)
+        self.assertIn("'sofia-painel': {", (PAINEL / 'types' / 'index.d.ts').read_text(encoding='utf-8'))
+
+
 class EmpacotarTest(unittest.TestCase):
-    def test_testes_do_gancho_ficam_fora_do_pacote(self):
-        script = (RAIZ / 'scripts' / 'empacotar.sh').read_text(encoding='utf-8')
-        fora = re.search(r'FORA=\((.*?)\n\)', script, re.S)
-        self.assertTrue(fora)
-        self.assertIn("'hooks/*.test.ts'", fora.group(1))
+    def setUp(self):
+        self.script = (RAIZ / 'scripts' / 'empacotar.sh').read_text(encoding='utf-8')
+
+    def test_o_pacote_do_app_nao_leva_hooks_nem_types(self):
+        itens = re.search(r'ITENS=\((.*?)\n\)', self.script, re.S)
+        self.assertTrue(itens)
+        linhas = {linha.strip() for linha in itens.group(1).splitlines()}
+        self.assertNotIn('hooks', linhas)
+        self.assertNotIn('types', linhas)
+        self.assertIn('skills', linhas)
+
+    def test_o_pacote_recusa_hooks_se_eles_voltarem(self):
+        self.assertIn('[ -e "$MONTAGEM/$PASTA/hooks" ]', self.script)
 
 
 if __name__ == '__main__':

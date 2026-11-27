@@ -5,6 +5,7 @@ from pathlib import Path
 # Os catálogos ficam na raiz do repositório; o plugin é a pasta plugin/.
 REPO = Path(__file__).resolve().parents[1]
 ROOT = REPO / 'plugin'
+PAINEL = REPO / 'painel-plugin'
 
 
 class MarketplaceTest(unittest.TestCase):
@@ -14,7 +15,7 @@ class MarketplaceTest(unittest.TestCase):
         manifests = [json.loads((ROOT / '.claude-plugin/plugin.json').read_text()),
                      json.loads((ROOT / '.codex-plugin/plugin.json').read_text())]
         self.assertEqual(manifests[0]['name'], 'sofia-estrategista')
-        self.assertEqual(manifests[0]['version'], '2.1.1')
+        self.assertEqual(manifests[0]['version'], '2.2.0')
         for campo in ('name', 'version', 'description', 'author'):
             self.assertEqual(manifests[0][campo], manifests[1][campo], campo)
         # O upload de plugin no app (Customize › Plugins › Upload) recusa descrição com mais de 500
@@ -25,7 +26,8 @@ class MarketplaceTest(unittest.TestCase):
         # no terminal e no Codex: os dois catálogos têm esse nome.
         self.assertEqual(claude['name'], 'criadores-do-futuro')
         self.assertEqual(codex['name'], 'criadores-do-futuro')
-        self.assertEqual([p['name'] for p in claude['plugins']], ['sofia-estrategista'])
+        # O sofia-painel é um mod, que o Codex não roda: ele fica só no catálogo do Claude.
+        self.assertEqual([p['name'] for p in claude['plugins']], ['sofia-estrategista', 'sofia-painel'])
         self.assertEqual([p['name'] for p in codex['plugins']], ['sofia-estrategista'])
         entrada = claude['plugins'][0]
         self.assertEqual(entrada['source'], './plugin')
@@ -36,6 +38,27 @@ class MarketplaceTest(unittest.TestCase):
         self.assertTrue(source['path'].startswith('./'))
         self.assertEqual((REPO / source['path']).resolve(), ROOT)
         self.assertTrue((ROOT / 'scripts/preparar_estilo.py').is_file())
+
+    def test_o_sofia_painel_no_catalogo_do_claude(self):
+        claude = json.loads((REPO / '.claude-plugin/marketplace.json').read_text())
+        entrada = next(p for p in claude['plugins'] if p['name'] == 'sofia-painel')
+        manifesto = json.loads((PAINEL / '.claude-plugin/plugin.json').read_text())
+        self.assertEqual(entrada['source'], './painel-plugin')
+        self.assertEqual((REPO / entrada['source']).resolve(), PAINEL)
+        self.assertEqual(manifesto['name'], 'sofia-painel')
+        self.assertEqual(manifesto['version'], '1.0.0')
+        self.assertEqual(entrada['version'], manifesto['version'])
+        # Sem faixa de versão: faixa exige tags git do plugin de que ele depende.
+        self.assertEqual(manifesto['dependencies'], ['sofia-estrategista'])
+        self.assertEqual(manifesto['types'], './types/index.d.ts')
+        self.assertTrue((PAINEL / manifesto['icon']).is_file())
+        self.assertLessEqual(len(manifesto['description']), 500)
+        for arquivo in ('README.md', 'LICENSE', 'hooks/hooks.json', 'hooks/register.tsx', 'types/index.d.ts'):
+            self.assertTrue((PAINEL / arquivo).is_file(), arquivo)
+        # Nada de segunda cópia do conector, nem de manifesto do Codex.
+        self.assertFalse((PAINEL / '.mcp.json').exists())
+        self.assertFalse((PAINEL / '.codex-plugin').exists())
+        self.assertNotIn('mcpServers', manifesto)
 
     def test_nenhum_catalogo_lista_o_nome_antigo(self):
         for arquivo in (REPO / '.claude-plugin/marketplace.json', REPO / '.agents/plugins/marketplace.json'):

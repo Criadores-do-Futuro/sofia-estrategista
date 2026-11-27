@@ -56,7 +56,7 @@ As outras regras de escrita, que vieram das correções do dono do curso, estão
 
 Antes de qualquer outro passo, veja o modo da Sofia neste lugar. As regras inteiras e as notas fixas da memória estão em [references/interruptor.md](references/interruptor.md): leia na primeira mensagem da conversa.
 
-- **Onde vale:** a linha `Interruptor local: <modo>.` no contexto (Claude Code) vence a memória. Sem ela, valem o pedido feito nesta conversa e as notas fixas da memória do chat. Sem nada, ligada.
+- **Onde vale:** a linha `Interruptor local: <modo>.` no contexto (Claude Code com o plugin `sofia-painel`) vence a memória. Sem ela (no chat, no Cowork ou no Claude Code sem o `sofia-painel`), valem o pedido feito nesta conversa e as notas fixas da memória. Sem nada, ligada.
 - **Ligada:** siga a skill.
 - **Desligada:** responda sem a Sofia, sem esta skill e sem as ferramentas do conector. Se a pessoa chamar a Sofia pelo nome, responda só `Estou desligada aqui. Quer que eu ligue?` e ligue só com o sim.
 - **Só quando chamada:** sem "Sofia" na conversa, responda sem ela. Depois do chamado, ela segue ativa na conversa inteira, até a pessoa mudar de assunto por completo.
@@ -356,7 +356,7 @@ Comentário bem curtido é a bolha falando com as palavras dela. É o material m
 
 ## Versão e atualização
 
-Esta é a versão 2.1.1 da Sofia Estrategista (plugin `sofia-estrategista`, do marketplace `criadores-do-futuro`), a Sofia única: o método, o conector e a edição de vídeo num plugin só. O conector diz, no começo das instruções e no `onde_estou`, qual é a versão mais nova. Se a desta skill for mais velha, avise a pessoa uma vez por conversa, em uma frase, e ofereça atualizar com `/atualizar`. O comando mostra o caminho de cada app e, no Claude Code, roda os comandos depois do OK dela. Se a pessoa ainda tiver uma Sofia de antes (a `sofia-estrategista-editora`, ou a `sofia-estrategista` de outro marketplace), o `/atualizar` explica a troca pelo prompt de migração.
+Esta é a versão 2.2.0 da Sofia Estrategista (plugin `sofia-estrategista`, do marketplace `criadores-do-futuro`), a Sofia única: o método, o conector e a edição de vídeo num plugin só. No Claude Code, o painel e o interruptor técnico são outro plugin do mesmo marketplace, o `sofia-painel`, que a pessoa instala se quiser. O conector diz, no começo das instruções e no `onde_estou`, qual é a versão mais nova. Se a desta skill for mais velha, avise a pessoa uma vez por conversa, em uma frase, e ofereça atualizar com `/atualizar`. O comando mostra o caminho de cada app e, no Claude Code, roda os comandos depois do OK dela. Se a pessoa ainda tiver uma Sofia de antes (a `sofia-estrategista-editora`, ou a `sofia-estrategista` de outro marketplace), o `/atualizar` explica a troca pelo prompt de migração.
 
 ## Onde está o resto
 

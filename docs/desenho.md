@@ -5,7 +5,8 @@
 A versão 2.0.0 juntou aqui a Sofia com edição (`sofia-estrategista-editora`). O que mudou neste desenho:
 
 - **A edição de vídeo entrou no escopo:** CapCut, DaVinci Resolve, bEditor, motion e publicação, com as skills `sofia-editora`, `beditor` e `motion-vox` (detalhes em `plugin/docs/`).
-- **O plugin passou a ter hooks** (o painel do Claude Code, um mod) **e scripts**. Por isso ele não passa nas regras "Verified only" do diretório da Anthropic, como a Sofia com edição já não passava; a distribuição principal é o marketplace `criadores-do-futuro` deste repositório.
+- **O plugin tem scripts** (a edição de vídeo). Por isso ele não passa nas regras "Verified only" do diretório da Anthropic, como a Sofia com edição já não passava; a distribuição principal é o marketplace `criadores-do-futuro` deste repositório.
+- **O painel do Claude Code é outro plugin (2.2.0).** O mod do painel e do interruptor saiu da Sofia e virou o `sofia-painel` (`painel-plugin/`), porque o Cowork recusa o plugin inteiro quando há mod. Ele depende da Sofia, não declara uma segunda cópia do conector (pela referência dos mods, `$.mcp.connect` só liga servidor do manifesto do próprio plugin) e aprende o quadro com o hook `tool.call`, lendo o resultado das chamadas da Sofia a `planejamento_quadro`. Fica só no catálogo do Claude, porque o Codex não roda mod.
 - **Os ajudantes viraram a equipe** (11 agentes que só leem e devolvem; os que gravam ficam travados) mais os 4 ajudantes da edição.
 - **O kit** sai do `scripts/empacotar.sh`: `sofia-estrategista.zip` (e a cópia `.plugin`) com o plugin inteiro e `sofia-estrategista.skill` com a skill solta.
 
