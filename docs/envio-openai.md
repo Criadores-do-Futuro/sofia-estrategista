@@ -47,9 +47,13 @@ Em [platform.openai.com/settings/organization/general](https://platform.openai.c
 ### 4. Conectar o MCP
 
 1. Em **MCPs**, escolha `sofia-estrategista` e clique em **Connect**. Confira o endereço `https://plataforma.criadorestrategista.com.br/api/mcp` e a autenticação OAuth.
-2. **Domínio.** O portal mostra um token. Ponha-o na variável `OPENAI_APPS_CHALLENGE` do projeto do site na Vercel, publique e confira que `https://plataforma.criadorestrategista.com.br/.well-known/openai-apps-challenge` devolve só o token, em texto puro (nada de JSON). Depois, **Verify Domain**.
+2. **Domínio.** O portal mostra um token. Ponha-o na variável `OPENAI_APPS_CHALLENGE` do projeto do site na Vercel (ambiente Production) e faça um **Redeploy** da produção: a rota é gerada no build, então salvar a variável sozinho não muda o que ela responde. Sem a variável, ela responde `404 Not found`. Depois do deploy, confira que `https://plataforma.criadorestrategista.com.br/.well-known/openai-apps-challenge` devolve só o token, em texto puro (nada de JSON), e clique em **Verify Domain**.
 3. Conecte e entre com a conta de teste na página `/conectar`, com **Permitir**.
-4. Espere a varredura das ferramentas e leia **Issues**. As 58 ferramentas têm `readOnlyHint`, `openWorldHint` e `destructiveHint` explícitos, mas algumas que sobrescrevem dados estão com `destructiveHint: false` (`planejamento_editar_card`, que apaga campo com texto vazio; `referencia_editar`, que troca o corpo inteiro; `perfil_salvar_avaliacao`, `perfil_definir_alvo` e `perfil_salvar_leitura`, que substituem o anterior). A diretriz pede `true` para sobrescrever; se a varredura reter, ajuste no webapp e use **Rescan**.
+4. Espere a varredura das ferramentas e leia **Issues**. As 58 ferramentas têm `readOnlyHint`, `openWorldHint` e `destructiveHint` explícitos, e `--webapp` confere isso no código do site. Desde 27/11/2026, as que apagam ou sobrescrevem dados levam `destructiveHint: true`, como a diretriz pede. São 14:
+   - 7 que já tinham a marca: `sofia_apagar`, `referencia_apagar` e `planejamento_juntar_duplicado`, que apagam, e `cerebro_guardar`, `cerebro_preferencia`, `cerebro_esquecer` e `cerebro_desfazer`, que trocam ou tiram notas;
+   - 7 que passaram a ter a marca, porque sobrescrevem: `planejamento_editar_card`, `planejamento_estruturar_card`, `referencia_editar`, `perfil_salvar_avaliacao`, `perfil_definir_alvo`, `perfil_salvar_leitura` e `sofia_perfil`.
+
+   `perfil_desfazer_alvo`, `planejamento_salvar_pesquisa` e `sofia_salvar` ficam com `false`, porque alternam, acrescentam ou criam uma versão nova sem perder nada. Se a varredura reter alguma, ajuste no site e use **Rescan**.
 
 ### 5. Informações de revisão e envio
 
