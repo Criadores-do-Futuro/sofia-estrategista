@@ -16,13 +16,13 @@ O aluno do Criador Estrategista escreve roteiros com a Sofia no Claude, e o site
 
 - Suporte do curso sem vídeo no meio (pagamento, acesso, contrato).
 - Edição técnica de vídeo.
-- O pacote para o ChatGPT como plugin. Por enquanto, o ChatGPT recebe só a skill (`sofia-estrategista.skill`).
+- Uma Sofia só com a skill, ou só com o conector. Desde 27/11/2026 a Sofia é sempre o plugin com o conector, em todo app; a skill solta saiu do site.
 
 ## O que seria fracasso mesmo funcionando
 
 - Gravar no site sem contar, ou guardar preferência sem a pessoa querer.
 - Texto com cara de IA, ou fato sem fonte no roteiro.
-- Duas Sofias brigando pelo mesmo pedido (a skill antiga do Kit e o plugin). A página Kit avisa para desligar a antiga.
+- Duas Sofias brigando pelo mesmo pedido (uma Sofia antiga e o plugin). A página Conector e o pedido do Claude Code tiram a antiga antes de instalar.
 
 ## Regras que vieram do dono do curso
 
@@ -55,7 +55,7 @@ Estão dentro do SKILL.md, no Passo 3 e na lista "Antes de entregar":
 
 - Uma skill principal com gatilho largo, para não competir com outra skill de roteiro. Os atalhos só apontam para ela.
 - Ajudantes só leem e devolvem. Quem grava no site é a skill, para nada ser gravado sem a pessoa ver.
-- O Kit do site entrega o plugin (`sofia-estrategista.plugin`, um .zip com outra extensão para o navegador não descompactar ao baixar) para o Claude e a skill solta (`sofia-estrategista.skill`) para o ChatGPT. Os dois saem do mesmo `plugin/` pelo `scripts/empacotar.sh`.
+- O caminho preferido de instalar, em todo app, é o marketplace `criadores-do-futuro`, porque se atualiza. A página Conector do site ensina o marketplace primeiro e entrega o arquivo como alternativa: o `sofia-estrategista.plugin` (um .zip com outra extensão para o navegador não descompactar ao baixar) para o Claude e o `sofia-estrategista.zip`, que traz o marketplace local, para o Codex e o app do ChatGPT. Os dois saem do mesmo `plugin/` pelo `scripts/empacotar.sh`.
 - `scripts/conferir-ferramentas.mjs` compara os nomes citados com os registrados no servidor, para o plugin não ficar para trás quando o conector mudar.
 
 ## Para depois

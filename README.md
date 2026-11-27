@@ -2,9 +2,11 @@
 
 A Sofia Estrategista do curso Criador Estrategista, dos Criadores do Futuro: estrategista e editora de vídeo curto, numa Sofia só. O plugin junta o método do curso (ideia, pesquisa com fonte, formato, estrutura, hook, roteiro, grifos, análise de vídeo e de perfil), a equipe de agentes que escreve e confere cada etapa, o conector do planejamento do site e a edição do vídeo gravado no CapCut ou no DaVinci Resolve. O que o plugin faz, para quem usa, está em [plugin/README.md](plugin/README.md).
 
-Este repositório é o marketplace `criadores-do-futuro`, com dois plugins: a `sofia-estrategista` e o `sofia-painel`. A versão atual da Sofia é a **2.2.0**: o painel do Claude Code e o interruptor técnico (um mod) saíram dela e viraram o plugin `sofia-painel` 1.0.0, só do Claude Code ([painel-plugin/README.md](painel-plugin/README.md)). Sem o mod, a Sofia carrega no chat, no Cowork e no Claude Code. A 2.1.1 fez a descrição caber no limite de 500 caracteres do envio pelo app. A 2.1.0 trouxe o interruptor: a Sofia liga e desliga com um pedido e pode agir só quando chamada pelo nome. A 2.0.0 foi a Sofia única: a Sofia Estrategista (`sofia-estrategista`) e a Sofia Estrategista com edição (`sofia-estrategista-editora`) viraram um plugin só, o `sofia-estrategista`.
+Este repositório é o marketplace `criadores-do-futuro`, com dois plugins: a `sofia-estrategista` e o `sofia-painel`. A versão atual da Sofia é a **2.2.1**: o marketplace vira o caminho ensinado em todo app (o arquivo do kit fica como alternativa) e o repositório ganha o pacote de envio ao diretório da OpenAI, em `openai/`. Na 2.2.0, o painel do Claude Code e o interruptor técnico (um mod) saíram dela e viraram o plugin `sofia-painel` 1.0.0, só do Claude Code ([painel-plugin/README.md](painel-plugin/README.md)). Sem o mod, a Sofia carrega no chat, no Cowork e no Claude Code. A 2.1.1 fez a descrição caber no limite de 500 caracteres do envio pelo app. A 2.1.0 trouxe o interruptor: a Sofia liga e desliga com um pedido e pode agir só quando chamada pelo nome. A 2.0.0 foi a Sofia única: a Sofia Estrategista (`sofia-estrategista`) e a Sofia Estrategista com edição (`sofia-estrategista-editora`) viraram um plugin só, o `sofia-estrategista`.
 
 ## Instalar
+
+Pelo marketplace, em todo app: é o caminho que recebe as versões novas. O arquivo da página Conector do site fica como alternativa, para quem não conseguir pelo marketplace.
 
 **Claude Code**
 
@@ -16,14 +18,17 @@ claude plugin install sofia-painel@criadores-do-futuro   # opcional: o painel e 
 
 Depois, `/reload-plugins` (ou uma sessão nova) e `/mcp` para entrar no conector com o e-mail do curso. Para as próximas versões chegarem sozinhas, digite `/plugin`, abra a aba Marketplaces, escolha `criadores-do-futuro` e ligue a atualização automática.
 
-**Claude no site ou no app de computador:** adicione o marketplace `Criadores-do-Futuro/sofia-estrategista` em Personalizar › Plugins, instale a Sofia Estrategista, ligue a sincronização automática do marketplace e conecte o conector na aba Conectores do plugin. O passo a passo com imagens está na página Conector do site do curso.
+**Claude no site, no app de computador, no celular e no Cowork:** adicione o marketplace `Criadores-do-Futuro/sofia-estrategista` em Personalizar › Plugins, instale a Sofia Estrategista, ligue a sincronização automática do marketplace e conecte o conector na aba Conectores do plugin. A Sofia fica na conta e chega também ao Claude Code que entra com a mesma conta. O passo a passo está na página Conector do site do curso.
 
-**Codex**
+**Codex e app do ChatGPT no computador**
 
 ```bash
 codex plugin marketplace add Criadores-do-Futuro/sofia-estrategista
 codex plugin add sofia-estrategista@criadores-do-futuro
+codex mcp login sofia-estrategista
 ```
+
+O app do ChatGPT para Mac e Windows lê o mesmo marketplace: reinicie o app e instale a Sofia em Plugins. No ChatGPT de empresa ou escola, quem administra importa este repositório em Admin › Plugins › Add › Import marketplace. O envio ao diretório da OpenAI, para o site e o celular de conta pessoal, está em [docs/envio-openai.md](docs/envio-openai.md).
 
 ## Já tem uma Sofia instalada?
 

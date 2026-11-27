@@ -25,6 +25,11 @@ O mesmo método que escolhe o formato, a estrutura e o hook decide o corte, a im
 | Painel e interruptor técnico (só no Claude Code) | Desde a 2.2.0 ficam num plugin à parte, o `sofia-painel`, do mesmo marketplace: um painel ao lado da conversa com os cards de cada etapa e o uso das janelas de 5 horas e de 7 dias do Claude, e o interruptor que guarda o modo da Sofia neste computador. Veja "Versão 2.2.0" e o README em `painel-plugin/` no repositório |
 | Ferramentas | `scripts/` e o pacote Python `beditor/` (medição, pranchas, transcrição, biblioteca, plano editorial, pontes do CapCut e do DaVinci), `schemas/`, `motion/`, os scripts das skills `beditor` e `motion-vox`, o `painel/` de revisão e as fontes livres (OFL) do motion |
 
+## Versão 2.2.1: o marketplace como caminho de instalar e atualizar, e o pacote da OpenAI
+
+- **O que mudou.** O `/atualizar` e este README ensinam o marketplace `criadores-do-futuro` como caminho principal em todo app, e o arquivo do kit como alternativa que não se atualiza. No ChatGPT, a Sofia entra como plugin com o conector pelo app do computador (o mesmo marketplace do Codex) e pelas contas de empresa que importam o marketplace, e o `/atualizar` deixa de mandar dar Refresh num conector solto. Quem instalou pelo arquivo recebe o caminho para trocar pelo marketplace.
+- **Pacote da OpenAI.** O repositório ganha `openai/` e `scripts/empacotar-openai.sh`, que montam o pacote de envio ao diretório de plugins da OpenAI, e `scripts/validar_pacote_openai.py`, que confere o pacote contra os erros do portal. O comportamento da Sofia na conversa não muda.
+
 ## Versão 2.2.0: o painel vira um plugin à parte
 
 - **O que mudou.** O painel do Claude Code e o interruptor técnico (o mod em `hooks/register.tsx`) saíram deste plugin e viraram o plugin `sofia-painel` 1.0.0, no mesmo marketplace `criadores-do-futuro`. A Sofia Estrategista não traz mais `hooks/` nem `types/`.
@@ -103,6 +108,14 @@ Ideia, hook, roteiro, ajuste e crítica não são escritos e conferidos numa pas
 
 ## Instalar
 
+O caminho preferido, em todo app, é o marketplace `criadores-do-futuro` (este repositório): por ele a Sofia recebe as versões novas. O arquivo do kit é a alternativa para quem não conseguir pelo marketplace, e ele não se atualiza sozinho.
+
+**Claude no site, no app do Mac ou do Windows, no celular e no Cowork**
+
+Em Customize › Plugins › Add › Add marketplace, cole `Criadores-do-Futuro/sofia-estrategista`, instale a Sofia Estrategista, ligue o Sync automatically do marketplace e, na aba Connectors do plugin, clique em Connect e entre com o e-mail do curso. A Sofia fica na conta: vale nas conversas do site, do app e do celular, no Cowork, e chega ao Claude Code como `sofia-estrategista@synced` na sessão seguinte, se ele entrar com a mesma conta. Desde a 2.2.0 o pacote não traz mod, então no Cowork a Sofia carrega com as skills, os atalhos e os agentes, além do conector. A edição precisa de um computador com Python, FFmpeg e o editor aberto, então depende do que o host oferece.
+
+Alternativa com o arquivo: o `.plugin` da página Conector do site (o mesmo `.zip` com outra extensão, que o `scripts/empacotar.sh` gera, com o plugin dentro da pasta `sofia-estrategista/`). Envie em Customize › Plugins › Add › Upload plugin e conecte na aba Connectors. A cada versão nova, remova e envie o arquivo novo.
+
 **Claude Code**
 
 ```sh
@@ -115,24 +128,25 @@ Depois, `/reload-plugins` (ou uma sessão nova) e `/mcp` para entrar no conector
 
 **Já tem uma Sofia instalada?** Se for a `sofia-estrategista-editora`, ou a `sofia-estrategista` de outro marketplace (como o `sofia-plugins`), use o prompt de migração do [README do repositório](https://github.com/Criadores-do-Futuro/sofia-estrategista#já-tem-uma-sofia-instalada): ele desinstala a antiga e instala esta, com o seu OK.
 
-**Claude no navegador ou no app**
-
-O `.zip` da página Kit do site traz o plugin dentro da pasta `sofia-estrategista/` (o `scripts/empacotar.sh` do repositório gera esse arquivo). Envie o `.zip` em Personalizar › Plugins › Adicionar › Enviar plugin e conecte o conector na aba Conectores do plugin. O método e o conector funcionam ali. Desde a 2.2.0 o pacote não traz mod, então no Cowork a Sofia carrega com as skills, os atalhos e os agentes, além do conector. A edição precisa de um computador com Python, FFmpeg e o editor aberto, então depende do que o host oferece.
-
-**Codex**
+**Codex e app do ChatGPT no computador**
 
 ```sh
 codex plugin marketplace add Criadores-do-Futuro/sofia-estrategista
 codex plugin add sofia-estrategista@criadores-do-futuro
+codex mcp login sofia-estrategista
 ```
 
-O catálogo do Codex é o `.agents/plugins/marketplace.json` da raiz do repositório. Com o `.zip` do kit, descompacte e aponte para a pasta:
+O catálogo do Codex é o `.agents/plugins/marketplace.json` da raiz do repositório. O app do ChatGPT para Mac e Windows lê o mesmo marketplace: depois do primeiro comando, reinicie o app e instale a Sofia em Plugins, na fonte Criadores do Futuro. Para atualizar, `codex plugin marketplace upgrade criadores-do-futuro` e de novo o `codex plugin add`. No ChatGPT de empresa ou escola, quem administra importa este repositório em Admin › Plugins › Add › Import marketplace, e ele sincroniza todo dia. No site e no celular de uma conta pessoal do ChatGPT, a Sofia chega pelo diretório da OpenAI, com o pacote de `openai/` (veja `docs/envio-openai.md` no repositório).
+
+Alternativa com o arquivo: o `.zip` da página Conector do site traz o próprio catálogo (marketplace `sofia-estrategista-local`). Descompacte e aponte para a pasta:
 
 ```sh
 unzip sofia-estrategista.zip
 codex plugin marketplace add ./sofia-estrategista
 codex plugin add sofia-estrategista@sofia-estrategista-local
 ```
+
+Para a versão nova pelo arquivo, troque a pasta pela nova no mesmo lugar e rode de novo o `codex plugin add` (o `marketplace upgrade` só vale para marketplace do GitHub).
 
 No Codex, a Sofia aparece como "só no computador" (`requires_local_executor`): a edição e a leitura dos quadros de um vídeo rodam programas na máquina da pessoa.
 

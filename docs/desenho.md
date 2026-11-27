@@ -67,7 +67,7 @@ Estão dentro do SKILL.md, no Passo 3 e na lista "Antes de entregar":
 
 - Uma skill principal com gatilho largo, para não competir com outra skill de roteiro. Os atalhos só apontam para ela.
 - Ajudantes só leem e devolvem. Quem grava no site é a skill, para nada ser gravado sem a pessoa ver.
-- O Kit do site entrega o plugin (`sofia-estrategista.plugin`, um .zip com outra extensão para o navegador não descompactar ao baixar) para o Claude e a skill solta (`sofia-estrategista.skill`) para o ChatGPT. Os dois saem do mesmo `plugin/` pelo `scripts/empacotar.sh`.
+- O caminho preferido de instalar, em todo app, é o marketplace `criadores-do-futuro`, porque se atualiza. A página Conector do site ensina o marketplace primeiro e entrega o arquivo como alternativa: o `sofia-estrategista.plugin` (um .zip com outra extensão para o navegador não descompactar ao baixar) para o Claude e o `sofia-estrategista.zip`, que traz o marketplace local, para o Codex e o app do ChatGPT. Os dois saem do mesmo `plugin/` pelo `scripts/empacotar.sh`.
 - `scripts/conferir-ferramentas.mjs` compara os nomes citados com os registrados no servidor, para o plugin não ficar para trás quando o conector mudar.
 
 ## Para depois
