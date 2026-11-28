@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "sofia-estrategista",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "Short-form video strategist and editor from the Criador Estrategista course: ideas, sourced research, hooks, scripts and critiques with the course method, a connector to the student's planning board on the course site, and desktop editing in CapCut or DaVinci Resolve.",
   "author": {
     "name": "Criadores do Futuro",
@@ -110,7 +110,7 @@
         "commerce_description": "This plugin does not sell products or process payments. The connector requires an active Criador Estrategista course account."
       },
       "publication": {
-        "release_notes": "First directory release of Sofia Estrategista 2.2.1: the short-video method skill (ideas, sourced research, format, structure, hook, script, critique, video and profile analysis) with the course's reviewer passes; the Sofia Estrategista connector to read and save the student's planning board; and the desktop skills to edit in CapCut or DaVinci Resolve, learn an editing style and add motion graphics.",
+        "release_notes": "First directory release of Sofia Estrategista 2.3.0: the short-video method skill (ideas, sourced research, format, structure, hook, script, critique, scene guide, video and profile analysis) with the course's reviewer passes; client prospecting (targets, gifts and follow-up) from the course method; the Sofia Estrategista connector to read and save the student's planning board and prospecting list; and the desktop skills to edit in CapCut or DaVinci Resolve, learn an editing style and add motion graphics.",
         "translations": {
           "pt-BR": {
             "subtitle": "Roteiro e edição de vídeos",

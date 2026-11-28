@@ -36,12 +36,14 @@ perfil_definir_alvo perfil_desfazer_alvo perfil_evolucao perfil_ler_da_rede perf
 perfil_salvar_leitura perfil_ver planejamento_consolidar_card planejamento_criar_card planejamento_dividir_card
 planejamento_editar_card planejamento_estruturar_card planejamento_gravar planejamento_guardar_card
 planejamento_juntar_duplicado planejamento_mover_card planejamento_postado planejamento_quadro
-planejamento_reusar_card planejamento_salvar_pesquisa preco_e_contrato preparar_reuniao referencia_apagar
+planejamento_reusar_card planejamento_salvar_guia_de_cena planejamento_salvar_pesquisa preco_e_contrato
+preparar_reuniao prospeccao_alvos prospeccao_atualizar_presente prospeccao_completar_alvo prospeccao_criar_alvo
+prospeccao_editar_alvo prospeccao_registrar_presente prospeccao_ver_alvo referencia_apagar
 referencia_buscar referencia_editar referencia_listar referencia_salvar referencia_usar referencia_ver sofia_apagar
 sofia_briefing sofia_conferir sofia_exportar sofia_grifos sofia_metodo sofia_meus_videos sofia_perfil
 sofia_preparar_escrita sofia_salvar sofia_video ver_etapa ver_situacao
 '''.split())
-FAMILIA = re.compile(r'^(sofia|planejamento|cerebro|referencia|perfil)_[a-z0-9_]+$')
+FAMILIA = re.compile(r'^(sofia|planejamento|cerebro|referencia|perfil|prospeccao)_[a-z0-9_]+$')
 
 ESCRITORES = {'redator-de-hook', 'roteirista'}
 REVISORES = {'revisor-o-que-nao-fazer', 'revisor-de-hook', 'revisor-de-voz', 'revisor-de-estrutura', 'revisor-de-fatos'}
@@ -54,6 +56,7 @@ TEXTOS_NOVOS = [
     *(ROOT / 'commands' / f'{n}.md' for n in sorted(COMANDOS_DA_EQUIPE)),
     ROOT / 'commands' / 'atualizar.md',
     REFERENCIAS / 'passadas.md',
+    REFERENCIAS / 'prospeccao.md',
     SKILL / 'agents/openai.yaml',
 ]
 LOJA = re.compile(
@@ -236,7 +239,7 @@ class SofiaUnicaTest(unittest.TestCase):
         texto = (SKILL / 'SKILL.md').read_text(encoding='utf-8')
         secao = texto.split('## Versão e atualização', 1)[1].split('\n## ', 1)[0]
         versao = json.loads((ROOT / '.claude-plugin/plugin.json').read_text(encoding='utf-8'))['version']
-        self.assertEqual(versao, '2.2.1')
+        self.assertEqual(versao, '2.3.0')
         self.assertIn(f'Esta é a versão {versao}', secao)
 
     def test_chave_de_volta_na_skill_e_nas_passadas(self):

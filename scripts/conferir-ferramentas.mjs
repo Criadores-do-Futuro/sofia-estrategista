@@ -41,7 +41,7 @@ if (doServidor.size === 0) {
 }
 
 // Famílias de nome que o conector usa. Um nome citado nessas famílias tem de existir no servidor.
-const familia = /^(sofia|planejamento|cerebro|referencia|perfil)_[a-z0-9_]+$/;
+const familia = /^(sofia|planejamento|cerebro|referencia|perfil|prospeccao)_[a-z0-9_]+$/;
 // As ferramentas de nome avulso que o plugin pode citar. A lista é fixa, e não tirada do servidor, para
 // que um nome avulso citado no plugin e sumido do servidor acuse em vez de passar despercebido.
 const avulsas = new Set([
